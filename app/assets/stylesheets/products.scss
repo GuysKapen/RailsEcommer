@@ -1,0 +1,318 @@
+// Place all the styles related to the Products controller here.
+// They will automatically be included in application.scss.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.color-yellow-bg {
+  background-color: yellow;
+}
+
+.color-red-bg {
+  background-color: red;
+}
+
+.color-gray-bg {
+  background-color: gray;
+}
+
+.color-primary-bg {
+  background-color: #06598d;
+}
+
+.color-second-bg {
+  background-color: #62ba91;
+}
+
+.btn-rounded {
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+}
+
+.background-black {
+  background-color: black;
+}
+
+.background-dark {
+  background-color: #1d1d1d;
+}
+
+.background-hover-white {
+  background: #e7ecea;
+}
+
+.background-blue {
+  background-color: #06598d;
+}
+
+.icon-size {
+  width: 32px;
+  height: 32px;
+}
+
+.custom-btn {
+  padding: .5rem 1rem;
+  border: 1px solid #151717;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .6s;
+}
+
+.custom-btn:hover {
+  border-color: var(--colorHoverPrimary) !important;
+  color: var(--colorHoverPrimary);
+  transform: scale(1.05);
+  //font-size: 1.25rem;
+}
+
+.hover\:color-hover:hover {
+  border-color: var(--colorHoverPrimary);
+  color: var(--colorHoverPrimary);
+}
+
+.custom-btn-sm {
+  padding: .25rem .5rem;
+  border: 2px solid #686666;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .6s;
+}
+
+.custom-btn-sm:hover {
+  border-color: var(--colorHoverPrimary);
+  color: var(--colorHoverPrimary);
+}
+
+.custom-btn-normal {
+  padding: .125rem 1rem;
+  border: 1px solid #b2b2b2;
+  cursor: pointer;
+  transition: .6s;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.custom-btn-normal:hover {
+  border-color: #907406;
+  color: #907406;
+}
+
+.custom-btn-wide {
+  padding: .25rem 1rem;
+  border: 1px solid #b2b2b2;
+  cursor: pointer;
+  transition: .6s;
+}
+
+.custom-btn-wide:hover {
+  border-color: #907406;
+  color: #907406;
+}
+
+
+.custom-btn-bold-wide {
+  padding: .25rem 2rem;
+  border: 2px solid #212121;
+  cursor: pointer;
+  font-weight: bold;
+  transition: .6s;
+}
+
+.custom-btn-bold-wide:hover {
+  border-color: #907406;
+  color: #907406;
+}
+
+.text-semi-white {
+  color: #dbc5c5;
+}
+
+.tab-panel {
+  cursor: pointer;
+}
+
+.tabs-content * {
+  overflow: hidden;
+  //position: relative;
+}
+
+.tabs-content > div {
+  //position: absolute;
+  //top: -200%;
+  display: none;
+}
+
+.tabs-content > div.active {
+  top: 0;
+  display: inherit;
+
+}
+
+.tabs-content-vertical > div {
+  //position: absolute;
+  display: none;
+  //bottom: -200%;
+  //top: inherit;
+}
+
+.tabs-content-vertical > div.active {
+  bottom: inherit;
+  top: inherit;
+  display: inherit;
+}
+
+.tab-panel.active {
+  border-bottom: 2px solid deepskyblue;
+  //color: deepskyblue;
+  color: white;
+  background: #2cc185;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto auto auto auto
+}
+
+.grid-gap-3-2 {
+  grid-gap: 1.5rem 1rem;
+}
+
+
+.product-card:hover .hover\:scale-105 {
+  transform: scale(1.05);
+}
+
+.product-card:hover .hover\:color-hover {
+  border-color: var(--colorHoverPrimary);
+  color: var(--colorHoverPrimary);
+}
+
+
+.s-hidden {
+  visibility: hidden;
+  padding-right: 10px;
+}
+
+.select {
+  cursor: pointer;
+  //display:inline-block;
+  position: relative;
+  font: normal 11px/22px Arial, Sans-Serif;
+  padding: 4px;
+}
+
+.styled_select {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: white;
+  //padding: 0 10px;
+  font-weight: bold;
+
+  padding: .25rem 1rem;
+  border: 1px solid #b2b2b2;
+  cursor: pointer;
+  transition: .6s;
+  border-radius: 20px;
+}
+
+.styled_select:after {
+  content: "";
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  border-top-color: black;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  //top:9px;
+  right: 12px;
+
+  top: 50%;
+  text-align: center;
+  align-self: center;
+  align-items: center;
+  transform: translate(0, -40%);
+}
+
+.styled_select:hover {
+  border-radius: 0;
+}
+
+.styled_select:active, .styled_select.active {
+  background-color: #eee;
+  border-radius: 0;
+}
+
+.options {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  margin: 0 0;
+  padding: 0 0;
+  list-style: none;
+  border: 1px solid #ccc;
+  background-color: white;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.options li {
+  margin: 0 0;
+  padding: 3px 1rem;
+}
+
+.options li:hover {
+  background: #2cc185;
+  color: white;
+}
+
+
+.custom-select-active {
+  border-color: #2cc185 !important;
+  color: #2cc185 !important;
+}
+
+.custom-select-active:hover {
+  border-color: #2cc185;
+  color: #2cc185;
+}
+
+.button-cart {
+  background: #4a9fec;
+  color: white;
+  border: none;
+  padding: .6rem 2.4rem;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: .5s;
+  cursor: pointer;
+}
+
+
+.button-wishlist {
+  background: white;
+  color: gray;
+  border: 1px solid #b2b2b2;
+  padding: .6rem 2.4rem;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: .5s;
+  cursor: pointer;
+}
+
+.button-wishlist:hover {
+  border-color: #907406;
+  color: #907406;
+}
+

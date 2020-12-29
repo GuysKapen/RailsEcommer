@@ -1,0 +1,242 @@
+<section id="product" class="py-3">
+  <div class="container">
+    <div class="row position-relative">
+      <div class="col-sm-6">
+        <%= image_tag(product_first_img(@product), alt: "Product", class: "img-fluid center-inner w-100 h-100 object-contain") %>
+        <!--        <div class="form-row pt-4 font-size-16 font-baloo position-absolute" style="bottom: 10%;-->
+        <!--        width: 80%; left: 10%">-->
+        <!--          <div class="col">-->
+        <!--            <button type="submit" class="btn btn-danger form-control">Buy</button>-->
+        <!--          </div>-->
+        <!--          <div class="col">-->
+        <!--            <button type="submit" class="btn btn-warning form-control">Add to Cart</button>-->
+        <!--          </div>-->
+        <!--        </div>-->
+      </div>
+      <div class="col-sm-6 py-5">
+        <span class="font text-uppercase">Clothing</span>
+        <h5 class="font-baloo font-size-20 f3 fw8 mb-0"><%= @product.name %></h5>
+        <h6 class="font-baloo f4">Prices: $<%= @product.regular_price %></h6>
+        <div class="d-flex">
+          <div class="rating text-warning font-size-14">
+            <span><i class="fas fa-xs fa-star"></i></span>
+            <span><i class="fas fa-xs fa-star"></i></span>
+            <span><i class="fas fa-xs fa-star"></i></span>
+            <span><i class="fas fa-xs fa-star"></i></span>
+            <span><i class="far fa-xs fa-star"></i></span>
+          </div>
+          <div>
+            <span href="#" class="px-2 font-rale f6">4.4 (800 reviewers)</span>
+          </div>
+        </div>
+        <hr class="m-0">
+
+        <!-- product price  -->
+
+        <!-- Form Add to cart product -->
+        <%= render('add_to_cart_form') %>
+        <!-- !Form Add to cart product -->
+
+        <div class="tab-view">
+          <!--        Tab Panel-->
+          <div class="d-flex justify-content-between mt-5 tabs-panel position-relative text-center">
+            <div class="col-4 active tab-panel py-2">
+              <p class="m-0">What's Inside</p>
+            </div>
+            <div class="col-4 tab-panel py-2">
+              <p class="m-0">Reviews</p>
+            </div>
+            <div class="col-4 tab-panel py-2">
+              <p class="m-0">FAQs</p>
+            </div>
+          </div>
+          <!--         !Tab Panel-->
+
+          <!--         Tab Content-->
+          <div class="tabs-content tabs-content-vertical mbr">
+            <div class="tab-content active">
+              <div>
+                <h6 class="fw6">Customizable items</h6>
+                <div class="mt-5">
+                  <div class="d-flex">
+                    <%= image_tag(product_first_img(@product), width: '128px', height: '128px', class: 'fit-cover') %>
+                    <div class="mt-3 ml-3">
+                      <h6 class="fw6">One Yellow T-Shirt</h6>
+                      <p class="color-fade font-baloo">Price: $32</p>
+                      <p class="color-fade font-baloo">See product detail</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-content">
+              <div>
+                <h6 class="fw6">Customizable items</h6>
+                <div class="mt-5">
+                  <div class="d-flex">
+                    <%= image_tag('banner 2.jpg', width: '128px', height: '128px', class: 'fit-cover') %>
+                    <div class="mt-3 ml-3">
+                      <h6 class="fw6">One Yellow T-Shirt</h6>
+                      <p class="color-fade font-baloo">Price: $32</p>
+                      <p class="color-fade font-baloo">See product detail</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tab-content">
+              <div>
+                <h6 class="fw6">Customizable items</h6>
+                <div class="mt-5">
+                  <div class="d-flex">
+                    <%= image_tag('blog post 3.jpg', width: '128px', height: '128px', class: 'fit-cover') %>
+                    <div class="mt-3 ml-3">
+                      <h6 class="fw6">One Yellow T-Shirt</h6>
+                      <p class="color-fade font-baloo">Price: $32</p>
+                      <p class="color-fade font-baloo">See product detail</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <!--         !Tab Content-->
+        </div>
+
+
+        <!--                <table class="my-3">-->
+        <!--          <tr class="font-rale font-size-14">-->
+        <!--            <td>M.R.P</td>-->
+        <!--            <td>$ 162.00</td>-->
+        <!--          </tr>-->
+        <!--          <tr class="font-rale font-size-14">-->
+        <!--            <td>Deal Price:</td>-->
+        <!--            <td class="font-size-20 text-danger">$ <%#= @product.price %><small-->
+        <!--              class="text-dark font-size-12 mx-2">inclusive of all taxes</small></span>-->
+        <!--            </td>-->
+        <!--          </tr>-->
+        <!--          <tr class="font-rale font-size-14">-->
+        <!--            <td>You save:</td>-->
+        <!--            <td>$ <span class="font-size-20 text-danger">$12.01</span></td>-->
+        <!--          </tr>-->
+        <!--        </table>-->
+        <!-- !product price  -->
+
+        <!-- policy  -->
+
+        <!-- size  -->
+        <!--        <div class="size my-3">-->
+        <!--          <h6 class="fw6">Quality</h6>-->
+        <!--          <div class="custom-btn-width col-3 rounded-extra-lg">4</div>-->
+        <!--          <div class="custom-btn-width col-3 rounded-extra-lg">Full</div>-->
+        <!--        </div>-->
+        <!-- !size  -->
+
+      </div>
+    </div>
+
+  </div>
+  <div class="col-8">
+
+    <div style="overflow: hidden;min-height: 50vh" class="mbr justify-around ml-5">
+      <div class="tab-view">
+        <!-- Tab Panel -->
+        <div class="d-flex justify-content-between mt-5 tabs-panel position-relative text-center">
+          <div class="col-4 active tab-panel py-2">
+            <p class="m-0">Description</p>
+          </div>
+          <div class="col-4 tab-panel py-2">
+            <p class="m-0">Reviews</p>
+          </div>
+          <div class="col-4 tab-panel py-2">
+            <p class="m-0">FAQs</p>
+          </div>
+        </div>
+        <!-- !Tab Panel -->
+
+        <!-- Tab Content -->
+        <div class="tabs-content tabs-content-vertical mbr">
+          <div class="tab-content active">
+            <div>
+              <h6 class="font-baloo f3 fw8">Product Description</h6>
+              <div class="font-size-14 child-p-font-baloo fw4"><%= raw(@product.description) %></div>
+            </div>
+          </div>
+          <div class="tab-content">
+            <h4 class="fw6">Reviews From Customer</h4>
+            <h5 class="fw5">Ratings</h5>
+            <div class="text-center w-25">
+              <h5 class="f1 m-0">4.5</h5>
+              <div class="d-flex justify-content-center justify-center flex-column">
+                <div class="rating text-warning font-size-14">
+                  <span><i class="fas fa-xs fa-star"></i></span>
+                  <span><i class="fas fa-xs fa-star"></i></span>
+                  <span><i class="fas fa-xs fa-star"></i></span>
+                  <span><i class="fas fa-xs fa-star"></i></span>
+                  <span><i class="fas fa-xs fa-star"></i></span>
+                </div>
+              </div>
+              <p>450 Reviews</p>
+            </div>
+
+            <div class="heading">
+              <div class="d-flex mt-br">
+                <%= image_tag("blog post 3.jpg", class: 'img-avatar') %>
+                <div class="ml-2">
+                  <div class="fw5">Guys Customer</div>
+                  <span class="font-baloo">21 October, 2020</span>
+                </div>
+              </div>
+              <div class="my-3 rating text-warning font-size-14">
+                <span><i class="fas fa-xs fa-star"></i></span>
+                <span><i class="fas fa-xs fa-star"></i></span>
+                <span><i class="fas fa-xs fa-star"></i></span>
+                <span><i class="fas fa-xs fa-star"></i></span>
+                <span><i class="fas fa-xs fa-star"></i></span>
+              </div>
+              <div class="mt-2">
+                <h6 class="font-baloo f2">Very Satisfy</h6>
+                <p class="font-roboto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aperiam
+                  architecto atque blanditiis,
+                  debitis dolorum ea est fuga, harum id in qui sed ullam velit vero? Ducimus iusto sint
+                  voluptatibus.</p>
+              </div>
+              <div class="d-flex text-center mt-2">
+                <div class="custom-btn-wide font-fredoka font-weight-lighter">Like</div>
+                <div class="custom-btn-wide ml-3 font-fredoka font-weight-lighter">Answer</div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-content">
+            <div>
+              <h6 class="fw6">FAQ</h6>
+              <div class="mt-5">
+                <div class="d-flex">
+                  <div class="col-2 text-center">
+                    <p>1</p>
+                    <p>Like</p>
+                  </div>
+                  <div>
+                    <p class="fw7 font-roboto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
+                      assumenda beatae
+                      blanditiis deleniti eos iste minima mollitia natus, neque nihil omnis</p>
+                    <p class="fw4 mt-3 text-color-subtitle-dark">Lorem ipsum dolor sit amet, consectetur adipisicing
+                      elit. Accusantium, consequatur
+                      corporis culpa dolor fugit illum ipsa libero mollitia nulla, numquam, perferendis quisquam quod
+                      reprehenderit tempora temporibus ut veritatis voluptate voluptatibus!</p>
+                    <div class="d-flex text-center mt-2 mt-3">
+                      <div class="custom-btn-wide font-fredoka font-weight-lighter">Like</div>
+                      <div class="custom-btn-wide ml-3 font-fredoka font-weight-lighter">Answer</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- !Tab Content -->
+      </div>
+    </div>
+  </div>
+</section>

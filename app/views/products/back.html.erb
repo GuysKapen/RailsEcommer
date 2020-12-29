@@ -1,0 +1,162 @@
+<section id="product" class="py-3">
+  <div class="container">
+    <div class="row position-relative">
+      <div class="col-sm-6">
+        <% if @product.images[0] != nil %>
+          <%= image_tag(@product.images[0].url, alt: "Product", class: "img-fluid center-inner") %>
+        <% end %>
+        <div class="form-row pt-4 font-size-16 font-baloo position-absolute" style="bottom: 10%;
+            width: 80%; left: 10%">
+          <div class="col">
+            <button type="submit" class="btn btn-danger form-control">Buy</button>
+          </div>
+          <div class="col">
+            <button type="submit" class="btn btn-warning form-control">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 py-5">
+        <h5 class="font-baloo font-size-20"><%= @product.name %></h5>
+        <small>Samsung</small>
+        <div class="d-flex">
+          <div class="rating text-warning font-size-14">
+            <span><i class="fas fa-star"></i></span>
+            <span><i class="fas fa-star"></i></span>
+            <span><i class="fas fa-star"></i></span>
+            <span><i class="fas fa-star"></i></span>
+            <span><i class="fas fa-star"></i></span>
+          </div>
+          <a href="#" class="px-2 font-rale font-size-14">20,123 ratings | 1000+ answered
+            questions</a>
+        </div>
+        <hr class="m-0">
+
+        <!-- product price  -->
+        <table class="my-3">
+          <tr class="font-rale font-size-14">
+            <td>M.R.P</td>
+            <td>$ 162.00</td>
+          </tr>
+          <tr class="font-rale font-size-14">
+            <td>Deal Price:</td>
+            <td class="font-size-20 text-danger">$ <%= @product.price %><small
+              class="text-dark font-size-12 mx-2">inclusive of all taxes</small></span>
+            </td>
+          </tr>
+          <tr class="font-rale font-size-14">
+            <td>You save:</td>
+            <td>$ <span class="font-size-20 text-danger">$12.01</span></td>
+          </tr>
+        </table>
+        <!-- !product price  -->
+
+        <!-- policy  -->
+        <div id="policy">
+          <div class="d-flex">
+            <div class="return text-center mr-5">
+              <div class="font-size-20 my-2 color-second">
+                <span class="fas fa-retweet border p-3 rounded-pill"></span>
+              </div>
+              <a href="#" class="font-rale font-size-12">10 Days <br>Replacement</a>
+            </div>
+            <div class="return text-center mr-5">
+              <div class="font-size-20 my-2 color-second">
+                <span class="fas fa-truck border p-3 rounded-pill"></span>
+              </div>
+              <a href="#" class="font-rale font-size-12">Daily Tuition <br>Delivery</a>
+            </div>
+            <div class="return text-center mr-5">
+              <div class="font-size-20 my-2 color-second">
+                <span class="fas fa-check-double border p-3 rounded-pill"></span>
+              </div>
+              <a href="#" class="font-rale font-size-12">1 year <br>Warranty</a>
+            </div>
+          </div>
+        </div>
+        <!-- !policy  -->
+
+        <!-- order details  -->
+        <div id="order-details" class="font-rale my-3 d-flex flex-column text-dark">
+          <small>Delivery by: Mar 29 - Apr 1</small>
+          <small>Sold by <a href="">Daily Election</a> (4.5 out of 5 | 12.862 ratings) </small>
+          <small><i class="fas fa-map-marker-alt color-primary"></i>&nbsp;&nbsp;Delivery to Customer -
+            424201</small>
+        </div>
+        <!-- !order details  -->
+
+        <!-- !more  -->
+        <div class="row align-items-center">
+          <div class="col-6 p-0">
+            <!-- color  -->
+            <div class="color my-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <h5 class="font-baloo">Color: </h5>
+                <div class="p-2 color-yellow-bg rounded-circle">
+                  <button class="btn font-size-14"></button>
+                </div>
+                <div class="p-2 color-primary-bg rounded-circle">
+                  <button class="btn font-size-14"></button>
+                </div>
+                <div class="p-2 color-second-bg rounded-circle">
+                  <button class="btn font-size-14"></button>
+                </div>
+              </div>
+            </div>
+            <!-- !color  -->
+          </div>
+
+        </div>
+        <!-- !!more  -->
+
+        <div class="row">
+
+          <!-- Qty  -->
+          <div class="row">
+            <div class="qty d-flex">
+              <div class="px-4 d-flex font-rale">
+                <button class="qty-up border bg-light">
+                  <i class="fas fa-angle-up" data-id="prod1"></i>
+                </button>
+                <input type="text" name="" id="" class="qty-input text-center border px-2 w-25 bg-light"
+                       disabled
+                       value="1" placeholder="1" data-id="prod1">
+                <button class="qty-up border bg-light" data-id="prod1">
+                  <i class="fas fa-angle-down"></i>
+                </button>
+              </div>
+              <div class="text-white font-weight-bold btn-rounded background-black">Add To Cart</div>
+            </div>
+          </div>
+          <!-- !Qty  -->
+        </div>
+
+        <!-- size  -->
+        <div class="size my-3">
+          <div class="row justify-content-between w-75 h-100">
+            <span class="font-baloo h-100 f3">Size:</span>
+
+            <div class="font-rubik border px-2 d-inline-block rounded-pill">
+              <button class="btn text-center p-0 h-100 my-auto font-size-14">4GB RAM</button>
+            </div>
+            <div class="font-rubik border px-2 d-inline-block rounded-pill">
+              <button class="btn p-0 text-center h-100 my-auto font-size-14">6GB RAM</button>
+            </div>
+            <div class="font-rubik border px-2 d-inline-block rounded-pill">
+              <button class="btn p-0 text-center h-100 my-auto font-size-14">8GB RAM</button>
+            </div>
+          </div>
+        </div>
+        <!-- !size  -->
+
+      </div>
+      <div class="col-12">
+        <h6 class="font-rubik">Product Description</h6>
+        <hr>
+        <p class="font-rale font-size-14"><%= raw(@product.description) %></p>
+
+      </div>
+
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,315 @@
+<!-- Service -->
+
+<section class="mx-auto my-3 font-weight-lighter" style="width: 88%">
+  <div class="row mx-auto">
+
+    <div class="col-4 text-center">
+      <i class="fas fa-dolly fa-3x"></i>
+      <div class="h5 my-3">Priority Shipping</div>
+      <div class="">Lorem ipsum dolor sit amet, consectetur adipisicing</div>
+    </div>
+
+    <div class="col-4 text-center">
+      <i class="fas fa-balance-scale fa-3x"></i>
+      <div class="h5 my-3">Fuss Free Returns</div>
+      <div class="">Lorem ipsum dolor sit amet, consectetur adipisicing</div>
+    </div>
+    <div class="col-4 text-center">
+      <i class="fas fa-user-cog fa-3x"></i>
+      <div class="h5 my-3">In-home Setup</div>
+      <div class="">Lorem ipsum dolor sit amet, consectetur adipisicing</div>
+    </div>
+
+  </div>
+
+  <!-- Service -->
+
+  <div class="row text-white px-4 mbr mx-auto border-dark p-0 my-0">
+    <div class="col-lg-5 col-sm-12 my-3">
+      <div class="h-100 img-container ">
+        <%= image_tag("Image-28.jpg", alt: "Hero 1", class: "img-banner h-100") %>
+      </div>
+      <div class="center-inner z-top text-white w-100">
+        <h5>50% OFF TODAY</h5>
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-12 my-3 p-0">
+      <div class="h-100 img-container">
+        <%= image_tag("blog post 3.jpg", alt: "Hero 1", class: "img-banner h-100") %>
+      </div>
+      <div class="center-inner z-top text-white w-100 px-2">
+        <h5>Discounted Laptops</h5>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi cupiditate deserunt dicta et expedita
+          explicabo harum id in ipsa</p>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-12 my-3">
+      <div class="h-100 img-container">
+        <%= image_tag("hero 1.jpg", alt: "Hero 1", class: "img-banner h-100") %>
+      </div>
+      <div class="center-inner z-top text-white w-100">
+        <h5>Head Phones</h5>
+        <button class="custom-btn border-white">Shop Now</button>
+      </div>
+    </div>
+
+  </div>
+
+
+  <section class="mbr">
+    <h1 class="text-center my-3 font-weight-bold text-uppercase">featured product</h1>
+    <div class="row">
+
+      <% @products.each do |product| %>
+
+
+        <div class="col-lg-3 col-sm-12 col-md-6 text-center">
+<!--          <div class="text-center">-->
+<!--            <div class="card opacity-anim">-->
+              <%#= link_to product_path(product) do %>
+                <%#= image_tag(product_first_img(product), alt: "Product", class: "card-img-top transform hover:scale-105 duration-500") %>
+              <%# end %>
+<!--              <div class="px-3 mx-1 mt-2">-->
+<!--                <p class="my-0 sub-title hover:color-hover transform hover:scale-105 duration-200"><%#= product.category.name %></p>-->
+<!--                <p class="my-0 title hover:color-hover transform hover:scale-105 duration-200"><%#= product.name %></p>-->
+<!--                <div class="rating text-warning font-size-14">-->
+<!--                  <span><i class="fas fa-star"></i></span>-->
+<!--                  <span><i class="fas fa-star"></i></span>-->
+<!--                  <span><i class="fas fa-star"></i></span>-->
+<!--                  <span><i class="fas fa-star"></i></span>-->
+<!--                  <span><i class="fas fa-star"></i></span>-->
+<!--                </div>-->
+<!--                <p class="font-weight-bold hover:color-hover transform hover:scale-105 duration-200 font-fredoka f4 my-0"><%#= product.regular_price %>-->
+<!--                  $</p>-->
+<!--                <div class="custom-btn mx-3 font-fredoka my-2">Add To Cart</div>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+          <div class="text-center cursor-pointer product-card">
+            <div class="card opacity-anim overflow-hidden">
+              <%= #noinspection RubyResolve
+                  link_to product_path(product) do %>
+                <%= image_tag(product_first_img(product), alt: "Product", class: "card-img-top transform hover:scale-105 duration-500") %>
+              <% end %>
+              <div class="px-3 mx-1 mt-2">
+                <p class="my-0 sub-title hover:color-hover transform hover:scale-105 duration-200"><%= product.category.name %></p>
+                <p class="my-0 title hover:color-hover transform hover:scale-105 duration-200"><%= product.name %></p>
+                <div class="rating text-warning font-size-14">
+                  <span><i class="fas fa-star"></i></span>
+                  <span><i class="fas fa-star"></i></span>
+                  <span><i class="fas fa-star"></i></span>
+                  <span><i class="fas fa-star"></i></span>
+                  <span><i class="fas fa-star"></i></span>
+                </div>
+                <p class="font-weight-bold hover:color-hover transform hover:scale-105 duration-200 font-fredoka f4 my-0"><%= product.regular_price %> $</p>
+                <div class="custom-btn mx-3 font-fredoka my-2">Add To Cart</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+
+    <!--    <div class="row">-->
+    <!--      <div class="col-lg-3 col-sm-12 col-md-6 text-center">-->
+    <!--        <div class="card opacity-anim">-->
+    <%#= image_tag("product 4.jpg", alt: "Product", class: "card-img-top") %>
+    <!--          <div class="px-3 mx-1">-->
+    <!--            <p class="my-0 sub-title">Product Category</p>-->
+    <!--            <p class="my-0 title">Product</p>-->
+    <!--            <div class="rating text-warning font-size-14">-->
+    <!--              <span><i class="fas fa-star"></i></span>-->
+    <!--              <span><i class="fas fa-star"></i></span>-->
+    <!--              <span><i class="fas fa-star"></i></span>-->
+    <!--              <span><i class="fas fa-star"></i></span>-->
+    <!--              <span><i class="fas fa-star"></i></span>-->
+    <!--            </div>-->
+    <!--            <p class="font-weight-bold f3 my-0">$300.00</p>-->
+    <!--            <div class="custom-btn mx-3">Add To Cart</div>-->
+    <!--          </div>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--      <div class="col-lg-3 col-sm-12 col-md-6 text-center">-->
+    <!--        <div class="card opacity-anim">-->
+    <%#= image_tag("product 4.jpg", alt: "Product", class: "card-img-top") %>
+    <!--          <div class="px-3 mx-1">-->
+    <!--            <p class="my-0 sub-title">Product Category</p>-->
+    <!--            <p class="my-0 title">Product</p>-->
+    <!--            <div class="rating text-warning font-size-14">-->
+    <!--              <span><i class="fas fa-star"></i></span>-->
+    <!--              <span><i class="fas fa-star"></i></span>-->
+    <!--              <span><i class="fas fa-star"></i></span>-->
+    <!--              <span><i class="fas fa-star"></i></span>-->
+    <!--              <span><i class="fas fa-star"></i></span>-->
+    <!--            </div>-->
+    <!--            <p class="font-weight-bold f3 my-0">$300.00</p>-->
+    <!--            <div class="custom-btn mx-3">Add To Cart</div>-->
+    <!--          </div>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--      <div class="col-lg-3 col-sm-12 col-md-6 text-center">-->
+    <!--        <div class="card opacity-anim">-->
+    <%#= image_tag("product 4.jpg", alt: "Product", class: "card-img-top") %>
+    <!--          <div class="px-3 mx-1">-->
+    <!--            <p class="my-0 sub-title">Product Category</p>-->
+    <!--            <p class="my-0 title">Product</p>-->
+    <!--            <div class="rating text-warning font-size-14">-->
+    <!--              <span><i class="fas fa-star"></i></span>-->
+    <!--              <span><i class="fas fa-star"></i></span>-->
+    <!--              <span><i class="fas fa-star"></i></span>-->
+    <!--              <span><i class="fas fa-star"></i></span>-->
+    <!--              <span><i class="fas fa-star"></i></span>-->
+    <!--            </div>-->
+    <!--            <p class="font-weight-bold f3 my-0">$300.00</p>-->
+    <!--            <div class="custom-btn mx-3">Add To Cart</div>-->
+    <!--          </div>-->
+    <!--        </div>-->
+    <!--      </div>-->
+    <!--      <div class="col-lg-3 col-sm-12 col-md-6 text-center">-->
+    <!--        <div class="card opacity-anim">-->
+    <%#= image_tag("product 4.jpg", alt: "Product", class: "card-img-top") %>
+    <!--          <div class="px-3 mx-1">-->
+    <!--            <p class="my-0 sub-title">Product Category</p>-->
+    <!--            <p class="my-0 title">Product</p>-->
+    <!--            <div class="rating text-warning font-size-14">-->
+    <!--              <span><i class="fas fa-star"></i></span>-->
+    <!--              <span><i class="fas fa-star"></i></span>-->
+    <!--              <span><i class="fas fa-star"></i></span>-->
+    <!--              <span><i class="fas fa-star"></i></span>-->
+    <!--              <span><i class="fas fa-star"></i></span>-->
+    <!--            </div>-->
+    <!--            <p class="font-weight-bold f3 my-0">$300.00</p>-->
+    <!--            <div class="custom-btn mx-3">Add To Cart</div>-->
+    <!--          </div>-->
+    <!--        </div>-->
+    <!--      </div>-->
+
+    <!--    </div>-->
+
+  </section>
+
+</section>
+
+<%= render 'shared/new_letter' %>
+
+
+<section class="mbr">
+  <h1 class="text-center my-3 font-weight-bold text-uppercase">On Sale</h1>
+  <div class="row">
+    <div class="col-lg-3 col-sm-12 col-md-6 text-center">
+      <div class="card opacity-anim">
+        <%= image_tag("product 5.jpg", alt: "Product", class: "card-img-top") %>
+        <div class="px-3 mx-1">
+          <p class="my-0 sub-title">Product Category</p>
+          <p class="my-0 title">Product</p>
+          <div class="rating text-warning font-size-14">
+            <span><i class="fas fa-star"></i></span>
+            <span><i class="fas fa-star"></i></span>
+            <span><i class="fas fa-star"></i></span>
+            <span><i class="fas fa-star"></i></span>
+            <span><i class="fas fa-star"></i></span>
+          </div>
+          <p class="font-weight-bold f3 my-0">$300.00</p>
+          <div class="custom-btn mx-3">Add To Cart</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-12 col-md-6 text-center">
+      <div class="card opacity-anim">
+        <%= image_tag("product-11-450x494.jpg", alt: "Product", class: "card-img-top") %>
+        <div class="px-3 mx-1">
+          <p class="my-0 sub-title">Product Category</p>
+          <p class="my-0 title">Product</p>
+          <div class="rating text-warning font-size-14">
+            <span><i class="fas fa-star"></i></span>
+            <span><i class="fas fa-star"></i></span>
+            <span><i class="fas fa-star"></i></span>
+            <span><i class="fas fa-star"></i></span>
+            <span><i class="fas fa-star"></i></span>
+          </div>
+          <p class="font-weight-bold f3 my-0">$300.00</p>
+          <div class="custom-btn mx-3">Add To Cart</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-12 col-md-6 text-center">
+      <div class="card opacity-anim">
+        <%= image_tag("product-20-300x330.jpg", alt: "Product", class: "card-img-top") %>
+        <div class="px-3 mx-1">
+          <p class="my-0 sub-title">Product Category</p>
+          <p class="my-0 title">Product</p>
+          <div class="rating text-warning font-size-14">
+            <span><i class="fas fa-star"></i></span>
+            <span><i class="fas fa-star"></i></span>
+            <span><i class="fas fa-star"></i></span>
+            <span><i class="fas fa-star"></i></span>
+            <span><i class="fas fa-star"></i></span>
+          </div>
+          <p class="font-weight-bold f3 my-0">$300.00</p>
+          <div class="custom-btn mx-3">Add To Cart</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-12 col-md-6 text-center">
+      <div class="card opacity-anim">
+        <%= image_tag("product 7.jpg", alt: "Product", class: "card-img-top") %>
+        <div class="px-3 mx-1">
+          <p class="my-0 sub-title">Product Category</p>
+          <p class="my-0 title">Product</p>
+          <div class="rating text-warning font-size-14">
+            <span><i class="fas fa-star"></i></span>
+            <span><i class="fas fa-star"></i></span>
+            <span><i class="fas fa-star"></i></span>
+            <span><i class="fas fa-star"></i></span>
+            <span><i class="fas fa-star"></i></span>
+          </div>
+          <p class="font-weight-bold f3 my-0">$300.00</p>
+          <div class="custom-btn mx-3">Add To Cart</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="mbr">
+  <h1 class="text-center my-3 font-weight-bold text-uppercase">Get Fashion News</h1>
+  <div class="row container-xl mx-auto">
+    <div class="col-lg-4 col-sm-12 col-md-6 text-center">
+      <div class="opacity-anim">
+        <%= image_tag("blog post 3.jpg", alt: "Product", class: "card-img-top position-relative") %>
+        <div class="px-3 mx-1 pt-3 rounded card-fashion w-75">
+          <h4 class="my-0 title font-weight-bold f4">10 Best Laptops</h4>
+          <p class="sub-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias dicta, esse facere
+            harum ipsum laboriosam</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-12 col-md-6 text-center">
+      <div class="opacity-anim">
+        <%= image_tag("blog post 3.jpg", alt: "Product", class: "card-img-top position-relative") %>
+        <div class="px-3 mx-1 pt-3 rounded card-fashion w-75">
+          <h4 class="my-0 title font-weight-bold f4">10 Best Laptops</h4>
+          <p class="sub-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias dicta, esse facere
+            harum ipsum laboriosam</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 col-sm-12 col-md-6 text-center">
+      <div class="opacity-anim">
+        <%= image_tag("blog post 3.jpg", alt: "Product", class: "card-img-top position-relative") %>
+        <div class="px-3 mx-1 pt-3 rounded card-fashion w-75">
+          <h4 class="my-0 title font-weight-bold f4">10 Best Laptops</h4>
+          <p class="sub-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias dicta, esse facere
+            harum ipsum laboriosam</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+

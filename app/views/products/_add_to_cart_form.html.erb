@@ -1,0 +1,78 @@
+<%= form_for @product, :url => add_to_cart_product_path(:product_id => @product.id), method: :post, remote: true do |f| %>
+
+  <%= hidden_field_tag(:product_id, @product.id) %>
+  <!--  <form action="">-->
+  <div class="mt-4">
+    <h6 class="fw6">Select Quality</h6>
+    <div class="d-flex text-center mt-2">
+      <div class="custom-btn-wide col-3 input-add-to-cart-quality-select" data-quality="basic">Basic</div>
+      <div class="custom-btn-wide col-3 ml-3 input-add-to-cart-quality-select" data-quality="premium">Premium</div>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <h6 class="fw6">Style</h6>
+    <div class="d-flex text-center justify-content-between text-center mt-2">
+      <div class="custom-btn-wide rounded-extra-lg input-add-to-cart-style-select" data-style="minimal">Minimal</div>
+      <div class="custom-btn-wide rounded-extra-lg input-add-to-cart-style-select" data-style="bohemian">Bohemian</div>
+      <div class="custom-btn-wide col-2 rounded-extra-lg input-add-to-cart-style-select" data-style="floral">Floral</div>
+      <div class="custom-btn-wide col-2 rounded-extra-lg input-add-to-cart-style-select" data-style="other">Other</div>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <h6 class="fw6">Color</h6>
+    <div class="d-flex text-center child-mx-3-not-first mt-2">
+      <div class="rounded-circle cursor-pointer color-palate background-blue input-add-to-cart-color-select" data-color="blue"></div>
+      <div class="rounded-circle cursor-pointer color-palate color-yellow-bg input-add-to-cart-color-select" data-color="yellow"></div>
+      <div class="rounded-circle cursor-pointer color-palate color-red-bg input-add-to-cart-color-select" data-color="red"></div>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <h6 class="fw6">Size</h6>
+    <div class="d-flex text-center text-center mt-2 child-mx-3-not-first">
+      <div class="custom-btn-wide col-3 rounded-extra-lg input-add-to-cart-size-select" data-size="xl">Twin XL</div>
+      <div class="custom-btn-wide col-3 rounded-extra-lg input-add-to-cart-size-select" data-size="full">Full</div>
+    </div>
+  </div>
+
+  <div class="mt-4">
+    <h6 class="fw6">Quantity</h6>
+    <div class="d-flex text-center mt-2">
+      <button type="button" class="qty-up px-2 border bg-light">
+        <i class="fas fa-angle-up" data-id="prod1"></i>
+      </button>
+      <input type="number" name="quantity" id="quantity" class="qty-input w-25 text-center border px-2 bg-light"
+             readonly="readonly"
+             value="1" placeholder="1" data-id="prod1">
+      <button type="button" class="qty-down px-2 border bg-light" data-id="prod1">
+        <i class="fas fa-angle-down"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="d-flex justify-between m-0-imp">
+
+    <div class="mt-4 button-cart d-inline-block">
+      <button type="submit" class="d-flex font-roboto outline-none-imp font-weight-bolder align-items-center duration-500">
+        <i class="fa fa-shopping-cart mr-3 duration-500"></i>Add to Cart
+      </button>
+    </div>
+
+    <div class="mt-4 button-wishlist d-inline-block">
+      <button type="submit" formaction="<%= add_to_wishlist_product_path(:product_id => @product.id) %>" class="d-flex font-roboto outline-none-imp font-weight-bolder align-items-center duration-500">
+        <i class="fa fa-heart mr-3 duration-500"></i>Save to wishlist
+      </button>
+
+    </div>
+  </div>
+
+  <input type="hidden" name="style" id="input-style-add-to-cart">
+  <input type="hidden" name="quality" id="input-quality-add-to-cart">
+  <input type="hidden" name="color" id="input-color-add-to-cart">
+  <input type="hidden" name="size" id="input-size-add-to-cart">
+  <input type="hidden" name="product_id" value="<%= @product.id %>">
+  <!--  </form>-->
+
+<% end %>

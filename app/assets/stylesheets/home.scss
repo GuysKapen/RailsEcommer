@@ -1,0 +1,130 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.scss.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.heading-banner {
+  min-height: 80vh;
+  background: asset_data_url("slider8-3.jpg");
+  background-size: cover;
+}
+
+.center-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  align-self: center;
+  align-items: center;
+  transform: translate(-50%, -50%);
+}
+
+.img-banner {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+  overflow: hidden;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    background: rgba(29, 28, 28, 0.5);
+  }
+
+  &:hover {
+    transform: scale(1.2);
+    transition: 2s;
+  }
+}
+
+.img-container {
+  position: relative;
+  box-sizing: content-box;
+  overflow: hidden;
+  max-height: 12.25rem;
+  border: .425rem solid #141514;
+
+}
+
+.img-container:hover .img-banner {
+  transform: scale(1.2);
+  transition: 2s;
+}
+
+.img-container::before {
+  content: '';
+  display: inline-block;
+  object-fit: cover;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.btn-lg-outline {
+  padding: 0.5rem 3rem;
+  border: solid 2px #efefef;
+}
+
+.hover-bg-light:hover {
+  transition: .6s;
+  background-color: #efefef;
+  color: #343a40 !important;
+}
+
+.new-letter {
+  background: url("https://png.pngtree.com/thumb_back/fh260/back_our/20190619/ourmid/pngtree-taobao-vector-creative-technology-online-shopping-illustration-computer-finger-poster-image_131803.jpg") no-repeat;
+  min-height: 18rem;
+  background-size: 100%;
+}
+
+.card-fashion {
+  position: absolute;
+  bottom: -25%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background: white;
+  border: 1px solid #dae7e1;
+}
+
+.break-bottom {
+  position: relative;
+}
+
+.break-bottom::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1rem;
+  width: 1rem;
+  height: 2px;
+  background: #9e8b8b;
+}
+
+.navbar ul li {
+  margin: 0 .5rem;
+  color: white !important;
+  list-style: none;
+}
+
+.navbar ul li:hover {
+  color: white !important;
+  list-style: none;
+}
+
+.navbar ul li a {
+  color: white !important;
+}
+
+.navbar ul li a:hover {
+  color: white !important;
+  list-style: none;
+  text-decoration: none;
+}
+
+
+

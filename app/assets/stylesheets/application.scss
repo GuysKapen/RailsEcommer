@@ -1,0 +1,178 @@
+/* app/javascript/stylesheets/application.scss */
+//noinspection CssUnknownTarget
+//@import "tailwindcss/base";
+//noinspection CssUnknownTarget
+//@import "tailwindcss/components";
+
+@import "fonts";
+
+@import "bootstrap";
+@import "bootstrap-tagsinput";
+@import "home";
+//@import "font-awesome-sprockets";
+//@import "font-awesome";
+@import "products";
+@import "function";
+@import "animation";
+@import "about";
+@import "contact";
+
+@import "toastr";
+
+// You can add your own custom components/styles here
+//noinspection CssUnknownTarget
+//@import "tailwindcss/utilities";
+
+:root {
+  --colorHoverPrimary: #907406;
+  --colorBorderLightPrimary: #efefef;
+  --borderWidthSmallLight: 1px solid #474b4b;
+  --borderWidthMediumLight: 1.5px solid #474b4b;
+  --borderWidthThickLight: 2px solid #474b4b;
+}
+
+body {
+  width: 100vw !important;
+  overflow-x: hidden;
+  font-family: 'Roboto Slab', serif;
+  color: #686666;
+}
+
+p {
+  margin: 0;
+}
+
+.fa, .fas {
+  vertical-align: middle;
+}
+
+.icon-border-thick {
+  border: 3px solid #d4c9c9;
+}
+
+
+.notice-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(125, 216, 212, .85);
+}
+
+.notice {
+  padding: 1.25rem 0;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #EFEFEF;
+}
+
+.link-no-style:hover {
+  text-decoration: none;
+}
+
+.link-no-style {
+  color: inherit;
+}
+
+.font-script {
+  font-family: 'font-intro', Helvetica, Arial, sans-serif;
+}
+
+.font-elia {
+  font-family: 'elia', serif;
+}
+
+.font-intro {
+  font-family: 'intro', serif;
+}
+
+.font-baloo {
+  font-family: 'Markazi Text', serif;
+}
+
+.child-p-font-baloo > p {
+  font-family: 'Markazi Text', serif;
+}
+
+.font-fredoka {
+  font-family: 'Inconsolata', monospace;
+  //font-family: 'MuseoModerno', cursive;
+}
+
+.child-p-font-fredoka > p {
+  font-family: 'Inconsolata', monospace;
+  //font-family: 'MuseoModerno', cursive;
+}
+
+.font-roboto {
+  font-family: 'Roboto Slab', serif;
+  //font-family: 'Sansita Swashed', cursive;
+}
+
+.child-p-font-vibes > p {
+  font-family: 'Roboto Slab', serif;
+  //font-family: 'Sansita Swashed', cursive;
+}
+
+.color-palate {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 1.5px solid #ece4e4;
+}
+
+.text-color-subtitle-dark {
+  color: #3c3e3c;
+}
+
+.img-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.img-avatar-small {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+.background-auth {
+  background-image: asset_data_url("auth/auth.svg");
+}
+
+.background-login {
+  background-image: asset_data_url("auth/login.svg");
+}
+
+input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-right: .5rem;
+  vertical-align: middle;
+}
+
+input[type="number"], input[type="text"] {
+  box-shadow: inset 0 0 10px 0 rgba(255, 255, 255, 0.56);
+  border: 1px solid #cccccc;
+  padding: 2px 8px;
+}
+
+input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+label.checkbox {
+  font-weight: 200;
+  font-size: 14px;
+  font-family: 'Roboto Slab', serif;
+}

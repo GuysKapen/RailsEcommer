@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0bc1f0c8-0024-4f1d-bfde-b04986fe073a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.browserslistrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.generators" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.rakeTasks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/ECommericial.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.ruby-version" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Rakefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/config/manifest.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/fonts/IntroScriptDemo-Medium.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/fonts/SantEliaScript-BoldDEMO.otf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/.keep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/15-1-270x338.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/18-1-270x338.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/22-1-270x338.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/8729493_R_Z001A.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/Alexxa.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/Image-1 (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/Image-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/Image-10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/Image-11.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/Image-19.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/Image-20.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/Image-24.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/Image-25.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/Image-28.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/REFURBISHED-AND-NEW-LAPTOPS-FOR-SELL-BEST.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/Sub-banner-02-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/Table.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/auth/auth.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/auth/forget.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/auth/login.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/auth/reset.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/auth/update.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/auth/welcome.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/banner 1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/banner 2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/banner 3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/banner 4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/blog post 2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/blog post 3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/camera table.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/camera.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/dvaxdagh5jsfdbe.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/fefag.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/gdgdgdgdeswdwsd.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/gerr.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/hero 1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/hero 2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/images.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/images2.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/index.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/people-2604837_640.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/pink watch.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/portrait-3204843_640.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/product 1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/product 10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/product 2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/product 3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/product 4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/product 5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/product 6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/product 7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/product-09-414x414.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/product-10-300x330.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/product-11-450x494.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/product-20-300x330.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/product-9-300x330 (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/product-9-300x330.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/sdfeadfe.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/sdfeasgaesdfa.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/sdfwefa.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/shoes.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/shop14_home_parallax1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/slider8-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/watxh.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/wefagwgraggg.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/wefasfefaf.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/images/wfgawettewas.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/_animation.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/_function.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/about.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/bootstrap-tagsinput.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/contact.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/fonts.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/home.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/products.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/user.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/channels/application_cable/channel.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/channels/application_cable/connection.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/about_controller.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/concerns/.keep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/contact_controller.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/products_controller.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/controllers/user_controller.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/helpers/about_helper.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/helpers/application_helper.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/helpers/contact_helper.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/helpers/home_helper.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/helpers/products_helper.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/helpers/user_helper.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/javascript/channels/consumer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/javascript/channels/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/javascript/packs/application.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/javascript/packs/products/add_to_cart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/javascript/packs/products/product_index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/javascript/packs/products/product_new.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/javascript/packs/utils/custom_select.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/javascript/packs/utils/global.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/javascript/packs/utils/image_preview.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/javascript/packs/utils/products.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/javascript/packs/utils/tabs.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/javascript/stylesheets/tailwind.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/jobs/application_job.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/mailers/application_mailer.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/application_record.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/cart.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/category.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/ckeditor/asset.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/ckeditor/attachment_file.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/ckeditor/picture.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/concerns/.keep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/product.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/product_cart.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/wishlist.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/uploaders/ckeditor_attachment_file_uploader.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/uploaders/ckeditor_picture_uploader.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/uploaders/image_uploader.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/about/index.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/contact/index.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/devise/confirmations/new.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/devise/mailer/confirmation_instructions.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/devise/mailer/email_changed.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/devise/mailer/password_change.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/devise/mailer/reset_password_instructions.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/devise/mailer/unlock_instructions.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/devise/passwords/edit.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/devise/passwords/new.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/devise/registrations/edit.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/devise/registrations/new.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/devise/sessions/new.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/devise/shared/_error_messages.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/devise/shared/_links.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/devise/unlocks/new.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/home/index.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/layouts/custom.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/layouts/mailer.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/layouts/mailer.text.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/products/_add_to_cart_form.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/products/_form.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/products/_product.json.jbuilder" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/products/back.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/products/edit.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/products/index.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/products/index.json.jbuilder" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/products/new.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/products/show.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/products/show.json.jbuilder" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/products/show_add_to_cart_success.js.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/products/show_add_to_wishlist_success.js.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/shared/_footer.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/shared/_header.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/shared/_nav.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/shared/_new_letter.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/shared/_product_cart.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/shared/_product_extra.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/shared/back.html.erb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/babel.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/bundle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/rails" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/rake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/setup" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/spring" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/webpack" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/webpack-dev-server" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/yarn" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config.ru" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/application.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/boot.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/cable.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/credentials.yml.enc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/database.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/environment.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/environments/development.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/environments/production.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/environments/test.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/initializers/application_controller_renderer.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/initializers/assets.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/initializers/backtrace_silencers.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/initializers/ckeditor.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/initializers/content_security_policy.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/initializers/cookies_serializer.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/initializers/devise.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/initializers/filter_parameter_logging.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/initializers/inflections.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/initializers/mime_types.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/initializers/simple_form.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/initializers/wrap_parameters.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/locales/devise.en.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/locales/en.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/locales/simple_form.en.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/puma.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/spring.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/storage.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/webpack/development.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/webpack/environment.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/webpack/production.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/webpack/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/webpacker.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20200717152740_devise_create_users.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20200903153820_create_products.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20200921150234_create_ckeditor_assets.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20201102143959_add_fields_to_product.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20201102145252_create_categories.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20201203233002_add_name_to_categories.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20201204002232_add_user_reference_to_category.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20201225231346_create_product_carts.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20201225231749_remove_user_id_from_product_carts.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20201225232231_create_carts.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20201225232255_add_product_carts_to_carts.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20201226002513_remove_user_id_from_carts.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20201226002842_add_cart_to_user.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20201226003453_remove_typo_column_name_product_cart.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20201226003600_add_product_id_to_product_carts.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20201226003752_remove_user_id_product_cart.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/migrate/20201229232048_add_product_carts_to_wishlists.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/db/seeds.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/assets/.keep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/tasks/.keep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/log/.keep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/postcss.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/404.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/422.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/500.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/apple-touch-icon-precomposed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/apple-touch-icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/product/images/10/shoes.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/product/images/11/shoes.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/product/images/12/dvaxdagh5jsfdbe.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/product/images/13/18-1-270x338.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/product/images/14/banner_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/product/images/15/product_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/product/images/16/fefag.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/product/images/17/product-09-414x414.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/product/images/18/dvaxdagh5jsfdbe.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/product/images/19/product-20-300x330.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/product/images/20/camera.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/product/images/21/product_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/product/images/22/camera_table.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/product/images/6/watch.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/product/images/7/book.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/product/images/9/shirt.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/tmp/1606175002-823162875768207-0001-7131/product_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/tmp/1606175195-130410984269879-0001-7189/product-09-414x414.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/tmp/1606175467-492612404540566-0002-2132/camera.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/tmp/1606175834-779718388376746-0003-6709/fefag.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/tmp/1606176340-412556521711301-0001-6734/fefag.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/tmp/1606176590-135709614494747-0002-8951/camera.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/tmp/1606176752-923342861561242-0001-5227/dvaxdagh5jsfdbe.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/tmp/1607040292-684528549776744-0001-3391/dvaxdagh5jsfdbe.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/tmp/1607040354-794764767772291-0002-2604/dvaxdagh5jsfdbe.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/tmp/1607040425-942037854873919-0001-2234/dvaxdagh5jsfdbe.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/tmp/1607040472-470386437833822-0002-0344/dvaxdagh5jsfdbe.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/tmp/1607040515-935215963657359-0003-6235/dvaxdagh5jsfdbe.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/tmp/1607040646-188549885325986-0001-6525/dvaxdagh5jsfdbe.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/tmp/1607040674-681470263459441-0002-9846/dvaxdagh5jsfdbe.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/uploads/tmp/1607041503-700371331686257-0001-0052/dvaxdagh5jsfdbe.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/.keep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/application_system_test_case.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/channels/application_cable/connection_test.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/controllers/.keep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/controllers/user_controller_test.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/fixtures/.keep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/fixtures/carts.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/fixtures/files/.keep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/fixtures/product_carts.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/fixtures/wishlists.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/helpers/.keep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/integration/.keep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/mailers/.keep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/models/.keep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/models/cart_test.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/models/product_cart_test.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/models/wishlist_test.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/system/.keep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/test_helper.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp/.keep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tmp/pids/.keep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vendor/.keep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="SCSS File" />
+        <option value="JavaScript File" />
+        <option value="ERB File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1kXDhbOcH9HgoahQQNAV08O1An9" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/views/products" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="yarn" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/assets/images" />
+      <recent name="$PROJECT_DIR$/app/assets/images/auth" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/views/products" />
+      <recent name="$PROJECT_DIR$/app/javascript/packs/utils" />
+      <recent name="$PROJECT_DIR$/app/assets/fonts" />
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/app/assets" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Rails.Development: ECommericial">
+    <configuration name="Development: ECommericial" type="RailsRunConfigurationType" factoryName="Rails">
+      <module name="ECommericial" />
+      <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SCRIPT_ARGS" VALUE="" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3000" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="IP" VALUE="0.0.0.0" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="DUMMY_APP" VALUE="test/dummy" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="Default" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ENVIRONMENT_TYPE" VALUE="development" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="LAUNCH_JS" VALUE="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Production: ECommericial" type="RailsRunConfigurationType" factoryName="Rails">
+      <module name="ECommericial" />
+      <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SCRIPT_ARGS" VALUE="" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="PORT" VALUE="3000" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="IP" VALUE="0.0.0.0" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="DUMMY_APP" VALUE="test/dummy" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RAILS_SERVER_TYPE" VALUE="Default" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="ENVIRONMENT_TYPE" VALUE="production" />
+      <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="LAUNCH_JS" VALUE="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="spec: ECommericial" type="RakeRunConfigurationType" factoryName="Rake">
+      <module name="ECommericial" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="spec" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ATTACHED_TEST_FRAMEWORKS" VALUE=":rspec " />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_TRACE" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_DRYRUN" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_PREREQS" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_TESTOPTS" VALUE="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="test: ECommericial" type="RakeRunConfigurationType" factoryName="Rake">
+      <module name="ECommericial" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="myPassParentEnvs" VALUE="true" />
+      <envs>
+        <env name="RAILS_ENV" value="test" />
+      </envs>
+      <EXTENSION ID="BundlerRunConfigurationExtension" bundleExecEnabled="false" />
+      <EXTENSION ID="JRubyRunConfigurationExtension" NailgunExecEnabled="false" />
+      <EXTENSION ID="RubyCoverageRunConfigurationExtension" track_test_folders="true" runner="rcov">
+        <COVERAGE_PATTERN ENABLED="true">
+          <PATTERN REGEXPS="/.rvm/" INCLUDED="false" />
+        </COVERAGE_PATTERN>
+      </EXTENSION>
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_NAME" VALUE="test" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ARGS" VALUE="" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_ATTACHED_TEST_FRAMEWORKS" VALUE=":test_unit " />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_TRACE" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_DRYRUN" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_PREREQS" VALUE="false" />
+      <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_TESTOPTS" VALUE="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" RAKE_SPRING_PRE_LOADER_OPTION="true" RAILS_SPRING_PRE_LOADER_OPTION="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0bc1f0c8-0024-4f1d-bfde-b04986fe073a" name="Default Changelist" comment="" />
+      <created>1605838163118</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605838163118</updated>
+      <workItem from="1605838164178" duration="1153000" />
+      <workItem from="1605910686409" duration="7714000" />
+      <workItem from="1605928237322" duration="8000" />
+      <workItem from="1605998718699" duration="4635000" />
+      <workItem from="1606090155686" duration="4400000" />
+      <workItem from="1606170328981" duration="6200000" />
+      <workItem from="1606430438873" duration="399000" />
+      <workItem from="1606431208981" duration="5241000" />
+      <workItem from="1606517654605" duration="4607000" />
+      <workItem from="1606604181983" duration="599000" />
+      <workItem from="1607037498964" duration="5456000" />
+      <workItem from="1607051523763" duration="1764000" />
+      <workItem from="1607986232745" duration="4505000" />
+      <workItem from="1608245150006" duration="3523000" />
+      <workItem from="1608332763272" duration="3158000" />
+      <workItem from="1608420033073" duration="2855000" />
+      <workItem from="1608505733270" duration="5321000" />
+      <workItem from="1608592380260" duration="3000000" />
+      <workItem from="1608763801215" duration="5010000" />
+      <workItem from="1608851234007" duration="1152000" />
+      <workItem from="1608852835986" duration="2680000" />
+      <workItem from="1608936170039" duration="7407000" />
+      <workItem from="1609022564972" duration="4653000" />
+      <workItem from="1609195929003" duration="3943000" />
+      <workItem from="1609282486056" duration="2029000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="75" y="217" width="810" height="680" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608942617218">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state x="75" y="217" width="810" height="680" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.31.1920.1049@0.31.1920.1049" timestamp="1608942617217" />
+    <state x="598" y="358" width="724" height="402" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1608507812367">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state x="598" y="358" width="724" height="402" key="#com.intellij.fileTypes.FileTypeChooser/0.31.1920.1049@0.31.1920.1049" timestamp="1608507812367" />
+    <state x="263" y="313" width="434" height="487" key="FileChooserDialogImpl" timestamp="1606096002205">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state x="263" y="313" width="434" height="487" key="FileChooserDialogImpl/0.31.1920.1049@0.31.1920.1049" timestamp="1606096002205" />
+    <state width="1874" height="277" key="GridCell.Tab.0.bottom" timestamp="1605918408681">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state width="1874" height="277" key="GridCell.Tab.0.bottom/0.31.1920.1049@0.31.1920.1049" timestamp="1605918408681" />
+    <state width="1874" height="277" key="GridCell.Tab.0.center" timestamp="1605918408676">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state width="1874" height="277" key="GridCell.Tab.0.center/0.31.1920.1049@0.31.1920.1049" timestamp="1605918408676" />
+    <state width="1874" height="277" key="GridCell.Tab.0.left" timestamp="1605918408672">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state width="1874" height="277" key="GridCell.Tab.0.left/0.31.1920.1049@0.31.1920.1049" timestamp="1605918408672" />
+    <state width="1874" height="277" key="GridCell.Tab.0.right" timestamp="1605918408678">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state width="1874" height="277" key="GridCell.Tab.0.right/0.31.1920.1049@0.31.1920.1049" timestamp="1605918408678" />
+    <state width="257" height="520" key="HiddenNamespacesPopup" timestamp="1606176192856">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state width="257" height="520" key="HiddenNamespacesPopup/0.31.1920.1049@0.31.1920.1049" timestamp="1606176192856" />
+    <state x="449" y="193" width="1022" height="733" key="SettingsEditor" timestamp="1608937660180">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state x="449" y="193" width="1022" height="733" key="SettingsEditor/0.31.1920.1049@0.31.1920.1049" timestamp="1608937660180" />
+    <state x="745" y="472" width="430" height="175" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1609026087559">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state x="745" y="472" width="430" height="175" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.31.1920.1049@0.31.1920.1049" timestamp="1609026087559" />
+    <state x="650" y="156" width="620" height="804" key="find.popup" timestamp="1609198524241">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state x="650" y="156" width="620" height="804" key="find.popup/0.31.1920.1049@0.31.1920.1049" timestamp="1609198524241" />
+    <state x="619" y="255" key="run.anything.popup" timestamp="1608421317282">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state x="619" y="255" key="run.anything.popup/0.31.1920.1049@0.31.1920.1049" timestamp="1608421317282" />
+    <state x="623" y="263" width="672" height="678" key="search.everywhere.popup" timestamp="1606437100445">
+      <screen x="0" y="31" width="1920" height="1049" />
+    </state>
+    <state x="623" y="263" width="672" height="678" key="search.everywhere.popup/0.31.1920.1049@0.31.1920.1049" timestamp="1606437100445" />
+  </component>
+</project>

@@ -1,0 +1,231 @@
+/* Font Size */
+.f1 {
+  font-size: 3rem;
+}
+
+.f2 {
+  font-size: 2.25rem;
+}
+
+.f3 {
+  font-size: 1.5rem;
+}
+
+.f4 {
+  font-size: 1.25rem;
+}
+
+.f5 {
+  font-size: 1rem;
+}
+
+.f6 {
+  font-size: .875rem;
+}
+
+.f7 {
+  font-size: .75rem;
+}
+
+/* Font Weight */
+.fw1 {
+  font-weight: 100;
+}
+
+.fw2 {
+  font-weight: 200;
+}
+
+.fw3 {
+  font-weight: 300;
+}
+
+.fw4 {
+  font-weight: 400;
+}
+
+.fw5 {
+  font-weight: 500;
+}
+
+.fw6 {
+  font-weight: 600;
+}
+
+.fw7 {
+  font-weight: 700;
+}
+
+.fw8 {
+  font-weight: 800;
+}
+
+.fw9 {
+  font-weight: 900;
+}
+
+.fw10 {
+  font-weight: 1000;
+}
+
+.mbr {
+  margin-bottom: 3rem !important;
+  margin-top: 3rem !important;
+}
+
+.mt-br {
+  margin-top: 3rem !important;
+}
+
+.mt-0-imp {
+ margin-top: 0 !important;
+}
+
+.child-mx-2 .m-0-imp {
+  margin: 0 !important;
+}
+
+.mb-br {
+  margin-bottom: 3rem !important;
+}
+
+.z-top {
+  z-index: 100;
+}
+
+.z-bottom {
+  z-index: -100;
+}
+
+.z-middle {
+  z-index: 1;
+}
+
+.fit-cover {
+  object-fit: cover !important;
+}
+
+.fit-container {
+  object-fit: contain;
+}
+
+.fit-fill {
+  object-fit: fill;
+}
+
+.rounded-extra-lg {
+  border-radius: 20px !important;
+}
+
+.child-mx-2 > * {
+  margin-left: .5rem !important;
+  margin-right: .5rem !important;
+}
+
+.child-mx-0 > * {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.child-mx-2-not-first > * {
+  margin-left: .5rem !important;
+  margin-right: .5rem !important;
+}
+
+.child-mx-2-not-first > *:first-child {
+  margin-right: .5rem !important;
+}
+
+.child-mx-3-not-first > *:not(:first-child) {
+  margin-left: 1rem !important;
+  margin-right: 1rem !important;
+}
+
+.child-mx-3-not-first > *:first-child {
+  margin-right: 1rem !important;
+}
+
+.child-mx-4-not-first > * {
+  margin-left: 1.5rem !important;
+  margin-right: 1.5rem !important;
+}
+
+.child-mx-4-not-first > *:first-child {
+  margin-right: 1.5rem !important;
+}
+
+.child-mx-5-not-first > * {
+  margin-left: 2rem !important;
+  margin-right: 2rem !important;
+}
+
+.child-mx-5-not-first > *:first-child {
+  margin-right: 2rem !important;
+}
+
+
+.child-my-2 > * {
+  margin-top: .5rem !important;
+  margin-bottom: .5rem !important;
+}
+
+.child-my-0 > * {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.child-my-2-not-first > *:not(:first-child) {
+  margin-top: .5rem !important;
+  margin-bottom: .5rem !important;
+}
+
+.sub-title {
+  font-size: 14px;
+  font-weight: 200;
+  color: #3c3e3c;
+}
+
+.custom-title {
+  font-weight: 500;
+  font-size: 18px;
+  color: #19191a;
+}
+
+.color-blue {
+  color: #45a2d7
+}
+
+.color-fade {
+  color: #444141eb;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.filter-invert {
+  filter: invert(100%);
+}
+
+.virtual-border-bottom {
+  position: relative;
+}
+
+.virtual-border-bottom::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 10px;
+  background: black;
+  color: black;
+}
+
+.line-height-normal {
+  line-height: normal;
+}
+
+
+.outline-none-imp {
+  outline: none !important;
+}

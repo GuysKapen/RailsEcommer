@@ -1,0 +1,487 @@
+<section class="section">
+  <%= simple_form_for(@product) do |f| %>
+
+    <div class="d-flex mx-2">
+      <div class="ml-3 col-8">
+        <div class="text-center">
+          <div class="field">
+            <div class="control">
+
+              <%= f.input :name, label: "Product Name", required: true,
+                          placeholder: "Name",
+                          input_html: {class: "input w-100 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label text-left w-100"} %>
+            </div>
+          </div>
+
+          <div class="field mt-5">
+            <div class="control">
+              <%= f.input :description, as: :ckeditor, label: "Description", required: true,
+                          input_html: {class: "input w-100"}, wrapper: false, label_html: {class: "label text-left w-100"} %>
+            </div>
+          </div>
+
+          <!--          <div class="field mt-5">-->
+          <!--            <div class="control">-->
+          <%#= f.input :price, label: "Price", required: true, input_html: {class: "input w-100"}, wrapper: false, label_html: {class: "label text-left w-100"} %>
+          <!--            </div>-->
+          <!--          </div>-->
+
+          <div class="field mt-5">
+            <div class="control">
+              <div class="d-flex">
+                <span class="file-cta">
+                <span class="file-icon"><i class="fa fa-upload"></i></span>
+                <span class="file-label">Choose a file…</span>
+                </span>
+                <%= f.file_field :images, required: true,
+                                 multiple: true,
+                                 as: :file,
+                                 label: "",
+                                 class: 'product-image-uploader',
+                                 input_html: {class: "input w-100 file-input product-image"},
+                                 wrapper: false, label_html: {class: "label text-left w-100"} %>
+              </div>
+
+
+            </div>
+          </div>
+
+          <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="display: none">
+            <ol class="carousel-indicators">
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" id="list" role="listbox" style="height: 32rem">
+            </div>
+            <a class="carousel-control-prev filter-invert" href="#carouselExampleControls" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next filter-invert" href="#carouselExampleControls" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+
+          <!--              <output id="list"></output>-->
+
+          <div class="section mt-lg-5 border">
+            <div class="row mb-3 mx-0 tab-view">
+              <div class="col-4 mx-0 px-0 border-right child-my-2-not-first tabs-panel">
+
+                <div class="row mt-0-imp mx-0 flex cursor-pointer active tab-panel background-hover-white py-2">
+                  <div class="col-2 text-left">
+                    <i class="fas mt-1 fa-wrench text-center"></i>
+                  </div>
+                  <p class="ml-3 f4">Inventory</p>
+                </div>
+
+                <div class="row mt-1 mx-0 flex cursor-pointer tab-panel background-hover-white py-2">
+                  <div class="col-2 text-left">
+                    <i class="fas mt-1 fa-shipping-fast text-center"></i>
+                  </div>
+                  <p class="ml-3 f4">Shipping</p>
+                </div>
+
+                <div class="row mx-0 mt-1 flex cursor-pointer tab-panel background-hover-white py-2">
+                  <div class="col-2 text-left">
+                    <i class="fas mt-1 fa-paperclip text-center"></i>
+                  </div>
+                  <p class="ml-3 f4">Linked Products</p>
+                </div>
+
+                <div class="row mx-0 mt-1 flex cursor-pointer tab-panel background-hover-white py-2">
+                  <div class="col-2 text-left">
+                    <i class="fas mt-1 fa-ethernet text-center"></i>
+                  </div>
+                  <p class="ml-3 f4">Attributes</p>
+                </div>
+
+                <div class="row mx-0 mt-1 flex cursor-pointer tab-panel background-hover-white py-2">
+                  <div class="col-2 text-left">
+                    <i class="fas mt-1 fa-cog text-center"></i>
+                  </div>
+                  <p class="ml-3 f4">Advances</p>
+                </div>
+
+                <div class="row mx-0 mt-1 flex cursor-pointer tab-panel background-hover-white py-2">
+                  <div class="col-2 text-left">
+                    <i class="fas mt-1 fa-ellipsis-v text-center"></i>
+                  </div>
+                  <p class="ml-3 f4">More Options</p>
+                </div>
+
+                <div class="row mx-0 mt-1 flex cursor-pointer tab-panel background-hover-white py-2">
+                  <div class="col-2 text-left">
+                    <i class="fas mt-1 fa-users-cog text-center"></i>
+                  </div>
+                  <p class="ml-3 f4">Extra Properties</p>
+                </div>
+
+              </div>
+
+              <div class="col-7 ml-3 mx-0 px-0 tabs-content">
+                <!-- General Attribute -->
+                <div id="input-general" class="active tab-content ">
+
+                  <div class="field">
+                    <div class="control d-flex mt-2 justify-content-start">
+                      <%= f.input :regular_price, label: "Regular Price ($)", required: false,
+                                  placeholder: "Price",
+                                  input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+                    </div>
+                  </div>
+
+                  <div class="field mt-2">
+                    <div class="control d-flex mt-2 justify-content-start">
+                      <%= f.input :sale_price, label: "Sale Price ($)", required: false,
+                                  placeholder: "Sale Price",
+                                  input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+                    </div>
+                  </div>
+                </div>
+                <!-- !General Attribute -->
+
+                <!-- Inventory Input -->
+                <div id="input-inventory" class="tab-content ">
+                  <div class="field mt-2">
+                    <div class="control d-flex mt-2 justify-content-start">
+                      <%= f.input :sku, label: "SKU", required: false,
+                                  placeholder: "SKU",
+                                  input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+                    </div>
+                  </div>
+
+                  <div class="field mt-2">
+                    <div class="control d-flex mt-2 justify-content-start">
+                      <%= f.label "Manage Stock", class: "label col-4 text-left" %>
+                      <div>
+                        <%= f.check_box :manage_stock, class: "input" %>
+                        <span class="f7">Enable manage Stock at product level</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="field mt-2">
+                    <div class="control d-flex mt-2 justify-content-start">
+                      <%= f.input :price, label: "Stock Status", required: false,
+                                  placeholder: "Status",
+                                  input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+                    </div>
+                  </div>
+
+
+                  <div class="field mt-2">
+                    <div class="control d-flex mt-2 justify-content-start">
+                      <%= f.label "Sold individually", class: "label col-4 text-left" %>
+                      <div>
+                        <%= f.check_box :sold_individual, class: "input" %>
+                        <span class="f7">Enable this to only allow one of the item to be bought in a single order</span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <!-- !Inventory Input -->
+
+
+                <!-- Shipping Input -->
+                <div id="input-inventory" class="tab-content ">
+                  <div class="field mt-2">
+                    <div class="control d-flex mt-2 justify-content-start">
+                      <%= f.input :weight, label: "Weight (kg)", required: false,
+                                  placeholder: "1",
+                                  input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+                    </div>
+                  </div>
+
+                  <div class="field mt-2">
+                    <div class="control d-flex mt-2 justify-content-start">
+                      <label for="" class="col-4 text-left">Dimensions</label>
+
+                      <div class="col-8 flex-grow-1 m-0 p-0 d-flex justify-content-between">
+                        <div class="field col-4 column is-4 pl-0">
+                          <div class="control">
+                            <!--                      <label class="label">Brand</label>-->
+                            <div class="control">
+                              <%= f.input_field :price, prompt: "Select brand", placeholder: "Width",
+                                                class: 'w-100' %>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="field col-4 column is-4">
+                          <div class="control">
+                            <!--                      <label class="label">Finish</label>-->
+                            <div class="control">
+                              <%= f.input_field :price, prompt: "Select finish", class: 'w-100',
+                                                placeholder: "Height"
+                              %>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="field col-4 column is-4 pr-0">
+                          <div class="control">
+                            <!--                      <label class="label">Condition</label>-->
+                            <div class="control">
+                              <%= f.input_field :price, prompt: "Select condition", placeholder: "Length",
+                                                class: 'w-100' %>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <%#= f.input :price, label: "Stock Status", required: false, input_html: {class: "input col-8 flex-grow-1"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+                    </div>
+                  </div>
+
+                  <div class="field mt-2">
+                    <div class="control d-flex">
+                      <label class="label col-4 text-left">Shipping Class</label>
+                      <div class="control col-8 d-flex justify-content-between p-0">
+                        <%= f.input_field :price, prompt: "Select brand", placeholder: "Class",
+                                          class: 'w-75' %>
+                        <span class="icon is-small is-left">
+                        <i class="fa fa-tag"></i>
+                      </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- !Shipping Input -->
+
+                <!-- Link Product Input -->
+                <div id="input-inventory" class="tab-content ">
+                  <!-- Upsell -->
+                  <div class="field mt-2">
+                    <div class="control d-flex mt-2 justify-content-start">
+                      <%= f.input :price, label: "Upsell", required: false,
+                                  input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+                    </div>
+                  </div>
+                  <!-- !Upsell -->
+
+
+                  <!-- cross sell -->
+                  <div class="field mt-2">
+                    <div class="control d-flex mt-2 justify-content-start">
+                      <%= f.input :price, label: "Cross Sell", required: false,
+                                  input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+                    </div>
+                  </div>
+                  <!-- !cross sell -->
+                </div>
+                <!-- !Link Product Input -->
+
+
+                <!-- Advanced -->
+                <div id="input-inventory" class="tab-content">
+                  <!-- Purchase note -->
+                  <div class="field mt-2">
+                    <div class="control d-flex mt-2 justify-content-start">
+                      <%= f.input :stock_status, label: "Purchase note", required: false,
+                                  input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+                    </div>
+                  </div>
+                  <!-- !Purchase note -->
+                  <!-- Reviews? -->
+                  <div class="field mt-2">
+                    <div class="control d-flex mt-2 justify-content-start">
+                      <%= f.label "Enable reviews", class: "label col-4 text-left" %>
+                      <div>
+                        <%= f.check_box :price, class: "input" %>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- !Reviews? -->
+
+                </div>
+                <!-- !Advanced -->
+
+                <!-- More options -->
+
+                <!-- !More options -->
+
+                <!-- Extra -->
+                <div id="input-inventory" class="tab-content">
+                  <!-- Custom bubble -->
+                  <div class="field mt-2">
+                    <div class="control d-flex mt-2 justify-content-start">
+                      <%= f.input :price, label: "Custom bubble", required: false,
+                                  input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+                    </div>
+                  </div>
+                  <!-- !Custom bubble -->
+
+                  <!-- Custom bubble title -->
+                  <div class="field mt-2">
+                    <div class="control d-flex mt-2 justify-content-start">
+                      <%= f.input :price, label: "Custom Bubble Title", required: false,
+                                  input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+                    </div>
+                  </div>
+
+                  <!-- !Custom bubble title -->
+
+                  <!-- Product Video -->
+                  <div class="field mt-2">
+                    <div class="control d-flex mt-2 justify-content-start">
+                      <%= f.input :price, label: "Product Video", required: false,
+                                  input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+                    </div>
+                  </div>
+
+                  <!-- !Product Video -->
+
+
+                </div>
+
+                <!-- !Extra -->
+
+
+              </div>
+
+            </div>
+          </div>
+
+          <div class="field is-grouped d-flex mt-5">
+            <div class="control">
+              <!--              <div class="button is-warning custom-btn line-height-normal d-inline-block" type="submit">Create Product-->
+              <!--              </div>-->
+              <%= f.button :submit, class: 'button is-warning custom-btn line-height-normal d-inline-block' %>
+              <%= link_to 'Cancel', products_path, class: 'button is-light link-no-style custom-btn' %>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="mx-3">
+        <!-- Public -->
+        <div class="border position-relative child-mx-2">
+          <div class="background-hover-white p-1 py-2 m-0-imp">
+            <!--            <hp class="font-weight-bold title mt-3">Publish</hp>-->
+            <p class="ml-1 f4 m-0">Publish</p>
+
+          </div>
+          <hr style="margin: 0 !important;">
+          <div class="d-flex justify-content-between mt-3">
+            <div class="custom-btn-wide rounded-extra-lg">Save Draft</div>
+            <div class="custom-btn-wide rounded-extra-lg">Preview</div>
+          </div>
+          <div class="border-bottom">
+            <div class="mx-0 mt-3 flex cursor-pointer d-block">
+              <i class="fas mt-1 mt-1 fa-paperclip text-center"><span class="ml-3 f5 fw3">Status: <span class="font-weight-bold">Draft</span></span></i>
+            </div>
+            <div class="mx-0 mt-3 flex cursor-pointer d-block">
+              <i class="fas mt-1 mt-1 fa-low-vision text-center"><span class="ml-3 f5 fw3">Visibility: <span class="font-weight-bold">Public</span></span></i>
+            </div>
+            <div class="mx-0 mt-3 flex cursor-pointer d-block">
+              <i class="fas mt-1 mt-1 fa-gift text-center"><span class="ml-3 f5 fw3">Publish <span class="font-weight-bold">immediately</span></span></i>
+            </div>
+            <div class="mx-0 my-3 flex d-block">
+              <span>Catalog visibility: <span class="font-weight-bold">Shop and search results</span></span>
+            </div>
+          </div>
+
+          <div class="mx-0 my-3 flex d-flex cursor-pointer d-block justify-content-between align-items-center">
+            <div class="">
+              <p class="d-block custom-btn-wide rounded-extra-lg" href="#">Copy to a new draft</p>
+            </div>
+            <div class="">
+              <div class="custom-btn-wide rounded-extra-lg bg-light">Publish</div>
+            </div>
+          </div>
+          <div>
+            <div class="custom-btn-wide rounded-extra-lg my-3 d-inline-block" href="#">Move to Trash</div>
+          </div>
+        </div>
+        <!-- !Public -->
+
+        <!-- Product categories -->
+        <div class="border position-relative child-mx-2 mt-3">
+          <div class="background-hover-white p-1 py-2 m-0-imp">
+            <p class="f4 m-0 ml-1">Product categories</p>
+          </div>
+          <hr style="margin: 0 !important;">
+
+          <div class="border mt-3 p-2">
+            <div class="d-flex">
+              <div>All categories</div>
+              <div class="ml-2">Most Used</div>
+            </div>
+            <div class="d-flex mt-3">
+              <input type="checkbox">
+              <span class="f6 fw2 ml-1">Uncategorized</span>
+            </div>
+          </div>
+
+          <div class="my-3" id="add_new_category">
+            <div id="add_new_category" class="f6 d-flex cursor-pointer">
+              <i class="fa fa-plus"><span class="ml-1">Add new category</span></i>
+            </div>
+            <div class="mt-2">
+              <%= collection_select(:category, :id, @categories, :name, :name, {:prompt => false}, {class: "", :disabled => "disabled"}) %>
+
+              <%= f.input_field :category,
+                                # collection: @categories,
+                                required: true,
+                                prompt: "Select Category",
+                                input_html: {class: "hidden"},
+                                class: "hidden mt-3",
+                                id: "input_new_category",
+                                placeholder: "New Category",
+                                # autofocus: true,
+                                # input_html: {autocomplete: "email", class: "w-full px-2 py-2 rounded-lg font-medium border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800 my-2", place_holder: "email"},
+                                label_html: {class: "d-none"}
+                  # placeholder: "Category"
+
+              %>
+            </div>
+          </div>
+
+        </div>
+        <!-- !Product categories -->
+
+        <!-- Product Tag -->
+        <div class="border position-relative child-mx-2 mt-3">
+          <div class="background-hover-white p-1 py-2 m-0-imp">
+            <p class="f4 ml-1 m-0">Product Tags</p>
+          </div>
+          <hr style="margin: 0 !important;">
+          <div class="my-2 d-flex">
+            <input placeholder="Tags" type="text" class="input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800">
+            <div class="custom-btn-normal ml-2 f6">Add</div>
+          </div>
+          <div class="my-3 custom-btn-wide rounded-extra-lg d-inline-block">Choose from the most used tags</div>
+        </div>
+        <!-- !Product Tag -->
+
+        <!-- Product image -->
+        <div class="border position-relative child-mx-2 mt-3">
+          <div class="background-hover-white p-1 py-2 m-0-imp">
+            <p class="f4 ml-1 m-0">Product Image</p>
+          </div>
+          <hr style="margin: 0 !important;">
+          <p class="custom-btn-wide rounded-extra-lg my-3 d-inline-block" href="#">Set product image</p>
+        </div>
+        <!-- !Product image -->
+
+        <!-- Product gallery -->
+        <div class="border position-relative child-mx-2 mt-3">
+          <div class="background-hover-white p-1 py-2 m-0-imp">
+            <p class="f4 ml-1 m-0">Product Gallery</p>
+          </div>
+          <hr style="margin: 0 !important;">
+          <p class="custom-btn-wide rounded-extra-lg my-3 d-inline-block" href="#">Set product gallery</p>
+        </div>
+        <!-- !Product gallery -->
+
+
+      </div>
+
+    </div>
+  <% end %>
+
+</section>
+
+
