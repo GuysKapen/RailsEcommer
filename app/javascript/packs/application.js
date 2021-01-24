@@ -26,7 +26,6 @@ require("../../assets/stylesheets/application.scss") // ADD THIS LINE
 
 import toastr from 'toastr';
 
-console.log("Fuck toaster", toastr)
 global.toastr = toastr;
 
 // Uncomment to copy all static images under ../images to the output folder and reference

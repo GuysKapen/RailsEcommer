@@ -22,6 +22,10 @@
   background-color: #62ba91;
 }
 
+.bg-image-item {
+  background-color: #f5f5f5;
+}
+
 .btn-rounded {
   border-radius: 2rem;
   padding: 0.5rem 1rem;
@@ -46,6 +50,22 @@
 .icon-size {
   width: 32px;
   height: 32px;
+}
+
+
+.img-size-small {
+  width: 64px;
+  height: 64px;
+}
+
+.checkbox-size {
+  width: 16px;
+  height: 16px;
+}
+
+.image-product-item-height {
+  height: 12rem;
+  width: 16rem;
 }
 
 .custom-btn {
@@ -129,6 +149,9 @@
 
 .tab-panel {
   cursor: pointer;
+  background-color: #e7ecea;
+  border: 1px solid #b2b2b2;
+  margin: 1px;
 }
 
 .tabs-content * {
@@ -316,3 +339,9 @@
   color: #907406;
 }
 
+
+.cart-items {
+  border: 1px solid;
+  border-radius: 32px;
+  padding: 0 8px;
+}

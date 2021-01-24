@@ -61,11 +61,14 @@
   <div class="col-sm-5 col-md-3">
     <div class="row justify-content-end">
       <div class="row mr-4">
-        <h6 class="text-uppercase font-weight-bold m-0 mr-1 d-flex justify-content-center flex-column">My account</h6>
+        <h6 class="font-fredoka f4 font-weight-bold m-0 mr-1 d-flex justify-content-center flex-column">Guys Girl</h6>
         <%= image_tag("portrait-3204843_640.jpg", class: "rounded-circle img-avatar-small") %>
       </div>
       <div class="row m-0">
-        <h6 class="d-flex justify-content-center flex-column m-0">CART/$1.980</h6>
+        <div class="d-flex font-roboto outline-none-imp font-weight-bolder align-items-center duration-500">
+          <i class="fa fa-lg fa-shopping-cart mr-3 duration-500">&nbsp;/</i>
+          <div class="d-inline-block cart-items" id="cart-items"><%= cart_items %></div>
+          </div>
       </div>
     </div>
 

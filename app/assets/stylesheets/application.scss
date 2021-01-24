@@ -19,6 +19,7 @@
 
 @import "toastr";
 
+@import "slider";
 // You can add your own custom components/styles here
 //noinspection CssUnknownTarget
 //@import "tailwindcss/utilities";
@@ -29,6 +30,8 @@
   --borderWidthSmallLight: 1px solid #474b4b;
   --borderWidthMediumLight: 1.5px solid #474b4b;
   --borderWidthThickLight: 2px solid #474b4b;
+  --boderColorDefault: #cccccc;
+  --borderColorChecked: #2cc185;
 }
 
 body {
@@ -141,6 +144,15 @@ p {
 }
 
 
+.img-avatar-size {
+  width: 48px;
+  height: 48px;
+}
+
+.img-avatar-size-small {
+  width: 32px;
+  height: 32px;
+}
 .background-auth {
   background-image: asset_data_url("auth/auth.svg");
 }
@@ -156,7 +168,13 @@ input[type="checkbox"] {
   vertical-align: middle;
 }
 
-input[type="number"], input[type="text"] {
+input[type="number"],
+input[type="text"],
+input[type="email"],
+input[type="text"],
+input[type="tel"],
+textarea
+{
   box-shadow: inset 0 0 10px 0 rgba(255, 255, 255, 0.56);
   border: 1px solid #cccccc;
   padding: 2px 8px;

@@ -81,6 +81,14 @@
  margin-top: 0 !important;
 }
 
+.m-0-imp {
+  margin: 0 !important;
+}
+
+.mb-3-img {
+  margin-bottom: 1rem !important;
+}
+
 .child-mx-2 .m-0-imp {
   margin: 0 !important;
 }
@@ -228,4 +236,55 @@
 
 .outline-none-imp {
   outline: none !important;
+}
+
+.border-1 {
+  border-width: 1px;
+}
+
+.height-size-min {
+  height: min-content;
+}
+
+.border-color-default {
+  border-color: #cccccc;
+}
+
+label input[type="checkbox"] {
+  -webkit-appearance: none;
+  position: absolute;
+}
+
+label input[type="checkbox"]:checked ~ .checkbox-span {
+  border-color: var(--borderColorChecked);
+  border-width: 2px;
+  background-color: #33c8c8;
+}
+
+label input[type="checkbox"] .section-credit-card {
+  display: none;
+}
+
+.credit-card input[type="checkbox"]:checked ~ .section-credit-card {
+  display: inherit;
+}
+
+.rounded-t-none-imp {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+
+.rounded-r-none-imp {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.rounded-b-none-imp {
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+.rounded-l-none-imp {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
 }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_29_232048) do
+ActiveRecord::Schema.define(version: 2021_01_17_231458) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -35,6 +35,25 @@ ActiveRecord::Schema.define(version: 2020_12_29_232048) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["type"], name: "index_ckeditor_assets_on_type"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "company"
+    t.string "country"
+    t.string "address"
+    t.string "city"
+    t.integer "zip_code"
+    t.string "phone"
+    t.string "email"
+    t.string "card_number"
+    t.decimal "total"
+    t.string "note"
+    t.string "expiry_date"
+    t.string "card_code"
   end
 
   create_table "product_carts", force: :cascade do |t|

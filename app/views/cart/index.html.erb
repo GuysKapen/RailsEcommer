@@ -1,0 +1,118 @@
+<%#= form %>
+
+<section class="w-75 mx-auto mt-5">
+  <div class="text-center d-flex justify-content-center">
+    <h3>SHOPPING CART <span class="text-gray-500">> CHECKOUT > BUY</span></h3>
+  </div>
+  <div class="d-flex mt-4 border py-3">
+    <div class="col-8">
+      <div class="d-flex">
+        <div class="col-6 font-weight-bolder text-gray-800 f6">PRODUCT</div>
+        <div class="col-1 font-weight-bolder text-gray-800 f6">PRICE</div>
+        <div class="col-2 font-weight-bolder text-gray-800 f6 p-0">QUANTITY</div>
+        <div class="col-2 font-weight-bolder text-gray-800 f6 text-right">SUBTOTAL</div>
+      </div>
+      <hr>
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="col-6 font-weight-bold f6 d-flex align-items-center">
+          <i class="fa fa-times-circle fa-lg"></i>
+          <%= image_tag("product-20-300x330.jpg", class: " img-avatar ml-3") %>
+          <h6 class="ml-3 text-gray-800">Iphone</h6>
+        </div>
+        <div class="col-2 font-weight-bold f6 text-gray-800">$500</div>
+        <div class="col-2 font-weight-bold f6 p-0">
+          <div class="d-flex text-center mt-2">
+            <button type="button" class="qty-up px-2 border bg-light">
+              <i class="fas fa-angle-up" data-id="prod1"></i>
+            </button>
+            <input type="number" name="quantity" id="quantity" class="qty-input w-25 text-center border px-2 bg-light"
+                   readonly="readonly"
+                   value="1" placeholder="1" data-id="prod1">
+            <button type="button" class="qty-down px-2 border bg-light" data-id="prod1">
+              <i class="fas fa-angle-down"></i>
+            </button>
+          </div>
+        </div>
+        <div class="col-2 font-weight-bold f6 text-gray-800 text-right">$500</div>
+      </div>
+
+      <hr>
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="col-6 font-weight-bold f6 d-flex align-items-center">
+          <i class="fa fa-times-circle fa-lg"></i>
+          <%= image_tag("product-10-300x330.jpg", class: " img-avatar ml-3") %>
+          <h6 class="ml-3 text-gray-800">Ecommer Phone</h6>
+        </div>
+        <div class="col-2 font-weight-bold f6 text-gray-800">$300</div>
+        <div class="col-2 font-weight-bold f6 p-0">
+          <div class="d-flex text-center mt-2">
+            <button type="button" class="qty-up px-2 border bg-light">
+              <i class="fas fa-angle-up" data-id="prod1"></i>
+            </button>
+            <input type="number" name="quantity" id="quantity" class="qty-input w-25 text-center border px-2 bg-light"
+                   readonly="readonly"
+                   value="1" placeholder="1" data-id="prod1">
+            <button type="button" class="qty-down px-2 border bg-light" data-id="prod1">
+              <i class="fas fa-angle-down"></i>
+            </button>
+          </div>
+        </div>
+        <div class="col-2 font-weight-bold f6 text-gray-800 text-right">$300</div>
+      </div>
+
+
+      <div class="d-flex mt-3">
+        <div class="button-wishlist d-inline-block">
+          <button type="submit" class="d-flex font-roboto f6 outline-none-imp font-weight-bolder align-items-center duration-500">
+            <i class="fa fa-arrow-left mr-3 duration-500"></i>CONTINUE SHOPPING
+          </button>
+        </div>
+        <div class="button-wishlist d-inline-block ml-5">
+          <button type="submit" class="d-flex font-roboto f6 outline-none-imp font-weight-bolder align-items-center duration-500">
+            <i class="fa fa-shopping-cart mr-3 duration-500"></i>UPDATE CART
+          </button>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-4">
+      <div class="font-weight-bolder text-gray-800 f6">CART TOTALS</div>
+      <hr>
+      <div class="d-flex justify-content-between align-items-center">
+        <span class="text-gray-600 f6">Subtotal</span>
+        <span class="font-weight-bold f5">$500</span>
+      </div>
+      <div class="d-flex justify-content-between align-items-center mt-2">
+        <span class="text-gray-600 f6">Total</span>
+        <span class="font-weight-bold f5">$500</span>
+      </div>
+      <hr class="mt-2">
+      <div class="d-flex justify-content-center button-wishlist d-inline-block">
+        <button type="submit" class="d-flex font-roboto f6 outline-none-imp font-weight-bolder align-items-center duration-500">
+          <i class="fa fa-heart mr-3 duration-500"></i>PROCESS TO CHECKOUT
+        </button>
+      </div>
+      <hr class="my-3">
+
+      <div>
+        <div class="d-flex align-items-center mt-2">
+          <i class="fa fa-tags"></i>
+          <span class="ml-2 font-weight-bold f5">Coupon</span>
+        </div>
+        <div class="field">
+          <div class="control d-flex mt-2 justify-content-start">
+            <input placeholder="Coupon Code" type="text" class="input w-100 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800">
+          </div>
+        </div>
+      </div>
+
+      <hr class="my-2">
+      <div class="d-flex justify-content-center button-wishlist d-inline-block">
+        <button type="submit" class="d-flex font-roboto f6 outline-none-imp font-weight-bolder align-items-center duration-500">
+          <i class="fa fa-tag mr-3 duration-500"></i>Use Coupon
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+

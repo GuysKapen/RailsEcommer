@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
       # self.errors.add(:base, "Could not save category")
       return false
     end
-    # Set manually params
+
     params[:product][:category_id] = @category.id
     params[:product][:category] = @category
     @product = current_user.products.build(product_params)
@@ -83,20 +83,35 @@ class ProductsController < ApplicationController
       @cart = current_user.build_cart
       unless @cart.save
         print('Saving Cart Error', @cart.errors.full_messages)
-        # self.errors.add(:base, "Could not save category")
         return false
       end
     end
 
-    print("Cart \n", @cart.inspect)
-    respond_to do |format|
-      format.js { render 'products/show_add_to_cart_success' }
-    end
+    @product_cart = ProductCart.find_by(product_id: product_cart_params['product_id'])
 
-    @product_cart = @cart.product_carts.build(product_cart_params)
+    print("Product cart Found \n", @product_cart.inspect, "\n")
+    if @product_cart.nil?
+      @product_cart = @cart.product_carts.build(product_cart_params)
+    else
+      print("Fuck ----------------------------------------------------------------------\n")
+      @product_cart.quantity += 1
+      @product_cart.cart_id = @cart.id
+    end
 
     print("Product cart \n", @product_cart.inspect)
 
+    unless @product_cart.save
+      print('Saving Product Cart Error', @product_cart.errors.full_messages)
+      # self.errors.add(:base, "Could not save category")
+      false
+    end
+
+    @cart_item = @cart.product_carts.count
+    print("Cart \n", @cart.inspect)
+    print("WTF #{@cart_item}\n")
+    respond_to do |format|
+      format.js { render 'products/show_add_to_cart_success' }
+    end
     # flash[:alert] = "Add to cart successful"
 
   end
@@ -113,17 +128,29 @@ class ProductsController < ApplicationController
     end
 
     print("----------------------------------------------------------------------------------------\n")
-    print("Cart \n", @wishlist.inspect)
-    respond_to do |format|
-      format.js { render 'products/show_add_to_cart_success' }
-    end
+    print("Wishlist \n", @wishlist.inspect)
 
-    @product_wishlist = @wishlist.product_carts.build(product_cart_params)
+    @product_wishlist = ProductCart.find_by(product_id: product_cart_params['product_id'])
+    if @product_wishlist.nil?
+      @product_wishlist = @cart.product_carts.build(product_cart_params)
+    else
+      @product_wishlist.quantity += 1
+      @product_wishlist.cart_id = @product_wishlist.id
+    end
 
     print("Product Wish list \n", @product_wishlist.inspect)
 
-    # flash[:alert] = "Add to cart successful"
+    unless @product_wishlist.save
+      print('Saving Product Cart Error', @product_wishlist.errors.full_messages)
+      # self.errors.add(:base, "Could not save category")
+      return false
+    end
 
+
+    print('Saving Product Cart Error', @product_wishlist.errors.full_messages)
+    respond_to do |format|
+      format.js { render 'products/show_add_to_wishlist_success' }
+    end
   end
 
   private

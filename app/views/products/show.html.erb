@@ -14,9 +14,13 @@
         <!--        </div>-->
       </div>
       <div class="col-sm-6 py-5">
-        <span class="font text-uppercase">Clothing</span>
-        <h5 class="font-baloo font-size-20 f3 fw8 mb-0"><%= @product.name %></h5>
-        <h6 class="font-baloo f4">Prices: $<%= @product.regular_price %></h6>
+<!--        <span class="font-baloo f4 font-weight-normal">Category: <%#= @product.category.name %></span>-->
+        <h5 class="font-baloo font-size-20 f1 fw8 mb-0"><%= @product.name %></h5>
+        <div class="d-flex">
+          <h6 class="font-baloo f2">$<%= @product.regular_price %></h6>
+          <h6 class="font-baloo ml-3 f3 d-flex justify-content-center flex-column"><del>$<%= @product.sale_price %></del></h6>
+        </div>
+
         <div class="d-flex">
           <div class="rating text-warning font-size-14">
             <span><i class="fas fa-xs fa-star"></i></span>
@@ -26,7 +30,7 @@
             <span><i class="far fa-xs fa-star"></i></span>
           </div>
           <div>
-            <span href="#" class="px-2 font-rale f6">4.4 (800 reviewers)</span>
+            <span href="#" class="px-2 font-rale f6">4.4 / 5 &nbsp; (800 reviewers)</span>
           </div>
         </div>
         <hr class="m-0">
@@ -40,13 +44,13 @@
         <div class="tab-view">
           <!--        Tab Panel-->
           <div class="d-flex justify-content-between mt-5 tabs-panel position-relative text-center">
-            <div class="col-4 active tab-panel py-2">
+            <div class="col active tab-panel py-2">
               <p class="m-0">What's Inside</p>
             </div>
-            <div class="col-4 tab-panel py-2">
+            <div class="col tab-panel py-2">
               <p class="m-0">Reviews</p>
             </div>
-            <div class="col-4 tab-panel py-2">
+            <div class="col tab-panel py-2">
               <p class="m-0">FAQs</p>
             </div>
           </div>
@@ -143,13 +147,13 @@
       <div class="tab-view">
         <!-- Tab Panel -->
         <div class="d-flex justify-content-between mt-5 tabs-panel position-relative text-center">
-          <div class="col-4 active tab-panel py-2">
+          <div class="col active tab-panel py-2">
             <p class="m-0">Description</p>
           </div>
-          <div class="col-4 tab-panel py-2">
+          <div class="col tab-panel py-2">
             <p class="m-0">Reviews</p>
           </div>
-          <div class="col-4 tab-panel py-2">
+          <div class="col tab-panel py-2">
             <p class="m-0">FAQs</p>
           </div>
         </div>

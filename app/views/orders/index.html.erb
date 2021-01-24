@@ -1,0 +1,126 @@
+<!--<p id="notice"><%#= notice %></p>-->
+
+<!--<h1>Orders</h1>-->
+
+<!--<table>-->
+<!--  <thead>-->
+<!--    <tr>-->
+<!--      <th colspan="3"></th>-->
+<!--    </tr>-->
+<!--  </thead>-->
+
+<!--  <tbody>-->
+<%# @orders.each do |order| %>
+<!--      <tr>-->
+<!--        <td><%#= link_to 'Show', order %></td>-->
+<!--        <td><%#= link_to 'Edit', edit_order_path(order) %></td>-->
+<!--        <td><%#= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+<!--      </tr>-->
+<%# end %>
+<!--  </tbody>-->
+<!--</table>-->
+
+<!--<br>-->
+
+<%#= link_to 'New Order', new_order_path %>
+
+<section class="w-75 mx-auto mt-5 border-color-default border-solid border-1 rounded-md shadow-md py-3 pt-5 px-3">
+  <div class="text-center d-flex justify-content-center mb-3">
+    <h3>SHOPPING CART <span class="text-gray-500">> CHECKOUT > BUY</span></h3>
+  </div>
+  <div class="d-flex">
+    <div class="col-6">
+      <h3 class="font-weight-bold f5 mt-2">Order Details</h3>
+      <hr>
+      <div class="d-flex justify-content-between align-items-center">
+        <span class="text-gray-600 f6">IPhone</span>
+        <span class="font-weight-bold f5">$1000</span>
+      </div>
+      <div class="d-flex justify-content-between align-items-center mt-2">
+        <span class="text-gray-600 f6">Asus Laptop</span>
+        <span class="font-weight-bold f5">$800</span>
+      </div>
+      <hr class="mt-2">
+
+      <!-- Subtotal -->
+      <div class="d-flex justify-content-between align-items-center">
+        <span class="text-gray-600 f6">Subtotal</span>
+        <span class="font-weight-bold f5">$1800</span>
+      </div>
+      <div class="d-flex justify-content-between align-items-center mt-2">
+        <span class="text-gray-600 f6">Total</span>
+        <span class="font-weight-bold f5">$1800</span>
+      </div>
+      <hr class="mt-2">
+      <!-- !Subtotal -->
+
+      <h3 class="font-weight-bold f5">Billing Address</h3>
+      <hr>
+      <div class="d-flex align-items-center">
+        <i class="text-gray-600 f6 fa fa-location-arrow"></i>
+        <span class="ml-3 font-weight-bold f5">Darry Wilson</span>
+      </div>
+
+      <div class="d-flex align-items-center mt-2">
+        <i class="text-gray-600 f6 fa fa-street-view"></i>
+        <span class="ml-3 font-weight-bold f5">2746 Avalon</span>
+      </div>
+
+      <div class="d-flex align-items-center mt-2">
+        <i class="text-gray-600 f6 fa fa-road"></i>
+        <span class="ml-3 font-weight-bold f5">Chatsworth, CA 91311</span>
+      </div>
+
+      <div class="d-flex align-items-center mt-2">
+        <i class="text-gray-600 f6 fa fa-mail-bulk"></i>
+        <span class="ml-3 font-weight-bold f5">example@gmail.com</span>
+      </div>
+      <hr class="mt-2">
+
+    </div>
+
+    <div class="col-5 ml-5 border-1 border-color-default border-solid pb-5 pt-3 px-5 rounded-sm height-size-min shadow-md">
+
+      <i class="fa-2x d-flex text-green-800 justify-content-center text-center fab fa-think-peaks"></i>
+      <h3 class="font-weight-bold f5 text-green-600 mt-2">Thank you! Your order has been received successful!</h3>
+
+      <hr class="mt-2">
+      <div class="d-flex align-items-center">
+        <i class="text-gray-600 f6 fab fa-jedi-order"></i>
+        <span class="ml-3 font-weight-bold f5">Order Number: </span>
+        <span class="ml-3 text-gray-800 font-weight-bolder f5">321</span>
+      </div>
+
+      <div class="d-flex align-items-center mt-2">
+        <i class="text-gray-600 f6 fa fa-calendar-day"></i>
+        <span class="ml-3 font-weight-bold f5">Date: </span>
+        <span class="ml-3 text-gray-800 font-weight-bolder f5">January 12, 2021</span>
+
+      </div>
+
+      <div class="d-flex align-items-center mt-2">
+        <i class="text-gray-600 f6 fa fa-envelope"></i>
+        <span class="ml-3 font-weight-bold f5">Email: </span>
+        <span class="ml-3 text-gray-800 font-weight-bolder f5">example@gmail.com</span>
+
+      </div>
+
+      <div class="d-flex align-items-center mt-2">
+        <i class="text-gray-600 f6 fa fa-dollar-sign"></i>
+        <span class="ml-3 font-weight-bold f5">Total: </span>
+        <span class="ml-3 text-gray-800 font-weight-bolder f5">$1800</span>
+
+      </div>
+
+      <div class="d-flex align-items-center mt-2">
+        <i class="text-gray-600 f6 fa fa-credit-card"></i>
+        <span class="ml-3 font-weight-bold f5">Payment Method: </span>
+        <span class="ml-3 text-gray-800 font-weight-bolder f5">Credit Card</span>
+
+      </div>
+
+    </div>
+  </div>
+
+
+</section>

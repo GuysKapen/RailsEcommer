@@ -1,5 +1,11 @@
 # frozen_string_literal: true
 Rails.application.routes.draw do
+  resources :orders do
+    collection do
+      get :checkout
+    end
+  end
+  get 'cart/index'
   mount Ckeditor::Engine => '/ckeditor'
   get 'contact' => 'contact#index'
   get 'about' => 'about#index'
@@ -16,7 +22,8 @@ Rails.application.routes.draw do
       # put :save_scheduling
     end
   end
-  resources :user, collection: { add_to_cart: :post }
+  resources :user, collection: {add_to_cart: :post}
+  resources :cart
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -63,33 +63,12 @@
       <% @products.each do |product| %>
 
 
-        <div class="col-lg-3 col-sm-12 col-md-6 text-center">
-<!--          <div class="text-center">-->
-<!--            <div class="card opacity-anim">-->
-              <%#= link_to product_path(product) do %>
-                <%#= image_tag(product_first_img(product), alt: "Product", class: "card-img-top transform hover:scale-105 duration-500") %>
-              <%# end %>
-<!--              <div class="px-3 mx-1 mt-2">-->
-<!--                <p class="my-0 sub-title hover:color-hover transform hover:scale-105 duration-200"><%#= product.category.name %></p>-->
-<!--                <p class="my-0 title hover:color-hover transform hover:scale-105 duration-200"><%#= product.name %></p>-->
-<!--                <div class="rating text-warning font-size-14">-->
-<!--                  <span><i class="fas fa-star"></i></span>-->
-<!--                  <span><i class="fas fa-star"></i></span>-->
-<!--                  <span><i class="fas fa-star"></i></span>-->
-<!--                  <span><i class="fas fa-star"></i></span>-->
-<!--                  <span><i class="fas fa-star"></i></span>-->
-<!--                </div>-->
-<!--                <p class="font-weight-bold hover:color-hover transform hover:scale-105 duration-200 font-fredoka f4 my-0"><%#= product.regular_price %>-->
-<!--                  $</p>-->
-<!--                <div class="custom-btn mx-3 font-fredoka my-2">Add To Cart</div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
+        <div class="col-lg-3 col-sm-12 col-md-6 text-center mb-5">
           <div class="text-center cursor-pointer product-card">
             <div class="card opacity-anim overflow-hidden">
               <%= #noinspection RubyResolve
                   link_to product_path(product) do %>
-                <%= image_tag(product_first_img(product), alt: "Product", class: "card-img-top transform hover:scale-105 duration-500") %>
+                <%= image_tag(product_first_img(product), alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
               <% end %>
               <div class="px-3 mx-1 mt-2">
                 <p class="my-0 sub-title hover:color-hover transform hover:scale-105 duration-200"><%= product.category.name %></p>
@@ -114,7 +93,7 @@
     <!--    <div class="row">-->
     <!--      <div class="col-lg-3 col-sm-12 col-md-6 text-center">-->
     <!--        <div class="card opacity-anim">-->
-    <%#= image_tag("product 4.jpg", alt: "Product", class: "card-img-top") %>
+    <%#= image_tag("product 4.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
     <!--          <div class="px-3 mx-1">-->
     <!--            <p class="my-0 sub-title">Product Category</p>-->
     <!--            <p class="my-0 title">Product</p>-->
@@ -132,7 +111,7 @@
     <!--      </div>-->
     <!--      <div class="col-lg-3 col-sm-12 col-md-6 text-center">-->
     <!--        <div class="card opacity-anim">-->
-    <%#= image_tag("product 4.jpg", alt: "Product", class: "card-img-top") %>
+    <%#= image_tag("product 4.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
     <!--          <div class="px-3 mx-1">-->
     <!--            <p class="my-0 sub-title">Product Category</p>-->
     <!--            <p class="my-0 title">Product</p>-->
@@ -150,7 +129,7 @@
     <!--      </div>-->
     <!--      <div class="col-lg-3 col-sm-12 col-md-6 text-center">-->
     <!--        <div class="card opacity-anim">-->
-    <%#= image_tag("product 4.jpg", alt: "Product", class: "card-img-top") %>
+    <%#= image_tag("product 4.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
     <!--          <div class="px-3 mx-1">-->
     <!--            <p class="my-0 sub-title">Product Category</p>-->
     <!--            <p class="my-0 title">Product</p>-->
@@ -168,7 +147,7 @@
     <!--      </div>-->
     <!--      <div class="col-lg-3 col-sm-12 col-md-6 text-center">-->
     <!--        <div class="card opacity-anim">-->
-    <%#= image_tag("product 4.jpg", alt: "Product", class: "card-img-top") %>
+    <%#= image_tag("product 4.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
     <!--          <div class="px-3 mx-1">-->
     <!--            <p class="my-0 sub-title">Product Category</p>-->
     <!--            <p class="my-0 title">Product</p>-->
@@ -199,7 +178,7 @@
   <div class="row">
     <div class="col-lg-3 col-sm-12 col-md-6 text-center">
       <div class="card opacity-anim">
-        <%= image_tag("product 5.jpg", alt: "Product", class: "card-img-top") %>
+        <%= image_tag("product 5.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
         <div class="px-3 mx-1">
           <p class="my-0 sub-title">Product Category</p>
           <p class="my-0 title">Product</p>
@@ -217,7 +196,8 @@
     </div>
     <div class="col-lg-3 col-sm-12 col-md-6 text-center">
       <div class="card opacity-anim">
-        <%= image_tag("product-11-450x494.jpg", alt: "Product", class: "card-img-top") %>
+
+        <%= image_tag("product-11-450x494.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
         <div class="px-3 mx-1">
           <p class="my-0 sub-title">Product Category</p>
           <p class="my-0 title">Product</p>
@@ -235,7 +215,7 @@
     </div>
     <div class="col-lg-3 col-sm-12 col-md-6 text-center">
       <div class="card opacity-anim">
-        <%= image_tag("product-20-300x330.jpg", alt: "Product", class: "card-img-top") %>
+        <%= image_tag("product-20-300x330.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
         <div class="px-3 mx-1">
           <p class="my-0 sub-title">Product Category</p>
           <p class="my-0 title">Product</p>
@@ -253,7 +233,7 @@
     </div>
     <div class="col-lg-3 col-sm-12 col-md-6 text-center">
       <div class="card opacity-anim">
-        <%= image_tag("product 7.jpg", alt: "Product", class: "card-img-top") %>
+        <%= image_tag("product 7.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
         <div class="px-3 mx-1">
           <p class="my-0 sub-title">Product Category</p>
           <p class="my-0 title">Product</p>
@@ -290,7 +270,7 @@
     </div>
     <div class="col-lg-4 col-sm-12 col-md-6 text-center">
       <div class="opacity-anim">
-        <%= image_tag("blog post 3.jpg", alt: "Product", class: "card-img-top position-relative") %>
+        <%= image_tag("blog post 2.jpg", alt: "Product", class: "card-img-top position-relative") %>
         <div class="px-3 mx-1 pt-3 rounded card-fashion w-75">
           <h4 class="my-0 title font-weight-bold f4">10 Best Laptops</h4>
           <p class="sub-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias dicta, esse facere
@@ -300,7 +280,7 @@
     </div>
     <div class="col-lg-4 col-sm-12 col-md-6 text-center">
       <div class="opacity-anim">
-        <%= image_tag("blog post 3.jpg", alt: "Product", class: "card-img-top position-relative") %>
+        <%= image_tag("blog_post_1.jpg", alt: "Product", class: "card-img-top position-relative") %>
         <div class="px-3 mx-1 pt-3 rounded card-fashion w-75">
           <h4 class="my-0 title font-weight-bold f4">10 Best Laptops</h4>
           <p class="sub-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias dicta, esse facere

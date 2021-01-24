@@ -12,4 +12,8 @@ module ApplicationHelper
       flash_messages << text.html_safe if message
     end.join("\n").html_safe
   end
+
+  def cart_items
+    ProductCart.count
+  end
 end
