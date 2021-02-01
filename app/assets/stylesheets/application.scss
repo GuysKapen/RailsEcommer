@@ -173,6 +173,7 @@ input[type="text"],
 input[type="email"],
 input[type="text"],
 input[type="tel"],
+input[type="password"],
 textarea
 {
   box-shadow: inset 0 0 10px 0 rgba(255, 255, 255, 0.56);
@@ -193,4 +194,19 @@ label.checkbox {
   font-weight: 200;
   font-size: 14px;
   font-family: 'Roboto Slab', serif;
+}
+
+.cart-popup::after {
+  content: '';
+  border: 10px solid transparent;
+  border-bottom-color: white;
+  top: -1.25rem;
+  right: 3rem;
+  position: absolute;
+  transition: 1s;
+}
+
+#cart-popup-container {
+  transition: 2s ease-in-out;
+  display: none;
 }

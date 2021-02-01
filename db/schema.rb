@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_17_231458) do
+ActiveRecord::Schema.define(version: 2021_01_27_231043) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -67,23 +67,23 @@ ActiveRecord::Schema.define(version: 2021_01_17_231458) do
     t.integer "cart_id"
     t.integer "product_id"
     t.integer "wishlist_id"
+    t.integer "order_id"
     t.index ["cart_id"], name: "index_product_carts_on_cart_id"
+    t.index ["order_id"], name: "index_product_carts_on_order_id"
     t.index ["product_id"], name: "index_product_carts_on_product_id"
     t.index ["wishlist_id"], name: "index_product_carts_on_wishlist_id"
   end
 
-  create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.decimal "price"
-    t.integer "ratings"
-    t.text "images"
+  create_table "product_meta", force: :cascade do |t|
+    t.integer "quantity"
+    t.integer "product_id", null: false
+    t.integer "in_stock"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.float "regular_price"
     t.float "sale_price"
     t.date "sale_date_start"
-    t.date "scale_date_end"
+    t.date "sale_date_end"
     t.string "sku"
     t.boolean "manage_stock"
     t.integer "stock_quantity"
@@ -97,9 +97,20 @@ ActiveRecord::Schema.define(version: 2021_01_17_231458) do
     t.float "width"
     t.float "height"
     t.string "shipping_class"
-    t.string "up_sale"
-    t.string "cross_sale"
+    t.string "up_sell"
+    t.string "cross_sell"
     t.string "tag"
+    t.integer "ratings"
+    t.string "product_video"
+    t.index ["product_id"], name: "index_product_meta_on_product_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.text "images"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.integer "category_id"
     t.index ["category_id"], name: "index_products_on_category_id"
@@ -125,5 +136,6 @@ ActiveRecord::Schema.define(version: 2021_01_17_231458) do
     t.index ["user_id"], name: "index_wishlists_on_user_id"
   end
 
+  add_foreign_key "product_meta", "products"
   add_foreign_key "wishlists", "users"
 end

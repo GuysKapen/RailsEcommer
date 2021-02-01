@@ -17,6 +17,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @product.build_product_meta
     @categories = Category.all
   end
 
@@ -28,25 +29,31 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    # @category = Category.new
-    # @category.name =
-    # @category.user = current_user
-    @category = current_user.categories.build(name: product_params['category'])
-    # current_user.categories.build()
+    # Build New Category here
+
+    category_attrs = params['category_name']
+    @category = current_user.categories.build(name: category_attrs) unless category_attrs.nil? || category_attrs.empty?
+    print("FUck ------------------------------------------\n", category_attrs)
     # Save category to get id
-    unless @category.save
-      # self.errors.add(:base, "Could not save category")
-      return false
+    unless @category.nil?
+      unless @category.save
+        errors.add(:base, 'Could not save category')
+        return false
+      end
     end
 
-    params[:product][:category_id] = @category.id
-    params[:product][:category] = @category
+    # params[:product][:category_id] = @category.id
+    # params[:product][:category] = @category
+
+    params[:product][:category_id] = @category.id unless @category.nil?
     @product = current_user.products.build(product_params)
+    @product.build_product_meta(product_params[:product_meta_attributes])
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
+        print("Fuck------------------------------", @product.errors.full_messages)
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
@@ -103,12 +110,14 @@ class ProductsController < ApplicationController
     unless @product_cart.save
       print('Saving Product Cart Error', @product_cart.errors.full_messages)
       # self.errors.add(:base, "Could not save category")
-      false
+      return false
     end
 
     @cart_item = @cart.product_carts.count
     print("Cart \n", @cart.inspect)
     print("WTF #{@cart_item}\n")
+
+    @product_carts = ProductCart.where(cart_id: @cart.id)
     respond_to do |format|
       format.js { render 'products/show_add_to_cart_success' }
     end
@@ -162,9 +171,11 @@ class ProductsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def product_params
-    params.require(:product).permit(:name, :description, :price, :ratings, :regular_price, :sale_price, :category,
-                                    :category_id, :sku, :stock_status,
-                                    :manage_stock, :sold_individual, :weight, :up_sale, :cross_sale, images: [])
+    params.require(:product).permit(:name, :description, :price, :category_id, images: [], product_meta_attributes: %i[
+        ratings regular_price sale_price
+        sku stock_status width height length shipping_class product_video
+        manage_stock sold_individual weight up_sell cross_sell
+    ], category_attributes: [:name])
   end
 
   def product_cart_params

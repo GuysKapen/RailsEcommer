@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantity: 
+  discount: 9.99
+  discount_start_date: 2021-01-26
+  discount_end_date: 2021-01-26
+  product: one
+  in_stock: 
+
+two:
+  quantity: 
+  discount: 9.99
+  discount_start_date: 2021-01-26
+  discount_end_date: 2021-01-26
+  product: two
+  in_stock: 

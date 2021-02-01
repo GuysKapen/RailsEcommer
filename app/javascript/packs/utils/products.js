@@ -1,6 +1,7 @@
 document.addEventListener("turbolinks:load", function () {
     document.getElementById("add_new_category")?.addEventListener("click", function () {
-        document.getElementById("input_new_category").style.display = "initial"
+        console.log("Click")
+        document.getElementById("input_new_category").style.display = "inherit"
     })
 
     let qtyInput = document.getElementsByClassName('qty-input')[0]

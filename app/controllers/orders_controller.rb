@@ -1,7 +1,8 @@
+# frozen_string_literal: true
 # require 'app/view_models/order_new_view.rb'
 # noinspection ALL
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: %i[show edit update destroy]
   before_action :authenticate_user!
 
   # GET /orders
@@ -19,6 +20,7 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
     @cart = Cart.find_by(user_id: current_user.id)
+    @order = Order.find_by(id: params[:id])
     @order_view = OrderNewView.new(@cart, view_context)
   end
 
@@ -30,8 +32,7 @@ class OrdersController < ApplicationController
   end
 
   # GET /orders/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /orders
   # POST /orders.json
@@ -39,8 +40,26 @@ class OrdersController < ApplicationController
     params[:order][:total] = params[:total]
     @order = Order.new(order_params)
 
+    success = true
+    # success = @order.save
+    unless @order.save
+      success = false
+      print("Save................................................................................\n", @order.errors.full_messages)
+    end
+    @cart = Cart.find_by(user_id: current_user.id)
+    @cart.product_carts.each do |item|
+      item.order_id = @order.id
+      print("WTF.........................................\n", item.inspect)
+      unless item.save
+        success = false
+        print("Save Product--------------------------------------------------------------------\n", item.errors.full_messages)
+      end
+      # success = false unless item.save
+    end
+
+    print("Success: ", success)
     respond_to do |format|
-      if @order.save
+      if success
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
       else

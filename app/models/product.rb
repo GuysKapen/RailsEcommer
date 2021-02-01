@@ -4,6 +4,9 @@ class Product < ApplicationRecord
   serialize :up_sale, Array
   serialize :cross_sale, Array
 
-  belongs_to :user
-  belongs_to :category
+  belongs_to :user, dependent: :destroy
+  belongs_to :category, required: false
+  has_one :product_meta
+
+  accepts_nested_attributes_for :product_meta
 end

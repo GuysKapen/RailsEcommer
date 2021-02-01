@@ -1,3 +1,3 @@
 class ProductCart < ApplicationRecord
-  has_many :products
+  has_one :product, foreign_key: 'id'
 end
