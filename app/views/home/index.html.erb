@@ -1,8 +1,7 @@
 <!-- Service -->
 
-<section class="mx-auto my-3 font-weight-lighter" style="width: 88%">
-  <div class="row mx-auto">
-
+<section class="mx-auto my-3 font-weight-lighter w-11/12">
+  <div class="d-flex mx-auto mt-12">
     <div class="col-4 text-center">
       <i class="fas fa-dolly fa-3x"></i>
       <div class="h5 my-3">Priority Shipping</div>
@@ -16,7 +15,7 @@
     </div>
     <div class="col-4 text-center">
       <i class="fas fa-user-cog fa-3x"></i>
-      <div class="h5 my-3">In-home Setup</div>
+      <div class="h5 my-3">In Home Setup</div>
       <div class="">Lorem ipsum dolor sit amet, consectetur adipisicing</div>
     </div>
 
@@ -24,8 +23,8 @@
 
   <!-- Service -->
 
-  <div class="row text-white px-4 mbr mx-auto border-dark p-0 my-0">
-    <div class="col-lg-5 col-sm-12 my-3">
+  <div class="d-flex text-white mbr mx-auto border-dark p-0 my-0">
+    <div class="col-lg-5 col-sm-12 my-3 cursor-pointer">
       <div class="h-100 img-container ">
         <%= image_tag("Image-28.jpg", alt: "Hero 1", class: "img-banner h-100") %>
       </div>
@@ -33,7 +32,7 @@
         <h5>50% OFF TODAY</h5>
       </div>
     </div>
-    <div class="col-lg-4 col-sm-12 my-3 p-0">
+    <div class="col-lg-4 col-sm-12 my-3 p-0 cursor-pointer">
       <div class="h-100 img-container">
         <%= image_tag("blog post 3.jpg", alt: "Hero 1", class: "img-banner h-100") %>
       </div>
@@ -43,13 +42,13 @@
           explicabo harum id in ipsa</p>
       </div>
     </div>
-    <div class="col-lg-3 col-sm-12 my-3">
+    <div class="col-lg-3 col-sm-12 my-3 cursor-pointer">
       <div class="h-100 img-container">
         <%= image_tag("hero 1.jpg", alt: "Hero 1", class: "img-banner h-100") %>
       </div>
       <div class="center-inner z-top text-white w-100">
         <h5>Head Phones</h5>
-        <button class="custom-btn border-white">Shop Now</button>
+        <button class="px-3 py-2 bg-gray-100 text-gray-800">Shop Now</button>
       </div>
     </div>
 
@@ -62,16 +61,14 @@
 
       <% @products.each do |product| %>
 
-
         <div class="col-lg-3 col-sm-12 col-md-6 text-center mb-5">
           <div class="text-center cursor-pointer product-card">
             <div class="card opacity-anim overflow-hidden">
-              <%= #noinspection RubyResolve
-                  link_to product_path(product) do %>
+              <%= link_to product_path(product) do %>
                 <%= image_tag(product_first_img(product), alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
               <% end %>
               <div class="px-3 mx-1 mt-2">
-                <p class="my-0 sub-title hover:color-hover transform hover:scale-105 duration-200"><%= product.category.name %></p>
+                <p class="my-0 sub-title text-gray-300 opacity-50 hover:color-hover transform hover:scale-105 duration-200"><%= product.category.name %></p>
                 <p class="my-0 title hover:color-hover transform hover:scale-105 duration-200"><%= product.name %></p>
                 <div class="rating text-warning font-size-14">
                   <span><i class="fas fa-star"></i></span>
@@ -80,8 +77,15 @@
                   <span><i class="fas fa-star"></i></span>
                   <span><i class="fas fa-star"></i></span>
                 </div>
-                <p class="font-weight-bold hover:color-hover transform hover:scale-105 duration-200 font-fredoka f4 my-0"><%= product.product_meta.regular_price %> $</p>
-                <div class="custom-btn mx-3 font-fredoka my-2">Add To Cart</div>
+                <p class="font-weight-bold hover:color-hover transform hover:scale-105 duration-200 font-fredoka f4 my-0"><%= number_to_currency(product.product_meta.regular_price) %></p>
+                <!--                <div class="custom-btn mx-3 font-fredoka my-2">Add To Cart</div>-->
+                <form action="<%= quick_view_product_path(id: product.id, product_id: product.id) %>" data-remote="true" method="post">
+                  <div class="d-flex justify-center button-wishlist px-2 py-2 my-3">
+                    <button type="submit" formaction="<%= quick_view_product_path(id: product.id, product_id: product.id) %>" class="d-flex font-roboto outline-none-imp font-weight-bolder align-items-center duration-500">
+                      <i class="fa fa-heart mr-2 duration-500"></i>Add to Cart
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -173,84 +177,130 @@
 <%= render 'shared/new_letter' %>
 
 
-<section class="mbr">
+<section class="mbr mx-auto my-3 font-weight-lighter w-11/12">
   <h1 class="text-center my-3 font-weight-bold text-uppercase">On Sale</h1>
   <div class="row">
-    <div class="col-lg-3 col-sm-12 col-md-6 text-center">
-      <div class="card opacity-anim">
-        <%= image_tag("product_5.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
-        <div class="px-3 mx-1">
-          <p class="my-0 sub-title">Product Category</p>
-          <p class="my-0 title">Product</p>
-          <div class="rating text-warning font-size-14">
-            <span><i class="fas fa-star"></i></span>
-            <span><i class="fas fa-star"></i></span>
-            <span><i class="fas fa-star"></i></span>
-            <span><i class="fas fa-star"></i></span>
-            <span><i class="fas fa-star"></i></span>
-          </div>
-          <p class="font-weight-bold f3 my-0">$300.00</p>
-          <div class="custom-btn mx-3">Add To Cart</div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-sm-12 col-md-6 text-center">
-      <div class="card opacity-anim">
 
-        <%= image_tag("product-11-450x494.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
-        <div class="px-3 mx-1">
-          <p class="my-0 sub-title">Product Category</p>
-          <p class="my-0 title">Product</p>
-          <div class="rating text-warning font-size-14">
-            <span><i class="fas fa-star"></i></span>
-            <span><i class="fas fa-star"></i></span>
-            <span><i class="fas fa-star"></i></span>
-            <span><i class="fas fa-star"></i></span>
-            <span><i class="fas fa-star"></i></span>
-          </div>
-          <p class="font-weight-bold f3 my-0">$300.00</p>
-          <div class="custom-btn mx-3">Add To Cart</div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-sm-12 col-md-6 text-center">
-      <div class="card opacity-anim">
-        <%= image_tag("product-09-414x414.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
-        <div class="px-3 mx-1">
-          <p class="my-0 sub-title">Product Category</p>
-          <p class="my-0 title">Product</p>
-          <div class="rating text-warning font-size-14">
-            <span><i class="fas fa-star"></i></span>
-            <span><i class="fas fa-star"></i></span>
-            <span><i class="fas fa-star"></i></span>
-            <span><i class="fas fa-star"></i></span>
-            <span><i class="fas fa-star"></i></span>
-          </div>
-          <p class="font-weight-bold f3 my-0">$300.00</p>
-          <div class="custom-btn mx-3">Add To Cart</div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-3 col-sm-12 col-md-6 text-center">
-      <div class="card opacity-anim">
-        <%= image_tag("product_7.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
-        <div class="px-3 mx-1">
-          <p class="my-0 sub-title">Product Category</p>
-          <p class="my-0 title">Product</p>
-          <div class="rating text-warning font-size-14">
-            <span><i class="fas fa-star"></i></span>
-            <span><i class="fas fa-star"></i></span>
-            <span><i class="fas fa-star"></i></span>
-            <span><i class="fas fa-star"></i></span>
-            <span><i class="fas fa-star"></i></span>
-          </div>
-          <p class="font-weight-bold f3 my-0">$300.00</p>
-          <div class="custom-btn mx-3">Add To Cart</div>
-        </div>
-      </div>
-    </div>
+    <% @products_view_sale.each do |product_view| %>
 
+      <div class="col-lg-3 col-sm-12 col-md-6 text-center mb-5">
+        <div class="text-center cursor-pointer product-card">
+          <div class="card opacity-anim overflow-hidden">
+            <%= link_to product_path(product_view.product) do %>
+              <%= image_tag(product_first_img(product_view.product), alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
+            <% end %>
+            <div class="absolute left-1 top-1 width-min rounded-circle bg-gray-800 text-white px-1 py-2 f5 font-extrabold font-roboto">
+              <%= p product_view.sale_off %>
+            </div>
+            <div class="px-3 mx-1 mt-2">
+              <p class="my-0 sub-title text-gray-300 opacity-50 hover:color-hover transform hover:scale-105 duration-200"><%= product_view.category.name %></p>
+              <p class="my-0 title hover:color-hover transform hover:scale-105 duration-200"><%= product_view.name %></p>
+              <div class="rating text-warning font-size-14">
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="fas fa-star"></i></span>
+                <span><i class="fas fa-star"></i></span>
+              </div>
+              <div class="d-flex justify-content-center">
+                <h6 class="font-baloo f2"><%= number_to_currency(product_view.product_meta.sale_price) %></h6>
+                <h6 class="font-baloo ml-3 f3 d-flex justify-content-center flex-column">
+                  <del><%= number_to_currency(product_view.product_meta.regular_price) %></del>
+                </h6>
+              </div>
+              <!--              <p class="font-weight-bold hover:color-hover transform hover:scale-105 duration-200 font-fredoka f4 my-0"><%#= product.product_meta.regular_price %> $</p>-->
+<!--              <div class="custom-btn mx-3 font-fredoka my-2">Add To Cart</div>-->
+              <form action="<%= quick_view_product_path(id: product_view.id, product_id: product_view.id) %>" data-remote="true" method="post">
+                <div class="d-flex justify-center button-wishlist px-2 py-2 my-3">
+                  <button type="submit" formaction="<%= quick_view_product_path(id: product_view.id, product_id: product_view.id) %>" class="d-flex font-roboto outline-none-imp font-weight-bolder align-items-center duration-500">
+                    <i class="fa fa-heart mr-2 duration-500"></i>Add to Cart
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    <% end %>
   </div>
+
+  <!--  <div class="row">-->
+  <!--    <div class="col-lg-3 col-sm-12 col-md-6 text-center">-->
+  <!--      <div class="card opacity-anim">-->
+  <%#= image_tag("product_5.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
+  <!--        <div class="px-3 mx-1">-->
+  <!--          <p class="my-0 sub-title">Product Category</p>-->
+  <!--          <p class="my-0 title">Product</p>-->
+  <!--          <div class="rating text-warning font-size-14">-->
+  <!--            <span><i class="fas fa-star"></i></span>-->
+  <!--            <span><i class="fas fa-star"></i></span>-->
+  <!--            <span><i class="fas fa-star"></i></span>-->
+  <!--            <span><i class="fas fa-star"></i></span>-->
+  <!--            <span><i class="fas fa-star"></i></span>-->
+  <!--          </div>-->
+  <!--          <p class="font-weight-bold f3 my-0">$300.00</p>-->
+  <!--          <div class="custom-btn mx-3">Add To Cart</div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--    <div class="col-lg-3 col-sm-12 col-md-6 text-center">-->
+  <!--      <div class="card opacity-anim">-->
+
+  <%#= image_tag("product-11-450x494.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
+  <!--        <div class="px-3 mx-1">-->
+  <!--          <p class="my-0 sub-title">Product Category</p>-->
+  <!--          <p class="my-0 title">Product</p>-->
+  <!--          <div class="rating text-warning font-size-14">-->
+  <!--            <span><i class="fas fa-star"></i></span>-->
+  <!--            <span><i class="fas fa-star"></i></span>-->
+  <!--            <span><i class="fas fa-star"></i></span>-->
+  <!--            <span><i class="fas fa-star"></i></span>-->
+  <!--            <span><i class="fas fa-star"></i></span>-->
+  <!--          </div>-->
+  <!--          <p class="font-weight-bold f3 my-0">$300.00</p>-->
+  <!--          <div class="custom-btn mx-3">Add To Cart</div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--    <div class="col-lg-3 col-sm-12 col-md-6 text-center">-->
+  <!--      <div class="card opacity-anim">-->
+  <%#= image_tag("product-09-414x414.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
+  <!--        <div class="px-3 mx-1">-->
+  <!--          <p class="my-0 sub-title">Product Category</p>-->
+  <!--          <p class="my-0 title">Product</p>-->
+  <!--          <div class="rating text-warning font-size-14">-->
+  <!--            <span><i class="fas fa-star"></i></span>-->
+  <!--            <span><i class="fas fa-star"></i></span>-->
+  <!--            <span><i class="fas fa-star"></i></span>-->
+  <!--            <span><i class="fas fa-star"></i></span>-->
+  <!--            <span><i class="fas fa-star"></i></span>-->
+  <!--          </div>-->
+  <!--          <p class="font-weight-bold f3 my-0">$300.00</p>-->
+  <!--          <div class="custom-btn mx-3">Add To Cart</div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--    <div class="col-lg-3 col-sm-12 col-md-6 text-center">-->
+  <!--      <div class="card opacity-anim">-->
+  <%#= image_tag("product_7.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
+  <!--        <div class="px-3 mx-1">-->
+  <!--          <p class="my-0 sub-title">Product Category</p>-->
+  <!--          <p class="my-0 title">Product</p>-->
+  <!--          <div class="rating text-warning font-size-14">-->
+  <!--            <span><i class="fas fa-star"></i></span>-->
+  <!--            <span><i class="fas fa-star"></i></span>-->
+  <!--            <span><i class="fas fa-star"></i></span>-->
+  <!--            <span><i class="fas fa-star"></i></span>-->
+  <!--            <span><i class="fas fa-star"></i></span>-->
+  <!--          </div>-->
+  <!--          <p class="font-weight-bold f3 my-0">$300.00</p>-->
+  <!--          <div class="custom-btn mx-3">Add To Cart</div>-->
+  <!--        </div>-->
+  <!--      </div>-->
+  <!--    </div>-->
+
+  <!--  </div>-->
 
 </section>
 

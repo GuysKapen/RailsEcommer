@@ -30,19 +30,19 @@ product1.build_product_meta(regular_price: 600, ratings: 4, sale_price: 499).sav
 product2 = admin.products.build({ name: 'IPhone', category_id: phone_category.id, description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda atque commodi dolorem placeat quo? Dicta, eius error fugit minus non odit quae quas recusandae rem vitae! Fugit laboriosam numquam repudiandae?' })
 product2.images = [File.open("#{Rails.root}/app/assets/images/Image-20.jpg", 'rb'), File.open("#{Rails.root}/app/assets/images/product_4.jpg", 'rb'),]
                   product2.save
-product2.build_product_meta(regular_price: 600, ratings: 4, sale_price: 499).save
+product2.build_product_meta(regular_price: 1000, ratings: 4, sale_price: 949).save
 # noinspection RubyNilAnalysis
 product3 = admin.products.build({ name: 'Laptop', category_id: laptop_category.id, description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda atque commodi dolorem placeat quo? Dicta, eius error fugit minus non odit quae quas recusandae rem vitae! Fugit laboriosam numquam repudiandae?' })
 product3.images = [File.open("#{Rails.root}/app/assets/images/laptop-1.jpg", 'rb'), File.open("#{Rails.root}/app/assets/images/laptop-2.jpg", 'rb'),]
                   product3.save
-product3.build_product_meta(regular_price: 600, ratings: 4, sale_price: 499).save
+product3.build_product_meta(regular_price: 1000, ratings: 4, sale_price: 899).save
 # noinspection RubyNilAnalysis
 product4 = admin.products.build({ name: 'Samsung Phone', category_id: phone_category.id, description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda atque commodi dolorem placeat quo? Dicta, eius error fugit minus non odit quae quas recusandae rem vitae! Fugit laboriosam numquam repudiandae?' })
 product4.images = [File.open("#{Rails.root}/app/assets/images/phone_4.jpg", 'rb'), File.open("#{Rails.root}/app/assets/images/phone_5.jpeg", 'rb'),]
                   product4.save
-product4.build_product_meta(regular_price: 600, ratings: 4, sale_price: 499).save
+product4.build_product_meta(regular_price: 800, ratings: 4, sale_price: 699).save
 # noinspection RubyNilAnalysis
 product5 = admin.products.build({ name: 'Camera', category_id: camera_category.id, description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda atque commodi dolorem placeat quo? Dicta, eius error fugit minus non odit quae quas recusandae rem vitae! Fugit laboriosam numquam repudiandae?' })
 product5.images = [File.open("#{Rails.root}/app/assets/images/camera.jpg", 'rb'),]
                   product5.save
-product5.build_product_meta(regular_price: 600, ratings: 4, sale_price: 499).save
+product5.build_product_meta(regular_price: 320, ratings: 4, sale_price: 249).save

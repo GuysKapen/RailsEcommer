@@ -89,6 +89,22 @@
   margin-bottom: 1rem !important;
 }
 
+.top-1 {
+  top: .5rem;
+}
+
+.left-1 {
+  left: .5rem;
+}
+
+.right-1 {
+  right: .5rem;
+}
+
+.bottom-1 {
+  bottom: .5rem;
+}
+
 .child-mx-2 .m-0-imp {
   margin: 0 !important;
 }
@@ -242,8 +258,12 @@
   border-width: 1px;
 }
 
-.height-size-min {
+.height-min {
   height: min-content;
+}
+
+.width-min {
+  width: min-content;
 }
 
 .border-color-default {

@@ -1,3 +1,4 @@
+require('./setup')
 require("./custom_select")
 require("./products")
 require("./image_preview")

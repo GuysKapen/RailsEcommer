@@ -1,0 +1,124 @@
+<section id="product-quick-view" class="center-inner position-fixed z-10 w-screen h-screen" style="background: rgba(12,12,12,0.4)">
+  <div class="center-inner w-7/12 bg-white px-2 py-6 rounded-md shadow-md border-2 position-fixed z-50">
+    <div class="d-flex position-relative">
+      <div class="col-5">
+        <%= image_tag(product_first_img(@product), alt: "Product", class: "img-fluid center-inner w-100 h-100 object-cover") %>
+        <!--        <div class="form-row pt-4 font-size-16 font-baloo position-absolute" style="bottom: 10%;-->
+        <!--        width: 80%; left: 10%">-->
+        <!--          <div class="col">-->
+        <!--            <button type="submit" class="btn btn-danger form-control">Buy</button>-->
+        <!--          </div>-->
+        <!--          <div class="col">-->
+        <!--            <button type="submit" class="btn btn-warning form-control">Add to Cart</button>-->
+        <!--          </div>-->
+        <!--        </div>-->
+      </div>
+      <div class="ml-3">
+        <!--        <span class="font-baloo f4 font-weight-normal">Category: <%#= @product.category.name %></span>-->
+        <h5 class="font-baloo font-size-20 f1 fw8 line-height-normal mb-0 text-left"><%= @product.name %></h5>
+        <div class="d-flex ">
+          <h6 class="font-baloo m-0 f2">$<%= @product.product_meta.sale_price %></h6>
+          <h6 class="font-baloo m-0 ml-3 f3 d-flex justify-content-center flex-column">
+            <del>$<%= @product.product_meta.regular_price %></del>
+          </h6>
+        </div>
+
+        <div class="d-flex">
+          <div class="rating text-warning font-size-14">
+            <span><i class="fas fa-xs fa-star"></i></span>
+            <span><i class="fas fa-xs fa-star"></i></span>
+            <span><i class="fas fa-xs fa-star"></i></span>
+            <span><i class="fas fa-xs fa-star"></i></span>
+            <span><i class="far fa-xs fa-star"></i></span>
+          </div>
+          <div>
+            <span class="px-2 font-rale f6">4.4 / 5 &nbsp; (800 reviewers)</span>
+          </div>
+        </div>
+        <hr class="m-0">
+
+        <%= render 'form_add_to_cart' %>
+
+        <%#= form_for @product, method: :post, remote: true do |f| %>
+
+          <%#= hidden_field_tag(:product_id, @product.id) %>
+          <!--  <form action="">-->
+<!--          <div class="mt-3">-->
+<!--            <div class="d-flex text-center mt-2 justify-content-between">-->
+<!--              <h6 class="fw6 my-auto col-2 text-left px-0">Quality: </h6>-->
+<!--              <div class="custom-btn-wide input-add-to-cart-quality-select" data-quality="basic">Basic</div>-->
+<!--              <div class="custom-btn-wide ml-3 input-add-to-cart-quality-select" data-quality="premium">Premium</div>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <div class="mt-3">-->
+<!--            <div class="d-flex justify-between text-center justify-content-between text-center mt-2">-->
+<!--              <h6 class="fw6 my-auto col-2 text-left px-0">Style: &nbsp;</h6>-->
+<!--              <div class="custom-btn-wide rounded-extra-lg input-add-to-cart-style-select" data-style="minimal">Minimal</div>-->
+<!--              <div class="custom-btn-wide rounded-extra-lg input-add-to-cart-style-select" data-style="bohemian">Bohemian</div>-->
+<!--              <div class="custom-btn-wide rounded-extra-lg input-add-to-cart-style-select" data-style="floral">Floral</div>-->
+              <!--              <div class="custom-btn-wide rounded-extra-lg input-add-to-cart-style-select" data-style="other">Other</div>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <div class="mt-3">-->
+<!--            <div class="d-flex justify-between text-center child-mx-3-not-first mt-2">-->
+<!--              <h6 class="fw6 my-auto col-2 text-left px-0">Color: &nbsp;</h6>-->
+<!--              <div class="rounded-circle cursor-pointer color-palate background-blue input-add-to-cart-color-select" data-color="blue"></div>-->
+<!--              <div class="rounded-circle cursor-pointer color-palate color-yellow-bg input-add-to-cart-color-select" data-color="yellow"></div>-->
+<!--              <div class="rounded-circle cursor-pointer color-palate color-red-bg input-add-to-cart-color-select" data-color="red"></div>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <div class="mt-3">-->
+<!--            <div class="d-flex justify-between text-center text-center mt-2 child-mx-3-not-first">-->
+<!--              <h6 class="fw6 my-auto col-2 text-left px-0">Size: &nbsp;</h6>-->
+<!--              <div class="custom-btn-wide rounded-extra-lg input-add-to-cart-size-select" data-size="xl">Twin XL-->
+<!--              </div>-->
+<!--              <div class="custom-btn-wide rounded-extra-lg input-add-to-cart-size-select" data-size="full">Full</div>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <div class="mt-4">-->
+<!--            <div class="d-flex text-center mt-2">-->
+<!--              <h6 class="fw6 text-left my-auto px-0 mr-6">Quantity: </h6>-->
+<!--              <button type="button" class="qty-up px-2 border bg-light">-->
+<!--                <i class="fas fa-angle-up" data-id="prod1"></i>-->
+<!--              </button>-->
+<!--              <input type="number" name="quantity" id="quantity" class="qty-input w-25 text-center border px-2 bg-light"-->
+<!--                     readonly="readonly"-->
+<!--                     value="1" placeholder="1" data-id="prod1">-->
+<!--              <button type="button" class="qty-down px-2 border bg-light" data-id="prod1">-->
+<!--                <i class="fas fa-angle-down"></i>-->
+<!--              </button>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <div class="d-flex justify-between mt-4">-->
+
+<!--            <div class="button-cart d-flex px-3">-->
+<!--              <button type="submit" class="d-flex font-roboto outline-none-imp font-weight-bolder align-items-center duration-500">-->
+<!--                <i class="fa fa-shopping-cart mr-3 duration-500"></i>Add to Cart-->
+<!--              </button>-->
+<!--            </div>-->
+
+<!--            <div class="button-wishlist d-flex px-3">-->
+<!--              <button type="submit"-->
+<!--                      class="d-flex font-roboto outline-none-imp font-weight-bolder align-items-center duration-500">-->
+<!--                <i class="fa fa-heart mr-3 duration-500"></i>Save to wishlist-->
+<!--              </button>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <input type="hidden" name="style" id="input-style-add-to-cart">-->
+<!--          <input type="hidden" name="quality" id="input-quality-add-to-cart">-->
+<!--          <input type="hidden" name="color" id="input-color-add-to-cart">-->
+<!--          <input type="hidden" name="size" id="input-size-add-to-cart">-->
+<!--          <input type="hidden" name="product_id" value="<%#= @product.id %>">-->
+          <!--  </form>-->
+
+        <%# end %>
+      </div>
+    </div>
+  </div>
+</section>

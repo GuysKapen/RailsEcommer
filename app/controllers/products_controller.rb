@@ -2,10 +2,12 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[new edit update]
+
   # GET /products
   # GET /products.json
   def index
     @products = Product.all
+    @product = Product.new
   end
 
   # GET /products/1
@@ -159,6 +161,16 @@ class ProductsController < ApplicationController
     print('Saving Product Cart Error', @product_wishlist.errors.full_messages)
     respond_to do |format|
       format.js { render 'products/show_add_to_wishlist_success' }
+    end
+  end
+
+  def quick_view
+    print(params)
+    product_id = params[:product_id]
+    @product = Product.find(product_id)
+    respond_to do |format|
+      print("Fuck ------------------------------------------------------")
+      format.js { render 'products/show_quick_view_product' }
     end
   end
 

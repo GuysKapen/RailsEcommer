@@ -14,7 +14,12 @@ Rails.application.routes.draw do
     member do
       post :add_to_cart
       post :add_to_wishlist
+      post :quick_view
     end
+    # collection do
+    #   get :quick_view
+      # post :quick_view
+    # end
   end
   resources :user do
     member do

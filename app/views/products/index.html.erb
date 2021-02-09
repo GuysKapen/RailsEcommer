@@ -5,7 +5,8 @@
   <div class="d-flex">
     <div>
       <h5 class="text-gray-800 font-weight-bolder">SHOP</h5>
-      <h5 class="text-gray-800 font-weight-bolder"><span class="font-weight-normal text-gray-600">HOME&nbsp;/&nbsp;</span>SHOP</h5>
+      <h5 class="text-gray-800 font-weight-bolder">
+        <span class="font-weight-normal text-gray-600">HOME&nbsp;/&nbsp;</span>SHOP</h5>
     </div>
 
   </div>
@@ -23,14 +24,14 @@
       <div class="control d-flex justify-content-start mt-3 p-0 m-0">
         <div class="min-max-slider w-100 text-right" data-legendnum="2">
           <label for="min">Minimum price</label>
-          <input id="min" class="min" name="min" type="range" step="1" min="0" max="3000" />
+          <input id="min" class="min" name="min" type="range" step="1" min="0" max="3000"/>
           <label for="max">Maximum price</label>
-          <input id="max" class="max" name="max" type="range" step="1" min="0" max="3000" />
+          <input id="max" class="max" name="max" type="range" step="1" min="0" max="3000"/>
         </div>
-<!--        <input type="range" min="50" value="10000" max="10000" placeholder="Search"  class="input flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800 rounded-r-none-imp border-right-0">-->
-<!--        <div class="col-2 border-solid rounded-r-md bg-gray-800 cursor-pointer border-1 border-color-default p-0 m-0 align-items-center d-flex flex-column justify-content-center">-->
-<!--          <i class="fa fa-search text-gray-200"></i>-->
-<!--        </div>-->
+        <!--        <input type="range" min="50" value="10000" max="10000" placeholder="Search"  class="input flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800 rounded-r-none-imp border-right-0">-->
+        <!--        <div class="col-2 border-solid rounded-r-md bg-gray-800 cursor-pointer border-1 border-color-default p-0 m-0 align-items-center d-flex flex-column justify-content-center">-->
+        <!--          <i class="fa fa-search text-gray-200"></i>-->
+        <!--        </div>-->
       </div>
 
       <hr class="my-3">
@@ -133,12 +134,11 @@
         <% @products.each do |product| %>
           <div class="text-center cursor-pointer product-card">
             <div class="card opacity-anim overflow-hidden">
-              <%= #noinspection RubyResolve
-                  link_to product_path(product) do %>
+              <%= link_to product_path(product) do %>
                 <%= image_tag(product_first_img(product), alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
               <% end %>
-              <div class="px-3 mx-1 mt-2">
-                <p class="my-0 sub-title hover:color-hover transform hover:scale-105 duration-200"><%= product.category.name %></p>
+              <div class="px-2 mx-1 mt-2">
+                <p class="my-0 sub-title hover:color-hover transform hover:scale-105 duration-200 opacity-50"><%= product.category.name %></p>
                 <p class="my-0 title hover:color-hover transform hover:scale-105 duration-200"><%= product.name %></p>
                 <div class="rating text-warning font-size-14">
                   <span><i class="fas fa-star"></i></span>
@@ -147,8 +147,30 @@
                   <span><i class="fas fa-star"></i></span>
                   <span><i class="fas fa-star"></i></span>
                 </div>
-                <p class="font-weight-bold hover:color-hover transform hover:scale-105 duration-200 font-fredoka f4 my-0"><%= product.product_meta.regular_price %> $</p>
-                <div class="custom-btn mx-3 m-0-imp mb-3-img font-fredoka my-2">Add To Cart</div>
+                <p class="font-weight-bold hover:color-hover transform hover:scale-105 duration-200 font-fredoka f4 my-0"><%= product.product_meta.regular_price %>
+                  $</p>
+                <!--                <form action="" method="post">-->
+                <%#= form_for @product, method: :post, remote: true do |f| %>
+                  <form action="<%= quick_view_product_path(id: product.id, product_id: product.id) %>" data-remote="true" method="post">
+
+                  <div class="d-flex justify-center button-wishlist px-2 py-2 my-3">
+                    <button type="submit" class="d-flex font-roboto outline-none-imp font-weight-bolder align-items-center duration-500">
+                      <i class="fa fa-heart mr-2 duration-500"></i>Add to Cart
+                    </button>
+                  </div>
+                  </form>
+
+                  <!--                </form>-->
+                <%# end %>
+
+                <%#= button_to "Add to cart", controller: "products", action: "quick_view", params: {product_id: product.id}, remote: true %>
+                <!--                <td><%#= button_to 'Add to cart', {:controller => "products", :action => "quick_view", :product_id => product.id}, :method => :post %></td>-->
+
+                <!--                  <button type="submit" formaction="<%#= quick_view_product_path(:id => product.id) %>" class="d-flex font-roboto outline-none-imp font-weight-bolder align-items-center duration-500">-->
+                <!--                    <i class="fa fa-heart mr-3 duration-500"></i>Add to Cart-->
+                <!--                  </button>-->
+
+                <!--                <div class="custom-btn mx-3 m-0-imp mb-3-img font-fredoka my-2">Add To Cart</div>-->
               </div>
             </div>
           </div>

@@ -1,0 +1,21 @@
+$("body").append("<%= escape_javascript render 'products/product_quick_view', product: @product %>")
+
+// Setup event for elements
+setupInputQty()
+
+// Setup Input Form
+setupInputStyleProduct();
+setupInputQualityProduct();
+setupInputColorProduct();
+setupInputSizeProduct();
+
+$('#product-quick-view').click(function (e) {
+//    $("#body").remove()
+    const container = $('#product-quick-view')
+
+    if (container.is(e.target) // if the target of the click isn't the container...
+        && container.has(e.target).length === 0) // ... nor a descendant of the container
+    {
+        container.remove();
+    }
+})
