@@ -1,8 +1,30 @@
 <section id="product" class="py-3">
   <div class="container">
-    <div class="row position-relative">
-      <div class="col-sm-6">
-        <%= image_tag(product_first_img(@product), alt: "Product", class: "img-fluid center-inner w-100 h-100 object-contain") %>
+    <div class="row position-relative my-5">
+      <div class="col-sm-6 py-2">
+        <div id="carouselExampleControls" class="carousel slide my-auto" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <% @product.images.each_with_index do |_, index| %>
+              <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="bg-red-800 <%= index == 0 ? "active" : "" %>"></li>
+            <% end %>
+          </ol>
+          <div class="carousel-inner" id="list" role="listbox" style="height: 32rem">
+            <% @product.images.each_with_index do |image, index| %>
+              <div class="carousel-item h-full w-full <%= index == 0 ? "active" : "" %>">
+                <%= image_tag(image.url, alt: "Product", class: "img-fluid center-inner w-100 h-100 object-contain") %>
+              </div>
+            <% end %>
+          </div>
+          <a class="carousel-control-prev filter-invert" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next filter-invert" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+
         <!--        <div class="form-row pt-4 font-size-16 font-baloo position-absolute" style="bottom: 10%;-->
         <!--        width: 80%; left: 10%">-->
         <!--          <div class="col">-->
@@ -13,12 +35,18 @@
         <!--          </div>-->
         <!--        </div>-->
       </div>
-      <div class="col-sm-6 py-5">
-<!--        <span class="font-baloo f4 font-weight-normal">Category: <%#= @product.category.name %></span>-->
+      <div class="col-sm-6 py-2">
+        <!--        <span class="font-baloo f4 font-weight-normal">Category: <%#= @product.category.name %></span>-->
         <h5 class="font-baloo font-size-20 f1 fw8 mb-0"><%= @product.name %></h5>
         <div class="d-flex">
-          <h6 class="font-baloo f2">$<%= @product.product_meta.sale_price %></h6>
-          <h6 class="font-baloo ml-3 f3 d-flex justify-content-center flex-column"><del>$<%= @product.product_meta.regular_price %></del></h6>
+          <% if @product.product_meta.sale_price %>
+            <h6 class="font-baloo ml-3 f3 d-flex justify-content-center flex-column">
+              <del>$<%= @product.product_meta.regular_price %></del>
+            </h6>
+          <% else %>
+            <h6 class="font-baloo f2">$<%= @product.product_meta.regular_price %></h6>
+        <% end %>
+
         </div>
 
         <div class="d-flex">
@@ -164,7 +192,7 @@
           <div class="tab-content active">
             <div>
               <h6 class="font-baloo f3 fw8">Product Description</h6>
-              <div class="font-size-14 child-p-font-baloo fw4"><%= raw(@product.description) %></div>
+              <div class="font-size-14 child-p-font-baloo fw4"><%= raw(@product.product_meta.description) %></div>
             </div>
           </div>
           <div class="tab-content">
@@ -244,3 +272,4 @@
     </div>
   </div>
 </section>
+

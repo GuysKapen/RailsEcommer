@@ -13,7 +13,7 @@ class OrderNewView
   def total
     ret = 0
     @products.each do |item|
-      ret += item.regular_price || 0
+      ret += item.product_meta.regular_price || 0
     end
     ret
   end
@@ -21,7 +21,7 @@ class OrderNewView
   def subtotal
     ret = 0
     @products.each do |item|
-      ret += item.regular_price || 0
+      ret += item.product_meta.regular_price || 0
     end
     ret
   end

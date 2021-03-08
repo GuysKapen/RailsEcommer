@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[new edit update]
@@ -19,8 +20,16 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
-    @product.build_product_meta
+    @product_meta = @product.build_product_meta
+    @product_meta.build_product_advanced
+    @product_meta.build_product_inventory
+    @product_meta.build_product_linked
+    @product_meta.build_product_extra
+    @product_meta.build_product_shipping
     @categories = Category.all
+    @product_attr = ProductAttribute.new
+    @product_variation = ProductVariation.new
+    @product_variation_meta = ProductMeta.new
   end
 
   # GET /products/1/edit
@@ -37,11 +46,9 @@ class ProductsController < ApplicationController
     @category = current_user.categories.build(name: category_attrs) unless category_attrs.nil? || category_attrs.empty?
     print("FUck ------------------------------------------\n", category_attrs)
     # Save category to get id
-    unless @category.nil?
-      unless @category.save
-        errors.add(:base, 'Could not save category')
-        return false
-      end
+    if !@category.nil? && !@category.save
+      errors.add(:base, 'Could not save category')
+      return false
     end
 
     # params[:product][:category_id] = @category.id
@@ -49,13 +56,23 @@ class ProductsController < ApplicationController
 
     params[:product][:category_id] = @category.id unless @category.nil?
     @product = current_user.products.build(product_params)
-    @product.build_product_meta(product_params[:product_meta_attributes])
+    @product_meta = @product.build_product_meta(product_params[:product_meta_attributes])
+
+
+    # @product_variation = @product.product_variations.build.build_product_meta(product_variation_params[:product_variation_meta])
+
+    # @product_variation = ProductMeta.new(product_variation_params[:product_variation_meta])
+    @product_variation_meta = ProductMeta.new
+    @product_variation = @product_variation_meta.build_product_variation
+    product_variation_shipping = @product_variation_meta.build_product_shipping(product_variation_meta_shipping_params)
+    print('Variation---------------------------------------\n', @product_variation.inspect)
+    print('Variation Shipping---------------------------------------\n', product_variation_shipping.inspect)
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
-        print("Fuck------------------------------", @product.errors.full_messages)
+        print('Fuck------------------------------', @product.errors.full_messages)
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
@@ -120,11 +137,14 @@ class ProductsController < ApplicationController
     print("WTF #{@cart_item}\n")
 
     @product_carts = ProductCart.where(cart_id: @cart.id)
+    @product_carts_subtotal = 0
+    @product_carts.each do |product_cart|
+      @product_carts_subtotal += product_cart.product.product_meta.regular_price * product_cart.quantity
+    end
     respond_to do |format|
-      format.js { render 'products/show_add_to_cart_success' }
+      format.js { render 'products/response_add_to_cart_success' }
     end
     # flash[:alert] = "Add to cart successful"
-
   end
 
   def add_to_wishlist
@@ -157,10 +177,9 @@ class ProductsController < ApplicationController
       return false
     end
 
-
     print('Saving Product Cart Error', @product_wishlist.errors.full_messages)
     respond_to do |format|
-      format.js { render 'products/show_add_to_wishlist_success' }
+      format.js { render 'products/response_add_to_wishlist_success' }
     end
   end
 
@@ -169,8 +188,39 @@ class ProductsController < ApplicationController
     product_id = params[:product_id]
     @product = Product.find(product_id)
     respond_to do |format|
-      print("Fuck ------------------------------------------------------")
-      format.js { render 'products/show_quick_view_product' }
+      print('Fuck ------------------------------------------------------')
+      format.js { render 'products/response_quick_view_product' }
+    end
+  end
+
+  def save_attributes
+    # attr = ProductAttribute.new(product_attr_params)
+    @product_attrs = []
+    begin
+      product_attr_params.each do |_, attrs|
+        attrs.each do |attr|
+          attr_obj = JSON.parse(attr)
+          product_attr = ProductAttribute.new(attr_obj)
+          @product_attrs.push(product_attr) if product_attr.save
+        end
+      end
+    rescue Errno::ENOENT
+      print('Error....')
+    end
+    respond_to do |format|
+      format.js { render 'products/response_save_attr' }
+    end
+  end
+
+  def create_variations_from_attrs
+    @product_attrs = ProductAttribute.all
+    merge = helpers.products_cartesian(@product_attrs)
+    @attrs = merge[:value]
+    @attrs_options = merge[:attrs]
+    @form = params['form']
+    @product = Product.new
+    respond_to do |format|
+      format.js { render 'products/response_create_variation_product', form: @form }
     end
   end
 
@@ -183,14 +233,27 @@ class ProductsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def product_params
-    params.require(:product).permit(:name, :description, :price, :category_id, images: [], product_meta_attributes: %i[
-        ratings regular_price sale_price
-        sku stock_status width height length shipping_class product_video
-        manage_stock sold_individual weight up_sell cross_sell
-    ], category_attributes: [:name])
+    params.require(:product).permit(
+      :name, :description, :price, :category_id, images: [],
+                                                 product_meta_attributes: %i[ratings regular_price sale_price
+                                                                             sku stock_status width height length shipping_class product_video
+                                                                             manage_stock sold_individual weight up_sell cross_sell],
+                                                 category_attributes: [:name],
+                                                 product_variation_meta: []
+    )
   end
 
   def product_cart_params
     params.permit(:style, :quality, :color, :size, :product_id, :quantity)
+  end
+
+  def product_attr_params
+    params.permit(name: [], value: [], attrs: [])
+  end
+
+  def product_variation_meta_shipping_params
+    params.require(:product).require(:product_variation_meta).require(:variation_meta_shipping).permit(
+      %i[width height length weight shipping_class]
+    )
   end
 end

@@ -16,4 +16,8 @@ module ApplicationHelper
   def cart_items
     ProductCart.count
   end
+
+  def cart_info
+    new(CartView())
+  end
 end

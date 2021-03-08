@@ -1,6 +1,5 @@
 window.setupInputQty = function () {
     document.getElementById("add_new_category")?.addEventListener("click", function () {
-        console.log("Click")
         document.getElementById("input_new_category").style.display = "inherit"
     })
 

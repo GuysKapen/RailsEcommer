@@ -67,7 +67,15 @@
       <div class="row m-0">
         <div class="d-flex font-roboto outline-none-imp font-weight-bolder align-items-center duration-500">
           <i class="fa fa-lg fa-shopping-cart mr-3 duration-500">&nbsp;/</i>
-          <div class="d-inline-block cart-items" id="cart-items"><%= cart_items %></div>
+<!--          <form action="<%#= cart_view_cart_path %>" data-remote="true" method="post" remote="true">-->
+<!--            <div class="d-flex justify-center button-wishlist px-2 py-2 my-3">-->
+              <button type="submit" class="d-inline-block cart-items" id="cart-items">
+                <%= cart_items %>
+              </button>
+<!--            </div>-->
+<!--          </form>-->
+          <%#= button_to cart_items, view_cart_cart_index_path, remote: :true, class: "d-inline-block cart-items", id: "cart_items" %>
+<!--          <div class="d-inline-block cart-items" id="cart-items"><%#= cart_items %></div>-->
           </div>
       </div>
 
@@ -128,7 +136,7 @@
 
               </div>
             </div>
-           <h6 class="text-center mt-3 font-baloo font-bold f4">Subtotal: <span class="font-baloo font-bold f3">$1800</span></h6>
+           <h6 class="text-center mt-3 font-baloo font-bold f4">Subtotal: <span id="cart-popup-subtotal" class="font-baloo font-bold f3">$1800</span></h6>
             <div class="button-wishlist text-center d-flex justify-content-center mx-6 my-3">
               <button type="submit" class="d-flex font-roboto f6 outline-none-imp font-weight-bolder align-items-center duration-500">
                 <i class="fa fa-shopping-cart mr-3 duration-500"></i>VIEW CART

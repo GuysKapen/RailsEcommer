@@ -12,7 +12,7 @@
 // require("jquery3")
 // require("popper")
 // require("bootstrap-sprockets")
-require("@rails/ujs").start()
+// require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
@@ -25,7 +25,9 @@ require("toastr")
 require("../../assets/stylesheets/application.scss") // ADD THIS LINE
 
 import toastr from 'toastr';
-
+import Rails from "@rails/ujs";
+Rails.start()
+window.Rails = Rails;
 global.toastr = toastr;
 
 // Uncomment to copy all static images under ../images to the output folder and reference

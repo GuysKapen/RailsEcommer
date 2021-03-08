@@ -1,0 +1,2 @@
+class ProductSalePrice < ApplicationRecord
+end

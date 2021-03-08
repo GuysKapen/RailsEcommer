@@ -1,0 +1,2 @@
+class ProductExtra < ApplicationRecord
+end

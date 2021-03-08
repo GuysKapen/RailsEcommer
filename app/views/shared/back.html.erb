@@ -23,3 +23,328 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+
+<%= f.simple_fields_for :product_variation do |variation| %>
+
+  <%= f.simple_fields_for :product_variation_meta do |variation_meta| %>
+
+    <div class="container-product-variation">
+      <div class="field mt-2">
+        <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
+          <div class="w-full">
+            <%= select_tag "variation", raw("<option>Small</option>") %>
+          </div>
+
+          <div class="w-full">
+            <%= select_tag "variation", raw("<option>White</option>") %>
+          </div>
+
+          <div class="flex child-mx-2-not-first flex-grow-1">
+            <i class="fa fa-bars m-auto"></i>
+            <span id="variation-100" class="triangle m-auto flex flex-col justify-center cursor-pointer"></span>
+            <%= link_to "Remove", new_order_path, class: "text-red-600 hover:text-red-800" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-product-variation-body container-fuck duration-200 max-h-screen overflow-hidden">
+
+        <!-- Image and sku -->
+        <div class="field">
+          <div class="control d-flex mt-2 justify-content-start child-mx-2-not-first">
+
+            <div class="flex flex-col w-full">
+              <%= variation_meta.input :regular_price, label: "Regular Price ($)", required: false,
+                                       placeholder: "Price",
+                                       input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                       wrapper: false, label_html: {class: "label text-left"} %>
+            </div>
+
+            <div class="flex flex-col w-full">
+              <%= variation_meta.input :sku, label: "SKU", required: false,
+                                       placeholder: "SKU",
+                                       input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                       wrapper: false, label_html: {class: "label text-left"} %>
+            </div>
+
+          </div>
+        </div>
+        <!-- !Image and sku -->
+
+        <!-- Price -->
+        <div class="field">
+          <div class="control d-flex mt-2 justify-content-start child-mx-2-not-first">
+
+            <div class="flex flex-col w-full">
+              <%= variation_meta.input :regular_price, label: "Regular Price ($)", required: false,
+                                       placeholder: "Price",
+                                       input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                       wrapper: false, label_html: {class: "label text-left"} %>
+            </div>
+
+            <div class="flex flex-col w-full">
+              <%= variation_meta.input :regular_price, label: "Sale Price ($)", required: false,
+                                       placeholder: "Price",
+                                       input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                       wrapper: false, label_html: {class: "label text-left"} %>
+            </div>
+
+          </div>
+        </div>
+        <!-- !Price -->
+
+        <!-- Stock Status -->
+        <div class="field">
+          <div class="control d-flex mt-2 justify-content-start child-mx-2-not-first">
+            <div class="flex flex-col w-full">
+              <%= variation_meta.input :regular_price, label: "Stock Status", required: false,
+                                       placeholder: "Stock Status",
+                                       input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                       wrapper: false, label_html: {class: "label text-left"} %>
+            </div>
+          </div>
+        </div>
+        <!-- !Stock Status -->
+
+        <!-- Weight And Dimens -->
+        <div class="field mt-2 flex child-mx-2-not-first">
+
+          <!-- Weight -->
+          <div class="control flex flex-col mt-2 justify-content-start w-full">
+            <%= variation_meta.input :weight, label: "Weight (kg)", required: false,
+                                     placeholder: "1 kg",
+                                     input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                     wrapper: false, label_html: {class: "label text-left"} %>
+          </div>
+          <!-- !Weight -->
+
+          <!-- Dimensions -->
+          <div class="control flex flex-col mt-2 justify-content-start">
+            <label for="" class="text-left">Dimensions</label>
+
+            <div class="m-0 p-0 d-flex justify-content-between">
+              <div class="field col-4 column is-4 pl-0">
+                <div class="control">
+                  <!--                      <label class="label">Brand</label>-->
+                  <div class="control">
+                    <%= variation_meta.input :width, placeholder: "Width",
+                                             input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                             wrapper: false, label_html: {class: "d-none"} %>
+                  </div>
+                </div>
+              </div>
+              <div class="field col-4 column is-4">
+                <div class="control">
+                  <!--                      <label class="label">Finish</label>-->
+                  <div class="control">
+                    <%= variation_meta.input :height, placeholder: "Height",
+                                             input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                             wrapper: false, label_html: {class: "d-none"} %>
+                  </div>
+                </div>
+              </div>
+              <div class="field col-4 column is-4 pr-0">
+                <div class="control">
+                  <!--                      <label class="label">Condition</label>-->
+                  <div class="control">
+                    <%= variation_meta.input :length, placeholder: "Length",
+                                             input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                             wrapper: false, label_html: {class: "d-none"} %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <%#= f.input :price, label: "Stock Status", required: false, input_html: {class: "input col-8 flex-grow-1"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+          </div>
+          <!-- !Dimensions -->
+
+        </div>
+        <!-- !Weight And Dimens -->
+
+        <div class="field">
+          <div class="control d-flex mt-2 justify-content-start child-mx-2-not-first">
+            <div class="flex flex-col w-full">
+              <%= variation_meta.input :shipping_class, label: "Shipping class", required: false,
+                                       placeholder: "Shipping class",
+                                       input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                       wrapper: false, label_html: {class: "label text-left"} %>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control d-flex mt-2 justify-content-start child-mx-2-not-first">
+            <div class="flex flex-col w-full">
+              <%= variation_meta.input :description, label: "Description", required: false, :as => :text,
+                                       placeholder: "Description",
+                                       input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                       wrapper: false, label_html: {class: "label text-left"} %>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="my-1">
+
+    </div>
+  <% end %>
+<% end %>
+
+<div class="container-product-variation">
+  <div class="field mt-2">
+    <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
+      <div class="w-full">
+        <div class="select" data-children-count="1">
+          <select name="variation" id="variation" class="s-hidden">
+            <option>Small</option>
+          </select>
+          <div class="styled_select">Small</div>
+          <ul class="options" style="display: none;">
+            <li rel="Small">Small</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="w-full">
+        <div class="select" data-children-count="1">
+          <select name="variation" id="variation" class="s-hidden">
+            <option>White</option>
+          </select>
+          <div class="styled_select">White</div>
+          <ul class="options" style="display: none;">
+            <li rel="White">White</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex child-mx-2-not-first flex-grow-1">
+        <i class="fa fa-bars m-auto"></i>
+        <span id="variation-100" class="triangle m-auto flex flex-col justify-center cursor-pointer"></span>
+        <a class="text-red-600 hover:text-red-800" href="/orders/new">Remove</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-product-variation-body container-fuck duration-200 max-h-screen overflow-hidden collapse-height">
+
+    <!-- Image and sku -->
+    <div class="field">
+      <div class="control d-flex mt-2 justify-content-start child-mx-2-not-first">
+
+        <div class="flex flex-col w-full" data-children-count="1">
+          <label class="float optional label text-left" for="product_product_meta_attributes_regular_price">Regular
+            Price
+            ($)</label><input class="numeric float optional input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" placeholder="Price" type="number" step="any" name="product[product_meta_attributes][regular_price]" id="product_product_meta_attributes_regular_price">
+        </div>
+
+        <div class="flex flex-col w-full" data-children-count="1">
+          <label class="string optional label text-left" for="product_product_meta_attributes_sku">SKU</label><input class="string optional input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" placeholder="SKU" type="text" name="product[product_meta_attributes][sku]" id="product_product_meta_attributes_sku">
+        </div>
+
+      </div>
+    </div>
+    <!-- !Image and sku -->
+
+    <!-- Price -->
+    <div class="field">
+      <div class="control d-flex mt-2 justify-content-start child-mx-2-not-first">
+
+        <div class="flex flex-col w-full" data-children-count="1">
+          <label class="float optional label text-left" for="product_product_meta_attributes_regular_price">Regular
+            Price
+            ($)</label><input class="numeric float optional input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" placeholder="Price" type="number" step="any" name="product[product_meta_attributes][regular_price]" id="product_product_meta_attributes_regular_price">
+        </div>
+
+        <div class="flex flex-col w-full" data-children-count="1">
+          <label class="float optional label text-left" for="product_product_meta_attributes_regular_price">Sale
+            Price
+            ($)</label><input class="numeric float optional input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" placeholder="Price" type="number" step="any" name="product[product_meta_attributes][regular_price]" id="product_product_meta_attributes_regular_price">
+        </div>
+
+      </div>
+    </div>
+    <!-- !Price -->
+
+    <!-- Stock Status -->
+    <div class="field">
+      <div class="control d-flex mt-2 justify-content-start child-mx-2-not-first">
+        <div class="flex flex-col w-full" data-children-count="1">
+          <label class="float optional label text-left" for="product_product_meta_attributes_regular_price">Stock
+            Status</label><input class="numeric float optional input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" placeholder="Stock Status" type="number" step="any" name="product[product_meta_attributes][regular_price]" id="product_product_meta_attributes_regular_price">
+        </div>
+      </div>
+    </div>
+    <!-- !Stock Status -->
+
+    <!-- Weight And Dimens -->
+    <div class="field mt-2 flex child-mx-2-not-first">
+
+      <!-- Weight -->
+      <div class="control flex flex-col mt-2 justify-content-start w-full" data-children-count="1">
+        <label class="float optional label text-left" for="product_product_meta_attributes_weight">Weight
+          (kg)</label><input class="numeric float optional input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" placeholder="1 kg" type="number" step="any" name="product[product_meta_attributes][weight]" id="product_product_meta_attributes_weight">
+      </div>
+      <!-- !Weight -->
+
+      <!-- Dimensions -->
+      <div class="control flex flex-col mt-2 justify-content-start">
+        <label for="" class="text-left">Dimensions</label>
+
+        <div class="m-0 p-0 d-flex justify-content-between">
+          <div class="field col-4 column is-4 pl-0">
+            <div class="control">
+              <!--                      <label class="label">Brand</label>-->
+              <div class="control" data-children-count="1">
+                <label class="float optional d-none" for="product_product_meta_attributes_width">Width</label><input class="numeric float optional input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" placeholder="Width" type="number" step="any" name="product[product_meta_attributes][width]" id="product_product_meta_attributes_width">
+              </div>
+            </div>
+          </div>
+          <div class="field col-4 column is-4">
+            <div class="control">
+              <!--                      <label class="label">Finish</label>-->
+              <div class="control" data-children-count="1">
+                <label class="float optional d-none" for="product_product_meta_attributes_height">Height</label><input class="numeric float optional input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" placeholder="Height" type="number" step="any" name="product[product_meta_attributes][height]" id="product_product_meta_attributes_height">
+              </div>
+            </div>
+          </div>
+          <div class="field col-4 column is-4 pr-0">
+            <div class="control">
+              <!--                      <label class="label">Condition</label>-->
+              <div class="control" data-children-count="1">
+                <label class="float optional d-none" for="product_product_meta_attributes_length">Length</label><input class="numeric float optional input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" placeholder="Length" type="number" step="any" name="product[product_meta_attributes][length]" id="product_product_meta_attributes_length">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!-- !Dimensions -->
+
+    </div>
+    <!-- !Weight And Dimens -->
+
+    <div class="field">
+      <div class="control d-flex mt-2 justify-content-start child-mx-2-not-first">
+        <div class="flex flex-col w-full" data-children-count="1">
+          <label class="string optional label text-left" for="product_product_meta_attributes_shipping_class">Shipping
+            class</label><input class="string optional input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" placeholder="Shipping class" type="text" name="product[product_meta_attributes][shipping_class]" id="product_product_meta_attributes_shipping_class">
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="control d-flex mt-2 justify-content-start child-mx-2-not-first">
+        <div class="flex flex-col w-full" data-children-count="1">
+          <label class="text optional label text-left" for="product_product_meta_attributes_description">Description</label><textarea class="text optional input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" placeholder="Description" name="product[product_meta_attributes][description]" id="product_product_meta_attributes_description"></textarea>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr class="my-1">
+
+</div>

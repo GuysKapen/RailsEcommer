@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  weight: 9.99
+  length: 9.99
+  width: 9.99
+  height: 9.99
+  shipping_class: MyText
+
+two:
+  weight: 9.99
+  length: 9.99
+  width: 9.99
+  height: 9.99
+  shipping_class: MyText

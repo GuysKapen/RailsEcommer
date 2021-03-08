@@ -16,10 +16,13 @@ Rails.application.routes.draw do
       post :add_to_wishlist
       post :quick_view
     end
-    # collection do
-    #   get :quick_view
+
+    collection do
+      post :save_attributes
+      post :create_variations_from_attrs
+      #   get :quick_view
       # post :quick_view
-    # end
+    end
   end
   resources :user do
     member do
@@ -28,7 +31,13 @@ Rails.application.routes.draw do
     end
   end
   resources :user, collection: {add_to_cart: :post}
-  resources :cart
+  post 'cart/view_cart', controller: 'cart', action: 'view_cart'
+
+  resources :cart do
+    # member do
+    #   post :show_cart_popup
+    # end
+  end
   devise_for :users do
     get '/users/sign_out' => 'devise/session#destroy'
   end

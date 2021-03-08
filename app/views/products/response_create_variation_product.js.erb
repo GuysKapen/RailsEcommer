@@ -1,0 +1,15 @@
+$("#input-variations").html("<%= escape_javascript render 'products/variation_products', form: @form, attrs: @attrs %>")
+function setupProductVariationIcons() {
+    const variations = document.getElementsByClassName("container-product-variation")
+    for (let i = 0; i < variations.length; i++) {
+        const variation = variations[i]
+        if (!(variation instanceof HTMLElement)) return
+        variation.getElementsByClassName("toggle-collapse-variation")[0].addEventListener("click", function (e) {
+            // variation.classList.toggle("collapse-height")
+            variation.getElementsByClassName("container-product-variation-body")[0].classList.toggle("collapse-height")
+        })
+    }
+}
+
+setupProductVariationIcons()
+document.setupCustomSelect()

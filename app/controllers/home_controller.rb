@@ -2,7 +2,7 @@
 
 class HomeController < ApplicationController
   def index
-    @products = Product
+    @products_view = Product
                 .all
                 .map { |product| ProductView.new(product) }
     @products_view_sale = Product

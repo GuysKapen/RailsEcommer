@@ -1,0 +1,39 @@
+$("#cart-items")?.text("<%= @cart_view.cart_items %>")
+
+$("#cart-popup-items").html("<%= escape_javascript render 'cart/cart_popup_item', product_carts: @cart_view.product_carts %>")
+
+var popupContainer = popupContainer ?? $("#cart-popup-container")
+popupContainer.css('display', 'initial').css('opacity', '1')
+$("#cart-popup-subtotal").text("<%= number_to_currency(@cart_view.subtotal) %>")
+
+var timerFadeOut = timerFadeOut ?? setTimeout(() => {
+    $("#cart-popup-container").css('opacity', '0')
+
+}, 3000)
+
+var timerRemove = timerRemove ?? setTimeout(() => {
+    $("#cart-popup-container").css('display', 'none')
+}, 6000)
+
+
+popupContainer.mouseenter(function () {
+    clearTimeout(timerFadeOut)
+    clearTimeout(timerRemove)
+})
+
+popupContainer.mouseleave(function () {
+    timerFadeOut = setTimeout(() => {
+        $("#cart-popup-container").css('opacity', '0')
+
+    }, 3000)
+
+    timerRemove = setTimeout(() => {
+        $("#cart-popup-container").css('display', 'none')
+    }, 6000)
+
+    popupContainer.mouseenter(function () {
+        clearTimeout(timerFadeOut)
+        clearTimeout(timerRemove)
+    })
+})
+

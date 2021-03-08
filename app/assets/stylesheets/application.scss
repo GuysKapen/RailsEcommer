@@ -210,3 +210,12 @@ label.checkbox {
   transition: 2s ease-in-out;
   display: none;
 }
+
+
+.carousel .carousel-indicators li {
+  background-color: #7c8783;
+}
+
+.carousel .carousel-indicators .active {
+  background-color: #292f2d;
+}

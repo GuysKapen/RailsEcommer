@@ -157,7 +157,11 @@
 }
 
 .child-mx-2-not-first > *:first-child {
-  margin-right: .5rem !important;
+  margin-left: 0 !important;
+}
+
+.child-mx-2-not-first > *:last-child {
+  margin-right: 0 !important;
 }
 
 .child-mx-3-not-first > *:not(:first-child) {
@@ -258,6 +262,10 @@
   border-width: 1px;
 }
 
+.border-1\.5-default {
+  border: 1.5px solid #1c1e1d26;
+}
+
 .height-min {
   height: min-content;
 }
@@ -307,4 +315,12 @@ label input[type="checkbox"] .section-credit-card {
 .rounded-l-none-imp {
   border-top-left-radius: 0 !important;
   border-bottom-left-radius: 0 !important;
+}
+
+.triangle::after {
+  content: "";
+  width: 0;
+  height: 0;
+  border: 5px solid transparent;
+  border-top-color: black;
 }

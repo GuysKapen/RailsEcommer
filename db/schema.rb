@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_27_231043) do
+ActiveRecord::Schema.define(version: 2021_03_08_001907) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -56,6 +56,22 @@ ActiveRecord::Schema.define(version: 2021_01_27_231043) do
     t.string "card_code"
   end
 
+  create_table "product_advanceds", force: :cascade do |t|
+    t.text "purchase_note"
+    t.boolean "enable_reviews"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "product_meta_id", null: false
+    t.index ["product_meta_id"], name: "index_product_advanceds_on_product_meta_id"
+  end
+
+  create_table "product_attributes", force: :cascade do |t|
+    t.text "name"
+    t.text "value"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "product_carts", force: :cascade do |t|
     t.string "style"
     t.string "quality"
@@ -74,41 +90,91 @@ ActiveRecord::Schema.define(version: 2021_01_27_231043) do
     t.index ["wishlist_id"], name: "index_product_carts_on_wishlist_id"
   end
 
+  create_table "product_extras", force: :cascade do |t|
+    t.text "product_video"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "product_meta_id", null: false
+    t.index ["product_meta_id"], name: "index_product_extras_on_product_meta_id"
+  end
+
+  create_table "product_inventories", force: :cascade do |t|
+    t.text "sku"
+    t.text "stock_status"
+    t.boolean "manage_stock"
+    t.boolean "sold_individually"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "product_meta_id", null: false
+    t.index ["product_meta_id"], name: "index_product_inventories_on_product_meta_id"
+  end
+
+  create_table "product_linkeds", force: :cascade do |t|
+    t.text "upsells"
+    t.text "cross_sells"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "product_meta_id", null: false
+    t.index ["product_meta_id"], name: "index_product_linkeds_on_product_meta_id"
+  end
+
   create_table "product_meta", force: :cascade do |t|
-    t.integer "quantity"
     t.integer "product_id", null: false
-    t.integer "in_stock"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.float "regular_price"
-    t.float "sale_price"
-    t.date "sale_date_start"
-    t.date "sale_date_end"
-    t.string "sku"
-    t.boolean "manage_stock"
-    t.integer "stock_quantity"
-    t.integer "low_stock_threshold"
-    t.boolean "sold_individual"
-    t.string "allow_back_orders"
-    t.string "stock_status"
-    t.boolean "stock_individual"
-    t.float "weight"
-    t.float "length"
-    t.float "width"
-    t.float "height"
-    t.string "shipping_class"
-    t.string "up_sell"
-    t.string "cross_sell"
     t.string "tag"
-    t.integer "ratings"
-    t.string "product_video"
+    t.text "description"
+    t.text "images"
+    t.text "name"
     t.index ["product_id"], name: "index_product_meta_on_product_id"
   end
 
+  create_table "product_reviews", force: :cascade do |t|
+    t.integer "ratings"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "product_sale_prices", force: :cascade do |t|
+    t.decimal "sale_price"
+    t.decimal "sale_date_start"
+    t.decimal "sale_date_end"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "product_shippings", force: :cascade do |t|
+    t.decimal "weight"
+    t.decimal "length"
+    t.decimal "width"
+    t.decimal "height"
+    t.text "shipping_class"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "product_meta_id", null: false
+    t.index ["product_meta_id"], name: "index_product_shippings_on_product_meta_id"
+  end
+
+  create_table "product_stocks", force: :cascade do |t|
+    t.integer "quantity"
+    t.text "in_stock"
+    t.integer "product_meta_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_meta_id"], name: "index_product_stocks_on_product_meta_id"
+  end
+
+  create_table "product_variations", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "product_id", null: false
+    t.integer "product_meta_id", null: false
+    t.index ["product_id"], name: "index_product_variations_on_product_id"
+    t.index ["product_meta_id"], name: "index_product_variations_on_product_meta_id"
+  end
+
   create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.text "images"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
@@ -136,6 +202,14 @@ ActiveRecord::Schema.define(version: 2021_01_27_231043) do
     t.index ["user_id"], name: "index_wishlists_on_user_id"
   end
 
+  add_foreign_key "product_advanceds", "product_meta", column: "product_meta_id"
+  add_foreign_key "product_extras", "product_meta", column: "product_meta_id"
+  add_foreign_key "product_inventories", "product_meta", column: "product_meta_id"
+  add_foreign_key "product_linkeds", "product_meta", column: "product_meta_id"
   add_foreign_key "product_meta", "products"
+  add_foreign_key "product_shippings", "product_meta", column: "product_meta_id"
+  add_foreign_key "product_stocks", "product_meta", column: "product_meta_id"
+  add_foreign_key "product_variations", "product_meta", column: "product_meta_id"
+  add_foreign_key "product_variations", "products"
   add_foreign_key "wishlists", "users"
 end

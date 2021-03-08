@@ -155,7 +155,7 @@
 }
 
 .tabs-content * {
-  overflow: hidden;
+  //overflow: hidden;
   //position: relative;
 }
 
@@ -339,9 +339,19 @@
   color: #907406;
 }
 
-
 .cart-items {
   border: 1px solid;
   border-radius: 32px;
   padding: 0 8px;
 }
+
+.container-product-variation-body.collapse-height {
+  max-height: 0;
+  transition: all 1s;
+}
+
+.container-product-variation-body {
+  max-height: 100rem;
+  transition: all 1s;
+}
+

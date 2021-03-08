@@ -1,4 +1,4 @@
-document.addEventListener("turbolinks:load", function () {
+document.setupCustomSelect = function () {
     // Iterate over each select element
     $('select').each(function () {
 
@@ -18,8 +18,18 @@ document.addEventListener("turbolinks:load", function () {
         // Cache the styled div
         let $styledSelect = $this.next('div.styled_select');
 
+        let options = $this.children('option')
+        let textSelected = ""
+        for (let i = 0; i < options.length; i++) {
+            if (options[i]["selected"]) {
+                textSelected = options[i].text
+                break;
+            }
+        }
+
         // Show the first select option in the styled div
-        $styledSelect.text($this.children('option').eq(0).text());
+        // $styledSelect.text($this.children('option').eq(0).text());
+        $styledSelect.text(textSelected)
 
         // Insert an unordered list after the styled div and also cache the list
         let $list = $('<ul />', {
@@ -63,5 +73,8 @@ document.addEventListener("turbolinks:load", function () {
         });
 
     });
+}
 
+document.addEventListener("turbolinks:load", function () {
+    document.setupCustomSelect()
 });

@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantity: 
+  in_stock: MyText
+  product_meta: one
+
+two:
+  quantity: 
+  in_stock: MyText
+  product_meta: two
