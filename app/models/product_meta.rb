@@ -7,15 +7,15 @@ class ProductMeta < ApplicationRecord
   belongs_to :product
   belongs_to :product_variation, required: false
 
-  has_one :product_inventory, required: false, inverse_of: nil?
-  has_one :product_linked, required: false, inverse_of: nil?
-  has_one :product_shipping, required: false, inverse_of: nil?
-  has_one :product_advanced, required: false, inverse_of: nil?
-  has_one :product_extra, required: false, inverse_of: nil?
-  has_one :product_variation, required: false, inverse_of: nil?
-  has_one :product_sale_price, required: false, inverse_of: nil?
-  has_one :product_stock, required: false, inverse_of: nil?
-  has_one :product_review, required: false, inverse_of: nil?
+  has_one :product_inventory, required: false
+  has_one :product_linked, required: false
+  has_one :product_shipping, required: false
+  has_one :product_advanced, required: false
+  has_one :product_extra, required: false
+  has_one :product_variation, required: false
+  has_one :product_sale_price, required: false
+  has_one :product_stock, required: false
+  has_one :product_review, required: false
   # has_one :product_attribute, required: false
 
   accepts_nested_attributes_for :product_inventory
@@ -23,5 +23,6 @@ class ProductMeta < ApplicationRecord
   accepts_nested_attributes_for :product_shipping
   accepts_nested_attributes_for :product_advanced
   accepts_nested_attributes_for :product_extra
+  accepts_nested_attributes_for :product_sale_price
   # accepts_nested_attributes_for :product_attribute
 end

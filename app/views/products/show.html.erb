@@ -4,12 +4,12 @@
       <div class="col-sm-6 py-2">
         <div id="carouselExampleControls" class="carousel slide my-auto" data-ride="carousel">
           <ol class="carousel-indicators">
-            <% @product.images.each_with_index do |_, index| %>
+            <% @product.product_meta.images.each_with_index do |_, index| %>
               <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="bg-red-800 <%= index == 0 ? "active" : "" %>"></li>
             <% end %>
           </ol>
           <div class="carousel-inner" id="list" role="listbox" style="height: 32rem">
-            <% @product.images.each_with_index do |image, index| %>
+            <% @product.product_meta.images.each_with_index do |image, index| %>
               <div class="carousel-item h-full w-full <%= index == 0 ? "active" : "" %>">
                 <%= image_tag(image.url, alt: "Product", class: "img-fluid center-inner w-100 h-100 object-contain") %>
               </div>
@@ -37,15 +37,14 @@
       </div>
       <div class="col-sm-6 py-2">
         <!--        <span class="font-baloo f4 font-weight-normal">Category: <%#= @product.category.name %></span>-->
-        <h5 class="font-baloo font-size-20 f1 fw8 mb-0"><%= @product.name %></h5>
+        <h5 class="font-baloo font-size-20 f1 fw8 mb-0"><%= @product.product_meta.name %></h5>
         <div class="d-flex">
-          <% if @product.product_meta.sale_price %>
-            <h6 class="font-baloo ml-3 f3 d-flex justify-content-center flex-column">
-              <del>$<%= @product.product_meta.regular_price %></del>
-            </h6>
-          <% else %>
-            <h6 class="font-baloo f2">$<%= @product.product_meta.regular_price %></h6>
-        <% end %>
+          <% unless @product.product_meta.product_sale_price.nil? %>
+            <h6 class="font-baloo f2">$<%= @product.product_meta.product_sale_price.sale_price %></h6>
+          <% end %>
+          <h6 class="font-baloo ml-3 f3 d-flex justify-content-center flex-column">
+            <del>$<%= @product.product_meta.regular_price %></del>
+          </h6>
 
         </div>
 

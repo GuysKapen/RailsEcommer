@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 module ApplicationHelper
   def product_first_img(product)
-    product.images[0].nil? ? 'shoes.jpg' : product.images[0].url
+    product.product_meta.images[0].nil? ? 'shoes.jpg' : product.product_meta.images[0].url
   end
 
   def toastr_flash

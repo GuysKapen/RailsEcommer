@@ -13,5 +13,6 @@ class ProductView
     '%.0f%%' % (((@product.product_meta.regular_price - @product.product_meta.sale_price) / @product.product_meta.regular_price) * 100)
   end
 
-  delegate :images, :name, :description, :user_id, :category, :product_meta, :id, to: :product
+  delegate :description, :user_id, :category, :product_meta, :id, to: :product
+  delegate :images, :name, to: :product_meta
 end

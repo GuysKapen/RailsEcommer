@@ -3,9 +3,12 @@ document.addEventListener("turbolinks:load", function() {
   let productImages = document.querySelector('.product-image-uploader');
   let list_image_carousel = []
   let flagVisible = false
+  let selectedFiles = []
 
   function handleFileSelect(evt) {
-    let files = evt.target.files; // FileList object
+    let files = evt.target.files;// FileList object
+    selectedFiles.push(...files)
+    console.log("Files Selected", selectedFiles)
     if (files == null) return
 
     console.log("Handle File..................")
@@ -47,6 +50,26 @@ document.addEventListener("turbolinks:load", function() {
   if (productImages) {
     this.addEventListener('change', handleFileSelect, false);
   }
+
+  $("#new_product").on("submit", function (e) {
+    e.preventDefault()
+    const formData = new FormData(this)
+    formData.delete("product[product_meta_attributes][images][]")
+    // formData.set("images[]", selectedFiles)
+    for (let i = 0; i < selectedFiles.length; i++) {
+      formData.append("product[product_meta_attributes][images][]", selectedFiles[i])
+    }
+
+    Rails.ajax({
+      url: "/products/",
+      type: "post",
+      data: formData,
+      success: function(data) {},
+      error: function(data) {}
+    })
+    // console.log("Form values", formData.values())
+    // this.from = formData
+  })
 
 });
 

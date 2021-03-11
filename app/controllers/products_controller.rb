@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+#noinspection ALL
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[new edit update]
@@ -26,6 +27,7 @@ class ProductsController < ApplicationController
     @product_meta.build_product_linked
     @product_meta.build_product_extra
     @product_meta.build_product_shipping
+    @product_meta.build_product_sale_price
     @categories = Category.all
     @product_attr = ProductAttribute.new
     @product_variation = ProductVariation.new
@@ -58,21 +60,40 @@ class ProductsController < ApplicationController
     @product = current_user.products.build(product_params)
     @product_meta = @product.build_product_meta(product_params[:product_meta_attributes])
 
+    unless params[:product][:product_meta_attributes][:product_inventory_attributes].nil?
+      @product_meta.build_product_inventory(product_inventory_params)
+    end
 
+    unless params[:product][:product_meta_attributes][:product_sale_price_attributes].nil?
+      @product_meta.build_product_sale_price(product_sale_price_params)
+    end
+
+    unless params[:product][:product_meta_attributes][:product_shipping_attributes].nil?
+      @product_meta.build_product_sale_price(product_sale_price_params)
+    end
+
+    unless params[:product][:product_meta_attributes][:product_linked_attributes].nil?
+      @product_meta.build_product_sale_price(product_linked_params)
+    end
+
+    unless params[:product][:product_meta_attributes][:product_extra_attributes].nil?
+      @product_meta.build_product_sale_price(product_extras_params)
+    end
     # @product_variation = @product.product_variations.build.build_product_meta(product_variation_params[:product_variation_meta])
 
     # @product_variation = ProductMeta.new(product_variation_params[:product_variation_meta])
-    @product_variation_meta = ProductMeta.new
-    @product_variation = @product_variation_meta.build_product_variation
-    product_variation_shipping = @product_variation_meta.build_product_shipping(product_variation_meta_shipping_params)
-    print('Variation---------------------------------------\n', @product_variation.inspect)
-    print('Variation Shipping---------------------------------------\n', product_variation_shipping.inspect)
+    # @product_variation_meta = ProductMeta.new
+    # @product_variation = @product_variation_meta.build_product_variation
+    # product_variation_shipping = @product_variation_meta.build_product_shipping(product_variation_meta_shipping_params)
+    # print('Variation---------------------------------------\n', @product_variation.inspect)
+    # print('Variation Shipping---------------------------------------\n', product_variation_shipping.inspect)
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
       else
-        print('Fuck------------------------------', @product.errors.full_messages)
+        print('Fuck------------------------------\n', @product.errors.full_messages)
+        print('WTF', @product_meta.errors.full_messages)
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
@@ -103,39 +124,34 @@ class ProductsController < ApplicationController
     end
   end
 
+  # @return [FalseClass]
   def add_to_cart
+    # Find cart if has any
     @cart = Cart.find_by(id: current_user.id)
+    # If not build one
     if @cart.nil?
       @cart = current_user.build_cart
-      unless @cart.save
-        print('Saving Cart Error', @cart.errors.full_messages)
-        return false
-      end
+      return false unless @cart.save
     end
 
+    # Find product cart already in cart for update quantity if user add again
     @product_cart = ProductCart.find_by(product_id: product_cart_params['product_id'])
 
-    print("Product cart Found \n", @product_cart.inspect, "\n")
+    # If not have then add new one
+    # Othewise add it quantity to 1 or quantity if have
     if @product_cart.nil?
       @product_cart = @cart.product_carts.build(product_cart_params)
     else
-      print("Fuck ----------------------------------------------------------------------\n")
       @product_cart.quantity += 1
       @product_cart.cart_id = @cart.id
     end
 
-    print("Product cart \n", @product_cart.inspect)
+    return false unless @product_cart.save
 
-    unless @product_cart.save
-      print('Saving Product Cart Error', @product_cart.errors.full_messages)
-      # self.errors.add(:base, "Could not save category")
-      return false
-    end
-
+    # For update cart count view
     @cart_item = @cart.product_carts.count
-    print("Cart \n", @cart.inspect)
-    print("WTF #{@cart_item}\n")
 
+    # Find all product carts for render cart popup
     @product_carts = ProductCart.where(cart_id: @cart.id)
     @product_carts_subtotal = 0
     @product_carts.each do |product_cart|
@@ -144,7 +160,6 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.js { render 'products/response_add_to_cart_success' }
     end
-    # flash[:alert] = "Add to cart successful"
   end
 
   def add_to_wishlist
@@ -234,12 +249,50 @@ class ProductsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def product_params
     params.require(:product).permit(
-      :name, :description, :price, :category_id, images: [],
-                                                 product_meta_attributes: %i[ratings regular_price sale_price
-                                                                             sku stock_status width height length shipping_class product_video
-                                                                             manage_stock sold_individual weight up_sell cross_sell],
-                                                 category_attributes: [:name],
-                                                 product_variation_meta: []
+      :category_id,
+      product_meta_attributes: [
+        :regular_price,
+        :name, :description, :tag,
+        { images: [],
+          product_inventory_attributes: [],
+          product_shipping_attributes: [],
+          product_linked_attributes: [],
+          product_sale_price_attributes: [],
+          product_advanced_attributes: [],
+          product_extra_attributes: [] }
+      ],
+      category_attributes: [:name],
+      product_variation_meta: []
+    )
+  end
+
+  def product_inventory_params
+    params.require(:product).require(:product_meta_attributes).require(:product_inventory_attributes).permit(
+      :sku, :stock_status, :manage_stock, :sold_individually
+    )
+  end
+
+  def product_sale_price_params
+    params.require(:product).require(:product_meta_attributes).require(:product_sale_price_attributes).permit(
+      :sale_price, :sale_date_start, :sale_date_end
+    )
+  end
+
+  def product_shipping_params
+    params.require(:product).require(:product_meta_attributes).require(:product_shipping_attributes).permit(
+      :weight, :length, :width, :shipping_class
+    )
+  end
+
+  def product_linked_params
+    params.require(:product).require(:product_meta_attributes).require(:product_linked_attributes).permit(
+      :upsells, :cross_sells
+    )
+  end
+
+  def product_extras_params
+    params.require(:product).require(:product_meta_attributes).require(:product_extra_attributes).permit(
+      :product_video
     )
   end
 

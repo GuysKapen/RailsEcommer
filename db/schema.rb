@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_08_001907) do
+ActiveRecord::Schema.define(version: 2021_03_09_235201) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 2021_03_08_001907) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "product_meta_id", null: false
+    t.string "tag"
     t.index ["product_meta_id"], name: "index_product_extras_on_product_meta_id"
   end
 
@@ -123,10 +124,9 @@ ActiveRecord::Schema.define(version: 2021_03_08_001907) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.float "regular_price"
-    t.string "tag"
     t.text "description"
     t.text "images"
-    t.text "name"
+    t.string "name"
     t.index ["product_id"], name: "index_product_meta_on_product_id"
   end
 
@@ -142,6 +142,8 @@ ActiveRecord::Schema.define(version: 2021_03_08_001907) do
     t.decimal "sale_date_end"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "product_meta_id", null: false
+    t.index ["product_meta_id"], name: "index_product_sale_prices_on_product_meta_id"
   end
 
   create_table "product_shippings", force: :cascade do |t|
@@ -207,6 +209,7 @@ ActiveRecord::Schema.define(version: 2021_03_08_001907) do
   add_foreign_key "product_inventories", "product_meta", column: "product_meta_id"
   add_foreign_key "product_linkeds", "product_meta", column: "product_meta_id"
   add_foreign_key "product_meta", "products"
+  add_foreign_key "product_sale_prices", "product_meta", column: "product_meta_id"
   add_foreign_key "product_shippings", "product_meta", column: "product_meta_id"
   add_foreign_key "product_stocks", "product_meta", column: "product_meta_id"
   add_foreign_key "product_variations", "product_meta", column: "product_meta_id"
