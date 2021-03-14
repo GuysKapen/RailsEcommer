@@ -8,7 +8,7 @@ class Product < ApplicationRecord
   belongs_to :user, dependent: :destroy
   belongs_to :category, required: false
   has_many :product_variations
-  has_one :product_meta, required: false
+  has_one :product_meta, as: :product, required: false
   # has_one :product_shipping, through: :product_meta, required: false
   # has_one :product_inventory, through: :product_meta, required: false
   # has_one :product_sale_price, through: :product_meta, required: false

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-#noinspection ALL
+# noinspection ALL
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[new edit update]
@@ -58,35 +58,32 @@ class ProductsController < ApplicationController
 
     params[:product][:category_id] = @category.id unless @category.nil?
     @product = current_user.products.build(product_params)
-    @product_meta = @product.build_product_meta(product_params[:product_meta_attributes])
+    @product_meta = @product.build_product_meta(product_meta_params)
 
-    unless params[:product][:product_meta_attributes][:product_inventory_attributes].nil?
-      @product_meta.build_product_inventory(product_inventory_params)
-    end
+    print("Fucking,,,,,,,,,,,,,,,,,,,,,,\n", product_meta_params)
+    print('Fucking....................', @product_meta.product_inventory.inspect)
 
-    unless params[:product][:product_meta_attributes][:product_sale_price_attributes].nil?
-      @product_meta.build_product_sale_price(product_sale_price_params)
-    end
-
-    unless params[:product][:product_meta_attributes][:product_shipping_attributes].nil?
-      @product_meta.build_product_sale_price(product_sale_price_params)
-    end
-
-    unless params[:product][:product_meta_attributes][:product_linked_attributes].nil?
-      @product_meta.build_product_sale_price(product_linked_params)
-    end
-
-    unless params[:product][:product_meta_attributes][:product_extra_attributes].nil?
-      @product_meta.build_product_sale_price(product_extras_params)
-    end
     # @product_variation = @product.product_variations.build.build_product_meta(product_variation_params[:product_variation_meta])
 
     # @product_variation = ProductMeta.new(product_variation_params[:product_variation_meta])
-    # @product_variation_meta = ProductMeta.new
-    # @product_variation = @product_variation_meta.build_product_variation
-    # product_variation_shipping = @product_variation_meta.build_product_shipping(product_variation_meta_shipping_params)
-    # print('Variation---------------------------------------\n', @product_variation.inspect)
-    # print('Variation Shipping---------------------------------------\n', product_variation_shipping.inspect)
+    unless params[:product][:product_variation_meta].nil?
+
+      @product_variation = @product.product_variations.build
+      @product_variation_meta = @product_variation.build_product_meta(product_variation_meta_params)
+      # @product_variation_meta = ProductMeta.new(product_variation_meta_params)
+      # @product_variation = @product_variation_meta.build_product_variation
+      # @product_variation_meta.product_id = @product_variation.id
+      # product_variation_shipping = @product_variation_meta.build_product_shipping(product_variation_meta_shipping_params)
+      print('Variation---------------------------------------\n', @product_variation.inspect)
+      print('Variation Shipping---------------------------------------\n', @product_variation_meta.inspect)
+
+      if @product_variation.save
+        print("Save meta variation success")
+      else
+        print("Variation errors", @product_variation_meta.errors.full_messages)
+      end
+    end
+
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -254,15 +251,29 @@ class ProductsController < ApplicationController
         :regular_price,
         :name, :description, :tag,
         { images: [],
-          product_inventory_attributes: [],
-          product_shipping_attributes: [],
-          product_linked_attributes: [],
-          product_sale_price_attributes: [],
-          product_advanced_attributes: [],
-          product_extra_attributes: [] }
+          product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
+          product_shipping_attributes: %i[weight length width height shipping_class],
+          product_linked_attributes: %i[upsells cross_sells],
+          product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
+          product_advanced_attributes: %i[purchase_note enable_reviews],
+          product_extra_attributes: [:product_video] }
       ],
       category_attributes: [:name],
       product_variation_meta: []
+    )
+  end
+
+  def product_meta_params
+    params.require(:product).require(:product_meta_attributes).permit(
+      :regular_price,
+      :name, :description, :tag,
+      { images: [],
+        product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
+        product_shipping_attributes: %i[weight length width height shipping_class],
+        product_linked_attributes: %i[upsells cross_sells],
+        product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
+        product_advanced_attributes: %i[purchase_note enable_reviews],
+        product_extra_attributes: [:product_video] }
     )
   end
 
@@ -304,9 +315,17 @@ class ProductsController < ApplicationController
     params.permit(name: [], value: [], attrs: [])
   end
 
-  def product_variation_meta_shipping_params
-    params.require(:product).require(:product_variation_meta).require(:variation_meta_shipping).permit(
-      %i[width height length weight shipping_class]
+  def product_variation_meta_params
+    params.require(:product).require(:product_variation_meta).permit(
+      :regular_price, { product_shipping_attributes: %i[width height length weight shipping_class],
+                        product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
+                        product_inventory_attributes: %i[sku stock_status manage_stock sold_individually] }
     )
   end
+
+  # def product_variation_meta_shipping_params
+  #   params.require(:product).require(:product_variation_meta).require(:variation_meta_shipping).permit(
+  #     %i[width height length weight shipping_class]
+  #   )
+  # end
 end

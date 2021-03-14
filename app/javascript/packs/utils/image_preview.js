@@ -51,25 +51,25 @@ document.addEventListener("turbolinks:load", function() {
     this.addEventListener('change', handleFileSelect, false);
   }
 
-  $("#new_product").on("submit", function (e) {
-    e.preventDefault()
-    const formData = new FormData(this)
-    formData.delete("product[product_meta_attributes][images][]")
-    // formData.set("images[]", selectedFiles)
-    for (let i = 0; i < selectedFiles.length; i++) {
-      formData.append("product[product_meta_attributes][images][]", selectedFiles[i])
-    }
-
-    Rails.ajax({
-      url: "/products/",
-      type: "post",
-      data: formData,
-      success: function(data) {},
-      error: function(data) {}
-    })
-    // console.log("Form values", formData.values())
-    // this.from = formData
-  })
+  // $("#new_product").on("submit", function (e) {
+  //   e.preventDefault()
+  //   const formData = new FormData(this)
+  //   formData.delete("product[product_meta_attributes][images][]")
+  //   // formData.set("images[]", selectedFiles)
+  //   for (let i = 0; i < selectedFiles.length; i++) {
+  //     formData.append("product[product_meta_attributes][images][]", selectedFiles[i])
+  //   }
+  //
+  //   Rails.ajax({
+  //     url: "/products/",
+  //     type: "post",
+  //     data: formData,
+  //     success: function(data) {},
+  //     error: function(data) {}
+  //   })
+  //   // console.log("Form values", formData.values())
+  //   // this.from = formData
+  // })
 
 });
 
