@@ -1,192 +1,191 @@
 <%= simple_form_for(@product) do |form| %>
-  <% @attrs.each do |attr| %>
-    <%= form.simple_fields_for :product_variation do |variation| %>
-
-      <%= form.simple_fields_for :product_variation_meta do |variation_meta| %>
-
-        <div class="container-product-variation">
-          <div class="field mt-2">
-            <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
-              <% attr.each_with_index do |value, index| %>
-                <div class="w-full">
-                  <%#= select_tag "variation", raw(@attrs_options[index].map { |option| "<option>" + option + "</option>" }) %>
-                  <%= select_tag "variation", options_for_select(@attrs_options[index], value) %>
-                </div>
-              <% end %>
-
-              <!--              <div class="w-full">-->
-              <%#= select_tag "variation", raw(@attrs_options[1].map { |value| "<option>" + value + "</option>" }) %>
-              <!--              </div>-->
-
-
-              <div class="flex child-mx-2-not-first flex-grow-1">
-                <i class="fa fa-bars m-auto"></i>
-                <span id="variation-100" class="triangle m-auto flex flex-col justify-center cursor-pointer toggle-collapse-variation"></span>
-                <%= link_to "Remove", new_order_path, class: "text-red-600 hover:text-red-800" %>
-              </div>
-            </div>
-          </div>
-
-          <div class="container-product-variation-body container-fuck duration-200 max-h-screen collapse-height overflow-hidden">
-
-            <!-- Image and sku -->
-            <div class="field">
-              <div class="control d-flex mt-2 justify-content-start child-mx-2-not-first">
-
-                <div class="field mt-5">
-                  <div class="control">
-                    <div class="d-flex">
-                      <span class="file-cta"><span class="file-icon"><i class="fa fa-upload"></i></span><span class="file-label">Choose a file…</span></span>
-                      <%= variation_meta.file_field :images, required: true,
-                                                    multiple: true,
-                                                    as: :file,
-                                                    label: "",
-                                                    class: 'product-image-uploader',
-                                                    input_html: {class: "input w-100 file-input product-image"},
-                                                    wrapper: false, label_html: {class: "label text-left w-100"} %>
-                    </div>
-
-
-                  </div>
-                </div>
-
-                <div class="flex flex-col w-full">
-                  <%= variation_meta.simple_fields_for :product_inventory do |inventory| %>
-                    <%= inventory.input :sku, label: "SKU", required: false,
-                                             placeholder: "SKU",
-                                             input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
-                                             wrapper: false, label_html: {class: "label text-left"} %>
-                <% end %>
-                </div>
-
-              </div>
-            </div>
-            <!-- !Image and sku -->
-
-            <!-- Price -->
-            <div class="field">
-              <div class="control d-flex mt-2 justify-content-start child-mx-2-not-first">
-
-                <div class="flex flex-col w-full">
-                  <%= variation_meta.input :regular_price, label: "Regular Price ($)", required: false,
-                                           placeholder: "Price",
-                                           input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
-                                           wrapper: false, label_html: {class: "label text-left"} %>
-                </div>
-
-                <div class="flex flex-col w-full">
-                  <%= variation_meta.simple_fields_for :product_sale_price do |sale_price| %>
-                    <%= sale_price.input :sale_price, label: "Sale Price ($)", required: false,
-                                             placeholder: "Price",
-                                             input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
-                                             wrapper: false, label_html: {class: "label text-left"} %>
-                  <% end %>
-                </div>
-
-              </div>
-            </div>
-            <!-- !Price -->
-
-            <!-- Stock Status -->
-            <div class="field">
-              <div class="control d-flex mt-2 justify-content-start child-mx-2-not-first">
-                <div class="flex flex-col w-full">
-                  <%= variation_meta.input :regular_price, label: "Stock Status", required: false,
-                                           placeholder: "Stock Status",
-                                           input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
-                                           wrapper: false, label_html: {class: "label text-left"} %>
-                </div>
-              </div>
-            </div>
-            <!-- !Stock Status -->
-
-            <%= variation_meta.simple_fields_for :product_shipping do |shipping| %>
-
-              <!-- Weight And Dimens -->
-              <div class="field mt-2 flex child-mx-2-not-first">
-
-                <!-- Weight -->
-                <div class="control flex flex-col mt-2 justify-content-start w-full">
-                  <%= shipping.input :weight, label: "Weight (kg)", required: false,
-                                     placeholder: "1 kg",
-                                     input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
-                                     wrapper: false, label_html: {class: "label text-left"} %>
-                </div>
-                <!-- !Weight -->
-
-                <!-- Dimensions -->
-                <div class="control flex flex-col mt-2 justify-content-start">
-                  <label for="" class="text-left">Dimensions</label>
-
-                  <div class="m-0 p-0 d-flex justify-content-between">
-                    <div class="field col-4 column is-4 pl-0">
-                      <div class="control">
-                        <!--                      <label class="label">Brand</label>-->
-                        <div class="control">
-                          <%= shipping.input :width, placeholder: "Width",
-                                             input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
-                                             wrapper: false, label_html: {class: "d-none"} %>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="field col-4 column is-4">
-                      <div class="control">
-                        <!--                      <label class="label">Finish</label>-->
-                        <div class="control">
-                          <%= shipping.input :height, placeholder: "Height",
-                                             input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
-                                             wrapper: false, label_html: {class: "d-none"} %>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="field col-4 column is-4 pr-0">
-                      <div class="control">
-                        <!--                      <label class="label">Condition</label>-->
-                        <div class="control">
-                          <%= shipping.input :length, placeholder: "Length",
-                                             input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
-                                             wrapper: false, label_html: {class: "d-none"} %>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <%#= f.input :price, label: "Stock Status", required: false, input_html: {class: "input col-8 flex-grow-1"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
-                </div>
-                <!-- !Dimensions -->
-
-              </div>
-              <!-- !Weight And Dimens -->
-
-              <div class="field">
-                <div class="control d-flex mt-2 justify-content-start child-mx-2-not-first">
-                  <div class="flex flex-col w-full">
-                    <%= shipping.input :shipping_class, label: "Shipping class", required: false,
-                                       placeholder: "Shipping class",
-                                       input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
-                                       wrapper: false, label_html: {class: "label text-left"} %>
-                  </div>
-                </div>
+  <% @attrs.each_with_index do |attr, i| %>
+    <%= form.simple_fields_for "product_variation[]", @product.product_variations[i] do |variation| %>
+      <%= variation.simple_fields_for "product_variation_meta[]", @product.product_variations[i].product_meta do |variation_meta| %>
+      <%#= variation.simple_fields_for :product_variation_meta do |variation_meta| %>
+      <div class="container-product-variation">
+        <div class="field mt-2">
+          <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
+            <% attr.each_with_index do |value, index| %>
+              <div class="w-full">
+                <%#= select_tag "variation", raw(@attrs_options[index].map { |option| "<option>" + option + "</option>" }) %>
+                <%= select_tag "variation", options_for_select(@attrs_options[index], value) %>
               </div>
             <% end %>
 
+            <!--              <div class="w-full">-->
+            <%#= select_tag "variation", raw(@attrs_options[1].map { |value| "<option>" + value + "</option>" }) %>
+            <!--              </div>-->
+
+
+            <div class="flex child-mx-2-not-first flex-grow-1">
+              <i class="fa fa-bars m-auto"></i>
+              <span id="variation-100" class="triangle m-auto flex flex-col justify-center cursor-pointer toggle-collapse-variation"></span>
+              <%= link_to "Remove", new_order_path, class: "text-red-600 hover:text-red-800" %>
+            </div>
+          </div>
+        </div>
+
+        <div class="container-product-variation-body container-fuck duration-200 max-h-screen collapse-height overflow-hidden">
+
+          <!-- Image and sku -->
+          <div class="field">
+            <div class="control d-flex mt-2 justify-content-start child-mx-2-not-first">
+
+              <div class="field mt-5">
+                <div class="control">
+                  <div class="d-flex">
+                    <span class="file-cta"><span class="file-icon"><i class="fa fa-upload"></i></span><span class="file-label">Choose a file…</span></span>
+                    <%= variation_meta.file_field :images, required: true,
+                                                  multiple: true,
+                                                  as: :file,
+                                                  label: "",
+                                                  class: 'product-image-uploader',
+                                                  input_html: {class: "input w-100 file-input product-image"},
+                                                  wrapper: false, label_html: {class: "label text-left w-100"} %>
+                  </div>
+
+
+                </div>
+              </div>
+
+              <div class="flex flex-col w-full">
+                <%= variation_meta.simple_fields_for :product_inventory do |inventory| %>
+                  <%= inventory.input :sku, label: "SKU", required: false,
+                                      placeholder: "SKU",
+                                      input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                      wrapper: false, label_html: {class: "label text-left"} %>
+                <% end %>
+              </div>
+
+            </div>
+          </div>
+          <!-- !Image and sku -->
+
+          <!-- Price -->
+          <div class="field">
+            <div class="control d-flex mt-2 justify-content-start child-mx-2-not-first">
+
+              <div class="flex flex-col w-full">
+                <%= variation_meta.input :regular_price, label: "Regular Price ($)", required: false,
+                                         placeholder: "Price",
+                                         input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                         wrapper: false, label_html: {class: "label text-left"} %>
+              </div>
+
+              <div class="flex flex-col w-full">
+                <%= variation_meta.simple_fields_for :product_sale_price do |sale_price| %>
+                  <%= sale_price.input :sale_price, label: "Sale Price ($)", required: false,
+                                       placeholder: "Price",
+                                       input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                       wrapper: false, label_html: {class: "label text-left"} %>
+                <% end %>
+              </div>
+
+            </div>
+          </div>
+          <!-- !Price -->
+
+          <!-- Stock Status -->
+          <div class="field">
+            <div class="control d-flex mt-2 justify-content-start child-mx-2-not-first">
+              <div class="flex flex-col w-full">
+                <%= variation_meta.input :regular_price, label: "Stock Status", required: false,
+                                         placeholder: "Stock Status",
+                                         input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                         wrapper: false, label_html: {class: "label text-left"} %>
+              </div>
+            </div>
+          </div>
+          <!-- !Stock Status -->
+
+          <%= variation_meta.simple_fields_for :product_shipping do |shipping| %>
+
+            <!-- Weight And Dimens -->
+            <div class="field mt-2 flex child-mx-2-not-first">
+
+              <!-- Weight -->
+              <div class="control flex flex-col mt-2 justify-content-start w-full">
+                <%= shipping.input :weight, label: "Weight (kg)", required: false,
+                                   placeholder: "1 kg",
+                                   input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                   wrapper: false, label_html: {class: "label text-left"} %>
+              </div>
+              <!-- !Weight -->
+
+              <!-- Dimensions -->
+              <div class="control flex flex-col mt-2 justify-content-start">
+                <label for="" class="text-left">Dimensions</label>
+
+                <div class="m-0 p-0 d-flex justify-content-between">
+                  <div class="field col-4 column is-4 pl-0">
+                    <div class="control">
+                      <!--                      <label class="label">Brand</label>-->
+                      <div class="control">
+                        <%= shipping.input :width, placeholder: "Width",
+                                           input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                           wrapper: false, label_html: {class: "d-none"} %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field col-4 column is-4">
+                    <div class="control">
+                      <!--                      <label class="label">Finish</label>-->
+                      <div class="control">
+                        <%= shipping.input :height, placeholder: "Height",
+                                           input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                           wrapper: false, label_html: {class: "d-none"} %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field col-4 column is-4 pr-0">
+                    <div class="control">
+                      <!--                      <label class="label">Condition</label>-->
+                      <div class="control">
+                        <%= shipping.input :length, placeholder: "Length",
+                                           input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                           wrapper: false, label_html: {class: "d-none"} %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <%#= f.input :price, label: "Stock Status", required: false, input_html: {class: "input col-8 flex-grow-1"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+              </div>
+              <!-- !Dimensions -->
+
+            </div>
+            <!-- !Weight And Dimens -->
+
             <div class="field">
               <div class="control d-flex mt-2 justify-content-start child-mx-2-not-first">
                 <div class="flex flex-col w-full">
-                  <%= variation_meta.input :description, label: "Description", required: false, :as => :text,
-                                           placeholder: "Description",
-                                           input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
-                                           wrapper: false, label_html: {class: "label text-left"} %>
+                  <%= shipping.input :shipping_class, label: "Shipping class", required: false,
+                                     placeholder: "Shipping class",
+                                     input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                     wrapper: false, label_html: {class: "label text-left"} %>
                 </div>
               </div>
             </div>
+          <% end %>
 
+          <div class="field">
+            <div class="control d-flex mt-2 justify-content-start child-mx-2-not-first">
+              <div class="flex flex-col w-full">
+                <%= variation_meta.input :description, label: "Description", required: false, :as => :text,
+                                         placeholder: "Description",
+                                         input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                         wrapper: false, label_html: {class: "label text-left"} %>
+              </div>
+            </div>
           </div>
 
-          <hr class="my-1">
-
         </div>
-      <% end %>
+
+        <hr class="my-1">
+
+      </div>
     <% end %>
   <% end %>
+<% end %>
 <% end %>

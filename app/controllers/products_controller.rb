@@ -32,6 +32,11 @@ class ProductsController < ApplicationController
     @product_attr = ProductAttribute.new
     @product_variation = ProductVariation.new
     @product_variation_meta = ProductMeta.new
+
+    4.times { @product.product_variations.build }
+
+    print("Hello\n", @product.product_variations[1])
+
   end
 
   # GET /products/1/edit
@@ -231,6 +236,14 @@ class ProductsController < ApplicationController
     @attrs_options = merge[:attrs]
     @form = params['form']
     @product = Product.new
+    @attrs.length.times do
+      variation = @product.product_variations.build
+      variation_meta = variation.build_product_meta
+      variation_meta.build_product_inventory
+      variation_meta.build_product_sale_price
+      variation_meta.build_product_shipping
+    end
+
     respond_to do |format|
       format.js { render 'products/response_create_variation_product', form: @form }
     end
