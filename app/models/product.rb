@@ -14,6 +14,7 @@ class Product < ApplicationRecord
   # has_one :product_sale_price, through: :product_meta, required: false
   #
   accepts_nested_attributes_for :product_meta
+  accepts_nested_attributes_for :product_variations
   # accepts_nested_attributes_for :product_variations
   # accepts_nested_attributes_for :product_shipping
   # accepts_nested_attributes_for :product_inventory

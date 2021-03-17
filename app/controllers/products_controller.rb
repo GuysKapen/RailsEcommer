@@ -36,7 +36,6 @@ class ProductsController < ApplicationController
     4.times { @product.product_variations.build }
 
     print("Hello\n", @product.product_variations[1])
-
   end
 
   # GET /products/1/edit
@@ -270,6 +269,19 @@ class ProductsController < ApplicationController
           product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
           product_advanced_attributes: %i[purchase_note enable_reviews],
           product_extra_attributes: [:product_video] }
+      ],
+      product_variations_attributes: [
+        product_meta_attributes: [
+          :regular_price,
+          :name, :description, :tag,
+          { images: [],
+            product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
+            product_shipping_attributes: %i[weight length width height shipping_class],
+            product_linked_attributes: %i[upsells cross_sells],
+            product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
+            product_advanced_attributes: %i[purchase_note enable_reviews],
+            product_extra_attributes: [:product_video] }
+        ]
       ],
       category_attributes: [:name],
       product_variation_meta: []
