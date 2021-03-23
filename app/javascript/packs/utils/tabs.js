@@ -1,4 +1,9 @@
-document.addEventListener("turbolinks:load", function() {
+document.addEventListener("turbolinks:load", function () {
+
+    setupTap()
+})
+
+export function setupTap() {
     let tabViews = _class("tab-view")
 
     for (let i = 0; i < tabViews.length; i++) {
@@ -6,7 +11,7 @@ document.addEventListener("turbolinks:load", function() {
         for (let k = 0; k < tabPanes.length; k++) {
             const tab = tabPanes[k];
 
-            tab.addEventListener("click", function() {
+            tab.addEventListener("click", function () {
                 console.log("Fuck k", k)
                 _class("tabs-panel")[i].getElementsByClassName("active")[0].classList.remove("active")
 
@@ -19,11 +24,9 @@ document.addEventListener("turbolinks:load", function() {
             })
         }
     }
+}
 
-
-})
-
-    function _class(name) {
+function _class(name) {
     return document.getElementsByClassName(name);
 }
 

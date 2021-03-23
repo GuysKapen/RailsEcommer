@@ -1,0 +1,446 @@
+<%= simple_form_for(@product) do |f| %>
+  <%= f.simple_fields_for :product_meta do |meta| %>
+    <div class="d-flex mb-3 mx-0 tab-view pr-2">
+
+      <div class="flex-grow-1 mx-0 px-0 border-right child-my-2-not-first tabs-panel">
+
+        <div class="row mt-0-imp mx-0 flex cursor-pointer active tab-panel background-hover-white py-2">
+          <div class="col-2 text-left">
+            <i class="fas mt-1 fa-wrench text-center"></i>
+          </div>
+          <p class="ml-3 f4">General</p>
+        </div>
+
+        <div class="row mt-1 mx-0 flex cursor-pointer tab-panel background-hover-white py-2">
+          <div class="col-2 text-left">
+            <i class="fas mt-1 fa-shipping-fast text-center"></i>
+          </div>
+          <p class="ml-3 f4">Inventory</p>
+        </div>
+
+        <div class="row mx-0 mt-1 flex cursor-pointer tab-panel background-hover-white py-2">
+          <div class="col-2 text-left">
+            <i class="fas mt-1 fa-paperclip text-center"></i>
+          </div>
+          <p class="ml-3 f4">Shipping</p>
+        </div>
+
+        <div class="row mx-0 mt-1 flex cursor-pointer tab-panel background-hover-white py-2">
+          <div class="col-2 text-left">
+            <i class="fas mt-1 fa-ethernet text-center"></i>
+          </div>
+          <p class="ml-3 f4">Linked Products</p>
+        </div>
+
+        <div class="row mx-0 mt-1 flex cursor-pointer tab-panel background-hover-white py-2">
+          <div class="col-2 text-left">
+            <i class="fas mt-1 fa-ethernet text-center"></i>
+          </div>
+          <p class="ml-3 f4">Attributes</p>
+        </div>
+
+<!--        <div class="row mx-0 mt-1 flex cursor-pointer tab-panel background-hover-white py-2">-->
+<!--          <div class="col-2 text-left">-->
+<!--            <i class="fas mt-1 fa-cog text-center"></i>-->
+<!--          </div>-->
+<!--          <p class="ml-3 f4">Variations</p>-->
+<!--        </div>-->
+
+        <div class="row mx-0 mt-1 flex cursor-pointer tab-panel background-hover-white py-2">
+          <div class="col-2 text-left">
+            <i class="fas mt-1 fa-ellipsis-v text-center"></i>
+          </div>
+          <p class="ml-3 f4">Advances</p>
+        </div>
+
+        <div class="row mx-0 mt-1 flex cursor-pointer tab-panel background-hover-white py-2">
+          <div class="col-2 text-left">
+            <i class="fas mt-1 fa-users-cog text-center"></i>
+          </div>
+          <p class="ml-3 f4">More Options</p>
+        </div>
+
+        <div class="row mx-0 mt-1 flex cursor-pointer tab-panel background-hover-white py-2">
+          <div class="col-2 text-left">
+            <i class="fas mt-1 fa-users-cog text-center"></i>
+          </div>
+          <p class="ml-3 f4">Extra Properties</p>
+        </div>
+
+      </div>
+
+      <div class="col-8 ml-3 mx-0 px-0 tabs-content">
+        <!-- General Attribute -->
+        <div id="input-general" class="active tab-content ">
+
+          <div class="field">
+            <div class="control d-flex mt-2 justify-content-start">
+              <%= meta.input :regular_price, label: "Regular Price ($)", required: false,
+                             placeholder: "Price",
+                             input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+            </div>
+          </div>
+
+          <%= meta.simple_fields_for :product_sale_price do |sale_price| %>
+            <div class="field mt-2">
+              <div class="control d-flex mt-2 justify-content-start">
+                <%= sale_price.input :sale_price, label: "Sale Price ($)", required: false,
+                                     placeholder: "Sale Price",
+                                     input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+              </div>
+            </div>
+          <% end %>
+
+        </div>
+        <!-- !General Attribute -->
+
+        <!-- Inventory Input -->
+        <div id="input-inventory" class="tab-content ">
+
+          <%= meta.simple_fields_for :product_inventory do |inventory| %>
+
+            <div class="field mt-2">
+              <div class="control d-flex mt-2 justify-content-start">
+                <%= inventory.input :sku, label: "SKU", required: false,
+                                    placeholder: "SKU",
+                                    input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+              </div>
+            </div>
+
+            <div class="field mt-2">
+              <div class="control d-flex mt-2 justify-content-start">
+                <%= inventory.label "Manage Stock", class: "label col-4 text-left" %>
+                <div>
+                  <%= inventory.check_box :manage_stock, class: "input" %>
+                  <span class="f7">Enable manage Stock at product level</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="field mt-2">
+              <div class="control d-flex mt-2 justify-content-start">
+                <%= inventory.input :stock_status, label: "Stock Status", required: false,
+                                    placeholder: "Status",
+                                    input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+              </div>
+            </div>
+
+            <div class="field mt-2">
+              <div class="control d-flex mt-2 justify-content-start">
+                <%= inventory.label "Sold individually", class: "label col-4 text-left" %>
+                <div>
+                  <%= inventory.check_box :sold_individually, class: "input" %>
+                  <span class="f7">Enable this to only allow one of the item to be bought in a single order</span>
+                </div>
+              </div>
+            </div>
+
+          <% end %>
+
+
+        </div>
+        <!-- !Inventory Input -->
+
+        <!-- Shipping Input -->
+        <div id="input-inventory" class="tab-content">
+
+          <%= meta.simple_fields_for :product_shipping do |shipping| %>
+
+            <!-- Weight -->
+            <div class="field mt-2">
+              <div class="control d-flex mt-2 justify-content-start">
+                <%= shipping.input :weight, label: "Weight (kg)", required: false,
+                                   placeholder: "1 kg",
+                                   input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+              </div>
+            </div>
+            <!-- !Weight -->
+
+            <!-- Dimensions -->
+            <div class="field mt-2">
+              <div class="control d-flex mt-2 justify-content-start">
+                <label for="" class="col-4 text-left">Dimensions</label>
+
+                <div class="col-8 flex-grow-1 m-0 p-0 d-flex justify-content-between">
+                  <div class="field col-4 column is-4 pl-0">
+                    <div class="control">
+                      <!--                      <label class="label">Brand</label>-->
+                      <div class="control">
+                        <%= shipping.input :width, placeholder: "Width",
+                                           input_html: {class: "input w-full py-1 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                           wrapper: false, label_html: {class: "d-none"} %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field col-4 column is-4">
+                    <div class="control">
+                      <!--                      <label class="label">Finish</label>-->
+                      <div class="control">
+                        <%= shipping.input :height, placeholder: "Height",
+                                           input_html: {class: "input w-full py-1 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                           wrapper: false, label_html: {class: "d-none"} %>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="field col-4 column is-4 pr-0">
+                    <div class="control">
+                      <!--                      <label class="label">Condition</label>-->
+                      <div class="control">
+                        <%= shipping.input :length, placeholder: "Length",
+                                           input_html: {class: "input w-full py-1 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                           wrapper: false, label_html: {class: "d-none"} %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <%#= f.input :price, label: "Stock Status", required: false, input_html: {class: "input col-8 flex-grow-1"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+              </div>
+            </div>
+            <!-- !Dimensions -->
+
+            <!-- Shipping Class -->
+            <div class="field mt-2">
+              <div class="control flex">
+                <!--                        <label class="label col-4 text-left">Shipping Class</label>-->
+                <%= shipping.input :shipping_class, placeholder: "Class", label: "Shipping class",
+                                   input_html: {class: "input col-6 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                   wrapper: false, label_html: {class: "label col-4 text-left"} %>
+                <div class="w-full text-right align-self-center">
+                  <span class="icon is-small is-right"><i class="fa fa-tag"></i></span>
+                </div>
+              </div>
+            </div>
+            <!-- !Shipping Class -->
+
+          <% end %>
+
+        </div>
+        <!-- !Shipping Input -->
+
+        <!-- Linked Product -->
+        <div id="input-inventory" class="tab-content">
+          <%= meta.simple_fields_for :product_linked do |linked_product| %>
+            <!-- Upsell -->
+            <div class="field mt-2">
+              <div class="control d-flex mt-2 justify-content-start">
+                <%= linked_product.input :upsells, placeholder: "Upsell", label: "Upsell", required: false,
+                                         input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+              </div>
+            </div>
+            <!-- !Upsell -->
+
+            <!-- Cross sell -->
+            <div class="field mt-2">
+              <div class="control d-flex mt-2 justify-content-start">
+                <%= linked_product.input :cross_sells, placeholder: "Cross sells", label: "Cross Sell", required: false,
+                                         input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+              </div>
+            </div>
+            <!-- !Cross sell -->
+
+          <% end %>
+        </div>
+        <!-- !Linked Product -->
+
+        <!-- Attributes -->
+        <div id="input-inventory" class="tab-content flex flex-col h-full">
+          <div class="flex flex-col h-full">
+            <div class="field mt-2">
+              <div class="control d-flex mt-2 justify-content-start">
+                <div class="w-50">
+                  <% unless @categories.nil? %>
+                    <%= f.select :category_id, options_for_select(@categories.map { |s| [s.name, s.id] }), class: "w-50" %>
+                  <% end %>
+                </div>
+                <div>
+                  <div id="button-add-attribute" class="custom-btn-normal ml-2 f6 h-full">Add</div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="field mt-2 flex-grow-1">
+
+              <div class="flex flex-col h-full align-items-start">
+
+                <%#= simple_form_for @product_attr, url: save_attributes_products_path(@product), method: :post do |form_save_attr| %>
+
+                <hr class="my-2 w-full">
+                <div id="product-attributes-container">
+
+                </div>
+                <hr class="my-2 w-full">
+
+                <div id="group-container-form-add-attributes" class="w-full">
+                  <div class="flex flex-grow-1 w-full my-8 form-add-attributes">
+
+                    <div class="control w-4/12 mt-2">
+                      <div>
+                        <label class="text optional label text-left p-0 d-flex" for="product_attribute_name">Name</label>
+                        <textarea class="product-attributes-name text optional input d-flex flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" name="product_attribute[name]" id="product-attribute-name"></textarea>
+
+                        <%#= form_save_attr.input :name, multiple: true, label: "Name", required: false,
+                                                           input_html: {class: "input d-flex flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label text-left p-0 d-flex"} %>
+
+                        <!-- Attrs Visible -->
+                        <div class="d-flex justify-content-start align-items-center mt-3">
+                          <label class="d-flex justify-content-center align-items-center m-0">
+                            <input type="checkbox" name="use_paypal">
+                            <span class="d-inline-block rounded-circle icon-size checkbox-size border-color-default border-1 checkbox-span mr-2"></span>
+                          </label>
+                          <span class="f7">Visible on product page</span>
+                        </div>
+                        <!-- !Attrs Visible -->
+
+                        <!-- Used for variations products -->
+                        <div class="d-flex justify-content-start align-items-center mt-3">
+                          <label class="d-flex justify-content-center align-items-center m-0">
+                            <input type="checkbox" name="use_paypal">
+                            <span class="d-inline-block rounded-circle icon-size checkbox-size border-color-default border-1 checkbox-span mr-2"></span>
+                          </label>
+                          <span class="f7">Used for variations</span>
+                        </div>
+                        <!-- !Used for variations products -->
+                      </div>
+
+                    </div>
+                    <div class="control flex-grow-1 ml-1 mt-2 d-flex flex-column justify-content-start">
+
+                      <%#= form_save_attr.input :value, multiple: true, label: "Value (separate by |)", required: false, :as => :text,
+                                                         input_html: {class: "input d-flex flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label text-left p-0 d-flex"} %>
+
+                      <label class="text optional label text-left p-0 d-flex" for="product_attribute_value">Value
+                        (separate by |)</label>
+                      <textarea class="product-attributes-value text optional input d-flex flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" name="product_attribute[value]" id="product-attribute-value"></textarea>
+                    </div>
+
+                  </div>
+
+                  <hr class="my-2 w-full">
+                </div>
+
+                <!-- Save Attributes -->
+                <div class="button-wishlist d-flex px-3" id="button-save-attributes">
+                  <div class="d-flex font-roboto outline-none-imp font-weight-bolder align-items-center duration-500">
+                    <i class="fa fa-heart mr-3 duration-500"></i>Save Attributes
+                  </div>
+                </div>
+                <!-- !Save Attributes -->
+                <%# end %>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+        <!-- !Attributes -->
+
+        <!-- Variations -->
+<!--        <div id="input-variations" class="tab-content">-->
+          <%#= link_to create_variations_from_attrs_products_path,
+                      class: "link-no-style w-full mb-3 max-w-xs font-bold shadow-sm", method: "post", remote: true do %>
+            <!--                      <div class="w-full d-flex justify-content-center">-->
+            <!--                        <button type="submit" class="d-flex d-inline-block font-roboto outline-none-imp font-weight-bolder align-items-center duration-500 text-gray-800">-->
+            <!--                          <i class="fa fa-sign-in-alt mr-3 duration-500"></i>Sign In-->
+            <!--                        </button>-->
+            <!--                      </div>-->
+<!--            <div class="custom-btn-normal ml-2 f6 width-min py-2">Create</div>-->
+
+          <%# end %>
+          <%#= link_to "Create", create_variations_from_attrs_products_path, method: "post", remote: true %>
+<!--        </div>-->
+
+        <!-- Advanced -->
+        <div id="input-inventory" class="tab-content">
+          <%= meta.simple_fields_for :product_advanced do |advanced| %>
+            <!-- Purchase note -->
+            <div class="field mt-2">
+              <div class="control d-flex mt-2 justify-content-start">
+                <%= advanced.input :purchase_note, label: "Purchase note", required: false,
+                                   input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+              </div>
+            </div>
+            <!-- !Purchase note -->
+
+            <!-- Reviews? -->
+            <div class="field mt-2">
+              <div class="control d-flex mt-2 justify-content-start">
+                <%= advanced.label "Enable reviews", class: "label col-4 text-left" %>
+                <div>
+                  <%= advanced.check_box :enable_reviews, class: "input" %>
+                </div>
+              </div>
+            </div>
+            <!-- !Reviews? -->
+          <% end %>
+        </div>
+        <!-- !Advanced -->
+
+        <!-- More options -->
+        <div id="input-inventory" class="tab-content">
+          <%= meta.simple_fields_for :product_advanced do |advanced| %>
+            <!-- Purchase note -->
+            <div class="field mt-2">
+              <div class="control d-flex mt-2 justify-content-start">
+                <%= advanced.input :purchase_note, label: "Purchase note", required: false,
+                                   input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+              </div>
+            </div>
+            <!-- !Purchase note -->
+
+            <!-- Reviews? -->
+            <div class="field mt-2">
+              <div class="control d-flex mt-2 justify-content-start">
+                <%= advanced.label "Enable reviews", class: "label col-4 text-left" %>
+                <div>
+                  <%= advanced.check_box :enable_reviews, class: "input" %>
+                </div>
+              </div>
+            </div>
+            <!-- !Reviews? -->
+          <% end %>
+        </div>
+        <!-- !More options -->
+
+        <!-- Extra -->
+        <div id="input-inventory" class="tab-content">
+          <%= meta.simple_fields_for :product_extra do |extra| %>
+            <!-- Custom bubble -->
+            <!--                    <div class="field mt-2">-->
+            <!--                      <div class="control d-flex mt-2 justify-content-start">-->
+            <%#= meta.input :regular_price, label: "Custom bubble", required: false,       input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+            <!--                      </div>-->
+            <!--                    </div>-->
+            <!-- !Custom bubble -->
+
+            <!-- Custom bubble title -->
+            <!--                    <div class="field mt-2">-->
+            <!--                      <div class="control d-flex mt-2 justify-content-start">-->
+            <%#= meta.input :price, label: "Custom Bubble Title", required: false,                                    input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+            <!--                      </div>-->
+            <!--                    </div>-->
+
+            <!-- !Custom bubble title -->
+
+            <!-- Product Video -->
+            <div class="field mt-2">
+              <div class="control d-flex mt-2 justify-content-start">
+                <%= extra.input :product_video, label: "Product Video", required: false,
+                                input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+              </div>
+            </div>
+
+            <!-- !Product Video -->
+          <% end %>
+
+        </div>
+        <!-- !Extra -->
+
+      </div>
+
+    </div>
+  <% end %>
+<% end %>

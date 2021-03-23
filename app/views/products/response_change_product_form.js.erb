@@ -1,0 +1,9 @@
+console.log("WTF Type", "<%= @product_type %>")
+
+if ("<%= @product_type %>" === "variation") {
+    console.log("WTF Type", "<%= @product_type %>")
+    $("#form-meta").html("<%= escape_javascript render 'products/form_product_variation' %>")
+//    document.getElementById("form-meta").innerHTML = "<%#= escape_javascript render 'products/form_product_variation', product: @product %>"
+} else if ("<%= @product_type %>" === "normal") {
+    document.getElementById("form-meta").innerHTML = "<%= escape_javascript render 'products/form_product_normal', product: @product %>"
+}

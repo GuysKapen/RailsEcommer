@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     collection do
       post :save_attributes
       post :create_variations_from_attrs
+      post :change_product_form
       #   get :quick_view
       # post :quick_view
     end

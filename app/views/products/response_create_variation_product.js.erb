@@ -1,4 +1,4 @@
-$("#input-variations").html("<%= escape_javascript render 'products/variation_products', form: @form, attrs: @attrs %>")
+$("#input-variations").html("<%= escape_javascript render 'products/form_partial_variation_products', form: @form, attrs: @attrs %>")
 function setupProductVariationIcons() {
     const variations = document.getElementsByClassName("container-product-variation")
     for (let i = 0; i < variations.length; i++) {

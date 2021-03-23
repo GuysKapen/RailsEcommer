@@ -4,6 +4,9 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[new edit update]
+  before_action :init_product_form, only: %i[new change_product_form]
+
+  attr_reader :product
 
   # GET /products
   # GET /products.json
@@ -20,22 +23,19 @@ class ProductsController < ApplicationController
 
   # GET /products/new
   def new
-    @product = Product.new
-    @product_meta = @product.build_product_meta
-    @product_meta.build_product_advanced
-    @product_meta.build_product_inventory
-    @product_meta.build_product_linked
-    @product_meta.build_product_extra
-    @product_meta.build_product_shipping
-    @product_meta.build_product_sale_price
+    # @product = Product.new
+    # @product_meta = @product.build_product_meta
+    # @product_meta.build_product_advanced
+    # @product_meta.build_product_inventory
+    # @product_meta.build_product_linked
+    # @product_meta.build_product_extra
+    # @product_meta.build_product_shipping
+    # @product_meta.build_product_sale_price
+    # init_product
     @categories = Category.all
     @product_attr = ProductAttribute.new
-    @product_variation = ProductVariation.new
-    @product_variation_meta = ProductMeta.new
 
-    4.times { @product.product_variations.build }
-
-    print("Hello\n", @product.product_variations[1])
+    session[:product] = @product
   end
 
   # GET /products/1/edit
@@ -82,9 +82,9 @@ class ProductsController < ApplicationController
       print('Variation Shipping---------------------------------------\n', @product_variation_meta.inspect)
 
       if @product_variation.save
-        print("Save meta variation success")
+        print('Save meta variation success')
       else
-        print("Variation errors", @product_variation_meta.errors.full_messages)
+        print('Variation errors', @product_variation_meta.errors.full_messages)
       end
     end
 
@@ -92,6 +92,7 @@ class ProductsController < ApplicationController
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
         format.json { render :show, status: :created, location: @product }
+        session.delete(:product)
       else
         print('Fuck------------------------------\n', @product.errors.full_messages)
         print('WTF', @product_meta.errors.full_messages)
@@ -244,7 +245,19 @@ class ProductsController < ApplicationController
     end
 
     respond_to do |format|
-      format.js { render 'products/response_create_variation_product', form: @form }
+      format.js { render 'products/response_create_variation_product' }
+    end
+  end
+
+  def change_product_form
+    print('Fucking', session[:product])
+    print('Params', params)
+    init_product_form
+    # @product ||= Product.new(session[:product])
+    # @product.build_product_meta
+    @product_type = params[:type]
+    respond_to do |format|
+      format.js { render 'products/response_change_product_form' }
     end
   end
 
@@ -253,6 +266,20 @@ class ProductsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  # Use for build product with vari form
+  def init_product_form
+    @product ||= Product.new(session[:product])
+    @product_meta = @product.build_product_meta
+    @product_meta.build_product_advanced
+    @product_meta.build_product_inventory
+    @product_meta.build_product_linked
+    @product_meta.build_product_extra
+    @product_meta.build_product_shipping
+    @product_meta.build_product_sale_price
+    # @categories = Category.all
+    @product_attr = ProductAttribute.new
   end
 
   # Only allow a list of trusted parameters through.

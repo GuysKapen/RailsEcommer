@@ -2,6 +2,7 @@ document.setupCustomSelect = function () {
     // Iterate over each select element
     $('select').each(function () {
 
+        const select = this;
         // Cache the number of options
         let $this = $(this),
             numberOfOptions = $(this).children('option').length;
@@ -59,10 +60,11 @@ document.setupCustomSelect = function () {
         // Hides the unordered list when a list item is clicked and updates the styled div to show the selected list item
         // Updates the select element to have the value of the equivalent option
         $listItems.click(function (e) {
-            e.stopPropagation();
+            // e.stopPropagation();
             $styledSelect.text($(this).text()).removeClass('active');
             $this.val($(this).attr('rel'));
             $list.hide();
+            $(select).triggerHandler("change", $this.val($(this).attr('rel')))
             /* alert($this.val()); Uncomment this for demonstration! */
         });
 

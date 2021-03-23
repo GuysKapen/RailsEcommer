@@ -1,10 +1,19 @@
+import {setupTap} from "../utils/tabs";
+
 document.addEventListener("turbolinks:load", function () {
-    let add_category = document.getElementById("add_new_category")
-    if (add_category == null) return
-    add_category.addEventListener("click", function () {
 
-    })
+    setupProductCategory()
 
+    setupProductAttributes();
+
+    setupButtonAddAttr()
+
+    setupProductVariationIcons()
+
+    setupProductType()
+})
+
+function setupProductAttributes() {
     const names = document.getElementsByClassName("product-attributes-name")
     const values = document.getElementsByClassName("product-attributes-value")
     const buttonSaveAttr = document.getElementById("button-save-attributes")
@@ -29,11 +38,15 @@ document.addEventListener("turbolinks:load", function () {
             }
         })
     })
+}
 
-    setupButtonAddAttr()
+function setupProductCategory() {
+    let add_category = document.getElementById("add_new_category")
+    if (add_category == null) return
+    add_category.addEventListener("click", function () {
 
-    setupProductVariationIcons()
-})
+    })
+}
 
 function setupButtonAddAttr() {
     document.getElementById("button-add-attribute").addEventListener("click", function () {
@@ -87,4 +100,34 @@ function setupProductVariationIcons() {
     // $("#variation-100").on("click", function () {
     //     $("#container-product-variation-body").toggleClass('collapse-height')
     // })
+}
+
+function setupProductType() {
+    const selectProductType = document.getElementById("select-product-type")
+    const buttonChangeProductType = document.getElementById("button-change-product-type")
+
+    $(selectProductType).on("change", function (e, data) {
+        console.log("Select product type change", selectProductType.selectedIndex, data)
+    })
+
+    buttonChangeProductType.addEventListener("click", function () {
+        console.log("Type", selectProductType.value)
+        Rails.ajax({
+            url: "/products/change_product_form",
+            type: "post",
+            data: {'type': selectProductType.value},
+            success: function () {
+                console.log("Setup Tab....")
+                setupTap()
+            },
+            beforeSend(xhr, options) {
+                xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8')
+                // Workaround: add options.data late to avoid Content-Type header to already being set in stone
+                // https://github.com/rails/rails/blob/master/actionview/app/assets/javascripts/rails-ujs/utils/ajax.coffee#L53
+                options.data = JSON.stringify({'type': selectProductType.value})
+                return true
+            },
+        })
+    })
+
 }

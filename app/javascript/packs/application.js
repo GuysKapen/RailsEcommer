@@ -26,6 +26,7 @@ require("../../assets/stylesheets/application.scss") // ADD THIS LINE
 
 import toastr from 'toastr';
 import Rails from "@rails/ujs";
+
 Rails.start()
 window.Rails = Rails;
 global.toastr = toastr;
