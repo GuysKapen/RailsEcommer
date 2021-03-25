@@ -3,10 +3,15 @@ document.setupCustomSelect = function () {
     $('select').each(function () {
 
         const select = this;
+        // select.parent()
         // Cache the number of options
         let $this = $(this),
             numberOfOptions = $(this).children('option').length;
 
+        // Only process the select not has been styled
+        if ($this.parent().find(".styled_select").length !== 0) {
+            return
+        }
         // Hides the select element
         $this.addClass('s-hidden');
 

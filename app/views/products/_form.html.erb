@@ -16,7 +16,7 @@
 
             <div class="field mt-5">
               <div class="control">
-                <%= meta.input :description, as: :ckeditor, label: "Description", required: true,
+                <%= meta.input :description, as: :ckeditor, label: "Description", required: false,
                                input_html: {class: "input w-100"}, wrapper: false, label_html: {class: "label text-left w-100"} %>
               </div>
             </div>
@@ -48,10 +48,10 @@
             </div>
 
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="display: none">
-              <ol class="carousel-indicators">
+              <ol class="carousel-indicators" id="product-image-upload-preview-carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+<!--                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>-->
+<!--                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>-->
               </ol>
               <div class="carousel-inner" id="list" role="listbox" style="height: 32rem">
               </div>

@@ -119,6 +119,8 @@ function setupProductType() {
             success: function () {
                 console.log("Setup Tab....")
                 setupTap()
+                document.setupCustomSelect()
+                setupProductVariation()
             },
             beforeSend(xhr, options) {
                 xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8')
@@ -130,4 +132,60 @@ function setupProductType() {
         })
     })
 
+}
+
+function setupProductVariation() {
+    const selectProductType = document.getElementById("select-product-variation-create")
+    const buttonAddVariation = document.getElementById("button-add-variation")
+
+    buttonAddVariation.addEventListener("click", function () {
+        console.log("Type Variation", selectProductType.value)
+        const type = selectProductType.value.toString().toLowerCase()
+        if (type === "add variation") {
+
+        } else {
+            Rails.ajax({
+                url: "/products/create_variations_from_attrs",
+                type: "post",
+                data: {'type': selectProductType.value},
+                success: function () {
+                    setupProductFileUpload()
+                    // console.log("Setup Tab....")
+                    // setupTap()
+                    // document.setupCustomSelect()
+
+                },
+            })
+        }
+
+    })
+
+}
+
+function setupProductFileUpload() {
+    const buttonUploads = document.getElementsByClassName("button-variation-file-upload")
+    for (let i = 0; i < buttonUploads.length; i++) {
+        const button = buttonUploads[i]
+        button.addEventListener('click', function () {
+            const index = button.attributes['data-index'].value
+            // document.getElementById(`variation-file-upload-${index}`)
+            $(`#variation-file-upload-${index}`).show().focus().click().hide().on('change', function (e) {
+                handleFileInputVariationChange(button, e.target.files[0])
+            })
+        })
+
+    }
+}
+
+function handleFileInputVariationChange(container, file) {
+    const reader = new FileReader()
+    // Closure to capture the file information.
+    reader.onload = (function(theFile) {
+        return function(e) {
+            container.innerHTML = ['<img class="w-24 cursor-pointer" src="', e.target.result,
+                '" title="', escape(theFile.name), '"/>'].join('');
+        };
+    })(file);
+    // Read in the image file as a data URL.
+    reader.readAsDataURL(file);
 }

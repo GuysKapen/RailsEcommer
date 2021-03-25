@@ -278,7 +278,7 @@ class ProductsController < ApplicationController
     @product_meta.build_product_extra
     @product_meta.build_product_shipping
     @product_meta.build_product_sale_price
-    # @categories = Category.all
+    @categories = Category.all
     @product_attr = ProductAttribute.new
   end
 

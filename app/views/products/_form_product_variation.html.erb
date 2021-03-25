@@ -4,14 +4,14 @@
 
       <div class="flex-grow-1 mx-0 px-0 border-right child-my-2-not-first tabs-panel">
 
-        <div class="row mt-0-imp mx-0 flex cursor-pointer active tab-panel background-hover-white py-2">
-          <div class="col-2 text-left">
-            <i class="fas mt-1 fa-wrench text-center"></i>
-          </div>
-          <p class="ml-3 f4">General</p>
-        </div>
+<!--        <div class="row mt-0-imp mx-0 flex cursor-pointer active tab-panel background-hover-white py-2">-->
+<!--          <div class="col-2 text-left">-->
+<!--            <i class="fas mt-1 fa-wrench text-center"></i>-->
+<!--          </div>-->
+<!--          <p class="ml-3 f4">General</p>-->
+<!--        </div>-->
 
-        <div class="row mt-1 mx-0 flex cursor-pointer tab-panel background-hover-white py-2">
+        <div class="row mt-1 mx-0 flex cursor-pointer active tab-panel background-hover-white py-2">
           <div class="col-2 text-left">
             <i class="fas mt-1 fa-shipping-fast text-center"></i>
           </div>
@@ -70,32 +70,8 @@
       </div>
 
       <div class="col-8 ml-3 mx-0 px-0 tabs-content">
-        <!-- General Attribute -->
-        <div id="input-general" class="active tab-content ">
-
-          <div class="field">
-            <div class="control d-flex mt-2 justify-content-start">
-              <%= meta.input :regular_price, label: "Regular Price ($)", required: false,
-                             placeholder: "Price",
-                             input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
-            </div>
-          </div>
-
-          <%= meta.simple_fields_for :product_sale_price do |sale_price| %>
-            <div class="field mt-2">
-              <div class="control d-flex mt-2 justify-content-start">
-                <%= sale_price.input :sale_price, label: "Sale Price ($)", required: false,
-                                     placeholder: "Sale Price",
-                                     input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
-              </div>
-            </div>
-          <% end %>
-
-        </div>
-        <!-- !General Attribute -->
-
         <!-- Inventory Input -->
-        <div id="input-inventory" class="tab-content ">
+        <div id="input-inventory" class="active tab-content ">
 
           <%= meta.simple_fields_for :product_inventory do |inventory| %>
 
@@ -219,7 +195,7 @@
         <!-- !Shipping Input -->
 
         <!-- Linked Product -->
-        <div id="input-inventory" class="tab-content">
+        <div id="input-linked-product" class="tab-content">
           <%= meta.simple_fields_for :product_linked do |linked_product| %>
             <!-- Upsell -->
             <div class="field mt-2">
@@ -244,7 +220,7 @@
         <!-- !Linked Product -->
 
         <!-- Attributes -->
-        <div id="input-inventory" class="tab-content flex flex-col h-full">
+        <div id="input-attributes" class="tab-content flex flex-col h-full">
           <div class="flex flex-col h-full">
             <div class="field mt-2">
               <div class="control d-flex mt-2 justify-content-start">
@@ -278,7 +254,7 @@
                     <div class="control w-4/12 mt-2">
                       <div>
                         <label class="text optional label text-left p-0 d-flex" for="product_attribute_name">Name</label>
-                        <textarea class="product-attributes-name text optional input d-flex flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" name="product_attribute[name]" id="product-attribute-name"></textarea>
+                        <input type="text" placeholder="Attribute name" class="product-attributes-name text optional input d-flex flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" name="product_attribute[name]" id="product-attribute-name"/>
 
                         <%#= form_save_attr.input :name, multiple: true, label: "Name", required: false,
                                                            input_html: {class: "input d-flex flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label text-left p-0 d-flex"} %>
@@ -312,7 +288,7 @@
 
                       <label class="text optional label text-left p-0 d-flex" for="product_attribute_value">Value
                         (separate by |)</label>
-                      <textarea class="product-attributes-value text optional input d-flex flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" name="product_attribute[value]" id="product-attribute-value"></textarea>
+                      <textarea placeholder="value1|value2|..." class="product-attributes-value text optional input d-flex flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" name="product_attribute[value]" id="product-attribute-value"></textarea>
                     </div>
 
                   </div>
@@ -340,21 +316,19 @@
 
         <!-- Variations -->
         <div id="input-variations" class="tab-content">
-          <%= link_to create_variations_from_attrs_products_path,
+          <div class="my-1 w-6/12 flex">
+            <%= select_tag "product_variation_type", raw("<option value='normal'>Add variation</option><option value='variation'>Create variation from all attributes</option>"), class: "mx-12", id: "select-product-variation-create" %>
+            <div id="button-add-variation" class="custom-btn-normal ml-2 f6 width-min">OK</div>
+          </div>
+          <%#= link_to create_variations_from_attrs_products_path,
                       class: "link-no-style w-full mb-3 max-w-xs font-bold shadow-sm", method: "post", remote: true do %>
-            <!--                      <div class="w-full d-flex justify-content-center">-->
-            <!--                        <button type="submit" class="d-flex d-inline-block font-roboto outline-none-imp font-weight-bolder align-items-center duration-500 text-gray-800">-->
-            <!--                          <i class="fa fa-sign-in-alt mr-3 duration-500"></i>Sign In-->
-            <!--                        </button>-->
-            <!--                      </div>-->
-            <div class="custom-btn-normal ml-2 f6 width-min py-2">Create</div>
-
-          <% end %>
+<!--            <div class="custom-btn-normal ml-2 f6 width-min py-2">Create</div>-->
+          <%# end %>
           <%#= link_to "Create", create_variations_from_attrs_products_path, method: "post", remote: true %>
         </div>
 
         <!-- Advanced -->
-        <div id="input-inventory" class="tab-content">
+        <div id="input-advanced" class="tab-content">
           <%= meta.simple_fields_for :product_advanced do |advanced| %>
             <!-- Purchase note -->
             <div class="field mt-2">
@@ -380,7 +354,7 @@
         <!-- !Advanced -->
 
         <!-- More options -->
-        <div id="input-inventory" class="tab-content">
+        <div id="input-more-options" class="tab-content">
           <%= meta.simple_fields_for :product_advanced do |advanced| %>
             <!-- Purchase note -->
             <div class="field mt-2">
@@ -406,7 +380,7 @@
         <!-- !More options -->
 
         <!-- Extra -->
-        <div id="input-inventory" class="tab-content">
+        <div id="input-extra" class="tab-content">
           <%= meta.simple_fields_for :product_extra do |extra| %>
             <!-- Custom bubble -->
             <!--                    <div class="field mt-2">-->
