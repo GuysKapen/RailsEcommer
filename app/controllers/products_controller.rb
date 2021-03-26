@@ -70,23 +70,23 @@ class ProductsController < ApplicationController
     # @product_variation = @product.product_variations.build.build_product_meta(product_variation_params[:product_variation_meta])
 
     # @product_variation = ProductMeta.new(product_variation_params[:product_variation_meta])
-    unless params[:product][:product_variation_meta].nil?
-
-      @product_variation = @product.product_variations.build
-      @product_variation_meta = @product_variation.build_product_meta(product_variation_meta_params)
-      # @product_variation_meta = ProductMeta.new(product_variation_meta_params)
-      # @product_variation = @product_variation_meta.build_product_variation
-      # @product_variation_meta.product_id = @product_variation.id
-      # product_variation_shipping = @product_variation_meta.build_product_shipping(product_variation_meta_shipping_params)
-      print('Variation---------------------------------------\n', @product_variation.inspect)
-      print('Variation Shipping---------------------------------------\n', @product_variation_meta.inspect)
-
-      if @product_variation.save
-        print('Save meta variation success')
-      else
-        print('Variation errors', @product_variation_meta.errors.full_messages)
-      end
-    end
+    # unless params[:product][:product_variation_meta].nil?
+    #
+    #   @product_variation = @product.product_variations.build
+    #   @product_variation_meta = @product_variation.build_product_meta(product_variation_meta_params)
+    #   # @product_variation_meta = ProductMeta.new(product_variation_meta_params)
+    #   # @product_variation = @product_variation_meta.build_product_variation
+    #   # @product_variation_meta.product_id = @product_variation.id
+    #   # product_variation_shipping = @product_variation_meta.build_product_shipping(product_variation_meta_shipping_params)
+    #   print('Variation---------------------------------------\n', @product_variation.inspect)
+    #   print('Variation Shipping---------------------------------------\n', @product_variation_meta.inspect)
+    #
+    #   if @product_variation.save
+    #     print('Save meta variation success')
+    #   else
+    #     print('Variation errors', @product_variation_meta.errors.full_messages)
+    #   end
+    # end
 
     respond_to do |format|
       if @product.save
@@ -236,6 +236,7 @@ class ProductsController < ApplicationController
     @attrs_options = merge[:attrs]
     @form = params['form']
     @product = Product.new
+    print("Attrs", @attrs)
     @attrs.length.times do
       variation = @product.product_variations.build
       variation_meta = variation.build_product_meta
