@@ -138,7 +138,7 @@ function setupProductVariation() {
     const selectProductType = document.getElementById("select-product-variation-create")
     const buttonAddVariation = document.getElementById("button-add-variation")
 
-    buttonAddVariation.addEventListener("click", function () {
+    buttonAddVariation?.addEventListener("click", function () {
         console.log("Type Variation", selectProductType.value)
         const type = selectProductType.value.toString().toLowerCase()
         if (type === "add variation") {

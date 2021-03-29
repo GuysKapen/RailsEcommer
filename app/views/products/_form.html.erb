@@ -50,8 +50,6 @@
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="display: none">
               <ol class="carousel-indicators" id="product-image-upload-preview-carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-<!--                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>-->
-<!--                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>-->
               </ol>
               <div class="carousel-inner" id="list" role="listbox" style="height: 32rem">
               </div>
@@ -67,13 +65,22 @@
 
             <div class="section mt-lg-5 border">
 
-              <!-- Product Type -->
-              <div class="my-1 w-6/12 flex mx-3">
-                <label for="" class="font-roboto mr-2">Product Type</label>
-                <%= select_tag "product_type", raw("<option value='normal'>Normal</option><option value='variation'>Variation</option>"), class: "mx-12", id: "select-product-type" %>
-                <div id="button-change-product-type" class="custom-btn-normal ml-2 f6 width-min">OK</div>
+              <div class="flex pr-2">
+                <!-- Product Type -->
+                <div class="flex-grow-1 mt-1 mx-0 flex cursor-pointer py-2 color-primary-dark-bg text-white my-2">
+                  <div class="col-2 text-left">
+                    <i class="fas mt-1 fa-shipping-fast text-center"></i>
+                  </div>
+                  <p class="ml-3 f4">Product Type</p>
+                </div>
+
+                <div class="col-8 flex ml-3 py-2 child-my-auto child-py-2">
+                  <!--                  <label for="" class="font-roboto mr-2">Product Type</label>-->
+                  <%= select_tag "product_type", raw("<option value='normal'>Normal</option><option value='variation'>Variation</option>"), class: "mx-12", id: "select-product-type" %>
+                  <div id="button-change-product-type" class="color-primary-dark-bg text-white rounded-extra-lg py-2 px-4 cursor-pointer duration-1000 ml-2 width-min">OK</div>
+                </div>
+                <!-- !Product Type -->
               </div>
-              <!-- !Product Type -->
 
               <div id="form-meta">
                 <%= render 'products/form_product_normal', product: @product %>
@@ -95,48 +102,54 @@
         <div class="mx-3">
           <!-- Public -->
           <div class="border position-relative child-mx-2">
-            <div class="background-hover-white p-1 py-2 m-0-imp">
+            <div class="p-1 py-2 m-0-imp color-primary-dark-bg text-white">
               <!--            <hp class="font-weight-bold title mt-3">Publish</hp>-->
               <p class="ml-1 f4 m-0">Publish</p>
 
             </div>
             <hr style="margin: 0 !important;">
             <div class="d-flex justify-content-between mt-3">
-              <div class="custom-btn-wide rounded-extra-lg">Save Draft</div>
-              <div class="custom-btn-wide rounded-extra-lg">Preview</div>
+              <div class="custom-btn-wide rounded-extra-lg color-primary-dark-bg text-white">Save Draft</div>
+              <div class="custom-btn-wide rounded-extra-lg color-primary-dark-bg text-white">Preview</div>
             </div>
             <div class="border-bottom">
               <div class="mx-0 mt-3 flex cursor-pointer d-block">
-                <i class="fas mt-1 mt-1 fa-paperclip text-center"><span class="ml-3 f5 fw3">Status: <span class="font-weight-bold">Draft</span></span></i>
+                <i class="fas fa-paperclip text-center w-6"></i>
+                <span class="ml-3 f5 fw3">Status: <span class="font-weight-bold">Draft</span></span>
               </div>
               <div class="mx-0 mt-3 flex cursor-pointer d-block">
-                <i class="fas mt-1 mt-1 fa-low-vision text-center"><span class="ml-3 f5 fw3">Visibility: <span class="font-weight-bold">Public</span></span></i>
+                <i class="fas fa-low-vision text-center w-6"></i>
+                <span class="ml-3 f5 fw3">Visibility: <span class="font-weight-bold">Public</span></span>
               </div>
               <div class="mx-0 mt-3 flex cursor-pointer d-block">
-                <i class="fas mt-1 mt-1 fa-gift text-center"><span class="ml-3 f5 fw3">Publish <span class="font-weight-bold">immediately</span></span></i>
+                <i class="fas fa-gift text-center w-6"></i>
+                <span class="ml-3 f5 fw3">Publish <span class="font-weight-bold">Immediately</span></span>
               </div>
               <div class="mx-0 my-3 flex d-block">
-                <span>Catalog visibility: <span class="font-weight-bold">Shop and search results</span></span>
+                <i class="fas fa-search text-center w-6"></i>
+                <span class="ml-3 f5 fw3">Catalog visibility: <span class="font-weight-bold">Shop and search results</span></span>
               </div>
             </div>
 
             <div class="mx-0 my-3 flex d-flex cursor-pointer d-block justify-content-between align-items-center">
               <div class="">
-                <p class="d-block custom-btn-wide rounded-extra-lg" href="#">Copy</p>
+                <p class="d-block custom-btn-wide rounded-extra-lg color-primary-dark-bg text-white" href="#">Copy</p>
               </div>
               <div class="">
-                <div class="custom-btn-wide rounded-extra-lg bg-light">Publish</div>
+                <div class="custom-btn-wide rounded-extra-lg color-primary-dark-bg text-white">Publish</div>
               </div>
             </div>
             <div>
-              <div class="custom-btn-wide rounded-extra-lg my-3 d-inline-block" href="#">Move to Trash</div>
+              <div class="custom-btn-wide rounded-extra-lg my-3 d-inline-block color-primary-dark-bg text-white" href="#">Move
+                to Trash
+              </div>
             </div>
           </div>
           <!-- !Public -->
 
           <!-- Product categories -->
           <div class="border position-relative child-mx-2 mt-3">
-            <div class="background-hover-white p-1 py-2 m-0-imp">
+            <div class="p-1 py-2 m-0-imp color-primary-dark-bg text-white">
               <p class="f4 m-0 ml-1">Product categories</p>
             </div>
             <hr style="margin: 0 !important;">
@@ -189,7 +202,7 @@
             <!--            </div>-->
             <!--            <p class="ml-3 f4">Product Tags</p>-->
             <!--          </div>-->
-            <div class="background-hover-white p-1 py-2 m-0-imp">
+            <div class="color-primary-dark-bg text-white p-1 py-2 m-0-imp">
               <p class="f4 ml-1 m-0">Product Tags</p>
             </div>
             <hr style="margin: 0 !important;">
@@ -203,7 +216,7 @@
 
           <!-- Product image -->
           <div class="border position-relative child-mx-2 mt-3">
-            <div class="background-hover-white p-1 py-2 m-0-imp">
+            <div class="color-primary-dark-bg text-white p-1 py-2 m-0-imp">
               <p class="f4 ml-1 m-0">Product Image</p>
             </div>
             <hr style="margin: 0 !important;">
@@ -213,7 +226,7 @@
 
           <!-- Product gallery -->
           <div class="border position-relative child-mx-2 mt-3">
-            <div class="background-hover-white p-1 py-2 m-0-imp">
+            <div class="color-primary-dark-bg text-white p-1 py-2 m-0-imp">
               <p class="f4 ml-1 m-0">Product Gallery</p>
             </div>
             <hr style="margin: 0 !important;">
