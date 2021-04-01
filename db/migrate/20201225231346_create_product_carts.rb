@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateProductCarts < ActiveRecord::Migration[6.0]
   def change
     create_table :product_carts do |t|
@@ -7,7 +9,7 @@ class CreateProductCarts < ActiveRecord::Migration[6.0]
       t.string :color
       t.integer :quantity
       t.string :size
-      t.references :user_id
+      t.references :user_id, foreign_key: { to_table: 'users' }
 
       t.timestamps
     end

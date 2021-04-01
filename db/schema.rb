@@ -12,10 +12,13 @@
 
 ActiveRecord::Schema.define(version: 2021_03_13_235038) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
@@ -23,7 +26,7 @@ ActiveRecord::Schema.define(version: 2021_03_13_235038) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
@@ -61,7 +64,7 @@ ActiveRecord::Schema.define(version: 2021_03_13_235038) do
     t.boolean "enable_reviews"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "product_meta_id", null: false
+    t.bigint "product_meta_id", null: false
     t.index ["product_meta_id"], name: "index_product_advanceds_on_product_meta_id"
   end
 
@@ -80,10 +83,10 @@ ActiveRecord::Schema.define(version: 2021_03_13_235038) do
     t.string "size"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "cart_id"
-    t.integer "product_id"
-    t.integer "wishlist_id"
-    t.integer "order_id"
+    t.bigint "cart_id"
+    t.bigint "product_id"
+    t.bigint "wishlist_id"
+    t.bigint "order_id"
     t.index ["cart_id"], name: "index_product_carts_on_cart_id"
     t.index ["order_id"], name: "index_product_carts_on_order_id"
     t.index ["product_id"], name: "index_product_carts_on_product_id"
@@ -94,7 +97,7 @@ ActiveRecord::Schema.define(version: 2021_03_13_235038) do
     t.text "product_video"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "product_meta_id", null: false
+    t.bigint "product_meta_id", null: false
     t.string "tag"
     t.index ["product_meta_id"], name: "index_product_extras_on_product_meta_id"
   end
@@ -106,7 +109,7 @@ ActiveRecord::Schema.define(version: 2021_03_13_235038) do
     t.boolean "sold_individually"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "product_meta_id", null: false
+    t.bigint "product_meta_id", null: false
     t.index ["product_meta_id"], name: "index_product_inventories_on_product_meta_id"
   end
 
@@ -115,7 +118,7 @@ ActiveRecord::Schema.define(version: 2021_03_13_235038) do
     t.text "cross_sells"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "product_meta_id", null: false
+    t.bigint "product_meta_id", null: false
     t.index ["product_meta_id"], name: "index_product_linkeds_on_product_meta_id"
   end
 
@@ -127,7 +130,7 @@ ActiveRecord::Schema.define(version: 2021_03_13_235038) do
     t.text "images"
     t.string "name"
     t.string "product_type"
-    t.integer "product_id"
+    t.bigint "product_id"
     t.index ["product_type", "product_id"], name: "index_product_meta_on_product_type_and_product_id"
   end
 
@@ -143,7 +146,7 @@ ActiveRecord::Schema.define(version: 2021_03_13_235038) do
     t.decimal "sale_date_end"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "product_meta_id", null: false
+    t.bigint "product_meta_id", null: false
     t.index ["product_meta_id"], name: "index_product_sale_prices_on_product_meta_id"
   end
 
@@ -155,14 +158,14 @@ ActiveRecord::Schema.define(version: 2021_03_13_235038) do
     t.text "shipping_class"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "product_meta_id", null: false
+    t.bigint "product_meta_id", null: false
     t.index ["product_meta_id"], name: "index_product_shippings_on_product_meta_id"
   end
 
   create_table "product_stocks", force: :cascade do |t|
     t.integer "quantity"
     t.text "in_stock"
-    t.integer "product_meta_id", null: false
+    t.bigint "product_meta_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["product_meta_id"], name: "index_product_stocks_on_product_meta_id"
@@ -171,15 +174,15 @@ ActiveRecord::Schema.define(version: 2021_03_13_235038) do
   create_table "product_variations", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "product_id", null: false
+    t.bigint "product_id", null: false
     t.index ["product_id"], name: "index_product_variations_on_product_id"
   end
 
   create_table "products", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-    t.integer "category_id"
+    t.bigint "user_id"
+    t.bigint "category_id"
     t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
@@ -197,7 +200,7 @@ ActiveRecord::Schema.define(version: 2021_03_13_235038) do
   end
 
   create_table "wishlists", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_wishlists_on_user_id"
