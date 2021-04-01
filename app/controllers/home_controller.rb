@@ -6,7 +6,7 @@ class HomeController < ApplicationController
                          .all
                          .map { |product| ProductView.new(product) }
     @products_view_sale = Product
-                              .merge(ProductMeta.joins(:product_sale_price))
+                              .joins(product_meta: [:product_sale_price])
                               .where('sale_date_start < ?', 0.day.ago)
                               .map { |product| ProductView.new(product) }
     # .joins(:product_meta)

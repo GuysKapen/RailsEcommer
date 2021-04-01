@@ -54,14 +54,20 @@ WORKDIR /usr/src/app
 EXPOSE 3000
 CMD ["rails", "server", "-b", "0.0.0.0"]
 
-RUN apt-get update && apt-get install -y nodejs --no-install-recommends && rm -rf /var/lib/apt/lists/*
-RUN apt-get update && apt-get install -y mysql postgresql-client sqlite3 --no-install-recommends && rm -rf /var/lib/apt/lists/*
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+RUN apt-get update
+RUN apt-get install -y yarn
+RUN yarn install --check-files
 
+RUN apt-get update && apt-get install -y nodejs --no-install-recommends && rm -rf /var/lib/apt/lists/* && apt-get autoremove
+RUN apt-get update && apt-get install -y mysql-common postgresql-client sqlite3 --no-install-recommends && rm -rf /var/lib/apt/lists/* && apt-get autoremove
+#RUN npm install -g yarn
 COPY Gemfile /usr/src/app/
 
 # Uncomment the line below if Gemfile.lock is maintained outside of build process
 # COPY Gemfile.lock /usr/src/app/
-
 
 RUN bundle install
 
