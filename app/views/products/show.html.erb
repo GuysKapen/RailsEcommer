@@ -39,12 +39,14 @@
         <!--        <span class="font-baloo f4 font-weight-normal">Category: <%#= @product.category.name %></span>-->
         <h5 class="font-baloo font-size-20 f1 fw8 mb-0"><%= @product.product_meta.name %></h5>
         <div class="d-flex">
-          <% unless @product.product_meta.product_sale_price.nil? %>
+          <% if @product.product_meta.product_sale_price.nil? %>
+            <h6 class="font-baloo f2">$<%= @product.product_meta.regular_price %></h6>
+          <% else %>
             <h6 class="font-baloo f2">$<%= @product.product_meta.product_sale_price.sale_price %></h6>
+            <h6 class="font-baloo ml-3 f3 d-flex justify-content-center flex-column">
+              <del>$<%= @product.product_meta.regular_price %></del>
+            </h6>
           <% end %>
-          <h6 class="font-baloo ml-3 f3 d-flex justify-content-center flex-column">
-            <del>$<%= @product.product_meta.regular_price %></del>
-          </h6>
 
         </div>
 
