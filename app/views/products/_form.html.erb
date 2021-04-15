@@ -88,14 +88,14 @@
 
             </div>
 
-            <div class="field is-grouped d-flex mt-5">
-              <div class="control">
+<!--            <div class="field is-grouped d-flex mt-5">-->
+<!--              <div class="control">-->
                 <!--              <div class="button is-warning custom-btn line-height-normal d-inline-block" type="submit">Create Product-->
                 <!--              </div>-->
-                <%= f.button :submit, class: 'button is-warning custom-btn line-height-normal d-inline-block' %>
-                <%= link_to 'Cancel', products_path, class: 'button is-light link-no-style custom-btn' %>
-              </div>
-            </div>
+                <%#= f.button :submit, class: 'button is-warning custom-btn line-height-normal d-inline-block' %>
+                <%#= link_to 'Cancel', products_path, class: 'button is-light link-no-style custom-btn' %>
+<!--              </div>-->
+<!--            </div>-->
 
           </div>
         </div>
@@ -133,18 +133,18 @@
               <div class="">
                 <p class="d-block custom-btn-wide rounded-extra-lg color-primary-dark-bg text-white" href="#">Copy</p>
               </div>
-                    <%= f.submit "Publish", class: 'custom-btn-wide rounded-extra-lg color-primary-dark-bg text-white' %>
-                  <%#= link_to 'Cancel', products_path, class: 'button is-light link-no-style custom-btn' %>
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="">-->
-<!--                <div class="custom-btn-wide rounded-extra-lg color-primary-dark-bg text-white">Publish</div>-->
-<!--              </div>-->
+              <%= f.submit "Publish", class: 'custom-btn-wide rounded-extra-lg color-primary-dark-bg text-white' %>
+              <!--                </div>-->
+              <!--              </div>-->
+              <!--              <div class="">-->
+              <!--                <div class="custom-btn-wide rounded-extra-lg color-primary-dark-bg text-white">Publish</div>-->
+              <!--              </div>-->
             </div>
-            <div>
-              <div class="custom-btn-wide rounded-extra-lg my-3 d-inline-block color-primary-dark-bg text-white" href="#">Move
-                to Trash
+            <div class="flex justify-content-between">
+              <div class="custom-btn-wide rounded-extra-lg my-3 d-inline-block color-primary-dark-bg text-white" href="#">
+                Move to Trash
               </div>
+              <%= link_to 'Cancel', products_path, class: 'custom-btn-wide rounded-extra-lg my-3 d-inline-block color-primary-dark-bg text-white' %>
             </div>
           </div>
           <!-- !Public -->
@@ -225,6 +225,27 @@
               <p class="f4 ml-1 m-0">Product Image</p>
             </div>
             <hr style="margin: 0 !important;">
+<!--            <div class="field mt-2 w-full">-->
+<!--              <div class="control">-->
+<!--                <div class="w-full cursor-pointer text-left button-file-upload-data-id" data-id="product-image">-->
+<!--                  <i class="fa fa-3x fa-cloud-upload-alt text-blue-600"></i>-->
+<!--                </div>-->
+<!--                <div class="flex position-absolute left-full w-0 h-0 d-none">-->
+<!--                  <span class="file-cta"><span class="file-icon"><i class="fa fa-upload"></i></span><span class="file-label">Choose a file…</span></span>-->
+                  <%#= meta.file_field :images, required: true,-->
+<!--                                      multiple: true,-->
+<!--                                      as: :file,-->
+<!--                                      label: "",-->
+<!--                                      class: 'product-image-uploader',-->
+<!--                                      id: "input-file-upload-product-image",-->
+<!--                                      input_html: {class: "input w-100 file-input product-image hidden"},-->
+                                      wrapper: false, label_html: {class: "label text-left w-100"} %>
+<!--                </div>-->
+
+
+<!--              </div>-->
+<!--            </div>-->
+
             <p class="custom-btn-wide rounded-extra-lg my-3 d-inline-block" href="#">Set product image</p>
           </div>
           <!-- !Product image -->

@@ -1,6 +1,6 @@
-var form = document.getElementsByClassName("form-add-attributes");
-for (let i = 0; i < form.length; i++) {
-    form[i].style.display = "none"
+var formContainer = document.getElementsByClassName("form-add-attributes");
+for (let i = 0; i < formContainer.length; i++) {
+    formContainer[i].remove()
 }
 
 $("#product-attributes-container").html("<%= escape_javascript render 'products/product_attr_items', product_attrs: @product_attrs %>")

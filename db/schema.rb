@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_13_235038) do
+ActiveRecord::Schema.define(version: 2021_04_10_221833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -142,11 +142,11 @@ ActiveRecord::Schema.define(version: 2021_03_13_235038) do
 
   create_table "product_sale_prices", force: :cascade do |t|
     t.decimal "sale_price"
-    t.decimal "sale_date_start"
-    t.decimal "sale_date_end"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "product_meta_id", null: false
+    t.datetime "sale_date_start"
+    t.datetime "sale_date_end"
     t.index ["product_meta_id"], name: "index_product_sale_prices_on_product_meta_id"
   end
 

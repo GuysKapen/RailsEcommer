@@ -155,11 +155,11 @@ p {
   height: 32px;
 }
 .background-auth {
-  background-image: asset_data_url("auth/auth.svg");
+  background-image: url("../images/auth/auth.svg");
 }
 
 .background-login {
-  background-image: asset_data_url("auth/login.svg");
+  background-image: image_url("~images/auth/login.svg");
 }
 
 input[type="checkbox"] {

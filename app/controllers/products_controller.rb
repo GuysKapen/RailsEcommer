@@ -233,10 +233,10 @@ class ProductsController < ApplicationController
     @product_attrs = ProductAttribute.all
     merge = helpers.products_cartesian(@product_attrs)
     @attrs = merge[:value]
+    print("Attrs\n", @attrs.inspect)
     @attrs_options = merge[:attrs]
     @form = params['form']
     @product = Product.new
-    print("Attrs", @attrs)
     @attrs.length.times do
       variation = @product.product_variations.build
       variation_meta = variation.build_product_meta

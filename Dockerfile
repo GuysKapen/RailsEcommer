@@ -43,13 +43,14 @@
 #    # Run our app
 #CMD RAILS_ENV=${RAILS_ENV} bundle exec rails db:create db:migrate db:seed && bundle exec rails s -p ${PORT} -b '0.0.0.0'
 
-FROM ruby:2.7.0
+FROM ruby:2.7.2
 
+ENV APP_HOME /rails-app-docker
 # throw errors if Gemfile has been modified since Gemfile.lock
 # RUN bundle config --global frozen 1
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+RUN mkdir -p $APP_HOME
+WORKDIR $APP_HOME
 
 EXPOSE 3000
 CMD ["rails", "server", "-b", "0.0.0.0"]
@@ -57,18 +58,19 @@ CMD ["rails", "server", "-b", "0.0.0.0"]
 RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
-RUN apt-get update
-RUN apt-get install -y yarn
-RUN yarn install --check-files
+#RUN apt-get update
+#RUN apt-get install -y yarn
 
-RUN apt-get update && apt-get install -y nodejs --no-install-recommends && rm -rf /var/lib/apt/lists/* && apt-get autoremove
-RUN apt-get update && apt-get install -y mysql-common postgresql-client sqlite3 --no-install-recommends && rm -rf /var/lib/apt/lists/* && apt-get autoremove
+RUN apt-get update && apt-get install -y nodejs yarn --no-install-recommends && rm -rf /var/lib/apt/lists/* && apt-get autoremove
+RUN apt-get update && apt-get install -y mysql-common postgresql sqlite3 --no-install-recommends && rm -rf /var/lib/apt/lists/* && apt-get autoremove
 #RUN npm install -g yarn
-COPY Gemfile /usr/src/app/
+COPY Gemfile $APP_HOME
 
 # Uncomment the line below if Gemfile.lock is maintained outside of build process
-# COPY Gemfile.lock /usr/src/app/
+COPY Gemfile.lock $APP_HOME
 
 RUN bundle install
 
-COPY . /usr/src/app
+COPY . $APP_HOME
+RUN yarn install --check-files
+CMD RAILS_ENV=${RAILS_ENV} bundle exec rails db:create db:migrate db:seed && bundle exec rails s -p ${PORT} -b '0.0.0.0'

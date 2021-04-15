@@ -11,6 +11,8 @@ document.addEventListener("turbolinks:load", function () {
     setupProductVariationIcons()
 
     setupProductType()
+
+    setupProductFileUpload()
 })
 
 function setupProductAttributes() {
@@ -88,7 +90,6 @@ function setupButtonAddAttr() {
 
 function setupProductVariationIcons() {
     const variations = document.getElementsByClassName("container-product-variation")
-    console.log("Variations", variations)
     for (let i = 0; i < variations.length; i++) {
         const variation = variations[i]
         if (!(variation instanceof HTMLElement)) return
@@ -121,6 +122,8 @@ function setupProductType() {
                 setupTap()
                 document.setupCustomSelect()
                 setupProductVariation()
+                setupProductAttributes()
+                setupButtonAddAttr()
             },
             beforeSend(xhr, options) {
                 xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8')
@@ -163,17 +166,18 @@ function setupProductVariation() {
 }
 
 function setupProductFileUpload() {
-    const buttonUploads = document.getElementsByClassName("button-variation-file-upload")
+    console.log("Fuck", buttonUploads)
+    const buttonUploads = document.getElementsByClassName("button-file-upload-data-id")
     for (let i = 0; i < buttonUploads.length; i++) {
         const button = buttonUploads[i]
         button.addEventListener('click', function () {
-            const index = button.attributes['data-index'].value
-            // document.getElementById(`variation-file-upload-${index}`)
-            $(`#variation-file-upload-${index}`).show().focus().click().hide().on('change', function (e) {
+            const id = button.attributes['data-id'].value
+            console.log("Id", id)
+            // document.getElementById(`input-file-upload-${index}`)
+            $(`#input-file-upload-${id}`).show().focus().click().hide().on('change', function (e) {
                 handleFileInputVariationChange(button, e.target.files[0])
             })
         })
-
     }
 }
 

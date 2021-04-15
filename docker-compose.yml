@@ -1,22 +1,43 @@
 version: '3'
 services:
-#  db:
-#    image: postgres
-#    environment:
-#      POSTGRES_USER: root
-#      POSTGRES_PASSWORD: mysecretpassword
-#    volumes:
-#      - pgdata:/var/lib/postgresql/data
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: kaliguys
+      POSTGRES_PASSWORD: GuysPostgres@12
+      ECOMMERICIAL_DATABASE_APPNAME: GuysPostgres@12
+    ports:
+    - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
   web:
     build: .
     command: bundle exec rails s webrick -b '0.0.0.0'
+    environment:
+      POSTGRES_USER: kaliguys
+      POSTGRES_PASSWORD: GuysPostgres@12
+      ECOMMERICIAL_DATABASE_APPNAME: GuysPostgres@12
+      PGHOST: db
+      PGUSER: kaliguys
+      WEBPACKER_DEV_SERVER_HOST: webpack
     volumes:
-      - .:/rails-docker
+      - .:/rails-app-docker
     ports:
       - "3000:3000"
-#    depends_on:
-#      - db
+    depends_on:
+      - db
+      - webpack
     tty: true
     stdin_open: true
-#volumes:
-#  pgdata:
+  webpack:
+    build: .
+    environment:
+      WEBPACKER_DEV_SERVER_PUBLIC: 0.0.0.0:3035
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
+    command: ./bin/webpack-dev-server --hot --inline true
+    volumes:
+      - .:/rails-app-docker
+    ports:
+      - '3035:3035'
+volumes:
+  pgdata:

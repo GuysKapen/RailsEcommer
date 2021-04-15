@@ -35,7 +35,7 @@
 
                 <div class="field mt-2 w-full">
                   <div class="control">
-                    <div class="w-full cursor-pointer text-left button-variation-file-upload" id="<%= "button-upload-file-variation-%s" % i %>" data-index="<%= i %>">
+                    <div class="w-full cursor-pointer text-left button-file-upload-data-id" id="<%= "button-upload-file-variation-%s" % i %>" data-id="<%= i %>">
                       <i class="fa fa-3x fa-cloud-upload-alt text-blue-600"></i>
                     </div>
                     <div class="flex position-absolute left-full w-0 h-0 d-none">
@@ -45,7 +45,7 @@
                                                     as: :file,
                                                     label: "",
                                                     class: 'product-image-uploader',
-                                                    id: "variation-file-upload-%s" % i,
+                                                    id: "input-file-upload-%s" % i,
                                                     input_html: {class: "input w-100 file-input product-image hidden"},
                                                     wrapper: false, label_html: {class: "label text-left w-100"} %>
                     </div>
