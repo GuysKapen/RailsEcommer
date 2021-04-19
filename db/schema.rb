@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_10_221833) do
+ActiveRecord::Schema.define(version: 2021_04_19_233453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,11 +68,19 @@ ActiveRecord::Schema.define(version: 2021_04_10_221833) do
     t.index ["product_meta_id"], name: "index_product_advanceds_on_product_meta_id"
   end
 
-  create_table "product_attributes", force: :cascade do |t|
+  create_table "product_attributes_names", force: :cascade do |t|
     t.text "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_product_attributes_names_on_name", unique: true
+  end
+
+  create_table "product_attributes_values", force: :cascade do |t|
+    t.bigint "product_attributes_name_id", null: false
     t.text "value"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_attributes_name_id"], name: "index_product_attributes_values_on_product_attributes_name_id"
   end
 
   create_table "product_carts", force: :cascade do |t|
@@ -207,6 +215,7 @@ ActiveRecord::Schema.define(version: 2021_04_10_221833) do
   end
 
   add_foreign_key "product_advanceds", "product_meta", column: "product_meta_id"
+  add_foreign_key "product_attributes_values", "product_attributes_names"
   add_foreign_key "product_extras", "product_meta", column: "product_meta_id"
   add_foreign_key "product_inventories", "product_meta", column: "product_meta_id"
   add_foreign_key "product_linkeds", "product_meta", column: "product_meta_id"

@@ -1,6 +1,6 @@
 var formContainer = document.getElementsByClassName("form-add-attributes");
-for (let i = 0; i < formContainer.length; i++) {
-    formContainer[i].remove()
+while(formContainer.length > 0){
+    formContainer[0].parentNode.removeChild(formContainer[0]);
 }
 
 $("#product-attributes-container").html("<%= escape_javascript render 'products/product_attr_items', product_attrs: @product_attrs %>")

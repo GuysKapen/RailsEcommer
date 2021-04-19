@@ -166,7 +166,6 @@ function setupProductVariation() {
 }
 
 function setupProductFileUpload() {
-    console.log("Fuck", buttonUploads)
     const buttonUploads = document.getElementsByClassName("button-file-upload-data-id")
     for (let i = 0; i < buttonUploads.length; i++) {
         const button = buttonUploads[i]

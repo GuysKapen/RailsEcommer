@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
     # @product_meta.build_product_sale_price
     # init_product
     @categories = Category.all
-    @product_attr = ProductAttribute.new
+    @product_attr = ProductAttributesName.new
 
     session[:product] = @product
   end
@@ -50,43 +50,15 @@ class ProductsController < ApplicationController
 
     category_attrs = params['category_name']
     @category = current_user.categories.build(name: category_attrs) unless category_attrs.nil? || category_attrs.empty?
-    print("FUck ------------------------------------------\n", category_attrs)
     # Save category to get id
     if !@category.nil? && !@category.save
       errors.add(:base, 'Could not save category')
       return false
     end
 
-    # params[:product][:category_id] = @category.id
-    # params[:product][:category] = @category
-
     params[:product][:category_id] = @category.id unless @category.nil?
     @product = current_user.products.build(product_params)
     @product_meta = @product.build_product_meta(product_meta_params)
-
-    print("Fucking,,,,,,,,,,,,,,,,,,,,,,\n", product_meta_params)
-    print('Fucking....................', @product_meta.product_inventory.inspect)
-
-    # @product_variation = @product.product_variations.build.build_product_meta(product_variation_params[:product_variation_meta])
-
-    # @product_variation = ProductMeta.new(product_variation_params[:product_variation_meta])
-    # unless params[:product][:product_variation_meta].nil?
-    #
-    #   @product_variation = @product.product_variations.build
-    #   @product_variation_meta = @product_variation.build_product_meta(product_variation_meta_params)
-    #   # @product_variation_meta = ProductMeta.new(product_variation_meta_params)
-    #   # @product_variation = @product_variation_meta.build_product_variation
-    #   # @product_variation_meta.product_id = @product_variation.id
-    #   # product_variation_shipping = @product_variation_meta.build_product_shipping(product_variation_meta_shipping_params)
-    #   print('Variation---------------------------------------\n', @product_variation.inspect)
-    #   print('Variation Shipping---------------------------------------\n', @product_variation_meta.inspect)
-    #
-    #   if @product_variation.save
-    #     print('Save meta variation success')
-    #   else
-    #     print('Variation errors', @product_variation_meta.errors.full_messages)
-    #   end
-    # end
 
     respond_to do |format|
       if @product.save
@@ -94,8 +66,6 @@ class ProductsController < ApplicationController
         format.json { render :show, status: :created, location: @product }
         session.delete(:product)
       else
-        print('Fuck------------------------------\n', @product.errors.full_messages)
-        print('WTF', @product_meta.errors.full_messages)
         format.html { render :new }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
@@ -205,20 +175,24 @@ class ProductsController < ApplicationController
     product_id = params[:product_id]
     @product = Product.find(product_id)
     respond_to do |format|
-      print('Fuck ------------------------------------------------------')
       format.js { render 'products/response_quick_view_product' }
     end
   end
 
   def save_attributes
-    # attr = ProductAttribute.new(product_attr_params)
-    @product_attrs = []
+    @product_attrs = ProductAttributesName.all
     begin
       product_attr_params.each do |_, attrs|
         attrs.each do |attr|
           attr_obj = JSON.parse(attr)
-          product_attr = ProductAttribute.new(attr_obj)
-          @product_attrs.push(product_attr) if product_attr.save
+          attr_name = { name: attr_obj['name']}
+          @product_attrs_name = ProductAttributesName.new(attr_name)
+          attr_obj['value'].split('|').each do |value|
+            attr_value = { value: value }
+            @product_attrs_name.product_attributes_values.build(attr_value)
+          end
+          @product_attrs_name.save
+          @product_attrs.push(@product_attrs_name)
         end
       end
     rescue Errno::ENOENT
@@ -230,7 +204,7 @@ class ProductsController < ApplicationController
   end
 
   def create_variations_from_attrs
-    @product_attrs = ProductAttribute.all
+    @product_attrs = ProductAttributesName.all
     merge = helpers.products_cartesian(@product_attrs)
     @attrs = merge[:value]
     print("Attrs\n", @attrs.inspect)
@@ -251,11 +225,7 @@ class ProductsController < ApplicationController
   end
 
   def change_product_form
-    print('Fucking', session[:product])
-    print('Params', params)
     init_product_form
-    # @product ||= Product.new(session[:product])
-    # @product.build_product_meta
     @product_type = params[:type]
     respond_to do |format|
       format.js { render 'products/response_change_product_form' }
@@ -280,7 +250,7 @@ class ProductsController < ApplicationController
     @product_meta.build_product_shipping
     @product_meta.build_product_sale_price
     @categories = Category.all
-    @product_attr = ProductAttribute.new
+    @product_attr = ProductAttributesName.new
   end
 
   # Only allow a list of trusted parameters through.

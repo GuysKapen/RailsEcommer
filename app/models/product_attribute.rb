@@ -1,2 +1,0 @@
-class ProductAttribute < ApplicationRecord
-end
