@@ -16,20 +16,26 @@ module ProductsHelper
     merge
   end
 
-  def product_cartesian(attrs, product_attrs)
-    merge = { value: [], attrs: [] }
-    # attrs = []
-    # attrs.push(product_attrs[0][:value].split('|'))
-    attrs.each do |attr1|
-      product_attrs[0][:value].split('|').each do |attr2|
-        merge[:value].push([*attr1, attr2])
+  # @param attrs_values: values for first element
+  # @param product_attrs: remain element for calling recursive
+  # noinspection MissingYardReturnTag
+  def product_cartesian(attrs_values, product_attrs)
+    merge = {value: [], attrs_list_values: [] }
+    # loop through all values consecutive elements to build cartesian product for those two elements
+    # NOTE: for first time value1 will be just value but when call recursive it is array (of all value so far)
+    attrs_values.each do |value1|
+      product_attrs[0][:value].split('|').each do |value2|
+        # push all values (need to decompose value1 - it can be array) - see ruby array decompose
+        merge[:value].push([*value1, value2])
       end
     end
-    merge[:attrs].push(attrs)
-    return product_cartesian(merge, product_attrs[1..]) if product_attrs.length > 1
+    # save attrs for using in views
+    merge[:attrs_list_values].push(*attrs_values)
+    # recursive call for remaining
+    return product_cartesian(merge[:value], product_attrs[1..]) if product_attrs.length > 1
 
-    # merge[:value]
-    merge[:attrs].push(product_attrs[0][:value].split('|'))
+    # push last attrs to complete all attrs
+    merge[:attrs_list_values].push(product_attrs[0][:value].split('|'))
     merge
   end
 

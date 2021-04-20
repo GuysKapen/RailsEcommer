@@ -1,5 +1,5 @@
 <%= simple_form_for(@product) do |form| %>
-  <% @attrs.each_with_index do |attr, i| %>
+  <% @attrs_list_values.each_with_index do |attr, i| %>
     <%= form.simple_fields_for "product_variations_attributes[]", @product.product_variations[i], index: nil do |variation| %>
       <%= variation.simple_fields_for "product_meta_attributes", @product.product_variations[i].product_meta do |variation_meta| %>
         <%#= variation.simple_fields_for "product_variation_meta[]", @product.product_variations[i].product_meta do |variation_meta| %>
@@ -10,7 +10,8 @@
               <% attr.each_with_index do |value, index| %>
                 <div class="w-full">
                   <%#= select_tag "variation", raw(@attrs_options[index].map { |option| "<option>" + option + "</option>" }) %>
-                  <%= select_tag "variation", options_for_select(@attrs_options[index], value) %>
+                  <%#= select_tag "variation", options_for_select(@attrs_options[index], value) %>
+                  <%= select_tag "variation", options_for_select(@attrs_list_values.map { |values| values[index] }, value) %>
                 </div>
               <% end %>
 

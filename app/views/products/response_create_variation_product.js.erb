@@ -1,6 +1,6 @@
 var container = document.createElement("div")
 $("#input-variations").append(container)
-$(container).html("<%= escape_javascript render 'products/form_partial_variation_products', form: @form, attrs: @attrs %>")
+$(container).html("<%= escape_javascript render 'products/form_partial_variation_products', form: @form, attrs_list_values: @attrs_list_values %>")
 function setupProductVariationIcons() {
     const variations = document.getElementsByClassName("container-product-variation")
     for (let i = 0; i < variations.length; i++) {

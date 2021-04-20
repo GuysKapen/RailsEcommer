@@ -180,7 +180,7 @@ class ProductsController < ApplicationController
   end
 
   def save_attributes
-    @product_attrs = ProductAttributesName.all
+    @product_attrs = Array(ProductAttributesName.all)
     begin
       product_attr_params.each do |_, attrs|
         attrs.each do |attr|
@@ -206,12 +206,12 @@ class ProductsController < ApplicationController
   def create_variations_from_attrs
     @product_attrs = ProductAttributesName.all
     merge = helpers.products_cartesian(@product_attrs)
-    @attrs = merge[:value]
-    print("Attrs\n", @attrs.inspect)
-    @attrs_options = merge[:attrs]
+    @attrs_list_values = merge[:value]
+    # print("Attrs\n", @attrs_list_values.inspect)
+    # @attrs_options = merge[:attrs_list_values]
     @form = params['form']
     @product = Product.new
-    @attrs.length.times do
+    @attrs_list_values.length.times do
       variation = @product.product_variations.build
       variation_meta = variation.build_product_meta
       variation_meta.build_product_inventory
@@ -335,7 +335,7 @@ class ProductsController < ApplicationController
   end
 
   def product_attr_params
-    params.permit(name: [], value: [], attrs: [])
+    params.permit(name: [], value: [], attrs_list_values: [])
   end
 
   def product_variation_meta_params
