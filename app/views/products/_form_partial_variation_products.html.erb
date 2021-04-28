@@ -1,32 +1,8 @@
-<%= simple_form_for(@product) do |form| %>
-  <% @attrs_list_values.each_with_index do |attr, i| %>
-    <%= form.simple_fields_for "product_variations_attributes[]", @product.product_variations[i], index: nil do |variation| %>
-      <%= variation.simple_fields_for "product_meta_attributes", @product.product_variations[i].product_meta do |variation_meta| %>
-        <%#= variation.simple_fields_for "product_variation_meta[]", @product.product_variations[i].product_meta do |variation_meta| %>
-        <%#= variation.simple_fields_for :product_variation_meta do |variation_meta| %>
+<%= simple_form_for(@product) do |form_product| %>
+  <% @attrs_list_values.each_with_index do |attr_values, i| %>
+    <%= form_product.simple_fields_for "product_variations_attributes[]", @product.product_variations[i], index: nil do |variation| %>
+      <%= variation.simple_fields_for :product_meta, @product.product_variations[i].product_meta do |variation_meta| %>
         <div class="container-product-variation">
-          <div class="field mt-2">
-            <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
-              <% attr.each_with_index do |value, index| %>
-                <div class="w-full">
-                  <%#= select_tag "variation", raw(@attrs_options[index].map { |option| "<option>" + option + "</option>" }) %>
-                  <%#= select_tag "variation", options_for_select(@attrs_options[index], value) %>
-                  <%= select_tag "variation", options_for_select(@attrs_list_values.map { |values| values[index] }, value) %>
-                </div>
-              <% end %>
-
-              <!--              <div class="w-full">-->
-              <%#= select_tag "variation", raw(@attrs_options[1].map { |value| "<option>" + value + "</option>" }) %>
-              <!--              </div>-->
-
-
-              <div class="flex child-mx-2-not-first flex-grow-1">
-                <i class="fa fa-bars m-auto"></i>
-                <span id="variation-100" class="triangle m-auto flex flex-col justify-center cursor-pointer toggle-collapse-variation"></span>
-                <%= link_to "Remove", new_order_path, class: "text-red-600 hover:text-red-800" %>
-              </div>
-            </div>
-          </div>
 
           <div class="container-product-variation-body container-fuck duration-200 max-h-screen collapse-height overflow-hidden">
 
@@ -99,9 +75,9 @@
                 <div class="flex flex-col w-full">
                   <%= variation_meta.simple_fields_for :product_inventory do |inventory| %>
                     <%= inventory.input :stock_status, label: "Stock Status", required: false,
-                                             placeholder: "Stock Status",
-                                             input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
-                                             wrapper: false, label_html: {class: "label text-left"} %>
+                                        placeholder: "Stock Status",
+                                        input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                        wrapper: false, label_html: {class: "label text-left"} %>
                   <% end %>
 
                 </div>
@@ -190,8 +166,24 @@
             </div>
 
           </div>
-
           <hr class="my-1">
+          <div class="field mt-2">
+            <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
+              <% attr_values.each_with_index do |attrs_value, index| %>
+                <div class="w-full">
+                  <!-- Extract the ith value for options select (values has value for difference attrs)                    -->
+                  <%= variation.select :product_attributes_value_ids, options_for_select(@attrs_list_values.map { |attrs_values| [attrs_values[index].value, attrs_values[index].id] }.to_set, [attrs_value.value, attrs_value.id]), {}, :multiple => truegit  %>
+                  <%#= select_tag "variation", options_for_select(@attrs_list_values.map { |values| values[index] }, value) %>
+                </div>
+              <% end %>
+
+              <div class="flex child-mx-2-not-first flex-grow-1">
+                <i class="fa fa-bars m-auto"></i>
+                <span id="variation-100" class="triangle m-auto flex flex-col justify-center cursor-pointer toggle-collapse-variation"></span>
+                <%= link_to "Remove", new_order_path, class: "text-red-600 hover:text-red-800" %>
+              </div>
+            </div>
+          </div>
 
         </div>
       <% end %>

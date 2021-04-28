@@ -66,7 +66,7 @@ class ProductsController < ApplicationController
         format.json { render :show, status: :created, location: @product }
         session.delete(:product)
       else
-        format.html { render :new }
+        format.html { render :new, notice: 'Error has been occured.' }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
@@ -185,7 +185,7 @@ class ProductsController < ApplicationController
       product_attr_params.each do |_, attrs|
         attrs.each do |attr|
           attr_obj = JSON.parse(attr)
-          attr_name = { name: attr_obj['name']}
+          attr_name = { name: attr_obj['name'] }
           @product_attrs_name = ProductAttributesName.new(attr_name)
           attr_obj['value'].split('|').each do |value|
             attr_value = { value: value }
@@ -207,12 +207,20 @@ class ProductsController < ApplicationController
     @product_attrs = ProductAttributesName.all
     merge = helpers.products_cartesian(@product_attrs)
     @attrs_list_values = merge[:value]
-    # print("Attrs\n", @attrs_list_values.inspect)
-    # @attrs_options = merge[:attrs_list_values]
+    @attrs_list_values = @attrs_list_values
+                         .map { |attrs_values|
+      attrs_values.map { |value|
+        ProductAttributesValue.where(value: value).first
+      }
+    }
     @form = params['form']
     @product = Product.new
     @attrs_list_values.length.times do
       variation = @product.product_variations.build
+      print("WTF", @attrs_list_values[0].length)
+      @attrs_list_values[0].length.times do
+        variation.product_attributes_values.build
+      end
       variation_meta = variation.build_product_meta
       variation_meta.build_product_inventory
       variation_meta.build_product_sale_price
@@ -269,6 +277,8 @@ class ProductsController < ApplicationController
           product_extra_attributes: [:product_video] }
       ],
       product_variations_attributes: [
+        product_attributes_value_ids: [],
+        # product_attributes_values_attributes: [product_attributes_value_ids: []],
         product_meta_attributes: [
           :regular_price,
           :name, :description, :tag,
@@ -281,8 +291,7 @@ class ProductsController < ApplicationController
             product_extra_attributes: [:product_video] }
         ]
       ],
-      category_attributes: [:name],
-      product_variation_meta: []
+      category_attributes: [:name]
     )
   end
 
@@ -335,7 +344,7 @@ class ProductsController < ApplicationController
   end
 
   def product_attr_params
-    params.permit(name: [], value: [], attrs_list_values: [])
+    params.permit(name: [], value: [], attrs_list_values: [], attrs: [])
   end
 
   def product_variation_meta_params

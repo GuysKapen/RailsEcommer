@@ -246,6 +246,8 @@
   cursor: pointer;
   transition: .6s;
   border-radius: 20px;
+
+  max-height: 64px;
 }
 
 .styled_select:after {
