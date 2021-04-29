@@ -1,54 +1,32 @@
 <section id="form-add-to-cart">
 
-  <%= form_for @product, :url => add_to_cart_product_path(:product_id => @product.id), method: :post, remote: true do |f| %>
+  <%= form_for product, :url => add_to_cart_product_path(:product_id => product.id), method: :post, remote: true do |f| %>
 
-    <%= hidden_field_tag(:product_id, @product.id) %>
-    <!--  <form action="">-->
-    <div class="mt-4">
-      <div class="d-flex text-center mt-2 justify-content-between">
-        <h6 class="fw6 my-auto col-2 text-left px-0">Quality: </h6>
-        <div class="custom-btn-wide col-3 input-add-to-cart-quality-select" data-quality="basic">Basic</div>
-        <div class="custom-btn-wide col-3 ml-3 input-add-to-cart-quality-select" data-quality="premium">Premium</div>
-      </div>
-    </div>
+    <%= hidden_field_tag(:product_id, product.id) %>
 
-    <div class="mt-4">
-      <div class="grid justify-between text-center justify-content-between text-center mt-2">
-        <h6 class="fw6 my-auto col-2 text-left px-0">Style: &nbsp;</h6>
-        <div class="custom-btn-wide rounded-extra-lg input-add-to-cart-style-select m-auto" data-style="minimal">Minimal</div>
-        <div class="custom-btn-wide rounded-extra-lg input-add-to-cart-style-select m-auto" data-style="bohemian">Bohemian</div>
-        <div class="custom-btn-wide rounded-extra-lg input-add-to-cart-style-select m-auto" data-style="floral">Floral</div>
-        <div class="custom-btn-wide rounded-extra-lg input-add-to-cart-style-select m-auto" data-style="other">Other</div>
+    <% attrs_of_product_variation(product).each do |name, values| %>
+      <div class="mt-4">
+        <div class="d-flex justify-between text-center text-center mt-2 child-mx-3-not-first">
+          <h6 class="fw6 my-auto col-2 text-left px-0"><%= name %>: &nbsp;</h6>
+          <div class="flex flex-grow-1">
+            <% values.each do |value| %>
+              <div class="custom-btn-wide rounded-extra-lg input-add-to-cart-size-select m-auto" data-size="xl"><%= value %></div>
+            <% end %>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="mt-4">
-      <div class="d-flex justify-between text-center child-mx-3-not-first mt-2">
-        <h6 class="fw6 my-auto col-2 text-left px-0">Color: &nbsp;</h6>
-        <div class="rounded-circle cursor-pointer color-palate background-blue input-add-to-cart-color-select m-auto" data-color="blue"></div>
-        <div class="rounded-circle cursor-pointer color-palate color-yellow-bg input-add-to-cart-color-select m-auto" data-color="yellow"></div>
-        <div class="rounded-circle cursor-pointer color-palate color-red-bg input-add-to-cart-color-select m-auto" data-color="red"></div>
-      </div>
-    </div>
-
-    <div class="mt-4">
-      <div class="d-flex justify-between text-center text-center mt-2 child-mx-3-not-first">
-        <h6 class="fw6 my-auto col-2 text-left px-0">Size: &nbsp;</h6>
-        <div class="custom-btn-wide rounded-extra-lg input-add-to-cart-size-select m-auto" data-size="xl">Twin XL</div>
-        <div class="custom-btn-wide rounded-extra-lg input-add-to-cart-size-select m-auto" data-size="full">Full</div>
-      </div>
-    </div>
+    <% end %>
 
     <div class="mt-4">
       <div class="d-flex text-center mt-2">
         <h6 class="fw6 col-2 text-left my-auto px-0 mr-6">Quantity:</h6>
-        <button type="button" class="qty-up px-2 border bg-light" data-id="<%= @product.id %>">
+        <button type="button" class="qty-up px-2 border bg-light" data-id="<%= product.id %>">
           <i class="fas fa-angle-up"></i>
         </button>
-        <input type="number" name="quantity" id="quantity-input-<%= @product.id %>" class="qty-input w-25 text-center border px-2 bg-light"
+        <input type="number" name="quantity" id="quantity-input-<%= product.id %>" class="qty-input w-25 text-center border px-2 bg-light"
                readonly="readonly"
                value="1" placeholder="1" data-id="prod1">
-        <button type="button" class="qty-down px-2 border bg-light" data-id="<%= @product.id %>">
+        <button type="button" class="qty-down px-2 border bg-light" data-id="<%= product.id %>">
           <i class="fas fa-angle-down"></i>
         </button>
       </div>
@@ -63,13 +41,13 @@
       </div>
 
       <!--    <div class="button-wishlist d-inline-block">-->
-      <!--      <button type="submit" formaction="<%#= add_to_wishlist_product_path(:product_id => @product.id) %>" class="d-flex font-roboto outline-none-imp font-weight-bold align-items-center duration-500">-->
+      <!--      <button type="submit" formaction="<%#= add_to_wishlist_product_path(:product_id => product.id) %>" class="d-flex font-roboto outline-none-imp font-weight-bold align-items-center duration-500">-->
       <!--        <i class="fa fa-heart mr-3 duration-500"></i>Save to wishlist-->
       <!--      </button>-->
       <!--    </div>-->
       <div class="button-wishlist d-flex px-3">
         <button type="submit"
-                formaction="<%= add_to_wishlist_product_path(:product_id => @product.id) %>"
+                formaction="<%= add_to_wishlist_product_path(:product_id => product.id) %>"
                 class="d-flex font-roboto outline-none-imp font-weight-bold align-items-center duration-500">
           <i class="fa fa-heart mr-3 duration-500"></i>Save to wishlist
         </button>
@@ -81,13 +59,13 @@
     <input type="hidden" name="quality" id="input-quality-add-to-cart">
     <input type="hidden" name="color" id="input-color-add-to-cart">
     <input type="hidden" name="size" id="input-size-add-to-cart">
-    <input type="hidden" name="product_id" value="<%= @product.id %>">
+    <input type="hidden" name="product_id" value="<%= product.id %>">
     <!--  </form>-->
 
     <div id="dock-add-to-cart" class="d-flex justify-center h-12 py-2 align-items-center position-fixed bottom-0 left-0 rounded-tl-lg rounded-tr-lg z-50 w-screen bg-white shadow-md border-1.5-default duration-500">
       <div class="d-flex align-items-center align-self-center mx-auto">
         <div class="mx-2 border shadow-md rounded-sm">
-          <%= image_tag(product_first_img(@product), class: "h-10") %>
+          <%= image_tag(product_first_img(product), class: "h-10") %>
         </div>
         <div class="mx-2 border shadow-md rounded-full">
           <p class="mx-2 f5 fw6">Laptop Gaming</p>

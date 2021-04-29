@@ -19,6 +19,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @user = current_user
+    @hash_attrs = helpers.attrs_of_product_variation(@product)
   end
 
   # GET /products/new
