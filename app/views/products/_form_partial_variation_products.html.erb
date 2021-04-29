@@ -2,8 +2,7 @@
   <% @attrs_list_values.each_with_index do |attr_values, i| %>
     <%= form_product.simple_fields_for "product_variations_attributes[]", @product.product_variations[i], index: nil do |variation| %>
       <%= variation.simple_fields_for :product_meta, @product.product_variations[i].product_meta do |variation_meta| %>
-        <div class="container-product-variation">
-
+        <div class="container-product-variation flex flex-col-reverse">
           <div class="container-product-variation-body container-fuck duration-200 max-h-screen collapse-height overflow-hidden">
 
             <!-- Image and sku -->
@@ -172,7 +171,7 @@
               <% attr_values.each_with_index do |attrs_value, index| %>
                 <div class="w-full">
                   <!-- Extract the ith value for options select (values has value for difference attrs)                    -->
-                  <%= variation.select :product_attributes_value_ids, options_for_select(@attrs_list_values.map { |attrs_values| [attrs_values[index].value, attrs_values[index].id] }.to_set, [attrs_value.value, attrs_value.id]), {}, :multiple => truegit  %>
+                  <%= variation.select :product_attributes_value_ids, options_for_select(@attrs_list_values.map { |attrs_values| [attrs_values[index].value, attrs_values[index].id] }.to_set, [attrs_value.value, attrs_value.id]), {}, :multiple => true  %>
                   <%#= select_tag "variation", options_for_select(@attrs_list_values.map { |values| values[index] }, value) %>
                 </div>
               <% end %>

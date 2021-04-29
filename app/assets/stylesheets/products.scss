@@ -226,6 +226,17 @@
   position: relative;
   font: normal 11px/22px Arial, Sans-Serif;
   padding: 4px;
+  //max-height: 32px;
+}
+
+select[multiple]{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  overflow: hidden;
+  box-shadow: none;
+  height: 16px;
 }
 
 .styled_select {
