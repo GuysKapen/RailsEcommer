@@ -209,16 +209,16 @@ class ProductsController < ApplicationController
     merge = helpers.products_cartesian(@product_attrs)
     @attrs_list_values = merge[:value]
     @attrs_list_values = @attrs_list_values
-                         .map { |attrs_values|
-      attrs_values.map { |value|
+                         .map do |attrs_values|
+      attrs_values.map do |value|
         ProductAttributesValue.where(value: value).first
-      }
-    }
+      end
+    end
     @form = params['form']
     @product = Product.new
     @attrs_list_values.length.times do
       variation = @product.product_variations.build
-      print("WTF", @attrs_list_values[0].length)
+      print('WTF', @attrs_list_values[0].length)
       @attrs_list_values[0].length.times do
         variation.product_attributes_values.build
       end
@@ -238,6 +238,26 @@ class ProductsController < ApplicationController
     @product_type = params[:type]
     respond_to do |format|
       format.js { render 'products/response_change_product_form' }
+    end
+  end
+
+  def update_form_add_to_cart
+    product = Product.find_by(id: params[:id])
+    post_values = params[:values]
+    product.product_variations.each_with_index do |variation, index|
+      values = helpers.attr_values_nocase_variation(variation)
+      next unless values.sort == post_values.sort
+
+      print('Price', variation.product_meta.regular_price)
+      respond_to do |format|
+        format.js do
+          render 'products/response_update_form_add_to_cart',
+                 locals: { regular_price: variation.product_meta.regular_price,
+                           sale_price: variation.product_meta.product_sale_price&.sale_price,
+                           index: index }
+        end
+      end
+      break
     end
   end
 

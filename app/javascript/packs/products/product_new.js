@@ -20,6 +20,8 @@ function setupProductAttributes() {
     const values = document.getElementsByClassName("product-attributes-value")
     const buttonSaveAttr = document.getElementById("button-save-attributes")
 
+    if (buttonSaveAttr == null) return
+
     buttonSaveAttr.addEventListener("click", function () {
         const form = new FormData()
         const numAttrs = Math.min(names.length, values.length)
@@ -51,7 +53,7 @@ function setupProductCategory() {
 }
 
 function setupButtonAddAttr() {
-    document.getElementById("button-add-attribute").addEventListener("click", function () {
+    document.getElementById("button-add-attribute")?.addEventListener("click", function () {
         $("#group-container-form-add-attributes").append("                          <div class=\"flex flex-grow-1 w-full my-8 form-add-attributes\">\n" +
             "\n" +
             "                            <div class=\"control w-4/12 mt-2\">\n" +
@@ -106,6 +108,8 @@ function setupProductVariationIcons() {
 function setupProductType() {
     const selectProductType = document.getElementById("select-product-type")
     const buttonChangeProductType = document.getElementById("button-change-product-type")
+
+    if (selectProductType == null || buttonChangeProductType == null) return
 
     $(selectProductType).on("change", function (e, data) {
         console.log("Select product type change", selectProductType.selectedIndex, data)

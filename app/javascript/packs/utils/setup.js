@@ -24,86 +24,53 @@ window.setupInputQty = function () {
     }
 }
 
-
 // Set up form add to cart
+window.setupInputVariation = function setupInputVariation() {
 
-window.setupInputStyleProduct = function () {
-    let input_style = document.getElementById("input-style-add-to-cart");
-    if (input_style == null) return
-    let input_style_select = document.getElementsByClassName("input-add-to-cart-style-select");
-    for (let i = 0; i < input_style_select.length; i++) {
-        input_style_select[i].addEventListener("click", function () {
-            for (let j = 0; j < input_style_select.length; j++) {
-                if (input_style_select[i] !== input_style_select[j]) {
-                    input_style_select[j].classList.remove("custom-select-active")
-                } else {
-                    input_style_select[j].classList.toggle("custom-select-active")
+    // Get inputs hidden options for variations
+    const inputsHidden = document.getElementsByClassName("input-add-to-cart-hidden")
+
+    for (let i = 0; i < inputsHidden.length; i++) {
+        const name = inputsHidden[i].attributes['name'].value
+        // Get all options for attrs have name
+        const inputs = document.getElementsByClassName("input-add-to-cart-" + name + "-select")
+
+        for (let j = 0; j < inputs.length; j++) {
+            inputs[j].addEventListener("click", function () {
+                // Remove active from all other
+                for (let k = 0; k < inputs.length; k++) {
+                    if (inputs[j] !== inputs[k]) {
+                        inputs[k].classList.remove("custom-select-active")
+                    } else {
+                        inputs[k].classList.toggle("custom-select-active")
+                    }
                 }
-            }
 
-            input_style.value = input_style_select[i].attributes['data-style'].value
-            console.log("Style Input", input_style_select[i].attributes['data-style'].value)
-        })
-    }
-}
+                inputsHidden[i].value = inputs[j].attributes['data-value'].value
 
-window.setupInputQualityProduct = function () {
-    let input_quality = document.getElementById("input-quality-add-to-cart");
-    if (input_quality == null) return
-    let input_style_select = document.getElementsByClassName("input-add-to-cart-quality-select");
-    for (let i = 0; i < input_style_select.length; i++) {
-        input_style_select[i].addEventListener("click", function () {
-            for (let j = 0; j < input_style_select.length; j++) {
-                if (input_style_select[i] !== input_style_select[j]) {
-                    input_style_select[j].classList.remove("custom-select-active")
-                } else {
-                    input_style_select[j].classList.toggle("custom-select-active")
+                const values = []
+                for (let k = 0; k < inputsHidden.length; k++) {
+                    values.push(inputsHidden[k].value)
                 }
-            }
+                Rails.ajax({
+                    url: `/products/${window.location.pathname.split('/').pop()}/update_form_add_to_cart`,
+                    type: "post",
+                    beforeSend(xhr, options) {
+                        xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8')
+                        // Workaround: add options.data late to avoid Content-Type header to already being set in stone
+                        // https://github.com/rails/rails/blob/master/actionview/app/assets/javascripts/rails-ujs/utils/ajax.coffee#L53
+                        options.data = JSON.stringify({"values": values})
+                        return true
+                    },
+                    success: function () {
 
-            input_quality.value = input_style_select[i].attributes['data-quality'].value
-            console.log("Style Input", input_style_select[i].attributes['data-quality'].value)
-        })
+                    },
+                    error: function () {
+
+                    }
+                })
+            })
+        }
     }
-}
 
-window.setupInputColorProduct = function () {
-    let input_color = document.getElementById("input-color-add-to-cart");
-    if (input_color == null) return
-    let input_style_select = document.getElementsByClassName("input-add-to-cart-color-select");
-    for (let i = 0; i < input_style_select.length; i++) {
-        input_style_select[i].addEventListener("click", function () {
-            for (let j = 0; j < input_style_select.length; j++) {
-                if (input_style_select[i] !== input_style_select[j]) {
-                    input_style_select[j].classList.remove("custom-select-active")
-                } else {
-                    input_style_select[j].classList.toggle("custom-select-active")
-                }
-            }
-
-            input_color.value = input_style_select[i].attributes['data-color'].value
-            console.log("Style Input", input_style_select[i].attributes['data-color'].value)
-        })
-    }
-}
-
-window.setupInputSizeProduct = function () {
-    let input_size = document.getElementById("input-size-add-to-cart");
-    if (input_size == null) return
-    let input_style_select = document.getElementsByClassName("input-add-to-cart-size-select");
-    for (let i = 0; i < input_style_select.length; i++) {
-        input_style_select[i].addEventListener("click", function () {
-
-            for (let j = 0; j < input_style_select.length; j++) {
-                if (input_style_select[i] !== input_style_select[j]) {
-                    input_style_select[j].classList.remove("custom-select-active")
-                } else {
-                    input_style_select[j].classList.toggle("custom-select-active")
-                }
-            }
-
-            input_size.value = input_style_select[i].attributes['data-size'].value
-            console.log("Style Input", input_style_select[i].attributes['data-size'].value)
-        })
-    }
 }

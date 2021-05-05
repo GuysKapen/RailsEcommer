@@ -1,0 +1,12 @@
+console.log("Product", <%= regular_price %>, <%= index %>)
+$("#product-price-container").html("<%= j render('product_price', regular_price: regular_price, sale_price: sale_price) %>")
+var indicators = $(".carousel-indicators")
+$(".carousel-item")?.each( (i, element) => {
+    if (i === <%= index %>) {
+        $(element).addClass("active")
+        indicators.eq(i).addClass("active")
+    } else {
+        $(element).removeClass("active")
+        indicators.eq(i).removeClass("active")
+    }
+})

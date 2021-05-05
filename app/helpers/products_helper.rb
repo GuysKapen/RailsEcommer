@@ -50,14 +50,18 @@ module ProductsHelper
     hash_attrs = {}
     product.product_variations.each do |v|
       v.product_attributes_values.each do |attr|
-        name = attr.product_attributes_name.name
+        name = attr.product_attributes_name.name.downcase
         hash_attrs[name] = if hash_attrs.key?(name)
-                             hash_attrs[name].add(attr.value)
+                             hash_attrs[name].add(attr.value.downcase)
                            else
-                             Set[attr.value]
+                             Set[attr.value.downcase]
                            end
       end
     end
     hash_attrs
+  end
+
+  def attr_values_nocase_variation(product_variation)
+    product_variation.product_attributes_values.map { |it| it.value.downcase }
   end
 end
