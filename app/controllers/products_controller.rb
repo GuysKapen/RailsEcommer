@@ -100,7 +100,7 @@ class ProductsController < ApplicationController
   # @return [FalseClass]
   def add_to_cart
     # Find cart if has any
-    @cart = Cart.find_by(id: current_user.id)
+    @cart = Cart.find_by(user_id: current_user.id)
     # If not build one
     if @cart.nil?
       @cart = current_user.build_cart
@@ -108,27 +108,36 @@ class ProductsController < ApplicationController
     end
 
     # Find product cart already in cart for update quantity if user add again
-    @product_cart = ProductCart.find_by(product_id: product_cart_params['product_id'])
+    product_for_cart = Product.find_by(id: product_cart_params['product_id']) || ProductVariation.find_by(id: product_cart_params['product_id'])
+    product_cart = ProductCart.find_by(product_id: product_cart_params['product_id'])
 
     # If not have then add new one
     # Othewise add it quantity to 1 or quantity if have
-    if @product_cart.nil?
-      @product_cart = @cart.product_carts.build(product_cart_params)
+    if product_cart.nil?
+      product_cart = @cart.product_carts.build(product_cart_params)
+      product_cart = product_for_cart.build_product_cart(product_cart.as_json)
     else
-      @product_cart.quantity += 1
-      @product_cart.cart_id = @cart.id
+      product_cart.quantity += 1
+      # product_cart.cart_id = @cart.id
     end
 
-    return false unless @product_cart.save
+    print("Product cart", product_cart.inspect)
+
+    unless product_cart.save
+      respond_to do |format|
+        format.js { render 'products/response_add_to_cart_error', message: 'Could not save product cart in cart' }
+      end
+      return false
+    end
 
     # For update cart count view
     @cart_item = @cart.product_carts.count
 
     # Find all product carts for render cart popup
-    @product_carts = ProductCart.where(cart_id: @cart.id)
+    @product_carts = @cart.product_carts
     @product_carts_subtotal = 0
-    @product_carts.each do |product_cart|
-      @product_carts_subtotal += product_cart.product.product_meta.regular_price * product_cart.quantity
+    @product_carts.each do |product_cart_in_cart|
+      @product_carts_subtotal += (product_cart_in_cart.product.product_meta.regular_price || 0) * product_cart.quantity
     end
     respond_to do |format|
       format.js { render 'products/response_add_to_cart_success' }
@@ -136,12 +145,11 @@ class ProductsController < ApplicationController
   end
 
   def add_to_wishlist
-    @wishlist = Wishlist.find_by(id: current_user.id)
+    @wishlist = Wishlist.find_by(user_id: current_user.id)
     if @wishlist.nil?
       @wishlist = current_user.build_wishlist
       unless @wishlist.save
-        print('Saving Wishlist Error', @wishlist.errors.full_messages)
-        # self.errors.add(:base, "Could not save category")
+        errors.add(:base, 'Could not save wishlist')
         return false
       end
     end
@@ -160,8 +168,7 @@ class ProductsController < ApplicationController
     print("Product Wish list \n", @product_wishlist.inspect)
 
     unless @product_wishlist.save
-      print('Saving Product Cart Error', @product_wishlist.errors.full_messages)
-      # self.errors.add(:base, "Could not save category")
+      errors.add(:base, "Could not save product cart in wishlist#{@product_wishlist.errors.full_messages}")
       return false
     end
 
@@ -186,10 +193,10 @@ class ProductsController < ApplicationController
       product_attr_params.each do |_, attrs|
         attrs.each do |attr|
           attr_obj = JSON.parse(attr)
-          attr_name = { name: attr_obj['name'] }
+          attr_name = {name: attr_obj['name']}
           @product_attrs_name = ProductAttributesName.new(attr_name)
           attr_obj['value'].split('|').each do |value|
-            attr_value = { value: value }
+            attr_value = {value: value}
             @product_attrs_name.product_attributes_values.build(attr_value)
           end
           @product_attrs_name.save
@@ -209,7 +216,7 @@ class ProductsController < ApplicationController
     merge = helpers.products_cartesian(@product_attrs)
     @attrs_list_values = merge[:value]
     @attrs_list_values = @attrs_list_values
-                         .map do |attrs_values|
+                             .map do |attrs_values|
       attrs_values.map do |value|
         ProductAttributesValue.where(value: value).first
       end
@@ -248,13 +255,13 @@ class ProductsController < ApplicationController
       values = helpers.attr_values_nocase_variation(variation)
       next unless values.sort == post_values.sort
 
-      print('Price', variation.product_meta.regular_price)
       respond_to do |format|
         format.js do
           render 'products/response_update_form_add_to_cart',
-                 locals: { regular_price: variation.product_meta.regular_price,
-                           sale_price: variation.product_meta.product_sale_price&.sale_price,
-                           index: index }
+                 locals: {regular_price: variation.product_meta.regular_price,
+                          sale_price: variation.product_meta.product_sale_price&.sale_price,
+                          index: index,
+                          product_id: variation.id}
         end
       end
       break
@@ -285,83 +292,83 @@ class ProductsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def product_params
     params.require(:product).permit(
-      :category_id,
-      product_meta_attributes: [
-        :regular_price,
-        :name, :description, :tag,
-        { images: [],
-          product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
-          product_shipping_attributes: %i[weight length width height shipping_class],
-          product_linked_attributes: %i[upsells cross_sells],
-          product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
-          product_advanced_attributes: %i[purchase_note enable_reviews],
-          product_extra_attributes: [:product_video] }
-      ],
-      product_variations_attributes: [
-        product_attributes_value_ids: [],
-        # product_attributes_values_attributes: [product_attributes_value_ids: []],
+        :category_id,
         product_meta_attributes: [
-          :regular_price,
-          :name, :description, :tag,
-          { images: [],
-            product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
-            product_shipping_attributes: %i[weight length width height shipping_class],
-            product_linked_attributes: %i[upsells cross_sells],
-            product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
-            product_advanced_attributes: %i[purchase_note enable_reviews],
-            product_extra_attributes: [:product_video] }
-        ]
-      ],
-      category_attributes: [:name]
+            :regular_price,
+            :name, :description, :tag,
+            {images: [],
+             product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
+             product_shipping_attributes: %i[weight length width height shipping_class],
+             product_linked_attributes: %i[upsells cross_sells],
+             product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
+             product_advanced_attributes: %i[purchase_note enable_reviews],
+             product_extra_attributes: [:product_video]}
+        ],
+        product_variations_attributes: [
+            product_attributes_value_ids: [],
+            # product_attributes_values_attributes: [product_attributes_value_ids: []],
+            product_meta_attributes: [
+                :regular_price,
+                :name, :description, :tag,
+                {images: [],
+                 product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
+                 product_shipping_attributes: %i[weight length width height shipping_class],
+                 product_linked_attributes: %i[upsells cross_sells],
+                 product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
+                 product_advanced_attributes: %i[purchase_note enable_reviews],
+                 product_extra_attributes: [:product_video]}
+            ]
+        ],
+        category_attributes: [:name]
     )
   end
 
   def product_meta_params
     params.require(:product).require(:product_meta_attributes).permit(
-      :regular_price,
-      :name, :description, :tag,
-      { images: [],
-        product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
-        product_shipping_attributes: %i[weight length width height shipping_class],
-        product_linked_attributes: %i[upsells cross_sells],
-        product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
-        product_advanced_attributes: %i[purchase_note enable_reviews],
-        product_extra_attributes: [:product_video] }
+        :regular_price,
+        :name, :description, :tag,
+        {images: [],
+         product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
+         product_shipping_attributes: %i[weight length width height shipping_class],
+         product_linked_attributes: %i[upsells cross_sells],
+         product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
+         product_advanced_attributes: %i[purchase_note enable_reviews],
+         product_extra_attributes: [:product_video]}
     )
   end
 
   def product_inventory_params
     params.require(:product).require(:product_meta_attributes).require(:product_inventory_attributes).permit(
-      :sku, :stock_status, :manage_stock, :sold_individually
+        :sku, :stock_status, :manage_stock, :sold_individually
     )
   end
 
   def product_sale_price_params
     params.require(:product).require(:product_meta_attributes).require(:product_sale_price_attributes).permit(
-      :sale_price, :sale_date_start, :sale_date_end
+        :sale_price, :sale_date_start, :sale_date_end
     )
   end
 
   def product_shipping_params
     params.require(:product).require(:product_meta_attributes).require(:product_shipping_attributes).permit(
-      :weight, :length, :width, :shipping_class
+        :weight, :length, :width, :shipping_class
     )
   end
 
   def product_linked_params
     params.require(:product).require(:product_meta_attributes).require(:product_linked_attributes).permit(
-      :upsells, :cross_sells
+        :upsells, :cross_sells
     )
   end
 
   def product_extras_params
     params.require(:product).require(:product_meta_attributes).require(:product_extra_attributes).permit(
-      :product_video
+        :product_video
     )
   end
 
   def product_cart_params
-    params.permit(:style, :quality, :color, :size, :product_id, :quantity)
+    params.permit(:product_id, :quantity)
   end
 
   def product_attr_params
@@ -370,9 +377,9 @@ class ProductsController < ApplicationController
 
   def product_variation_meta_params
     params.require(:product).require(:product_variation_meta).permit(
-      :regular_price, { product_shipping_attributes: %i[width height length weight shipping_class],
-                        product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
-                        product_inventory_attributes: %i[sku stock_status manage_stock sold_individually] }
+        :regular_price, {product_shipping_attributes: %i[width height length weight shipping_class],
+                         product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
+                         product_inventory_attributes: %i[sku stock_status manage_stock sold_individually]}
     )
   end
 

@@ -3,9 +3,9 @@ class CartView
 
   def initialize(current_user)
     @cart = Cart.find_by(user_id: current_user.id)
-    @product_carts = ProductCart.where(cart_id: @cart.id)
+    @product_carts = @cart.product_carts
   end
-  
+
   def cart_items
     @product_carts.length
   end
@@ -13,7 +13,7 @@ class CartView
   def total
     ret = 0
     @product_carts.each do |item|
-      ret += item.product.product_meta.regular_price || 0
+      ret += (item.product.product_meta.regular_price || 0) * item.quantity
     end
     ret
   end
@@ -21,7 +21,7 @@ class CartView
   def subtotal
     ret = 0
     @product_carts.each do |item|
-      ret += item.product.product_meta.regular_price || 0
+      ret += (item.product.product_meta.regular_price || 0) * item.quantity
     end
     ret
   end

@@ -1,5 +1,7 @@
 console.log("Product", <%= regular_price %>, <%= index %>)
 $("#product-price-container").html("<%= j render('product_price', regular_price: regular_price, sale_price: sale_price) %>")
+$("#product_id").val(<%= product_id %>)
+//document.getElementById("product_id").value = <%#= product_id %>
 var indicators = $(".carousel-indicators")
 $(".carousel-item")?.each( (i, element) => {
     if (i === <%= index %>) {

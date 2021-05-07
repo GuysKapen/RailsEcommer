@@ -1,9 +1,10 @@
 <section id="form-add-to-cart">
 
-  <%= form_for product, :url => add_to_cart_product_path(:product_id => product.id), method: :post, remote: true do |_| %>
+  <%= form_for product, :url => add_to_cart_product_path, method: :post, remote: true do |f| %>
 
-    <%= hidden_field_tag(:product_id, product.id) %>
-    <input type="hidden" name="product_id" value="<%= product.id %>">
+    <%#= hidden_field_tag(:product_id, product.id) %>
+    <%#= f.hidden_field 'product_id', :value => params[:product_id] %>
+    <input id="product_id" type="hidden" name="product_id" value="<%= product.id %>">
     <% attrs_of_product_variation(product).each do |name, values| %>
       <div class="mt-4">
         <div class="d-flex justify-between text-center text-center mt-2 child-mx-3-not-first">
