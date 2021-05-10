@@ -18,6 +18,7 @@ class ProductMeta < ApplicationRecord
   has_one :product_sale_price, required: false
   has_one :product_stock, required: false
   has_one :product_review, required: false
+  has_one :product_detail, required: false
   # has_one :product_attribute, required: false
 
   accepts_nested_attributes_for :product_inventory, reject_if: :all_blank
@@ -26,5 +27,6 @@ class ProductMeta < ApplicationRecord
   accepts_nested_attributes_for :product_advanced, reject_if: :all_blank
   accepts_nested_attributes_for :product_extra, reject_if: :all_blank
   accepts_nested_attributes_for :product_sale_price, reject_if: :all_blank
+  accepts_nested_attributes_for :product_detail, reject_if: :all_blank
   # accepts_nested_attributes_for :product_attribute
 end

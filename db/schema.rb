@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_07_222955) do
+ActiveRecord::Schema.define(version: 2021_05_08_223641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,23 +40,36 @@ ActiveRecord::Schema.define(version: 2021_05_07_222955) do
     t.index ["type"], name: "index_ckeditor_assets_on_type"
   end
 
-  create_table "orders", force: :cascade do |t|
+  create_table "order_card_infos", force: :cascade do |t|
+    t.string "card_number"
+    t.string "expired_date"
+    t.string "card_code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "order_user_info_id"
+    t.index ["order_user_info_id"], name: "index_order_card_infos_on_order_user_info_id"
+  end
+
+  create_table "order_user_infos", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "company"
     t.string "country"
     t.string "address"
     t.string "city"
-    t.integer "zip_code"
+    t.string "zip_code"
     t.string "phone"
-    t.string "email"
-    t.string "card_number"
+    t.bigint "order_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["order_id"], name: "index_order_user_infos_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.decimal "total"
     t.string "note"
-    t.string "expiry_date"
-    t.string "card_code"
   end
 
   create_table "product_advanceds", force: :cascade do |t|
@@ -101,6 +114,16 @@ ActiveRecord::Schema.define(version: 2021_05_07_222955) do
     t.index ["product_type", "product_id"], name: "index_product_carts_on_product_type_and_product_id"
   end
 
+  create_table "product_details", force: :cascade do |t|
+    t.bigint "product_meta_id", null: false
+    t.decimal "regular_price"
+    t.text "description"
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_meta_id"], name: "index_product_details_on_product_meta_id"
+  end
+
   create_table "product_extras", force: :cascade do |t|
     t.text "product_video"
     t.datetime "created_at", precision: 6, null: false
@@ -133,10 +156,7 @@ ActiveRecord::Schema.define(version: 2021_05_07_222955) do
   create_table "product_meta", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.float "regular_price"
-    t.text "description"
     t.text "images"
-    t.string "name"
     t.string "product_type"
     t.bigint "product_id"
     t.index ["product_type", "product_id"], name: "index_product_meta_on_product_type_and_product_id"
@@ -214,8 +234,11 @@ ActiveRecord::Schema.define(version: 2021_05_07_222955) do
     t.index ["user_id"], name: "index_wishlists_on_user_id"
   end
 
+  add_foreign_key "order_card_infos", "order_user_infos"
+  add_foreign_key "order_user_infos", "orders"
   add_foreign_key "product_advanceds", "product_meta", column: "product_meta_id"
   add_foreign_key "product_attributes_values", "product_attributes_names"
+  add_foreign_key "product_details", "product_meta", column: "product_meta_id"
   add_foreign_key "product_extras", "product_meta", column: "product_meta_id"
   add_foreign_key "product_inventories", "product_meta", column: "product_meta_id"
   add_foreign_key "product_linkeds", "product_meta", column: "product_meta_id"

@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_meta: one
+  regular_price: 9.99
+  description: MyText
+  name: MyString
+
+two:
+  product_meta: two
+  regular_price: 9.99
+  description: MyText
+  name: MyString
