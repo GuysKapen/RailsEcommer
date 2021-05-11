@@ -33,7 +33,7 @@ function setupProductAttributes() {
             url: "/products/save_attributes",
             type: "post",
             data: form,
-            success: function (data) {
+            success: function () {
                 toastr.success("Success save attributes!")
             },
             error: function (data) {
@@ -54,38 +54,10 @@ function setupProductCategory() {
 
 function setupButtonAddAttr() {
     document.getElementById("button-add-attribute")?.addEventListener("click", function () {
-        $("#group-container-form-add-attributes").append("                          <div class=\"flex flex-grow-1 w-full my-8 form-add-attributes\">\n" +
-            "\n" +
-            "                            <div class=\"control w-4/12 mt-2\">\n" +
-            "                              <div>\n" +
-            "                                <label class=\"text optional label text-left p-0 d-flex\" for=\"product_attribute_name\">Name</label>\n" +
-            "                                <textarea class=\"product-attributes-name text optional input d-flex flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800\" name=\"product_attribute[name]\"></textarea>\n" +
-            "                                <!-- Attrs Visible -->\n" +
-            "                                <div class=\"d-flex justify-content-start align-items-center mt-3\">\n" +
-            "                                  <label class=\"d-flex justify-content-center align-items-center m-0\">\n" +
-            "                                    <input type=\"checkbox\" name=\"use_paypal\">\n" +
-            "                                    <span class=\"d-inline-block rounded-circle icon-size checkbox-size border-color-default border-1 checkbox-span mr-2\"></span>\n" +
-            "                                  </label>\n" +
-            "                                  <span class=\"f7\">Visible on product page</span>\n" +
-            "                                </div>\n" +
-            "                                <!-- !Attrs Visible -->\n" +
-            "                                <!-- Used for variations products -->\n" +
-            "                                <div class=\"d-flex justify-content-start align-items-center mt-3\">\n" +
-            "                                  <label class=\"d-flex justify-content-center align-items-center m-0\">\n" +
-            "                                    <input type=\"checkbox\" name=\"use_paypal\">\n" +
-            "                                    <span class=\"d-inline-block rounded-circle icon-size checkbox-size border-color-default border-1 checkbox-span mr-2\"></span>\n" +
-            "                                  </label>\n" +
-            "                                  <span class=\"f7\">Used for variations</span>\n" +
-            "                                </div>\n" +
-            "                                <!-- !Used for variations products -->\n" +
-            "                              </div>\n" +
-            "                            </div>\n" +
-            "                            <div class=\"control flex-grow-1 ml-1 mt-2 d-flex flex-column justify-content-start\">\n" +
-            "                              <label class=\"text optional label text-left p-0 d-flex\" for=\"product_attribute_value\">Value\n" +
-            "                                (separate by |)</label>\n" +
-            "                              <textarea class=\"product-attributes-value text optional input d-flex flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800\" name=\"product_attribute[value]\"></textarea>\n" +
-            "                            </div>\n" +
-            "                          </div>\n")
+        Rails.ajax({
+            url: "/products/add_attributes_input",
+            type: "post"
+        })
     })
 
 }
@@ -187,8 +159,8 @@ function setupProductFileUpload() {
 function handleFileInputVariationChange(container, file) {
     const reader = new FileReader()
     // Closure to capture the file information.
-    reader.onload = (function(theFile) {
-        return function(e) {
+    reader.onload = (function (theFile) {
+        return function (e) {
             container.innerHTML = ['<img class="w-24 cursor-pointer" src="', e.target.result,
                 '" title="', escape(theFile.name), '"/>'].join('');
         };

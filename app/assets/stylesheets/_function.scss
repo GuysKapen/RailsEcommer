@@ -191,7 +191,6 @@
   margin-right: 2rem !important;
 }
 
-
 .child-my-2 > * {
   margin-top: .5rem !important;
   margin-bottom: .5rem !important;
@@ -215,6 +214,10 @@
 .child-py-2 > * {
   padding-top: .5rem;
   padding-bottom: .5rem;
+}
+
+.child-bg-white > * {
+  background-color: white;
 }
 
 .sub-title {

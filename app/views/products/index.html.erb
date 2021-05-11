@@ -135,11 +135,11 @@
           <div class="text-center cursor-pointer product-card">
             <div class="card opacity-anim overflow-hidden">
               <%= link_to product_path(product) do %>
-                <%= image_tag(product_first_img(product), alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
+                <%= image_tag(product_first_img(product), alt: "Product", class: "transform image-product-item-height hover:scale-105 w-full duration-500 object-cover") %>
               <% end %>
               <div class="px-2 mx-1 mt-2">
                 <p class="my-0 sub-title hover:color-hover transform hover:scale-105 duration-200 opacity-50"><%= product.category.name %></p>
-                <p class="my-0 title hover:color-hover transform hover:scale-105 duration-200"><%= product.name %></p>
+                <p class="my-0 title hover:color-hover transform hover:scale-105 duration-200"><%= product.product_meta.product_detail.name %></p>
                 <div class="rating text-warning font-size-14">
                   <span><i class="fas fa-star"></i></span>
                   <span><i class="fas fa-star"></i></span>
@@ -147,8 +147,7 @@
                   <span><i class="fas fa-star"></i></span>
                   <span><i class="fas fa-star"></i></span>
                 </div>
-                <p class="font-weight-bold hover:color-hover transform hover:scale-105 duration-200 font-fredoka f4 my-0"><%= product.product_meta.regular_price %>
-                  $</p>
+                <p class="font-weight-bold hover:color-hover transform hover:scale-105 duration-200 font-fredoka f4 my-0"><%= product.price_text %></p>
                 <!--                <form action="" method="post">-->
                 <%#= form_for @product, method: :post, remote: true do |f| %>
                   <form action="<%= quick_view_product_path(id: product.id, product_id: product.id) %>" data-remote="true" method="post">

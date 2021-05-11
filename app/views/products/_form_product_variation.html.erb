@@ -243,58 +243,13 @@
                 <%#= simple_form_for @product_attr, url: save_attributes_products_path(@product), method: :post do |form_save_attr| %>
 
                 <hr class="my-2 w-full">
-                <div id="product-attributes-container" class="w-full">
+                <!-- For saved attributes -->
+                <div id="product-attributes-container" class="w-full"></div>
+                <!-- !For saved attributes -->
 
-                </div>
-                <hr class="my-2 w-full">
-
-                <div id="group-container-form-add-attributes" class="w-full">
-                  <div class="flex flex-grow-1 w-full my-8 form-add-attributes">
-
-                    <div class="control w-4/12 mt-2">
-                      <div>
-                        <label class="text optional label text-left p-0 d-flex" for="product_attribute_name">Name</label>
-                        <input type="text" placeholder="Attribute name" class="product-attributes-name text optional input d-flex flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" name="product_attribute[name]" id="product-attribute-name"/>
-
-                        <%#= form_save_attr.input :name, multiple: true, label: "Name", required: false,
-                                                           input_html: {class: "input d-flex flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label text-left p-0 d-flex"} %>
-
-                        <!-- Attrs Visible -->
-                        <div class="d-flex justify-content-start align-items-center mt-3">
-                          <label class="d-flex justify-content-center align-items-center m-0">
-                            <input type="checkbox" name="use_paypal">
-                            <span class="d-inline-block rounded-circle icon-size checkbox-size border-color-default border-1 checkbox-span mr-2"></span>
-                          </label>
-                          <span class="f7">Visible on product page</span>
-                        </div>
-                        <!-- !Attrs Visible -->
-
-                        <!-- Used for variations products -->
-                        <div class="d-flex justify-content-start align-items-center mt-3">
-                          <label class="d-flex justify-content-center align-items-center m-0">
-                            <input type="checkbox" name="use_paypal">
-                            <span class="d-inline-block rounded-circle icon-size checkbox-size border-color-default border-1 checkbox-span mr-2"></span>
-                          </label>
-                          <span class="f7">Used for variations</span>
-                        </div>
-                        <!-- !Used for variations products -->
-                      </div>
-
-                    </div>
-                    <div class="control flex-grow-1 ml-1 mt-2 d-flex flex-column justify-content-start">
-
-                      <%#= form_save_attr.input :value, multiple: true, label: "Value (separate by |)", required: false, :as => :text,
-                                                         input_html: {class: "input d-flex flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label text-left p-0 d-flex"} %>
-
-                      <label class="text optional label text-left p-0 d-flex" for="product_attribute_value">Value
-                        (separate by |)</label>
-                      <textarea placeholder="value1|value2|..." class="product-attributes-value text optional input d-flex flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" name="product_attribute[value]" id="product-attribute-value"></textarea>
-                    </div>
-
-                  </div>
-
-                  <hr class="my-2 w-full">
-                </div>
+                <!-- For Inputs -->
+                <div id="group-container-form-add-attributes" class="w-full"></div>
+                <!-- !For Inputs -->
 
                 <!-- Save Attributes -->
                 <div class="button-wishlist d-flex px-3" id="button-save-attributes">

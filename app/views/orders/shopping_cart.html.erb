@@ -11,15 +11,15 @@
         <div class="col-2 font-weight-bold text-gray-800 f6 text-right">SUBTOTAL</div>
       </div>
       <hr>
-      <% @order_view.products.each do |product| %>
+      <% @order_view.product_carts.each do |product_cart| %>
 
         <div class="d-flex justify-content-center align-items-center">
           <div class="col-6 font-weight-bold f6 d-flex align-items-center">
             <i class="fa fa-times-circle fa-lg"></i>
-            <%= image_tag(product_first_img(product), class: " img-avatar-size object-cover ml-3") %>
+            <%= image_tag(product_first_img(product_cart.product), class: " img-avatar-size object-cover ml-3") %>
             <h6 class="ml-3 text-gray-800">Iphone</h6>
           </div>
-          <div class="col-2 font-weight-bold f6 text-gray-800">$<%= product.regular_price %></div>
+          <div class="col-2 font-weight-bold f6 text-gray-800"><%= product_cart.product.sale_price_text %></div>
           <div class="col-2 font-weight-bold f6 p-0">
             <div class="d-flex text-center mt-2">
               <button type="button" class="qty-up px-2 border bg-light">
@@ -33,7 +33,7 @@
               </button>
             </div>
           </div>
-          <div class="col-2 font-weight-bold f6 text-gray-800 text-right">$<%= product.regular_price %></div>
+          <div class="col-2 font-weight-bold f6 text-gray-800 text-right">$<%= product_cart.product.price %></div>
         </div>
         <hr>
       <% end %>

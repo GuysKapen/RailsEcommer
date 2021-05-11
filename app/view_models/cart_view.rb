@@ -13,7 +13,7 @@ class CartView
   def total
     ret = 0
     @product_carts.each do |item|
-      ret += (item.product.product_meta.regular_price || 0) * item.quantity
+      ret += (item.product.price || 0) * item.quantity
     end
     ret
   end
@@ -21,7 +21,7 @@ class CartView
   def subtotal
     ret = 0
     @product_carts.each do |item|
-      ret += (item.product.product_meta.regular_price || 0) * item.quantity
+      ret += (item.product.price || 0) * item.quantity
     end
     ret
   end

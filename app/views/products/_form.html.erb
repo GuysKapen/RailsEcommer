@@ -2,30 +2,25 @@
   <%= simple_form_for(@product) do |f| %>
     <%= f.simple_fields_for :product_meta do |meta| %>
 
-      <div class="d-flex mx-2">
+      <div class="d-flex background-white-grey">
         <div class="ml-3 col-9">
           <div class="text-center">
-            <div class="field">
-              <div class="control">
 
-                <%= meta.input :name, label: "Product Name", required: true,
-                               placeholder: "Name",
-                               input_html: {class: "input w-100 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label text-left w-100"} %>
+            <%= meta.simple_fields_for :product_detail do |detail| %>
+              <div class="field">
+                <div class="control">
+                  <%= detail.input :name, label: "Product Name", required: true,
+                                   placeholder: "Name",
+                                   input_html: {class: "input w-100 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label text-left w-100"} %>
+                </div>
               </div>
-            </div>
-
-            <div class="field mt-5">
-              <div class="control">
-                <%= meta.input :description, as: :ckeditor, label: "Description", required: false,
-                               input_html: {class: "input w-100"}, wrapper: false, label_html: {class: "label text-left w-100"} %>
+              <div class="field mt-5">
+                <div class="control">
+                  <%= detail.input :description, as: :ckeditor, label: "Description", required: false,
+                                   input_html: {class: "input w-100"}, wrapper: false, label_html: {class: "label text-left w-100"} %>
+                </div>
               </div>
-            </div>
-
-            <!--          <div class="field mt-5">-->
-            <!--            <div class="control">-->
-            <%#= f.input :price, label: "Price", required: true, input_html: {class: "input w-100"}, wrapper: false, label_html: {class: "label text-left w-100"} %>
-            <!--            </div>-->
-            <!--          </div>-->
+            <% end %>
 
             <div class="field mt-5">
               <div class="control">
@@ -63,7 +58,7 @@
               </a>
             </div>
 
-            <div class="section mt-lg-5 border">
+            <div class="section mt-lg-5 border bg-white p-3 rounded-md">
 
               <div class="flex pr-2">
                 <!-- Product Type -->
@@ -88,20 +83,20 @@
 
             </div>
 
-<!--            <div class="field is-grouped d-flex mt-5">-->
-<!--              <div class="control">-->
-                <!--              <div class="button is-warning custom-btn line-height-normal d-inline-block" type="submit">Create Product-->
-                <!--              </div>-->
-                <%#= f.button :submit, class: 'button is-warning custom-btn line-height-normal d-inline-block' %>
-                <%#= link_to 'Cancel', products_path, class: 'button is-light link-no-style custom-btn' %>
-<!--              </div>-->
-<!--            </div>-->
+            <!--            <div class="field is-grouped d-flex mt-5">-->
+            <!--              <div class="control">-->
+            <!--              <div class="button is-warning custom-btn line-height-normal d-inline-block" type="submit">Create Product-->
+            <!--              </div>-->
+            <%#= f.button :submit, class: 'button is-warning custom-btn line-height-normal d-inline-block' %>
+            <%#= link_to 'Cancel', products_path, class: 'button is-light link-no-style custom-btn' %>
+            <!--              </div>-->
+            <!--            </div>-->
 
           </div>
         </div>
-        <div class="mx-3">
+        <section class="mx-3 child-bg-white">
           <!-- Public -->
-          <div class="border position-relative child-mx-2">
+          <div class="border position-relative child-mx-2 rounded-md overflow-hidden">
             <div class="p-1 py-2 m-0-imp color-primary-dark-bg text-white">
               <p class="ml-1 f4 m-0">Publish</p>
             </div>
@@ -150,7 +145,7 @@
           <!-- !Public -->
 
           <!-- Product categories -->
-          <div class="border position-relative child-mx-2 mt-3">
+          <div class="border position-relative child-mx-2 mt-3 rounded-md overflow-hidden">
             <div class="p-1 py-2 m-0-imp color-primary-dark-bg text-white">
               <p class="f4 m-0 ml-1">Product categories</p>
             </div>
@@ -172,10 +167,12 @@
                 <i class="fa fa-plus"><span class="ml-1">Add new category</span></i>
               </div>
               <div class="mt-2">
-                <% unless @categories.nil? %>
+                <% unless @categories.blank? %>
                   <%= f.select :category_id, options_for_select(@categories.map { |s| [s.name, s.id] }) %>
                 <% end %>
-                <input type="text" name="category_name" required id="input_new_category" placeholder="New Category" class="w-full px-2 py-2 rounded-lg font-medium border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800 my-2 hidden">
+                <input type="text" name="category_name" required id="input_new_category" placeholder="New Category"
+                       class="w-full px-2 py-2 rounded-lg font-medium border-gray-200 placeholder-gray-500 text-sm
+                        focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800 my-2 <%= @categories.blank? ? "" : "hidden" %>">
                 <%#= f.input_field :category_name,
                                   display: true,
                                   # collection: @categories,
@@ -197,7 +194,7 @@
           <!-- !Product categories -->
 
           <!-- Product Tag -->
-          <div class="border position-relative mt-3">
+          <div class="border position-relative mt-3 rounded-md overflow-hidden">
             <!--          <div class="m-0 flex cursor-pointer tab-panel background-hover-white py-2">-->
             <!--            <div class="col-2 text-left">-->
             <!--              <i class="fas mt-1 fa-ethernet text-center"></i>-->
@@ -220,19 +217,19 @@
           <!-- !Product Tag -->
 
           <!-- Product image -->
-          <div class="border position-relative child-mx-2 mt-3">
+          <div class="border position-relative child-mx-2 mt-3 rounded-md overflow-hidden">
             <div class="color-primary-dark-bg text-white p-1 py-2 m-0-imp">
               <p class="f4 ml-1 m-0">Product Image</p>
             </div>
             <hr style="margin: 0 !important;">
-<!--            <div class="field mt-2 w-full">-->
-<!--              <div class="control">-->
-<!--                <div class="w-full cursor-pointer text-left button-file-upload-data-id" data-id="product-image">-->
-<!--                  <i class="fa fa-3x fa-cloud-upload-alt text-blue-600"></i>-->
-<!--                </div>-->
-<!--                <div class="flex position-absolute left-full w-0 h-0 d-none">-->
-<!--                  <span class="file-cta"><span class="file-icon"><i class="fa fa-upload"></i></span><span class="file-label">Choose a file…</span></span>-->
-                  <%#= meta.file_field :images, required: true,-->
+            <!--            <div class="field mt-2 w-full">-->
+            <!--              <div class="control">-->
+            <!--                <div class="w-full cursor-pointer text-left button-file-upload-data-id" data-id="product-image">-->
+            <!--                  <i class="fa fa-3x fa-cloud-upload-alt text-blue-600"></i>-->
+            <!--                </div>-->
+            <!--                <div class="flex position-absolute left-full w-0 h-0 d-none">-->
+            <!--                  <span class="file-cta"><span class="file-icon"><i class="fa fa-upload"></i></span><span class="file-label">Choose a file…</span></span>-->
+            <%#= meta.file_field :images, required: true,-->
 <!--                                      multiple: true,-->
 <!--                                      as: :file,-->
 <!--                                      label: "",-->
@@ -240,18 +237,18 @@
 <!--                                      id: "input-file-upload-product-image",-->
 <!--                                      input_html: {class: "input w-100 file-input product-image hidden"},-->
                                       wrapper: false, label_html: {class: "label text-left w-100"} %>
-<!--                </div>-->
+            <!--                </div>-->
 
 
-<!--              </div>-->
-<!--            </div>-->
+            <!--              </div>-->
+            <!--            </div>-->
 
             <p class="custom-btn-wide rounded-extra-lg my-3 d-inline-block" href="#">Set product image</p>
           </div>
           <!-- !Product image -->
 
           <!-- Product gallery -->
-          <div class="border position-relative child-mx-2 mt-3">
+          <div class="border position-relative child-mx-2 mt-3 rounded-md overflow-hidden">
             <div class="color-primary-dark-bg text-white p-1 py-2 m-0-imp">
               <p class="f4 ml-1 m-0">Product Gallery</p>
             </div>
@@ -261,7 +258,7 @@
           <!-- !Product gallery -->
 
 
-        </div>
+        </section>
 
       </div>
 

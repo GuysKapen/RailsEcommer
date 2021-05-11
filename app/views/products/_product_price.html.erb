@@ -1,8 +1,8 @@
-<% if sale_price.nil? %>
-  <h6 class="font-baloo f2">$<%= regular_price %></h6>
+<% if sale_price.nil? || sale_price.blank? %>
+  <h6 class="font-baloo f2"><%= regular_price %></h6>
 <% else %>
-  <h6 class="font-baloo f2">$<%= sale_price %></h6>
+  <h6 class="font-baloo f2"><%= sale_price %></h6>
   <h6 class="font-baloo ml-3 f3 d-flex justify-content-center flex-column">
-    <del>$<%= regular_price %></del>
+    <del><%= regular_price %></del>
   </h6>
 <% end %>

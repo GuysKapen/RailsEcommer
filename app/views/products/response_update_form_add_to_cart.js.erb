@@ -1,9 +1,9 @@
-console.log("Product", <%= regular_price %>, <%= index %>)
-$("#product-price-container").html("<%= j render('product_price', regular_price: regular_price, sale_price: sale_price) %>")
+$("#product-price-container").html("<%= j render('product_price', regular_price: number_to_currency(regular_price), sale_price: number_to_currency(sale_price)) %>")
 $("#product_id").val(<%= product_id %>)
+$("#slider-product-cart-form-add-to-cart").text("<% if sale_price %> <%= number_to_currency(sale_price) %> <% else %> <%= number_to_currency(regular_price) %> <% end %>")
 //document.getElementById("product_id").value = <%#= product_id %>
 var indicators = $(".carousel-indicators")
-$(".carousel-item")?.each( (i, element) => {
+$(".carousel-item")?.each((i, element) => {
     if (i === <%= index %>) {
         $(element).addClass("active")
         indicators.eq(i).addClass("active")

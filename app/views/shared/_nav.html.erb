@@ -67,90 +67,96 @@
       <div class="row m-0">
         <div class="d-flex font-roboto outline-none-imp font-weight-bold align-items-center duration-500">
           <i class="fa fa-lg fa-shopping-cart mr-3 duration-500">&nbsp;/</i>
-<!--          <form action="<%#= cart_view_cart_path %>" data-remote="true" method="post" remote="true">-->
-<!--            <div class="d-flex justify-center button-wishlist px-2 py-2 my-3">-->
-              <button type="submit" class="d-inline-block cart-items" id="cart-items">
-                <%= cart_items %>
-              </button>
-<!--            </div>-->
-<!--          </form>-->
+          <!--          <form action="<%#= cart_view_cart_path %>" data-remote="true" method="post" remote="true">-->
+          <!--            <div class="d-flex justify-center button-wishlist px-2 py-2 my-3">-->
+          <button type="submit" class="d-inline-block cart-items" id="cart-items">
+            <%= cart_items %>
+          </button>
+          <!--            </div>-->
+          <!--          </form>-->
           <%#= button_to cart_items, view_cart_cart_index_path, remote: :true, class: "d-inline-block cart-items", id: "cart_items" %>
-<!--          <div class="d-inline-block cart-items" id="cart-items"><%#= cart_items %></div>-->
-          </div>
+          <!--          <div class="d-inline-block cart-items" id="cart-items"><%#= cart_items %></div>-->
+        </div>
       </div>
 
       <!-- Cart Popup -->
 
       <%# unless @product_carts.nil? %>
-        <div id="cart-popup-container" class="position-absolute w-full shadow-2xl rounded-md z-40 mt-12">
-          <section class="rounded-md cart-popup bg-white shadow-md mx-auto py-3">
-            <div id="cart-popup-items">
-              <div class="d-flex mx-3 p-0 my-1 shadow-md flex-grow-1 rounded-md justify-between pr-3">
-                <div class="d-flex">
-                  <div>
-                    <%= image_tag('product-09-414x414.jpg', width: 64, height: 64) %>
-                  </div>
-                  <div class="ml-3 d-flex flex-column justify-content-center">
-                    <p class="my-0">i-Phonez</p>
-                    <p class="fw6 f6">$600.00</p>
-                  </div>
-
+      <div id="cart-popup-container" class="position-absolute w-full shadow-2xl rounded-md z-40 mt-12">
+        <section class="rounded-md cart-popup bg-white shadow-md mx-auto py-3">
+          <div id="cart-popup-items">
+            <div class="d-flex mx-3 p-0 my-1 shadow-md flex-grow-1 rounded-md justify-between pr-3">
+              <div class="d-flex">
+                <div>
+                  <%= image_tag('product-09-414x414.jpg', width: 64, height: 64) %>
                 </div>
-                <div class="d-flex align-items-center">
-                  <i class="fa fa-times-circle fa-lg"></i>
-                </div>
-
-
-              </div>
-              <div class="d-flex mx-3 p-0 my-1 shadow-md flex-grow-1 rounded-md justify-between pr-3">
-                <div class="d-flex">
-                  <div>
-                    <%= image_tag('product-09-414x414.jpg', width: 64, height: 64) %>
-                  </div>
-                  <div class="ml-3 d-flex flex-column justify-content-center">
-                    <p class="my-0">i-Phonez</p>
-                    <p class="fw6 f6">$600.00</p>
-                  </div>
-
-                </div>
-                <div class="d-flex align-items-center">
-                  <i class="fa fa-times-circle fa-lg"></i>
-                </div>
-
-
-              </div>
-              <div class="d-flex mx-3 p-0 my-1 shadow-md flex-grow-1 rounded-md justify-between pr-3">
-                <div class="d-flex">
-                  <div>
-                    <%= image_tag('product-09-414x414.jpg', width: 64, height: 64) %>
-                  </div>
-                  <div class="ml-3 d-flex flex-column justify-content-center">
-                    <p class="my-0">i-Phonez</p>
-                    <p class="fw6 f6">$600.00</p>
-                  </div>
-
-                </div>
-                <div class="d-flex align-items-center">
-                  <i class="fa fa-times-circle fa-lg"></i>
+                <div class="ml-3 d-flex flex-column justify-content-center">
+                  <p class="my-0">i-Phonez</p>
+                  <p class="fw6 f6">$600.00</p>
                 </div>
 
               </div>
+              <div class="d-flex align-items-center">
+                <i class="fa fa-times-circle fa-lg"></i>
+              </div>
+
+
             </div>
-           <h6 class="text-center mt-3 font-baloo font-bold f4">Subtotal: <span id="cart-popup-subtotal" class="font-baloo font-bold f3">$1800</span></h6>
-            <div class="button-wishlist text-center d-flex justify-content-center mx-6 my-3">
-              <button type="submit" class="d-flex font-roboto f6 outline-none-imp font-weight-bold align-items-center duration-500">
+            <div class="d-flex mx-3 p-0 my-1 shadow-md flex-grow-1 rounded-md justify-between pr-3">
+              <div class="d-flex">
+                <div>
+                  <%= image_tag('product-09-414x414.jpg', width: 64, height: 64) %>
+                </div>
+                <div class="ml-3 d-flex flex-column justify-content-center">
+                  <p class="my-0">i-Phonez</p>
+                  <p class="fw6 f6">$600.00</p>
+                </div>
+
+              </div>
+              <div class="d-flex align-items-center">
+                <i class="fa fa-times-circle fa-lg"></i>
+              </div>
+
+
+            </div>
+            <div class="d-flex mx-3 p-0 my-1 shadow-md flex-grow-1 rounded-md justify-between pr-3">
+              <div class="d-flex">
+                <div>
+                  <%= image_tag('product-09-414x414.jpg', width: 64, height: 64) %>
+                </div>
+                <div class="ml-3 d-flex flex-column justify-content-center">
+                  <p class="my-0">i-Phonez</p>
+                  <p class="fw6 f6">$600.00</p>
+                </div>
+
+              </div>
+              <div class="d-flex align-items-center">
+                <i class="fa fa-times-circle fa-lg"></i>
+              </div>
+
+            </div>
+          </div>
+          <h6 class="text-center mt-3 font-baloo font-bold f4">Subtotal:
+            <span id="cart-popup-subtotal" class="font-baloo font-bold f3">$1800</span></h6>
+          <div class="button-wishlist text-center d-flex justify-content-center mx-6 my-3">
+            <%= link_to shopping_cart_orders_path, class: "link-no-style" do %>
+              <button class="d-flex font-roboto f6 outline-none-imp font-weight-bold align-items-center duration-500">
                 <i class="fa fa-shopping-cart mr-3 duration-500"></i>VIEW CART
               </button>
-            </div>
-            <div class="button-wishlist d-flex justify-content-center mx-6 my-3">
+            <% end %>
+
+          </div>
+          <div class="button-wishlist d-flex justify-content-center mx-6 my-3">
+            <%= link_to new_order_path, class: "link-no-style" do %>
               <button type="submit" class="d-flex font-roboto f6 outline-none-imp font-weight-bold align-items-center duration-500">
                 <i class="fa fa-heart mr-3 duration-500"></i>CHECK OUT
               </button>
-            </div>
+            <% end %>
+          </div>
 
-          </section>
+        </section>
 
-        </div>
+      </div>
       <%#  end %>
       <!-- !Cart Popup -->
 

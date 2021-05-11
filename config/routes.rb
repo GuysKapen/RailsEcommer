@@ -2,7 +2,7 @@
 Rails.application.routes.draw do
   resources :orders do
     collection do
-      get :checkout
+      get :shopping_cart
     end
   end
   get 'cart/index'
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       post :save_attributes
       post :create_variations_from_attrs
       post :change_product_form
+      post :add_attributes_input
     end
   end
   resources :user do

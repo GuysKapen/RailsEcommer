@@ -51,6 +51,10 @@
   background-color: #06598d;
 }
 
+.background-white-grey {
+  background-color: #efefef;
+}
+
 .icon-size {
   width: 32px;
   height: 32px;
@@ -69,7 +73,7 @@
 
 .image-product-item-height {
   height: 12rem;
-  width: 16rem;
+  //width: 16rem;
 }
 
 .custom-btn {
@@ -256,7 +260,7 @@ select[multiple]{
   border: 1px solid #b2b2b2;
   cursor: pointer;
   transition: .6s;
-  border-radius: 20px;
+  border-radius: 8px;
 
   max-height: 64px;
 }
@@ -281,13 +285,8 @@ select[multiple]{
   transform: translate(0, -40%);
 }
 
-.styled_select:hover {
-  border-radius: 0;
-}
-
 .styled_select:active, .styled_select.active {
   background-color: #eee;
-  border-radius: 0;
 }
 
 .options {

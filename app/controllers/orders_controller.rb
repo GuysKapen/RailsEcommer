@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # require 'app/view_models/order_new_view.rb'
 # noinspection ALL
 class OrdersController < ApplicationController
@@ -11,7 +12,7 @@ class OrdersController < ApplicationController
     @orders = Order.all
   end
 
-  def checkout
+  def shopping_cart
     @cart = Cart.find_by(user_id: current_user.id)
     @order_view = OrderNewView.new(@cart, view_context)
   end
@@ -27,6 +28,8 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @order = Order.new
+    @order_user_info = @order.build_order_user_info
+    @order_card_info = @order_user_info.build_order_card_info
     @cart = Cart.find_by(user_id: current_user.id)
     @order_view = OrderNewView.new(@cart, view_context)
   end
@@ -44,20 +47,22 @@ class OrdersController < ApplicationController
     # success = @order.save
     unless @order.save
       success = false
-      print("Save................................................................................\n", @order.errors.full_messages)
+      print("Save................................................................................\n",
+            @order.errors.full_messages)
     end
     @cart = Cart.find_by(user_id: current_user.id)
     @cart.product_carts.each do |item|
       item.order_id = @order.id
       print("WTF.........................................\n", item.inspect)
-      unless item.save
-        success = false
-        print("Save Product--------------------------------------------------------------------\n", item.errors.full_messages)
-      end
+      next if item.save
+
+      success = false
+      print("Save Product--------------------------------------------------------------------\n",
+            item.errors.full_messages)
       # success = false unless item.save
     end
 
-    print("Success: ", success)
+    print('Success: ', success)
     respond_to do |format|
       if success
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
@@ -102,7 +107,7 @@ class OrdersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def order_params
-    params.require(:order).permit(:first_name, :last_name, :company, :country, :address, :city, :zip_code,
-                                  :phone, :email, :card_number, :expiry_date, :card_code, :total, :note)
+    params.require(:order).permit(order_user_info_attributes: [:first_name, :last_name, :company, :country, :address, :city, :zip_code,
+                                                               :phone, :email, :total, :note, { order_card_info_attributes: %i[card_code card_number expired_date] }])
   end
 end
