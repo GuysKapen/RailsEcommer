@@ -29,4 +29,6 @@ class ProductVariation < ApplicationRecord
   def price
     product_meta.product_sale_price&.sale_price || product_meta.product_detail.regular_price
   end
+
+  delegate :name, to: :product
 end

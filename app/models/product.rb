@@ -48,4 +48,6 @@ class Product < ApplicationRecord
   def price
     product_meta.product_sale_price&.sale_price || product_meta.product_detail.regular_price
   end
+
+  delegate :name, :regular_price, to: :product_meta
 end

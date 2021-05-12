@@ -20,9 +20,8 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
-    @cart = Cart.find_by(user_id: current_user.id)
     @order = Order.find_by(id: params[:id])
-    @order_view = OrderNewView.new(@cart, view_context)
+    @order_view = OrderView.new(@order, view_context)
   end
 
   # GET /orders/new
@@ -42,6 +41,7 @@ class OrdersController < ApplicationController
   def create
     params[:order][:total] = params[:total]
     @order = Order.new(order_params)
+    @order = current_user.orders.build(order_params)
 
     success = true
     # success = @order.save
@@ -52,7 +52,7 @@ class OrdersController < ApplicationController
     end
     @cart = Cart.find_by(user_id: current_user.id)
     @cart.product_carts.each do |item|
-      item.order_id = @order.id
+      item.product_cart_container = @order
       print("WTF.........................................\n", item.inspect)
       next if item.save
 
@@ -107,7 +107,10 @@ class OrdersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def order_params
-    params.require(:order).permit(order_user_info_attributes: [:first_name, :last_name, :company, :country, :address, :city, :zip_code,
-                                                               :phone, :email, :total, :note, { order_card_info_attributes: %i[card_code card_number expired_date] }])
+    params.require(:order).permit(
+      :total, :note,
+      order_user_info_attributes: [:first_name, :last_name, :company, :country, :address, :city, :zip_code,
+                                   :phone, :email, :total, :note, { order_card_info_attributes: %i[card_code card_number expired_date] }]
+    )
   end
 end

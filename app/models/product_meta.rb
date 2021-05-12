@@ -28,5 +28,7 @@ class ProductMeta < ApplicationRecord
   accepts_nested_attributes_for :product_extra, reject_if: :all_blank
   accepts_nested_attributes_for :product_sale_price, reject_if: :all_blank
   accepts_nested_attributes_for :product_detail, reject_if: :all_blank
-  # accepts_nested_attributes_for :product_attribute
+
+  delegate :name, :regular_price, to: :product_detail
+  delegate :sale_price, to: :product_sale_price
 end
