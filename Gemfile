@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -32,16 +33,16 @@ gem 'jbuilder', '~> 2.7'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'bulma-rails', '~> 0.9.0'
-gem 'mimemagic', '~> 0.3.6'
 gem 'carrierwave', '~> 2.0'
 gem 'ckeditor'
+gem 'country_select', '~> 4.0'
 gem 'devise', '~> 4.7', '>= 4.7.2'
 gem 'font-awesome-sass', '~> 5.1ra3.0'
 gem 'jquery-rails'
+gem 'mimemagic', '~> 0.3.6'
 gem 'mini_magick'
 gem 'simple_form', '~> 5.0', '>= 5.0.2'
 gem 'toastr-rails'
-gem 'country_select', '~> 4.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -57,8 +58,8 @@ group :development do
   # gem 'better_errors', '~> 2.7', '>= 2.7.1'
   # gem 'spring'
   # gem 'spring-watcher-listen', '~> 2.0.0'
-  gem "better_errors"
-  gem "binding_of_caller"
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
