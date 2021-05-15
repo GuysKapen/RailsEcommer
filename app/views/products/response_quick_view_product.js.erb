@@ -3,7 +3,7 @@ $("body").append("<%= escape_javascript render 'products/product_quick_view', pr
 // Setup event for elements
 setupInputQty()
 // Setup Input Form
-setupInputVariation()
+setupFormAddToCart(<%= @product.id %>)
 
 document.getElementById("dock-add-to-cart").style.cssText = "display: none !important"
 

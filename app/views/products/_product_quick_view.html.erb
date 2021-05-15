@@ -2,48 +2,12 @@
   <div class="center-inner w-7/12 bg-white px-2 py-6 rounded-md shadow-md border-2 position-fixed z-50">
     <div class="d-flex position-relative">
       <div class="col-5">
-        <div id="carouselExampleControls" class="carousel slide my-auto" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <% @product.images.each_with_index do |_, index| %>
-              <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="bg-red-800 <%= index == 0 ? "active" : "" %>"></li>
-            <% end %>
-          </ol>
-          <div class="carousel-inner" id="list" role="listbox" style="height: 32rem">
-            <% @product.images.each_with_index do |image, index| %>
-              <div class="carousel-item h-full w-full <%= index == 0 ? "active" : "" %>">
-                <%= image_tag(image.url, alt: "Product", class: "img-fluid center-inner w-100 h-100 object-contain") %>
-              </div>
-            <% end %>
-          </div>
-          <a class="carousel-control-prev filter-invert" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next filter-invert" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-
-        <%#= image_tag(product_first_img(@product), alt: "Product", class: "img-fluid center-inner w-100 h-100 object-cover") %>
-        <!--        <div class="form-row pt-4 font-size-16 font-baloo position-absolute" style="bottom: 10%;-->
-        <!--        width: 80%; left: 10%">-->
-        <!--          <div class="col">-->
-        <!--            <button type="submit" class="btn btn-danger form-control">Buy</button>-->
-        <!--          </div>-->
-        <!--          <div class="col">-->
-        <!--            <button type="submit" class="btn btn-warning form-control">Add to Cart</button>-->
-        <!--          </div>-->
-        <!--        </div>-->
+        <%= render 'product_images_carousel', product: @product %>
       </div>
       <div class="ml-3">
-        <!--        <span class="font-baloo f4 font-weight-normal">Category: <%#= @product.category.name %></span>-->
         <h5 class="font-baloo font-size-20 f1 fw8 line-height-normal mb-0 text-left"><%= @product.name %></h5>
-        <div class="d-flex ">
-          <h6 class="font-baloo m-0 f2">$<%= @product.product_meta.sale_price %></h6>
-          <h6 class="font-baloo m-0 ml-3 f3 d-flex justify-content-center flex-column">
-            <del>$<%= @product.product_meta.product_detail.regular_price %></del>
-          </h6>
+        <div class="d-flex" id="product-price-container">
+          <%= render 'product_price', regular_price: @product.price_text, sale_price: @product.sale_price_text %>
         </div>
 
         <div class="d-flex">
@@ -60,7 +24,7 @@
         </div>
         <hr class="m-0">
 
-        <%= render 'form_add_to_cart' %>
+        <%= render 'form_add_to_cart', product: @product %>
 
         <%#= form_for @product, method: :post, remote: true do |f| %>
 

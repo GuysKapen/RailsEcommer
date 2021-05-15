@@ -2,7 +2,7 @@
   <hr class="color-fade">
   <div class="flex color-fade my-3">
     <div class="flex col-2 pl-0">
-      <div class="col-4 pl-0">Shop</div>
+      <div class="col-4 pl-0">#</div>
       <div class="">Date</div>
     </div>
     <div class="col-2">Status</div>
@@ -19,7 +19,7 @@
       <div class="flex mt-2 ml-0">
         <div class="col-2 flex justify-content-start pl-0">
           <div class="col-4 pl-0">
-            <i class="fab fa-google"></i>
+            #<%= order.id %>
           </div>
           <div class="">
             <span class="font-bold"><%= order.created_at.to_formatted_s(:long_ordinal) %></span>

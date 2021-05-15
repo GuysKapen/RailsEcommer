@@ -1,0 +1,40 @@
+<div id="carouselExampleControls" class="carousel slide my-auto" data-ride="carousel" <%= product.product_variations.blank? ? "" : "data-interval=false" %>>
+  <ol class="carousel-indicators">
+    <% if product.product_variations.blank? %>
+      <% product.product_meta.images.each_with_index do |_, index| %>
+        <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="bg-red-800 <%= index == 0 ? "active" : "" %>"></li>
+      <% end %>
+    <% else %>
+      <% product.product_variations.each_with_index do |_, index| %>
+        <li data-target="#carouselExampleIndicators" data-slide-to="<%= index %>" class="bg-red-800 <%= index == 0 ? "active" : "" %>"></li>
+      <% end %>
+    <% end %>
+  </ol>
+  <div class="carousel-inner" id="list" role="listbox" style="height: 32rem">
+
+    <% if product.product_variations.blank? %>
+      <% product.product_meta.images.each_with_index do |image, index| %>
+        <div class="carousel-item h-full w-full <%= index == 0 ? "active" : "" %>">
+          <%= image_tag(image.url, alt: "Product", class: "img-fluid center-inner w-100 h-100 object-contain") %>
+        </div>
+      <% end %>
+    <% else %>
+      <% product.product_variations.each_with_index do |variation, index| %>
+        <%# variation.product_meta.images.each_with_index do |image, index| %>
+        <div class="carousel-item h-full w-full <%= index == 0 ? "active" : "" %>">
+          <%= image_tag(variation.product_meta.images[0].url, alt: "Product", class: "img-fluid center-inner w-100 h-100 object-contain") %>
+        </div>
+        <%# end %>
+      <% end %>
+    <% end %>
+
+  </div>
+  <a class="carousel-control-prev filter-invert" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next filter-invert" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>

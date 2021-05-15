@@ -128,7 +128,7 @@
 
     </div>
     <div class="container mx-auto">
-      <div class="grid grid-gap-3-2">
+      <div class="grid grid-cols-3 grid-gap-3-2">
         <% @products.each do |product| %>
           <div class="text-center cursor-pointer product-card">
             <div class="card opacity-anim overflow-hidden">
@@ -136,7 +136,9 @@
                 <%= image_tag(product_first_img(product), alt: "Product", class: "transform image-product-item-height hover:scale-105 w-full duration-500 object-cover") %>
               <% end %>
               <div class="px-2 mx-1 mt-2">
-                <p class="my-0 sub-title hover:color-hover transform hover:scale-105 duration-200 opacity-50"><%= product.category.name %></p>
+                <% if product.category %>
+                  <p class="my-0 sub-title hover:color-hover transform hover:scale-105 duration-200 opacity-50"><%= product.category.name %></p>
+                <% end %>
                 <p class="my-0 title hover:color-hover transform hover:scale-105 duration-200"><%= product.product_meta.product_detail.name %></p>
                 <div class="rating text-warning font-size-14">
                   <span><i class="fas fa-star"></i></span>
@@ -148,16 +150,16 @@
                 <p class="font-weight-bold hover:color-hover transform hover:scale-105 duration-200 font-fredoka f4 my-0"><%= product.price_text %></p>
                 <!--                <form action="" method="post">-->
                 <%#= form_for @product, method: :post, remote: true do |f| %>
-                  <form action="<%= quick_view_product_path(id: product.id, product_id: product.id) %>" data-remote="true" method="post">
+                <form action="<%= quick_view_product_path(id: product.id, product_id: product.id) %>" data-remote="true" method="post">
 
                   <div class="d-flex justify-center button-wishlist px-2 py-2 my-3">
                     <button type="submit" class="d-flex font-roboto outline-none-imp font-weight-bold align-items-center duration-500">
                       <i class="fa fa-heart mr-2 duration-500"></i>Add to Cart
                     </button>
                   </div>
-                  </form>
+                </form>
 
-                  <!--                </form>-->
+                <!--                </form>-->
                 <%# end %>
 
                 <%#= button_to "Add to cart", controller: "products", action: "quick_view", params: {product_id: product.id}, remote: true %>
@@ -171,27 +173,6 @@
               </div>
             </div>
           </div>
-          <!--      <div class="text-center">-->
-          <!--        <div class="card opacity-anim">-->
-          <%#= link_to product_path(product) do %>
-          <%#= image_tag(product_first_img(product), alt: "Product", class: "card-img-top") %>
-          <%# end %>
-          <!--          <div class="px-3 mx-1">-->
-          <!--            <p class="my-0 sub-title">Product Category</p>-->
-          <!--            <p class="my-0 title">Product</p>-->
-          <!--            <div class="rating text-warning font-size-14">-->
-          <!--              <span><i class="fas fa-star"></i></span>-->
-          <!--              <span><i class="fas fa-star"></i></span>-->
-          <!--              <span><i class="fas fa-star"></i></span>-->
-          <!--              <span><i class="fas fa-star"></i></span>-->
-          <!--              <span><i class="fas fa-star"></i></span>-->
-          <!--            </div>-->
-          <!--            <p class="font-weight-bold f3 my-0">$300.00</p>-->
-          <!--            <div class="custom-btn mx-3 my-2">Add To Cart</div>-->
-          <!--          </div>-->
-
-          <!--        </div>-->
-          <!--      </div>-->
         <% end %>
       </div>
     </div>
