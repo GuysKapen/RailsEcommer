@@ -35,7 +35,8 @@ class Product < ApplicationRecord
       it.product_meta.product_sale_price&.sale_price unless it.product_meta.product_sale_price.nil?
     end.to_set
     if prices.blank?
-      format('%s', ActionController::Base.helpers.number_to_currency(product_meta.product_sale_price.sale_price))
+      ''
+      # format('%s', ActionController::Base.helpers.number_to_currency(product_meta.product_sale_price.sale_price))
     elsif prices.size == 1
       format('%s', ActionController::Base.helpers.number_to_currency(prices.first))
     else
