@@ -77,8 +77,8 @@
             <div class="field">
               <div class="control d-flex mt-2 justify-content-start">
                 <%= detail.input :regular_price, label: "Regular Price ($)", required: false,
-                               placeholder: "Price",
-                               input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+                                 placeholder: "Price",
+                                 input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
               </div>
             </div>
           <% end %>
@@ -91,6 +91,37 @@
                                      input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
               </div>
             </div>
+
+            <div class="field mt-2">
+              <div class="control d-flex mt-2 justify-content-start">
+                <%= sale_price.input :sale_date_start, as: :date, html5: true, label: "Sale Price Date Start", required: false,
+                                     placeholder: "Sale Price",
+                                     input_html: {class: "input flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+                <%= sale_price.input :sale_date_start_time, as: :time, html5: true, required: false,
+                            placeholder: "Sale Price",
+                            input_html: {class: "input flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"},
+                            label_html: {class: "hidden"} %>
+
+              </div>
+
+              <div class="control d-flex mt-2 justify-content-start">
+              </div>
+
+            </div>
+
+            <div class="field mt-2">
+              <div class="control d-flex mt-2 justify-content-start">
+                <%= sale_price.input :sale_date_end, as: :date, html5: true, label: "Sale Price Date End", required: false,
+                                     placeholder: "Sale Price",
+                                     input_html: {class: "input flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+
+                <%= sale_price.input :sale_date_end_time, as: :time, html5: true, required: false,
+                                     placeholder: "Sale Price",
+                                     input_html: {class: "input flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"},
+                                     label_html: {class: "hidden"} %>
+              </div>
+            </div>
+
           <% end %>
 
         </div>

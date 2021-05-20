@@ -3,3 +3,4 @@
 logs/
 tmp/
 #Gemfile.lock
+/db/seeds.rb

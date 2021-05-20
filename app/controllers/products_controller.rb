@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[new edit update]
   before_action :init_product_form, only: %i[new change_product_form]
+  before_action :fix_params, only: %i[create update]
 
   attr_reader :product
 
@@ -59,7 +60,28 @@ class ProductsController < ApplicationController
 
     params[:product][:category_id] = @category.id unless @category.nil?
     @product = current_user.products.build(product_params)
-    # @product_meta = @product.build_product_meta(product_meta_params)
+    # merge time and date into timestamp
+    sale_price = @product.product_meta.product_sale_price
+    unless sale_price.nil?
+      time_start = Time.zone.parse(sale_price.sale_date_start_time)
+      sale_price.sale_date_start = Time.zone.parse("#{sale_price.sale_date_start.strftime('%F')} #{time_start.strftime('%T')}")
+
+      time_end = Time.zone.parse(sale_price.sale_date_end_time)
+      sale_price.sale_date_end = Time.zone.parse("#{sale_price.sale_date_start.strftime('%F')} #{time_end.strftime('%T')}")
+    end
+
+    unless @product.product_variations.blank?
+      @product.product_variations.each do |variation|
+        sale_price = variation.product_meta.product_sale_price
+        next if sale_price.nil?
+
+        time_start = Time.zone.parse(sale_price.sale_date_start_time)
+        sale_price.sale_date_start = Time.zone.parse("#{sale_price.sale_date_start.strftime('%F')} #{time_start.strftime('%T')}")
+
+        time_end = Time.zone.parse(sale_price.sale_date_end_time)
+        sale_price.sale_date_end = Time.zone.parse("#{sale_price.sale_date_end.strftime('%F')} #{time_end.strftime('%T')}")
+      end
+    end
 
     respond_to do |format|
       if @product.save
@@ -255,6 +277,7 @@ class ProductsController < ApplicationController
     product.product_variations.each_with_index do |variation, index|
       values = helpers.attr_values_nocase_variation(variation)
       next unless values.sort == post_values.sort
+
       respond_to do |format|
         format.js do
           render 'products/response_update_form_add_to_cart',
@@ -273,6 +296,19 @@ class ProductsController < ApplicationController
   def add_attributes_input
     respond_to do |format|
       format.js { render 'products/response_add_attributes_input' }
+    end
+  end
+
+  def filter_by_price
+    print(params.inspect)
+    min_price = params[:min].to_f
+    max_price = params[:max].to_f
+    @products_filtered = Product.all.filter do |it|
+      !it.price_include_variation_min.nil? && it.price_include_variation_min >= min_price && it.price_include_variation_max <= max_price
+    end
+
+    respond_to do |format|
+      format.js { render 'products/response_filter_products' }
     end
   end
 
@@ -311,7 +347,7 @@ class ProductsController < ApplicationController
           product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
           product_shipping_attributes: %i[weight length width height shipping_class],
           product_linked_attributes: %i[upsells cross_sells],
-          product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
+          product_sale_price_attributes: %i[sale_price sale_date_start sale_date_start_time sale_date_end sale_date_end_time],
           product_advanced_attributes: %i[purchase_note enable_reviews],
           product_extra_attributes: [:product_video] }
       ],
@@ -327,7 +363,8 @@ class ProductsController < ApplicationController
             product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
             product_shipping_attributes: %i[weight length width height shipping_class],
             product_linked_attributes: %i[upsells cross_sells],
-            product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
+            product_sale_price_attributes: %i[sale_price sale_date_start sale_date_start_time sale_date_end
+                                              sale_date_end_time],
             product_advanced_attributes: %i[purchase_note enable_reviews],
             product_extra_attributes: [:product_video] }
         ]
@@ -401,4 +438,15 @@ class ProductsController < ApplicationController
   #     %i[width height length weight shipping_class]
   #   )
   # end
+  #
+  def fix_params
+    print('FUCK', params[:otherss])
+    # date = Date.parse(params.delete(:started_at))
+
+    # params[:example].merge!({
+    #                             'started_at(1i)' => date.year.to_s,
+    #                             'started_at(2i)' => date.month.to_s,
+    #                             'started_at(3i)' => date.day.to_s
+    #                         })
+  end
 end

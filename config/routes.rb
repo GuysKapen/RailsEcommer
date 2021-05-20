@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       post :create_variations_from_attrs
       post :change_product_form
       post :add_attributes_input
+      post :filter_by_price
     end
   end
   resources :user do

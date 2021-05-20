@@ -10,11 +10,10 @@ class ProductView
   def sale_off
     return '0%' if @product.product_meta.sale_price.nil?
 
-    '%.0f%%' % (((@product.product_meta.product_detail.regular_price - @product.product_meta.sale_price) / @product.product_meta.product_detail.regular_price) * 100)
+    format('%.1f%%', (((@product.product_meta.product_detail.regular_price - @product.product_meta.sale_price) / @product.product_meta.product_detail.regular_price) * 100))
   end
 
 
-
-  delegate :description, :user_id, :category, :product_meta, :id, :price_text, to: :product
+  delegate :description, :user_id, :category, :product_meta, :id, :regular_price_text, to: :product
   delegate :images, :name, to: :product_meta
 end

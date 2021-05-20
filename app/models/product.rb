@@ -19,14 +19,14 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :product_meta
   accepts_nested_attributes_for :product_variations
 
-  def price_text
+  def regular_price_text
     if product_variations.blank?
       format('%s', ActionController::Base.helpers.number_to_currency(product_meta.product_detail.regular_price))
     else
       prices = product_variations.map { |it| it.product_meta.product_detail.regular_price }
       format('%<low>s - %<high>s',
-             {low: ActionController::Base.helpers.number_to_currency(prices.min),
-              high: ActionController::Base.helpers.number_to_currency(prices.max)})
+             { low: ActionController::Base.helpers.number_to_currency(prices.min),
+               high: ActionController::Base.helpers.number_to_currency(prices.max) })
     end
   end
 
@@ -35,19 +35,43 @@ class Product < ApplicationRecord
       it.product_meta.product_sale_price&.sale_price unless it.product_meta.product_sale_price.nil?
     end.to_set
     if prices.blank?
-      ''
+      if product_meta.product_sale_price.nil?
+        ''
+      else
+        ActionController::Base.helpers.number_to_currency(product_meta.product_sale_price.sale_price)
+      end
       # format('%s', ActionController::Base.helpers.number_to_currency(product_meta.product_sale_price.sale_price))
     elsif prices.size == 1
       format('%s', ActionController::Base.helpers.number_to_currency(prices.first))
     else
       format('%<low>s - %<high>s',
-             {low: ActionController::Base.helpers.number_to_currency(prices.min),
-              high: ActionController::Base.helpers.number_to_currency(prices.max)})
+             { low: ActionController::Base.helpers.number_to_currency(prices.min),
+               high: ActionController::Base.helpers.number_to_currency(prices.max) })
+    end
+  end
+
+  def price_text
+    if sale_price_text.blank?
+      regular_price_text
+    else
+      sale_price_text
     end
   end
 
   def price
     product_meta.product_sale_price&.sale_price || product_meta.product_detail.regular_price
+  end
+
+  def price_include_variation_min
+    product_meta.product_sale_price&.sale_price || product_meta.product_detail.regular_price || product_variations.filter_map do |it|
+      it.product_meta.product_sale_price&.sale_price unless it.product_meta.product_sale_price.nil?
+    end.to_set.min
+  end
+
+  def price_include_variation_max
+    product_meta.product_sale_price&.sale_price || product_meta.product_detail.regular_price || product_variations.filter_map do |it|
+      it.product_meta.product_sale_price&.sale_price unless it.product_meta.product_sale_price.nil?
+    end.to_set.max
   end
 
   delegate :name, :regular_price, to: :product_meta
