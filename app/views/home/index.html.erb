@@ -65,7 +65,7 @@
           <div class="text-center cursor-pointer product-card">
             <div class="card opacity-anim overflow-hidden">
               <%= link_to product_path(product_view.product) do %>
-                <%= image_tag(product_first_img(product_view), alt: "Product", class: "transform image-product-item-height hover:scale-105 w-full duration-500 object-cover") %>
+                <%= image_tag(product_first_img(product_view), alt: "Product", class: "transform image-product-item-height hover:scale-105 w-full duration-500 object-contain") %>
               <% end %>
               <div class="px-3 mx-1 mt-2">
                 <% if product_view.category %>
@@ -95,81 +95,6 @@
       <% end %>
     </div>
 
-    <!--    <div class="row">-->
-    <!--      <div class="col-lg-3 col-sm-12 col-md-6 text-center">-->
-    <!--        <div class="card opacity-anim">-->
-    <%#= image_tag("product_4.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
-    <!--          <div class="px-3 mx-1">-->
-    <!--            <p class="my-0 sub-title">Product Category</p>-->
-    <!--            <p class="my-0 title">Product</p>-->
-    <!--            <div class="rating text-warning font-size-14">-->
-    <!--              <span><i class="fas fa-star"></i></span>-->
-    <!--              <span><i class="fas fa-star"></i></span>-->
-    <!--              <span><i class="fas fa-star"></i></span>-->
-    <!--              <span><i class="fas fa-star"></i></span>-->
-    <!--              <span><i class="fas fa-star"></i></span>-->
-    <!--            </div>-->
-    <!--            <p class="font-weight-bold f3 my-0">$300.00</p>-->
-    <!--            <div class="custom-btn mx-3">Add To Cart</div>-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--      <div class="col-lg-3 col-sm-12 col-md-6 text-center">-->
-    <!--        <div class="card opacity-anim">-->
-    <%#= image_tag("product_4.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
-    <!--          <div class="px-3 mx-1">-->
-    <!--            <p class="my-0 sub-title">Product Category</p>-->
-    <!--            <p class="my-0 title">Product</p>-->
-    <!--            <div class="rating text-warning font-size-14">-->
-    <!--              <span><i class="fas fa-star"></i></span>-->
-    <!--              <span><i class="fas fa-star"></i></span>-->
-    <!--              <span><i class="fas fa-star"></i></span>-->
-    <!--              <span><i class="fas fa-star"></i></span>-->
-    <!--              <span><i class="fas fa-star"></i></span>-->
-    <!--            </div>-->
-    <!--            <p class="font-weight-bold f3 my-0">$300.00</p>-->
-    <!--            <div class="custom-btn mx-3">Add To Cart</div>-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--      <div class="col-lg-3 col-sm-12 col-md-6 text-center">-->
-    <!--        <div class="card opacity-anim">-->
-    <%#= image_tag("product_4.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
-    <!--          <div class="px-3 mx-1">-->
-    <!--            <p class="my-0 sub-title">Product Category</p>-->
-    <!--            <p class="my-0 title">Product</p>-->
-    <!--            <div class="rating text-warning font-size-14">-->
-    <!--              <span><i class="fas fa-star"></i></span>-->
-    <!--              <span><i class="fas fa-star"></i></span>-->
-    <!--              <span><i class="fas fa-star"></i></span>-->
-    <!--              <span><i class="fas fa-star"></i></span>-->
-    <!--              <span><i class="fas fa-star"></i></span>-->
-    <!--            </div>-->
-    <!--            <p class="font-weight-bold f3 my-0">$300.00</p>-->
-    <!--            <div class="custom-btn mx-3">Add To Cart</div>-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--      <div class="col-lg-3 col-sm-12 col-md-6 text-center">-->
-    <!--        <div class="card opacity-anim">-->
-    <%#= image_tag("product_4.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
-    <!--          <div class="px-3 mx-1">-->
-    <!--            <p class="my-0 sub-title">Product Category</p>-->
-    <!--            <p class="my-0 title">Product</p>-->
-    <!--            <div class="rating text-warning font-size-14">-->
-    <!--              <span><i class="fas fa-star"></i></span>-->
-    <!--              <span><i class="fas fa-star"></i></span>-->
-    <!--              <span><i class="fas fa-star"></i></span>-->
-    <!--              <span><i class="fas fa-star"></i></span>-->
-    <!--              <span><i class="fas fa-star"></i></span>-->
-    <!--            </div>-->
-    <!--            <p class="font-weight-bold f3 my-0">$300.00</p>-->
-    <!--            <div class="custom-btn mx-3">Add To Cart</div>-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--      </div>-->
-
-    <!--    </div>-->
 
   </section>
 
@@ -188,7 +113,7 @@
         <div class="text-center cursor-pointer product-card">
           <div class="card opacity-anim overflow-hidden">
             <%= link_to product_path(product_view.product) do %>
-              <%= image_tag(product_first_img(product_view.product), alt: "Product", class: "transform w-full image-product-item-height hover:scale-105 duration-500 object-cover") %>
+              <%= image_tag(product_first_img(product_view.product), alt: "Product", class: "transform w-full image-product-item-height hover:scale-105 duration-500 object-contain") %>
             <% end %>
             <div class="absolute left-1 top-1 width-min rounded-circle bg-gray-800 text-white py-3 px-2 f5 font-extrabold font-roboto">
               <%= p product_view.sale_off %>
@@ -225,83 +150,6 @@
       </div>
     <% end %>
   </div>
-
-  <!--  <div class="row">-->
-  <!--    <div class="col-lg-3 col-sm-12 col-md-6 text-center">-->
-  <!--      <div class="card opacity-anim">-->
-  <%#= image_tag("product_5.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
-  <!--        <div class="px-3 mx-1">-->
-  <!--          <p class="my-0 sub-title">Product Category</p>-->
-  <!--          <p class="my-0 title">Product</p>-->
-  <!--          <div class="rating text-warning font-size-14">-->
-  <!--            <span><i class="fas fa-star"></i></span>-->
-  <!--            <span><i class="fas fa-star"></i></span>-->
-  <!--            <span><i class="fas fa-star"></i></span>-->
-  <!--            <span><i class="fas fa-star"></i></span>-->
-  <!--            <span><i class="fas fa-star"></i></span>-->
-  <!--          </div>-->
-  <!--          <p class="font-weight-bold f3 my-0">$300.00</p>-->
-  <!--          <div class="custom-btn mx-3">Add To Cart</div>-->
-  <!--        </div>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--    <div class="col-lg-3 col-sm-12 col-md-6 text-center">-->
-  <!--      <div class="card opacity-anim">-->
-
-  <%#= image_tag("product-11-450x494.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
-  <!--        <div class="px-3 mx-1">-->
-  <!--          <p class="my-0 sub-title">Product Category</p>-->
-  <!--          <p class="my-0 title">Product</p>-->
-  <!--          <div class="rating text-warning font-size-14">-->
-  <!--            <span><i class="fas fa-star"></i></span>-->
-  <!--            <span><i class="fas fa-star"></i></span>-->
-  <!--            <span><i class="fas fa-star"></i></span>-->
-  <!--            <span><i class="fas fa-star"></i></span>-->
-  <!--            <span><i class="fas fa-star"></i></span>-->
-  <!--          </div>-->
-  <!--          <p class="font-weight-bold f3 my-0">$300.00</p>-->
-  <!--          <div class="custom-btn mx-3">Add To Cart</div>-->
-  <!--        </div>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--    <div class="col-lg-3 col-sm-12 col-md-6 text-center">-->
-  <!--      <div class="card opacity-anim">-->
-  <%#= image_tag("product-09-414x414.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
-  <!--        <div class="px-3 mx-1">-->
-  <!--          <p class="my-0 sub-title">Product Category</p>-->
-  <!--          <p class="my-0 title">Product</p>-->
-  <!--          <div class="rating text-warning font-size-14">-->
-  <!--            <span><i class="fas fa-star"></i></span>-->
-  <!--            <span><i class="fas fa-star"></i></span>-->
-  <!--            <span><i class="fas fa-star"></i></span>-->
-  <!--            <span><i class="fas fa-star"></i></span>-->
-  <!--            <span><i class="fas fa-star"></i></span>-->
-  <!--          </div>-->
-  <!--          <p class="font-weight-bold f3 my-0">$300.00</p>-->
-  <!--          <div class="custom-btn mx-3">Add To Cart</div>-->
-  <!--        </div>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--    <div class="col-lg-3 col-sm-12 col-md-6 text-center">-->
-  <!--      <div class="card opacity-anim">-->
-  <%#= image_tag("product_7.jpg", alt: "Product", class: "transform image-product-item-height hover:scale-105 duration-500 object-cover") %>
-  <!--        <div class="px-3 mx-1">-->
-  <!--          <p class="my-0 sub-title">Product Category</p>-->
-  <!--          <p class="my-0 title">Product</p>-->
-  <!--          <div class="rating text-warning font-size-14">-->
-  <!--            <span><i class="fas fa-star"></i></span>-->
-  <!--            <span><i class="fas fa-star"></i></span>-->
-  <!--            <span><i class="fas fa-star"></i></span>-->
-  <!--            <span><i class="fas fa-star"></i></span>-->
-  <!--            <span><i class="fas fa-star"></i></span>-->
-  <!--          </div>-->
-  <!--          <p class="font-weight-bold f3 my-0">$300.00</p>-->
-  <!--          <div class="custom-btn mx-3">Add To Cart</div>-->
-  <!--        </div>-->
-  <!--      </div>-->
-  <!--    </div>-->
-
-  <!--  </div>-->
 
 </section>
 

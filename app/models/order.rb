@@ -1,7 +1,8 @@
 class Order < ApplicationRecord
   has_many :product_carts, as: :product_cart_container
   belongs_to :user
-  has_one :order_user_info
+  # has_one :order_user_info
+  belongs_to :order_user_info
 
   accepts_nested_attributes_for :order_user_info
 

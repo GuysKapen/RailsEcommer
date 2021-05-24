@@ -10,20 +10,6 @@ class CartView
     @product_carts.length
   end
 
-  def total
-    ret = 0
-    @product_carts.each do |item|
-      ret += (item.product.price || 0) * item.quantity
-    end
-    ret
-  end
-
-  def subtotal
-    ret = 0
-    @product_carts.each do |item|
-      ret += (item.product.price || 0) * item.quantity
-    end
-    ret
-  end
+  delegate :total, :subtotal, to: :@cart
 
 end

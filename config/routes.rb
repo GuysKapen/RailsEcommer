@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :orders do
     collection do
       get :shopping_cart
+      post :create_order_old_info
     end
   end
   get 'cart/index'

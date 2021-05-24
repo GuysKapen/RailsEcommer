@@ -31,6 +31,8 @@ class OrdersController < ApplicationController
     @order_card_info = @order_user_info.build_order_card_info
     @cart = Cart.find_by(user_id: current_user.id)
     @order_view = OrderNewView.new(@cart, view_context)
+    
+    @order_user_infos = current_user.orders.map(&:order_user_info)
   end
 
   # GET /orders/1/edit
@@ -45,28 +47,52 @@ class OrdersController < ApplicationController
 
     success = true
     # success = @order.save
-    unless @order.save
-      success = false
-      print("Save................................................................................\n",
-            @order.errors.full_messages)
-    end
+    success = false unless @order.save
     @cart = Cart.find_by(user_id: current_user.id)
     @cart.product_carts.each do |item|
       item.product_cart_container = @order
-      print("WTF.........................................\n", item.inspect)
       next if item.save
 
       success = false
-      print("Save Product--------------------------------------------------------------------\n",
-            item.errors.full_messages)
-      # success = false unless item.save
     end
 
-    print('Success: ', success)
     respond_to do |format|
       if success
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render :show, status: :created, location: @order }
+        format.js { render 'orders/response_create_order_success' }
+      else
+        format.html { render :new }
+        format.json { render json: @order.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def create_order_old_info
+    print("Params", params)
+    @order = current_user.orders.build
+    @order.total = current_user.cart.total
+    @order.order_user_info_id = params[:user_info_id]
+    # params[:order][:total] = params[:total]
+    # # @order = Order.new(order_params)
+    # @order = current_user.orders.build(order_params)
+    #
+    success = true
+    # success = @order.save
+    success = false unless @order.save
+    @cart = Cart.find_by(user_id: current_user.id)
+    @cart.product_carts.each do |item|
+      item.product_cart_container = @order
+      next if item.save
+
+      success = false
+    end
+
+    respond_to do |format|
+      if success
+        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+        format.json { render :show, status: :created, location: @order }
+        format.js { render 'orders/response_create_order_success' }
       else
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }
