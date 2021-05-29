@@ -14,7 +14,11 @@ module ApplicationHelper
   end
 
   def cart_items
-    ProductCart.count
+    if current_user
+      current_user.cart.product_carts.size
+    else
+      0
+    end
   end
 
   def cart_info

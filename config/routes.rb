@@ -28,10 +28,6 @@ Rails.application.routes.draw do
     end
   end
   resources :user do
-    member do
-      post :add_to_cart
-      # put :save_scheduling
-    end
   end
   resources :user, collection: {add_to_cart: :post}
   post 'cart/view_cart', controller: 'cart', action: 'view_cart'

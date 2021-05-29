@@ -171,31 +171,24 @@ class ProductsController < ApplicationController
     @wishlist = Wishlist.find_by(user_id: current_user.id)
     if @wishlist.nil?
       @wishlist = current_user.build_wishlist
-      unless @wishlist.save
-        errors.add(:base, 'Could not save wishlist')
-        return false
-      end
+      return false unless @wishlist.save
     end
 
-    print("----------------------------------------------------------------------------------------\n")
-    print("Wishlist \n", @wishlist.inspect)
+    product_for_wishlist = Product.find_by(id: product_cart_params['product_id'])
+    # product_wishlist = ProductCart.find_by(product_id: product_cart_params['product_id'])
+    product_wishlist = @wishlist.product_carts.filter { |it| it.id = product_cart_params['product_id'] }.first
+    if product_wishlist.nil?
+      product_wishlist = @wishlist.product_carts.build(product_cart_params)
+      product_wishlist = product_for_wishlist.product_carts.build(product_wishlist.as_json)
+      print("Product Wish list \n", product_wishlist.inspect)
 
-    @product_wishlist = ProductCart.find_by(product_id: product_cart_params['product_id'])
-    if @product_wishlist.nil?
-      @product_wishlist = @cart.product_carts.build(product_cart_params)
     else
-      @product_wishlist.quantity += 1
-      @product_wishlist.cart_id = @product_wishlist.id
+      product_wishlist.quantity += 1
+      product_wishlist.product_cart_container_id = product_wishlist.id
     end
 
-    print("Product Wish list \n", @product_wishlist.inspect)
+    return false unless product_wishlist.save
 
-    unless @product_wishlist.save
-      errors.add(:base, "Could not save product cart in wishlist#{@product_wishlist.errors.full_messages}")
-      return false
-    end
-
-    print('Saving Product Cart Error', @product_wishlist.errors.full_messages)
     respond_to do |format|
       format.js { render 'products/response_add_to_wishlist_success' }
     end
@@ -347,7 +340,8 @@ class ProductsController < ApplicationController
           product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
           product_shipping_attributes: %i[weight length width height shipping_class],
           product_linked_attributes: %i[upsells cross_sells],
-          product_sale_price_attributes: %i[sale_price sale_date_start sale_date_start_time sale_date_end sale_date_end_time],
+          product_sale_price_attributes: %i[sale_price sale_date_start sale_date_start_time sale_date_end
+                                            sale_date_end_time],
           product_advanced_attributes: %i[purchase_note enable_reviews],
           product_extra_attributes: [:product_video] }
       ],
