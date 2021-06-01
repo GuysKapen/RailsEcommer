@@ -1,0 +1,39 @@
+<% order_view.product_carts.each do |product_cart| %>
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="col-6 font-weight-bold f6 d-flex align-items-center">
+      <%= link_to remove_product_cart_from_cart_orders_path(:product_id => product_cart.id), method: :post, remote: true, class: "link-no-style" do %>
+        <i class="fa fa-times-circle fa-lg"></i>
+      <% end %>
+      <div class="">
+        <%= image_tag(product_first_img(product_cart.product), class: "img-avatar-size-big object-cover ml-3") %>
+        <div class="ml-3">
+          <h6 class="text-gray-800 mt-2"><%= product_cart.name %></h6>
+          <% if product_cart.product.class.method_defined?(:product_attributes_values) %>
+            <% product_cart.product.product_attributes_values.each do |attr| %>
+              <div>
+                <%= attr.product_attributes_name.name %>: <%= attr.value %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-2 font-weight-bold f6 text-gray-800"><%= product_cart.product.price_text %></div>
+    <div class="col-2 font-weight-bold f6 p-0">
+      <div class="d-flex text-center mt-2">
+        <button type="button" class="qty-up px-2 border bg-light">
+          <i class="fas fa-angle-up" data-id="prod1"></i>
+        </button>
+        <input type="number" name="quantity" id="quantity" class="qty-input w-25 text-center border px-2 bg-light"
+               readonly="readonly"
+               value="<%= product_cart.quantity %>" placeholder="<%= product_cart.quantity %>" data-id="prod1">
+        <button type="button" class="qty-down px-2 border bg-light" data-id="prod1">
+          <i class="fas fa-angle-down"></i>
+        </button>
+      </div>
+    </div>
+    <div class="col-2 font-weight-bold f6 text-gray-800 text-right">$<%= product_cart.total %></div>
+  </div>
+  <hr>
+<% end %>

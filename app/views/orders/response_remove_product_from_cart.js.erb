@@ -1,0 +1,8 @@
+<% if success %>
+toastr.success("<%= message %>")
+$("#product_carts_in_cart").html("<%= escape_javascript render 'orders/product_in_cart', order_view: @order_view %>")
+$("#cart-subtotal").text("<%= number_to_currency(@order_view.subtotal) %>")
+$("#cart-total").text("<%= number_to_currency(@order_view.total) %>")
+<% else %>
+toastr.error("<%= message %>")
+<% end %>

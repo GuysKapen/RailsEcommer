@@ -17,6 +17,31 @@ class OrdersController < ApplicationController
     @order_view = OrderNewView.new(@cart, view_context)
   end
 
+  def remove_product_cart_from_cart
+    print(params)
+    @product_cart = ProductCart.find(params[:product_id])
+
+    success = false
+    message = ''
+    begin
+      @product_cart.destroy!
+      success = true
+      message = 'Remove product from cart sucessful!'
+    rescue ActiveRecord::RecordNotDestroyed => e
+      success = false
+      message = 'Failed to remove product from cart!'
+      puts "errors that prevented destruction: #{e.record.errors}"
+    end
+
+    @cart = Cart.find_by(user_id: current_user.id)
+    @order_view = OrderNewView.new(@cart, view_context)
+
+    respond_to do |format|
+      format.js { render 'orders/response_remove_product_from_cart', locals: {success: success, message: message} }
+    end
+
+  end
+
   # GET /orders/1
   # GET /orders/1.json
   def show
@@ -31,7 +56,7 @@ class OrdersController < ApplicationController
     @order_card_info = @order_user_info.build_order_card_info
     @cart = Cart.find_by(user_id: current_user.id)
     @order_view = OrderNewView.new(@cart, view_context)
-    
+
     @order_user_infos = current_user.orders.map(&:order_user_info)
   end
 
@@ -69,7 +94,7 @@ class OrdersController < ApplicationController
   end
 
   def create_order_old_info
-    print("Params", params)
+    print('Params', params)
     @order = current_user.orders.build
     @order.total = current_user.cart.total
     @order.order_user_info_id = params[:user_info_id]
@@ -134,9 +159,9 @@ class OrdersController < ApplicationController
   # Only allow a list of trusted parameters through.
   def order_params
     params.require(:order).permit(
-      :total, :note,
-      order_user_info_attributes: [:first_name, :last_name, :company, :country, :address, :city, :zip_code,
-                                   :phone, :email, :total, :note, { order_card_info_attributes: %i[card_code card_number expired_date] }]
+        :total, :note,
+        order_user_info_attributes: [:first_name, :last_name, :company, :country, :address, :city, :zip_code,
+                                     :phone, :email, :total, :note, {order_card_info_attributes: %i[card_code card_number expired_date]}]
     )
   end
 end

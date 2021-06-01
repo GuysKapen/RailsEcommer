@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     collection do
       get :shopping_cart
       post :create_order_old_info
+      post :remove_product_cart_from_cart
     end
   end
   get 'cart/index'
