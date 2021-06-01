@@ -4,4 +4,8 @@ class ProductCart < ApplicationRecord
 
   delegate :name, to: :product
   delegate :price, to: :product
+
+  def total
+    product.price * quantity
+  end
 end

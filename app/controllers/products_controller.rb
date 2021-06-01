@@ -131,13 +131,13 @@ class ProductsController < ApplicationController
 
     # Find product cart already in cart for update quantity if user add again
     product_for_cart = Product.find_by(id: product_cart_params['product_id']) || ProductVariation.find_by(id: product_cart_params['product_id'])
-    product_cart = ProductCart.find_by(product_id: product_cart_params['product_id'])
-
+    # product_cart = ProductCart.find_by(product_id: product_cart_params['product_id'])
+    product_cart = @cart.product_carts.where(product_id: product_cart_params['product_id']).first
     # If not have then add new one
     # Othewise add it quantity to 1 or quantity if have
     if product_cart.nil?
       product_cart = @cart.product_carts.build(product_cart_params)
-      product_cart = product_for_cart.build_product_cart(product_cart.as_json)
+      product_cart = product_for_cart.product_carts.build(product_cart.as_json)
     else
       product_cart.quantity += 1
       # product_cart.cart_id = @cart.id
@@ -175,12 +175,10 @@ class ProductsController < ApplicationController
     end
 
     product_for_wishlist = Product.find_by(id: product_cart_params['product_id'])
-    # product_wishlist = ProductCart.find_by(product_id: product_cart_params['product_id'])
     product_wishlist = @wishlist.product_carts.filter { |it| it.id = product_cart_params['product_id'] }.first
     if product_wishlist.nil?
       product_wishlist = @wishlist.product_carts.build(product_cart_params)
       product_wishlist = product_for_wishlist.product_carts.build(product_wishlist.as_json)
-      print("Product Wish list \n", product_wishlist.inspect)
 
     else
       product_wishlist.quantity += 1

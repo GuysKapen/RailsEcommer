@@ -11,6 +11,14 @@ class ProductVariation < ApplicationRecord
   accepts_nested_attributes_for :product_attributes_values
 
   def price_text
+    if sale_price_text.blank?
+      regular_price_text
+    else
+      sale_price_text
+    end
+  end
+
+  def regular_price_text
     format('%s', ActionController::Base.helpers.number_to_currency(product_meta.product_detail.regular_price))
   end
 
@@ -18,7 +26,7 @@ class ProductVariation < ApplicationRecord
     if product_meta.product_sale_price.nil?
       price_text
     else
-      format('%<regular>s - %<sale>s', { regular: price_text, sale: sale_price_text })
+      format('%<regular>s - %<sale>s', {regular: price_text, sale: sale_price_text})
     end
   end
 
