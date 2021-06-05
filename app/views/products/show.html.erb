@@ -222,65 +222,89 @@
               </div>
               <p>450 Reviews</p>
             </div>
-
-            <div class="heading">
-              <div class="d-flex mt-br">
-                <%= image_tag("blog post 3.jpg", class: 'img-avatar') %>
-                <div class="ml-2">
-                  <div class="fw5">Guys Customer</div>
-                  <span class="font-baloo">21 October, 2020</span>
+            <div id="comment-container">
+              <div class="heading">
+                <div class="d-flex mt-br">
+                  <%= image_tag("blog post 3.jpg", class: 'img-avatar') %>
+                  <div class="ml-2">
+                    <div class="fw5">Guys Customer</div>
+                    <span class="font-baloo">21 October, 2020</span>
+                  </div>
+                </div>
+                <div class="my-3 rating text-warning font-size-14">
+                  <span><i class="fas fa-xs fa-star"></i></span>
+                  <span><i class="fas fa-xs fa-star"></i></span>
+                  <span><i class="fas fa-xs fa-star"></i></span>
+                  <span><i class="fas fa-xs fa-star"></i></span>
+                  <span><i class="fas fa-xs fa-star"></i></span>
+                </div>
+                <div class="mt-2">
+                  <h6 class="font-baloo f2">Very Satisfy</h6>
+                  <p class="font-roboto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aperiam
+                    architecto atque blanditiis,
+                    debitis dolorum ea est fuga, harum id in qui sed ullam velit vero? Ducimus iusto sint
+                    voluptatibus.</p>
+                </div>
+                <div class="d-flex text-center mt-2">
+                  <div class="custom-btn-wide font-fredoka font-weight-lighter">Like</div>
+                  <div class="custom-btn-wide ml-3 font-fredoka font-weight-lighter">Answer</div>
                 </div>
               </div>
-              <div class="my-3 rating text-warning font-size-14">
-                <span><i class="fas fa-xs fa-star"></i></span>
-                <span><i class="fas fa-xs fa-star"></i></span>
-                <span><i class="fas fa-xs fa-star"></i></span>
-                <span><i class="fas fa-xs fa-star"></i></span>
-                <span><i class="fas fa-xs fa-star"></i></span>
-              </div>
-              <div class="mt-2">
-                <h6 class="font-baloo f2">Very Satisfy</h6>
-                <p class="font-roboto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aperiam
-                  architecto atque blanditiis,
-                  debitis dolorum ea est fuga, harum id in qui sed ullam velit vero? Ducimus iusto sint
-                  voluptatibus.</p>
-              </div>
-              <div class="d-flex text-center mt-2">
-                <div class="custom-btn-wide font-fredoka font-weight-lighter">Like</div>
-                <div class="custom-btn-wide ml-3 font-fredoka font-weight-lighter">Answer</div>
-              </div>
-            </div>
-          </div>
-          <div class="tab-content">
-            <div>
-              <h6 class="fw6">FAQ</h6>
-              <div class="mt-5">
-                <div class="d-flex">
-                  <div class="col-2 text-center">
-                    <p>1</p>
-                    <p>Like</p>
-                  </div>
-                  <div>
-                    <p class="fw7 font-roboto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
-                      assumenda beatae
-                      blanditiis deleniti eos iste minima mollitia natus, neque nihil omnis</p>
-                    <p class="fw4 mt-3 text-color-subtitle-dark">Lorem ipsum dolor sit amet, consectetur adipisicing
-                      elit. Accusantium, consequatur
-                      corporis culpa dolor fugit illum ipsa libero mollitia nulla, numquam, perferendis quisquam quod
-                      reprehenderit tempora temporibus ut veritatis voluptate voluptatibus!</p>
-                    <div class="d-flex text-center mt-2 mt-3">
-                      <div class="custom-btn-wide font-fredoka font-weight-lighter">Like</div>
+              <div id="comment-form">
+                <% if current_user %>
+                  <%= simple_form_for(@comment, url: add_comment_products_path, html: {class: "w-100"}, remote: true) do |f| %>
+                    <div class="heading">
+                      <div class="d-flex mt-br">
+                        <%= image_tag("blog post 3.jpg", class: 'img-avatar') %>
+                        <div class="ml-2 flex align-items-center w-100">
+                          <%= f.input :message, label: "Description", required: false,
+                                      placeholder: "Commenting publicly as #{current_user.username}",
+                                      input_html: {class: "input w-100 border-b"}, wrapper: false, label_html: {class: "label text-left w-100 d-none"} %>
+                        </div>
+                        <%= f.input :product_id, :as => :hidden, input_html: {value: @product.id} %>
+                        <%#= hidden_field_tag(:product_id, @product.id) %>
+                      </div>
+                    </div>
+                    <div class="d-flex text-center mt-2">
+                      <%= f.submit 'Comment', class: "custom-btn-wide font-fredoka font-weight-lighter" %>
                       <div class="custom-btn-wide ml-3 font-fredoka font-weight-lighter">Answer</div>
                     </div>
+                    </div>
+                  <% end %>
+                <% end %>
+                </div>
+          </div>
+        </div>
+        <div class="tab-content">
+          <div>
+            <h6 class="fw6">FAQ</h6>
+            <div class="mt-5">
+              <div class="d-flex">
+                <div class="col-2 text-center">
+                  <p>1</p>
+                  <p>Like</p>
+                </div>
+                <div>
+                  <p class="fw7 font-roboto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid
+                    assumenda beatae
+                    blanditiis deleniti eos iste minima mollitia natus, neque nihil omnis</p>
+                  <p class="fw4 mt-3 text-color-subtitle-dark">Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit. Accusantium, consequatur
+                    corporis culpa dolor fugit illum ipsa libero mollitia nulla, numquam, perferendis quisquam quod
+                    reprehenderit tempora temporibus ut veritatis voluptate voluptatibus!</p>
+                  <div class="d-flex text-center mt-2 mt-3">
+                    <div class="custom-btn-wide font-fredoka font-weight-lighter">Like</div>
+                    <div class="custom-btn-wide ml-3 font-fredoka font-weight-lighter">Answer</div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- !Tab Content -->
       </div>
+      <!-- !Tab Content -->
     </div>
+  </div>
   </div>
 </section>
 

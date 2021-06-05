@@ -26,10 +26,12 @@ Rails.application.routes.draw do
       post :change_product_form
       post :add_attributes_input
       post :filter_by_price
+      post :add_comment
     end
   end
   resources :user do
   end
+  resources :comment
   resources :user, collection: {add_to_cart: :post}
   post 'cart/view_cart', controller: 'cart', action: 'view_cart'
 

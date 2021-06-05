@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[new edit update]
   before_action :init_product_form, only: %i[new change_product_form]
-  before_action :fix_params, only: %i[create update]
+  # before_action :fix_params, only: %i[create update]
 
   attr_reader :product
 
@@ -20,6 +20,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @user = current_user
+    @comment = Comment.new
     @hash_attrs = helpers.attrs_of_product_variation(@product)
   end
 
@@ -33,7 +34,7 @@ class ProductsController < ApplicationController
     # @product_meta.build_product_extra
     # @product_meta.build_product_shipping
     # @product_meta.build_product_sale_price
-    # init_product
+    init_product
     @categories = Category.all
     @product_attr = ProductAttributesName.new
 
@@ -207,10 +208,10 @@ class ProductsController < ApplicationController
       product_attr_params.each do |_, attrs|
         attrs.each do |attr|
           attr_obj = JSON.parse(attr)
-          attr_name = { name: attr_obj['name'] }
+          attr_name = {name: attr_obj['name']}
           @product_attrs_name = ProductAttributesName.new(attr_name)
           attr_obj['value'].split('|').each do |value|
-            attr_value = { value: value }
+            attr_value = {value: value}
             @product_attrs_name.product_attributes_values.build(attr_value)
           end
           @product_attrs_name.save
@@ -230,7 +231,7 @@ class ProductsController < ApplicationController
     merge = helpers.products_cartesian(@product_attrs)
     @attrs_list_values = merge[:value]
     @attrs_list_values = @attrs_list_values
-                         .map do |attrs_values|
+                             .map do |attrs_values|
       attrs_values.map do |value|
         ProductAttributesValue.where(value: value).first
       end
@@ -273,10 +274,10 @@ class ProductsController < ApplicationController
         format.js do
           render 'products/response_update_form_add_to_cart',
                  locals: {
-                   regular_price: variation.product_meta.product_detail.regular_price,
-                   sale_price: variation.product_meta.product_sale_price&.sale_price,
-                   index: index,
-                   product_id: variation.id
+                     regular_price: variation.product_meta.product_detail.regular_price,
+                     sale_price: variation.product_meta.product_sale_price&.sale_price,
+                     index: index,
+                     product_id: variation.id
                  }
         end
       end
@@ -300,6 +301,17 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       format.js { render 'products/response_filter_products' }
+    end
+  end
+
+  def add_comment
+    @comment = current_user.comments.build(comment_params)
+    respond_to do |format|
+      if @comment.save
+        format.js { render 'products/response_add_comment', locals: {success: true} }
+      else
+        format.js { render 'products/response_add_comment', locals: {success: false} }
+      end
     end
   end
 
@@ -328,84 +340,84 @@ class ProductsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def product_params
     params.require(:product).permit(
-      :category_id,
-      product_meta_attributes: [
-        # :regular_price,
-        # :name, :description,
-        :tag,
-        { product_detail_attributes: %i[name description regular_price],
-          images: [],
-          product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
-          product_shipping_attributes: %i[weight length width height shipping_class],
-          product_linked_attributes: %i[upsells cross_sells],
-          product_sale_price_attributes: %i[sale_price sale_date_start sale_date_start_time sale_date_end
-                                            sale_date_end_time],
-          product_advanced_attributes: %i[purchase_note enable_reviews],
-          product_extra_attributes: [:product_video] }
-      ],
-      product_variations_attributes: [
-        product_attributes_value_ids: [],
-        # product_attributes_values_attributes: [product_attributes_value_ids: []],
+        :category_id,
         product_meta_attributes: [
-          # :regular_price,
-          # :name, :description,
-          :tag,
-          { images: [],
-            product_detail_attributes: %i[name description regular_price],
-            product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
-            product_shipping_attributes: %i[weight length width height shipping_class],
-            product_linked_attributes: %i[upsells cross_sells],
-            product_sale_price_attributes: %i[sale_price sale_date_start sale_date_start_time sale_date_end
+            # :regular_price,
+            # :name, :description,
+            :tag,
+            {product_detail_attributes: %i[name description regular_price],
+             images: [],
+             product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
+             product_shipping_attributes: %i[weight length width height shipping_class],
+             product_linked_attributes: %i[upsells cross_sells],
+             product_sale_price_attributes: %i[sale_price sale_date_start sale_date_start_time sale_date_end
+                                            sale_date_end_time],
+             product_advanced_attributes: %i[purchase_note enable_reviews],
+             product_extra_attributes: [:product_video]}
+        ],
+        product_variations_attributes: [
+            product_attributes_value_ids: [],
+            # product_attributes_values_attributes: [product_attributes_value_ids: []],
+            product_meta_attributes: [
+                # :regular_price,
+                # :name, :description,
+                :tag,
+                {images: [],
+                 product_detail_attributes: %i[name description regular_price],
+                 product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
+                 product_shipping_attributes: %i[weight length width height shipping_class],
+                 product_linked_attributes: %i[upsells cross_sells],
+                 product_sale_price_attributes: %i[sale_price sale_date_start sale_date_start_time sale_date_end
                                               sale_date_end_time],
-            product_advanced_attributes: %i[purchase_note enable_reviews],
-            product_extra_attributes: [:product_video] }
-        ]
-      ],
-      category_attributes: [:name]
+                 product_advanced_attributes: %i[purchase_note enable_reviews],
+                 product_extra_attributes: [:product_video]}
+            ]
+        ],
+        category_attributes: [:name]
     )
   end
 
   def product_meta_params
     params.require(:product).require(:product_meta_attributes).permit(
-      :tag,
-      { images: [],
-        product_detail_attributes: %i[name description regular_price],
-        product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
-        product_shipping_attributes: %i[weight length width height shipping_class],
-        product_linked_attributes: %i[upsells cross_sells],
-        product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
-        product_advanced_attributes: %i[purchase_note enable_reviews],
-        product_extra_attributes: [:product_video] }
+        :tag,
+        {images: [],
+         product_detail_attributes: %i[name description regular_price],
+         product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
+         product_shipping_attributes: %i[weight length width height shipping_class],
+         product_linked_attributes: %i[upsells cross_sells],
+         product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
+         product_advanced_attributes: %i[purchase_note enable_reviews],
+         product_extra_attributes: [:product_video]}
     )
   end
 
   def product_inventory_params
     params.require(:product).require(:product_meta_attributes).require(:product_inventory_attributes).permit(
-      :sku, :stock_status, :manage_stock, :sold_individually
+        :sku, :stock_status, :manage_stock, :sold_individually
     )
   end
 
   def product_sale_price_params
     params.require(:product).require(:product_meta_attributes).require(:product_sale_price_attributes).permit(
-      :sale_price, :sale_date_start, :sale_date_end
+        :sale_price, :sale_date_start, :sale_date_end
     )
   end
 
   def product_shipping_params
     params.require(:product).require(:product_meta_attributes).require(:product_shipping_attributes).permit(
-      :weight, :length, :width, :shipping_class
+        :weight, :length, :width, :shipping_class
     )
   end
 
   def product_linked_params
     params.require(:product).require(:product_meta_attributes).require(:product_linked_attributes).permit(
-      :upsells, :cross_sells
+        :upsells, :cross_sells
     )
   end
 
   def product_extras_params
     params.require(:product).require(:product_meta_attributes).require(:product_extra_attributes).permit(
-      :product_video
+        :product_video
     )
   end
 
@@ -419,26 +431,14 @@ class ProductsController < ApplicationController
 
   def product_variation_meta_params
     params.require(:product).require(:product_variation_meta).permit(
-      :regular_price, { product_shipping_attributes: %i[width height length weight shipping_class],
-                        product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
-                        product_inventory_attributes: %i[sku stock_status manage_stock sold_individually] }
+        :regular_price, {product_shipping_attributes: %i[width height length weight shipping_class],
+                         product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
+                         product_inventory_attributes: %i[sku stock_status manage_stock sold_individually]}
     )
   end
 
-  # def product_variation_meta_shipping_params
-  #   params.require(:product).require(:product_variation_meta).require(:variation_meta_shipping).permit(
-  #     %i[width height length weight shipping_class]
-  #   )
-  # end
-  #
-  def fix_params
-    print('FUCK', params[:otherss])
-    # date = Date.parse(params.delete(:started_at))
-
-    # params[:example].merge!({
-    #                             'started_at(1i)' => date.year.to_s,
-    #                             'started_at(2i)' => date.month.to_s,
-    #                             'started_at(3i)' => date.day.to_s
-    #                         })
+  def comment_params
+    params.require(:comment).permit(:message, :product_id)
   end
+
 end

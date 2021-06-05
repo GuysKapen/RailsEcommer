@@ -194,6 +194,21 @@ textarea
   padding: 2px 8px;
 }
 
+input[type="number"].border-b,
+input[type="text"].border-b,
+input[type="email"].border-b,
+input[type="text"].border-b,
+input[type="tel"].border-b,
+input[type="password"].border-b,
+input[type='date'].border-b,
+textarea
+{
+  box-shadow: inset 0 0 10px 0 rgba(255, 255, 255, 0.56);
+  border: none;
+  border-bottom: 1.5px solid #cccccc;
+  padding: 2px 8px;
+}
+
 input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;

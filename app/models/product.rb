@@ -10,6 +10,7 @@ class Product < ApplicationRecord
   belongs_to :category, required: false
   has_many :product_variations
   has_many :product_carts, as: :product
+  has_many :comments
   has_one :product_meta, as: :product, required: false
   # has_one :product_shipping, through: :product_meta, required: false
   # has_one :product_inventory, through: :product_meta, required: false

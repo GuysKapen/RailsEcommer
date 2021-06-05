@@ -3,7 +3,7 @@
     <div class="text-center cursor-pointer product-card">
       <div class="card opacity-anim overflow-hidden">
         <%= link_to product_path(product) do %>
-          <%= image_tag(product_first_img(product), alt: "Product", class: "transform image-product-item-height hover:scale-105 w-full duration-500 object-cover") %>
+          <%= image_tag(product_first_img(product), alt: "Product", class: "transform image-product-item-height hover:scale-105 w-full duration-500 object-contain") %>
         <% end %>
         <div class="px-2 mx-1 mt-2">
           <% if product.category %>

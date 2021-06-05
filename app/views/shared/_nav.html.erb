@@ -65,8 +65,15 @@
   <div class="col-sm-5 col-md-3">
     <div class="row justify-content-end">
       <div class="row mr-4">
-        <h6 class="font-fredoka f4 font-weight-bold m-0 mr-1 d-flex justify-content-center flex-column">Guys Girl</h6>
-        <%= image_tag("portrait-3204843_640.jpg", class: "rounded-circle img-avatar-small") %>
+        <% if current_user %>
+          <h6 class="font-fredoka f4 font-weight-bold m-0 mr-1 d-flex justify-content-center flex-column"><%= current_user.username %></h6>
+          <%= image_tag("portrait-3204843_640.jpg", class: "rounded-circle img-avatar-small") %>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Signup", new_user_registration_path, class: "f5 font-weight-bold" %>
+          </li>
+        <% end %>
+
       </div>
       <div class="row m-0">
         <div class="d-flex font-roboto outline-none-imp font-weight-bold align-items-center duration-500">
