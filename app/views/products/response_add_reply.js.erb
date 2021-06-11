@@ -1,0 +1,7 @@
+<% if success %>
+toastr.success("Success add reply!")
+$("#reply-container-<%= @reply.comment.id %>").append("<%= escape_javascript render 'reply/reply_item', reply: @reply %>")
+$("#reply-form-<%= @reply.comment.id %>").remove()
+<% else %>
+toastr.error("Error when adding comment! Please try again.")
+<% end %>

@@ -2,6 +2,7 @@ require("./add_to_cart")
 require("./product_new")
 require("./product_show_bottom_dock_view")
 require("./view_cart")
+require('./product_show')
 document.addEventListener("turbolinks:load", function () {
     const btnFilter = document.getElementById("filter-btn")
     if (btnFilter == null) return

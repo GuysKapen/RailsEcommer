@@ -186,10 +186,10 @@
       <div class="tab-view">
         <!-- Tab Panel -->
         <div class="d-flex justify-content-between mt-5 tabs-panel position-relative text-center">
-          <div class="col active tab-panel py-2">
+          <div class="col tab-panel py-2">
             <p class="m-0">Description</p>
           </div>
-          <div class="col tab-panel py-2">
+          <div class="col active tab-panel py-2">
             <p class="m-0">Reviews</p>
           </div>
           <div class="col tab-panel py-2">
@@ -200,13 +200,13 @@
 
         <!-- Tab Content -->
         <div class="tabs-content tabs-content-vertical mbr">
-          <div class="tab-content active">
+          <div class="tab-content">
             <div>
               <h6 class="font-baloo f3 fw8">Product Description</h6>
               <div class="font-size-14 child-p-font-baloo fw4"><%= raw(@product.product_meta.product_detail.description) %></div>
             </div>
           </div>
-          <div class="tab-content">
+          <div class="tab-content active">
             <h4 class="fw6">Reviews From Customer</h4>
             <h5 class="fw5">Ratings</h5>
             <div class="text-center w-25">
@@ -223,12 +223,64 @@
               <p>450 Reviews</p>
             </div>
             <div id="comment-container">
-              <div class="heading">
+              <div id="comment-form-container">
+                <% if current_user %>
+                  <%= simple_form_for(@comment, url: add_comment_products_path, html: {class: "w-100", id: "new-comment-form"}, remote: true) do |f| %>
+                    <div class="heading">
+                      <div class="d-flex mt-br">
+                        <%= image_tag("blog post 3.jpg", class: 'img-avatar') %>
+                        <div class="ml-2 flex align-items-center w-100">
+                          <%= f.input :message, label: "Description", required: false,
+                                      placeholder: "Commenting publicly as #{current_user.username}",
+                                      input_html: {class: "input w-100 border-b"}, wrapper: false, label_html: {class: "label text-left w-100 d-none"} %>
+                        </div>
+                        <%= f.input :product_id, :as => :hidden, input_html: {value: @product.id} %>
+                      </div>
+                    </div>
+                    <div class="d-flex text-center mt-2">
+                      <%= f.submit 'Comment', class: "custom-btn-wide font-fredoka font-weight-lighter" %>
+                      <div class="custom-btn-wide ml-3 font-fredoka font-weight-lighter">Answer</div>
+                    </div>
+                    </div>
+                  <% end %>
+                <% end %>
+                </div>
+
+            <div class="heading">
+              <div class="d-flex mt-br">
+                <%= image_tag("blog post 3.jpg", class: 'img-avatar') %>
+                <div class="ml-2">
+                  <div class="fw5">Guys Customer</div>
+                  <span class="font-baloo">21 October, 2020</span>
+                </div>
+              </div>
+              <div class="my-3 rating text-warning font-size-14">
+                <span><i class="fas fa-xs fa-star"></i></span>
+                <span><i class="fas fa-xs fa-star"></i></span>
+                <span><i class="fas fa-xs fa-star"></i></span>
+                <span><i class="fas fa-xs fa-star"></i></span>
+                <span><i class="fas fa-xs fa-star"></i></span>
+              </div>
+              <div class="mt-2">
+                <h6 class="font-baloo f2">Very Satisfy</h6>
+                <p class="font-roboto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aperiam
+                  architecto atque blanditiis,
+                  debitis dolorum ea est fuga, harum id in qui sed ullam velit vero? Ducimus iusto sint
+                  voluptatibus.</p>
+              </div>
+              <div class="d-flex text-center mt-2">
+                <div class="custom-btn-wide font-fredoka font-weight-lighter">Like</div>
+                <div class="custom-btn-wide ml-3 font-fredoka font-weight-lighter">Answer</div>
+              </div>
+            </div>
+
+            <% @comments.each do |comment| %>
+              <div class="heading" id="comment-<%= comment.id %>">
                 <div class="d-flex mt-br">
                   <%= image_tag("blog post 3.jpg", class: 'img-avatar') %>
                   <div class="ml-2">
-                    <div class="fw5">Guys Customer</div>
-                    <span class="font-baloo">21 October, 2020</span>
+                    <div class="fw5"><%= comment.user.username %></div>
+                    <span class="font-baloo"><%= comment.created_at.to_formatted_s(:long_ordinal) %></span>
                   </div>
                 </div>
                 <div class="my-3 rating text-warning font-size-14">
@@ -240,39 +292,27 @@
                 </div>
                 <div class="mt-2">
                   <h6 class="font-baloo f2">Very Satisfy</h6>
-                  <p class="font-roboto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aperiam
-                    architecto atque blanditiis,
-                    debitis dolorum ea est fuga, harum id in qui sed ullam velit vero? Ducimus iusto sint
-                    voluptatibus.</p>
+                  <p class="font-roboto">
+                    <%= comment.message %>
+                  </p>
                 </div>
                 <div class="d-flex text-center mt-2">
-                  <div class="custom-btn-wide font-fredoka font-weight-lighter">Like</div>
-                  <div class="custom-btn-wide ml-3 font-fredoka font-weight-lighter">Answer</div>
+                  <div class="btn-like custom-btn-wide font-fredoka font-weight-lighter" data-id="<%= comment.id %>">Like</div>
+                  <div class="btn-add-reply custom-btn-wide ml-3 font-fredoka font-weight-lighter" data-id="<%= comment.id %>">Answer</div>
                 </div>
-              </div>
-              <div id="comment-form">
-                <% if current_user %>
-                  <%= simple_form_for(@comment, url: add_comment_products_path, html: {class: "w-100"}, remote: true) do |f| %>
-                    <div class="heading">
-                      <div class="d-flex mt-br">
-                        <%= image_tag("blog post 3.jpg", class: 'img-avatar') %>
-                        <div class="ml-2 flex align-items-center w-100">
-                          <%= f.input :message, label: "Description", required: false,
-                                      placeholder: "Commenting publicly as #{current_user.username}",
-                                      input_html: {class: "input w-100 border-b"}, wrapper: false, label_html: {class: "label text-left w-100 d-none"} %>
-                        </div>
-                        <%= f.input :product_id, :as => :hidden, input_html: {value: @product.id} %>
-                        <%#= hidden_field_tag(:product_id, @product.id) %>
-                      </div>
-                    </div>
-                    <div class="d-flex text-center mt-2">
-                      <%= f.submit 'Comment', class: "custom-btn-wide font-fredoka font-weight-lighter" %>
-                      <div class="custom-btn-wide ml-3 font-fredoka font-weight-lighter">Answer</div>
-                    </div>
+                <div id="reply-expander-<%= comment.id %>" class="mt-3 font-baloo transition-all duration-200">
+                  <% unless comment.replies.load.blank? %>
+                    <div id="btn-show-replies-<%= comment.id %>" class="btn-show-replies cursor-pointer" data-id="<%= comment.id %>">View <%= comment.replies.size %>
+                      replies
                     </div>
                   <% end %>
-                <% end %>
                 </div>
+
+              </div>
+
+
+            <% end %>
+
           </div>
         </div>
         <div class="tab-content">

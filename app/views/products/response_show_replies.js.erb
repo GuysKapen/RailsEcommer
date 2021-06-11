@@ -1,0 +1,14 @@
+var div = document.createElement("div")
+div.id = 'btn-hide-replies-<%= @comment.id %>'
+div.classList.add("cursor-pointer")
+div.innerText = "Hide reply"
+
+$("#reply-expander-<%= @comment.id %>")
+    .append(div)
+    .append("<%= escape_javascript render 'reply/replies', comment: @comment %>")
+
+div.addEventListener("click", function () {
+    $("#reply-container-<%= @comment.id %>").hide()
+    $("#btn-show-replies-<%= @comment.id %>").show()
+    $(div).hide()
+})

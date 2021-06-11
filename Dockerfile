@@ -46,6 +46,10 @@
 FROM ruby:2.7.2
 
 ENV APP_HOME /rails-app-docker
+ARG APP_USER=kaliguys
+ARG APP_GROUP=kaliguys
+ARG APP_USER_UID=1000
+ARG APP_GROUP_GID=1000
 # throw errors if Gemfile has been modified since Gemfile.lock
 # RUN bundle config --global frozen 1
 
@@ -63,16 +67,19 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 
 RUN apt-get update && apt-get install -y nodejs yarn --no-install-recommends && rm -rf /var/lib/apt/lists/* && apt-get autoremove
 RUN apt-get update && apt-get install -y mysql-common postgresql sqlite3 --no-install-recommends && rm -rf /var/lib/apt/lists/* && apt-get autoremove
+#RUN apt add --update --no-cache \
+RUN addgroup -gid $APP_GROUP_GID --system $APP_GROUP && \
+    adduser --system -shell /sbin/nologin -uid $APP_USER_UID -gid $APP_GROUP_GID $APP_USER
+#RUN addgroup -S $APP_GROUP && adduser -S appuser -G appgroup
 #RUN npm install -g yarn
-COPY Gemfile $APP_HOME
+COPY --chown=$APP_USER:$APP_USER Gemfile $APP_HOME
 
 # Uncomment the line below if Gemfile.lock is maintained outside of build process
-COPY Gemfile.lock $APP_HOME
+COPY --chown=$APP_USER:$APP_USER Gemfile.lock $APP_HOME
 
 RUN bundle install
 
-COPY . $APP_HOME
-RUN yarn install --check-files
+USER $APP_USER
+COPY --chown=$APP_USER:$APP_USER . $APP_HOME
 CMD RAILS_ENV=${RAILS_ENV} bundle exec rails db:create db:migrate db:seed && bundle exec rails s -p ${PORT} -b '0.0.0.0'
 
-USER kaliguys

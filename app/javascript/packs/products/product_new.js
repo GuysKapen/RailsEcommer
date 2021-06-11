@@ -68,13 +68,9 @@ function setupProductVariationIcons() {
         const variation = variations[i]
         if (!(variation instanceof HTMLElement)) return
         variation.addEventListener("click", function () {
-            // variation.classList.toggle("collapse-height")
             variation.getElementsByClassName("container-product-variation-body")[0].classList.toggle("collapse-height")
         })
     }
-    // $("#variation-100").on("click", function () {
-    //     $("#container-product-variation-body").toggleClass('collapse-height')
-    // })
 }
 
 function setupProductType() {

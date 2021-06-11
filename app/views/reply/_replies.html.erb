@@ -1,0 +1,5 @@
+<div id="reply-container-<%= comment.id %>" class="ml-12 mt-6">
+  <% comment.replies.each do |reply| %>
+    <%= render 'reply/reply_item', reply: reply %>
+  <% end %>
+</div>

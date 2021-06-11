@@ -21,6 +21,8 @@ class ProductsController < ApplicationController
   def show
     @user = current_user
     @comment = Comment.new
+    @reply = Reply.new
+    @comments = @product.comments
     @hash_attrs = helpers.attrs_of_product_variation(@product)
   end
 
@@ -148,7 +150,7 @@ class ProductsController < ApplicationController
 
     unless product_cart.save
       respond_to do |format|
-        format.js { render 'products/response_add_to_cart_error', message: 'Could not save product cart in cart' }
+        format.js { render 'products/response_show_message', locals: {message: 'Could not save product cart in cart', success: false} }
       end
       return false
     end
@@ -315,6 +317,40 @@ class ProductsController < ApplicationController
     end
   end
 
+  def add_reply
+    @reply = current_user.replies.build(reply_params)
+    respond_to do |format|
+      if @reply.save
+        format.js { render 'products/response_add_reply', locals: {success: true} }
+      else
+        format.js { render 'products/response_add_reply', locals: {success: false} }
+      end
+    end
+  end
+
+  def show_replies
+    @comment = Comment.find(params['comment_id'])
+    @replies = @comment.replies
+
+    respond_to do |format|
+      format.js { render 'products/response_show_replies' } unless @replies.load.blank?
+    end
+  end
+
+  def add_reply_form
+    unless current_user
+      respond_to do |format|
+        format.js { render 'products/response_show_message', locals: {success: false, message: 'You need to login to reply'} }
+      end
+      return
+    end
+    @reply = current_user.replies.build
+    @comment = Comment.find(params['comment_id'])
+    respond_to do |format|
+      format.js { render 'products/response_add_reply_form', locals: {success: false} }
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -441,4 +477,7 @@ class ProductsController < ApplicationController
     params.require(:comment).permit(:message, :product_id)
   end
 
+  def reply_params
+    params.require(:reply).permit(:message, :comment_id)
+  end
 end

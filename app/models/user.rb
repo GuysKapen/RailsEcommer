@@ -10,5 +10,6 @@ class User < ApplicationRecord
   has_one :wishlist
   has_many :orders
   has_many :comments
+  has_many :replies
 
 end

@@ -1,0 +1,6 @@
+var c = $("#reply-container-<%= @comment.id %>")
+if (c.exists) {
+    c.append("<%= escape_javascript render 'reply/form', reply: @reply, comment: @comment %>")
+} else {
+    $("#comment-<%= @comment.id %>").append("<%= escape_javascript render 'reply/replies_section_form', comment: @comment, reply: @reply %>")
+}

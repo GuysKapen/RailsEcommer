@@ -1,7 +1,8 @@
 <% if success %>
 toastr.success("Success add comment!")
 $("#comment-container").append("<%= escape_javascript render 'comment/comment_item', comment: @comment %>")
-$("#comment-form").remove()
+document.setupComment()
+$("#new-comment-form").trigger("reset")
 <% else %>
 toastr.error("Error when adding comment! Please try again.")
 <% end %>

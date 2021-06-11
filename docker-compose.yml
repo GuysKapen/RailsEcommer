@@ -12,7 +12,11 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
   web:
-    build: .
+    build:
+      context: .
+      args:
+        - APP_USER_UID=${APP_USER_UID}
+        - APP_GROUP_GID=${APP_GROUP_GID}
     command: bundle exec rails s webrick -b '0.0.0.0'
     environment:
       POSTGRES_USER: kaliguys

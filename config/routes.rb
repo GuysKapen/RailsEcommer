@@ -27,6 +27,9 @@ Rails.application.routes.draw do
       post :add_attributes_input
       post :filter_by_price
       post :add_comment
+      post :add_reply
+      post :show_replies
+      post :add_reply_form
     end
   end
   resources :user do
