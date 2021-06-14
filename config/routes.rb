@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       post :add_reply
       post :show_replies
       post :add_reply_form
+      post :toggle_like
     end
   end
   resources :user do

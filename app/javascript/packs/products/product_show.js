@@ -5,6 +5,7 @@ document.addEventListener("turbolinks:load", function () {
 document.setupComment = function () {
     setupToggleReplies()
     setupBtnsReply()
+    setupBtnsLike()
 }
 
 function setupToggleReplies() {
@@ -53,6 +54,29 @@ function setupBtnsReply() {
                     // Workaround: add options.data late to avoid Content-Type header to already being set in stone
                     // https://github.com/rails/rails/blob/master/actionview/app/assets/javascripts/rails-ujs/utils/ajax.coffee#L53
                     options.data = JSON.stringify({'comment_id': id})
+                    return true
+                },
+            })
+        })
+    }
+}
+
+function setupBtnsLike() {
+    const btnsLike = document.getElementsByClassName("btn-like")
+    for (let i = 0; i < btnsLike.length; i++) {
+        const btnLike = btnsLike[i]
+        btnLike.addEventListener('click', function () {
+            btnLike.classList.toggle("liked")
+            const id = btnLike.attributes['data-id'].value
+            const type = btnLike.attributes['data-type'].value
+            Rails.ajax({
+                url: "/products/toggle_like",
+                type: "post",
+                beforeSend(xhr, options) {
+                    xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8')
+                    // Workaround: add options.data late to avoid Content-Type header to already being set in stone
+                    // https://github.com/rails/rails/blob/master/actionview/app/assets/javascripts/rails-ujs/utils/ajax.coffee#L53
+                    options.data = JSON.stringify({'record_id': id, 'record_type': type})
                     return true
                 },
             })
