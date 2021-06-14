@@ -11,5 +11,10 @@ class User < ApplicationRecord
   has_many :orders
   has_many :comments
   has_many :replies
+  has_many :likes, as: :user
+
+  def like_record?(record)
+    Like.exists?(user_id: id, record_id: record.id, record_type: record.class.to_s)
+  end
 
 end

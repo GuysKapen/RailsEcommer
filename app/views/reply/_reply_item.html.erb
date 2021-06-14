@@ -17,7 +17,11 @@
     <p class="font-roboto"><%= reply.message %></p>
   </div>
   <div class="d-flex text-center mt-2">
-    <div class="custom-btn-wide font-fredoka font-weight-lighter">Like</div>
+    <% if current_user.like_record?(reply) %>
+      <div class="btn-like custom-btn-wide liked font-fredoka font-weight-lighter" data-id="<%= reply.id %>" data-type="<%= reply.class %>">Liked</div>
+    <% else %>
+      <div class="btn-like custom-btn-wide font-fredoka font-weight-lighter" data-id="<%= reply.id %>" data-type="<%= reply.class %>">Like</div>
+    <% end %>
     <div class="custom-btn-wide ml-3 font-fredoka font-weight-lighter">Answer</div>
   </div>
 </div>
