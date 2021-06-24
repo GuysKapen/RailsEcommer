@@ -6,7 +6,6 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require_tree .
-
 //= require toastr
 
 // require("jquery3")
@@ -16,8 +15,6 @@
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-// require("./utils/image_preview")
-// require("./utils/tabs")
 require("./utils/global")
 require("./products/product_index")
 

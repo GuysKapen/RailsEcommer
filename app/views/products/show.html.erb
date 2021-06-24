@@ -1,6 +1,6 @@
 <section id="product" class="py-3">
   <div class="container">
-    <div class="row position-relative my-5">
+    <div class="flex position-relative my-5">
       <div class="col-sm-6 py-2">
         <div id="carouselExampleControls" class="carousel slide my-auto" data-ride="carousel" <%= @product.product_variations.blank? ? "" : "data-interval=false" %>>
           <ol class="carousel-indicators">
@@ -42,7 +42,7 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-        <!--        <div class="form-row pt-4 font-size-16 font-baloo position-absolute" style="bottom: 10%;-->
+        <!--        <div class="form-flex pt-4 font-size-16 font-baloo position-absolute" style="bottom: 10%;-->
         <!--        width: 80%; left: 10%">-->
         <!--          <div class="col">-->
         <!--            <button type="submit" class="btn btn-danger form-control">Buy</button>-->
@@ -245,7 +245,6 @@
                   <% end %>
                 <% end %>
                 </div>
-
             <div class="heading">
               <div class="d-flex mt-br">
                 <%= image_tag("blog post 3.jpg", class: 'img-avatar') %>
@@ -273,7 +272,6 @@
                 <div class="custom-btn-wide ml-3 font-fredoka font-weight-lighter">Answer</div>
               </div>
             </div>
-
             <% @comments.each do |comment| %>
               <div class="heading" id="comment-<%= comment.id %>">
                 <div class="d-flex mt-br">
@@ -348,6 +346,10 @@
       </div>
       <!-- !Tab Content -->
     </div>
+
+    <section>
+      <%= render 'product_grid_items', products: @product_upsells %>
+    </section>
   </div>
   </div>
 </section>

@@ -11,13 +11,13 @@ class Product < ApplicationRecord
   has_many :product_variations
   has_many :product_carts, as: :product
   has_many :comments
+  has_one :product_linked, through: :product_meta
+  has_many :product_upsells, class_name: 'Product', through: :product_linked
   has_one :product_meta, as: :product, required: false
-  # has_one :product_shipping, through: :product_meta, required: false
-  # has_one :product_inventory, through: :product_meta, required: false
-  # has_one :product_sale_price, through: :product_meta, required: false
 
   accepts_nested_attributes_for :product_meta
   accepts_nested_attributes_for :product_variations
+  # accepts_nested_attributes_for :product_upsells
 
   def regular_price_text
     if product_variations.blank?

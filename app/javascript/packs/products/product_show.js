@@ -1,3 +1,5 @@
+import "../utils/suggestags"
+
 document.addEventListener("turbolinks:load", function () {
     document.setupComment()
 })

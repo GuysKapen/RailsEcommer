@@ -23,22 +23,18 @@ class ProductsController < ApplicationController
     @comment = Comment.new
     @reply = Reply.new
     @comments = @product.comments
+    @product_upsells = @product.product_upsells
     @hash_attrs = helpers.attrs_of_product_variation(@product)
   end
 
   # GET /products/new
   def new
-    # @product = Product.new
-    # @product_meta = @product.build_product_meta
-    # @product_meta.build_product_advanced
-    # @product_meta.build_product_inventory
-    # @product_meta.build_product_linked
-    # @product_meta.build_product_extra
-    # @product_meta.build_product_shipping
-    # @product_meta.build_product_sale_price
-    init_product
+    @products = Product.all
+    init_product_form
     @categories = Category.all
     @product_attr = ProductAttributesName.new
+    gon.product_names = @products.map(&:name)
+    gon.product_ids = @products.map(&:id)
 
     session[:product] = @product
   end
@@ -52,7 +48,6 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     # Build New Category here
-
     category_attrs = params['category_name']
     @category = current_user.categories.build(name: category_attrs) unless category_attrs.nil? || category_attrs.empty?
     # Save category to get id
@@ -62,6 +57,23 @@ class ProductsController < ApplicationController
     end
 
     params[:product][:category_id] = @category.id unless @category.nil?
+
+    # Modify params before build product to have affect
+    upsell_ids_string = params[:product][:product_meta_attributes][:product_linked_attributes][:product_upsell_ids_string]
+    cross_sell_ids_string = params[:product][:product_meta_attributes][:product_linked_attributes][:product_cross_sell_ids_string]
+
+    upsell_ids = []
+    upsell_ids_string.split(',').each do |upsell_id|
+      upsell_ids << upsell_id.to_i
+    end
+    params[:product][:product_meta_attributes][:product_linked_attributes][:product_upsell_ids] = upsell_ids
+
+    cross_sell_ids = []
+    cross_sell_ids_string.split(',').each do |cross_sell_id|
+      cross_sell_ids << cross_sell_id.to_i
+    end
+    params[:product][:product_meta_attributes][:product_linked_attributes][:product_cross_sell_ids] = cross_sell_ids
+
     @product = current_user.products.build(product_params)
     # merge time and date into timestamp
     sale_price = @product.product_meta.product_sale_price
@@ -424,7 +436,7 @@ class ProductsController < ApplicationController
     @product_meta.build_product_detail
     @product_meta.build_product_advanced
     @product_meta.build_product_inventory
-    @product_meta.build_product_linked
+    @product_meta.build_product_linked.product_upsells.build
     @product_meta.build_product_extra
     @product_meta.build_product_shipping
     @product_meta.build_product_sale_price
@@ -437,14 +449,13 @@ class ProductsController < ApplicationController
     params.require(:product).permit(
       :category_id,
       product_meta_attributes: [
-        # :regular_price,
-        # :name, :description,
         :tag,
         { product_detail_attributes: %i[name description regular_price],
           images: [],
           product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
           product_shipping_attributes: %i[weight length width height shipping_class],
-          product_linked_attributes: %i[upsells cross_sells],
+          product_linked_attributes: [:product_upsell_ids_string, :product_cross_sell_ids_string,
+                                      { product_upsell_ids: [], product_cross_sell_ids: [] }],
           product_sale_price_attributes: %i[sale_price sale_date_start sale_date_start_time sale_date_end
                                             sale_date_end_time],
           product_advanced_attributes: %i[purchase_note enable_reviews],
@@ -452,10 +463,7 @@ class ProductsController < ApplicationController
       ],
       product_variations_attributes: [
         product_attributes_value_ids: [],
-        # product_attributes_values_attributes: [product_attributes_value_ids: []],
         product_meta_attributes: [
-          # :regular_price,
-          # :name, :description,
           :tag,
           { images: [],
             product_detail_attributes: %i[name description regular_price],

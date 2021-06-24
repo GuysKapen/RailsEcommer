@@ -13,6 +13,12 @@ document.addEventListener("turbolinks:load", function () {
     setupProductType()
 
     setupProductFileUpload()
+
+    $('.input.tags').amsifySuggestags({
+        suggestions: gon.product_names,
+        valueMaps: gon.product_ids,
+        whiteList: true
+    });
 })
 
 function setupProductAttributes() {

@@ -43,6 +43,8 @@ gem 'mimemagic', '~> 0.3.6'
 gem 'mini_magick'
 gem 'simple_form', '~> 5.0', '>= 5.0.2'
 gem 'toastr-rails'
+gem 'multi_json'
+gem 'gon'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

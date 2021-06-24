@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_11_221111) do
+ActiveRecord::Schema.define(version: 2021_06_24_002305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -138,6 +138,12 @@ ActiveRecord::Schema.define(version: 2021_06_11_221111) do
     t.index ["product_type", "product_id"], name: "index_product_carts_on_product_type_and_product_id"
   end
 
+  create_table "product_cross_sells", id: false, force: :cascade do |t|
+    t.integer "product_linked_id", null: false
+    t.integer "product_cross_sell_id", null: false
+    t.index ["product_linked_id", "product_cross_sell_id"], name: "product_cross_sell_index"
+  end
+
   create_table "product_details", force: :cascade do |t|
     t.bigint "product_meta_id", null: false
     t.decimal "regular_price"
@@ -169,8 +175,6 @@ ActiveRecord::Schema.define(version: 2021_06_11_221111) do
   end
 
   create_table "product_linkeds", force: :cascade do |t|
-    t.text "upsells"
-    t.text "cross_sells"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "product_meta_id", null: false
@@ -221,6 +225,12 @@ ActiveRecord::Schema.define(version: 2021_06_11_221111) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["product_meta_id"], name: "index_product_stocks_on_product_meta_id"
+  end
+
+  create_table "product_upsells", id: false, force: :cascade do |t|
+    t.integer "product_linked_id", null: false
+    t.integer "product_upsell_id", null: false
+    t.index ["product_linked_id", "product_upsell_id"], name: "product_upsell_index"
   end
 
   create_table "product_variations", force: :cascade do |t|

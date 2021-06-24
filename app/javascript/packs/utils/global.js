@@ -1,3 +1,4 @@
+require('./suggestags')
 require('./setup')
 require("./custom_select")
 require("./products")
@@ -15,8 +16,6 @@ document.addEventListener("turbolinks:load", function () {
       notification.style.display = "none";
     }, 4000);
   }
-
-
 
 });
 

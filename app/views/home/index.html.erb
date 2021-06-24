@@ -57,7 +57,7 @@
 
   <section class="mbr">
     <h1 class="text-center my-3 font-weight-bold text-uppercase">featured product</h1>
-    <div class="row">
+    <div class="flex">
 
       <% @products_view.each do |product_view| %>
 
@@ -105,7 +105,7 @@
 
 <section class="mbr mx-auto my-3 font-weight-lighter w-11/12">
   <h1 class="text-center my-3 font-weight-bold text-uppercase">On Sale</h1>
-  <div class="row">
+  <div class="flex">
 
     <% @products_view_sale.each do |product_view| %>
 
@@ -155,7 +155,7 @@
 
 <section class="my-24">
   <h1 class="text-center my-3 font-weight-bold text-uppercase">Get Fashion News</h1>
-  <div class="row container-xl mx-auto">
+  <div class="flex container-xl mx-auto">
     <div class="col-lg-4 col-sm-12 col-md-6 text-center">
       <div class="opacity-anim">
         <%= image_tag("blog post 3.jpg", alt: "Product", class: "card-img-top position-relative") %>
