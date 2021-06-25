@@ -256,10 +256,10 @@
           <%= meta.simple_fields_for :product_linked do |linked| %>
             <%= linked.input :product_upsell_ids_string, label: "Products Upsells", required: false,
                                  placeholder: "Upsells",
-                                 input_html: {class: "input tags col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label text-left"} %>
+                                 input_html: {class: "input tags upsell col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label text-left block"} %>
             <%= linked.input :product_cross_sell_ids_string, label: "Products Cross sells", required: false,
                              placeholder: "Cross sells",
-                             input_html: {class: "input tags col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label text-left"} %>
+                             input_html: {class: "input tags cross-sell col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label text-left block mt-3"} %>
         <% end %>
         </div>
         <!-- !Linked Product -->

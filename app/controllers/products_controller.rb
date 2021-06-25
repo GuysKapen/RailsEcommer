@@ -77,7 +77,7 @@ class ProductsController < ApplicationController
     @product = current_user.products.build(product_params)
     # merge time and date into timestamp
     sale_price = @product.product_meta.product_sale_price
-    unless sale_price.nil?
+    unless sale_price.nil? && sale_price.sale_date_start.nil? && sale_price.sale_date_start.nil?
       time_start = Time.zone.parse(sale_price.sale_date_start_time)
       sale_price.sale_date_start = Time.zone.parse("#{sale_price.sale_date_start.strftime('%F')} #{time_start.strftime('%T')}")
 

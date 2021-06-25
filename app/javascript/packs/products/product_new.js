@@ -14,7 +14,12 @@ document.addEventListener("turbolinks:load", function () {
 
     setupProductFileUpload()
 
-    $('.input.tags').amsifySuggestags({
+    $('.input.tags.cross-sell').amsifySuggestags({
+        suggestions: gon.product_names,
+        valueMaps: gon.product_ids,
+        whiteList: true
+    });
+    $('.input.tags.upsell').amsifySuggestags({
         suggestions: gon.product_names,
         valueMaps: gon.product_ids,
         whiteList: true
