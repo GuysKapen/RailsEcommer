@@ -60,25 +60,24 @@
 
 
   <div class="col-3 justify-content-center">
-    <h3 class="text-uppercase font-elia font-weight-bold f3 m-0">My Shop</h3>
+    <h3 class="text-uppercase font-elia text-white font-weight-bold f3 m-0">My Shop</h3>
   </div>
-  <div class="col-sm-5 col-md-3">
+  <div class="col-sm-5 col-md-4">
     <div class="flex justify-content-end">
       <div class="flex mr-4">
         <% if current_user %>
-          <h6 class="font-fredoka f4 font-weight-bold m-0 mr-1 d-flex justify-content-center flex-column"><%= current_user.username %></h6>
+          <h6 class="text-white f4 m-0 mr-3 d-flex justify-content-center flex-column"><%= current_user.username %></h6>
           <%= image_tag("portrait-3204843_640.jpg", class: "rounded-circle img-avatar-small") %>
         <% else %>
           <li class="nav-item">
             <%= link_to "Signup", new_user_registration_path, class: "f5 font-weight-bold" %>
           </li>
         <% end %>
-
       </div>
       <div class="flex m-0">
         <div class="d-flex font-roboto outline-none-imp font-weight-bold align-items-center duration-500">
-          <i class="fa fa-lg fa-shopping-cart mr-3 duration-500">&nbsp;/</i>
-          <button type="submit" class="d-inline-block cart-items" id="cart-items">
+          <i class="fa fa-lg fa-shopping-cart text-white mr-3 duration-500">&nbsp;/</i>
+          <button type="submit" class="d-inline-block text-white cart-items" id="cart-items">
             <%= cart_items %>
           </button>
         </div>
