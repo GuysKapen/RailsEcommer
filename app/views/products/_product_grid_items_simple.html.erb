@@ -1,0 +1,22 @@
+<div class="grid grid-cols-3 grid-gap-3-2">
+  <% products.each do |product| %>
+    <div class="text-center cursor-pointer product-card">
+      <div class="card opacity-anim overflow-hidden" style="background: #ececec">
+        <%= link_to product_path(product) do %>
+          <%= image_tag(product_first_img(product), alt: "Product", class: "transform image-product-item-height hover:scale-105 w-full duration-500 object-contain") %>
+        <% end %>
+        <div class="px-2 mx-1 mt-2">
+          <p class="my-3 f4 title hover:color-hover transform hover:scale-105 duration-200"><%= product.product_meta.product_detail.name %></p>
+          <p class="my-3 font-weight-bold hover:color-hover transform hover:scale-105 duration-200 font-fredoka f4 my-0"><%= product.price_text %></p>
+          <form action="<%= quick_view_product_path(id: product.id, product_id: product.id) %>" data-remote="true" method="post" class="duration-500 transition-all max-h-0 hover:height">
+            <div class="flex justify-center button-wishlist px-2 py-2 my-3">
+              <button type="submit" class="flex font-roboto outline-none-imp font-weight-bold align-items-center duration-500">
+                <i class="fa fa-heart mr-2 duration-500"></i>Add to Cart
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
