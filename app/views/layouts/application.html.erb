@@ -5,17 +5,9 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
   <%= Gon::Base.render_data %>
-
   <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!--  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>-->
-
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-  <%= javascript_include_tag Ckeditor.cdn_url %>
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Markazi+Text&family=MuseoModerno:wght@300&family=Sansita+Swashed:wght@300&display=swap" rel="stylesheet">
@@ -28,19 +20,14 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous"/>
+  <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <%= javascript_include_tag Ckeditor.cdn_url %>
 
 </head>
 
 <body>
-<%# if notice %>
-<!--  <div class="notice-container global-notification">-->
-<!--    <p class="notice"><%#= notice %></p>-->
-<!--  </div>-->
-<%# elsif alert %>
-<!--  <div class="alert-container global-notification">-->
-<!--    <p class="alert"><%#= alert %></p>-->
-<!--  </div>-->
-<%# end %>
 
 <%= toastr_flash %>
 
