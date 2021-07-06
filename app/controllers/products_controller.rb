@@ -309,7 +309,6 @@ class ProductsController < ApplicationController
   end
 
   def filter_by_price
-    print(params.inspect)
     min_price = params[:min].to_f
     max_price = params[:max].to_f
     @products_filtered = Product.all.filter do |it|

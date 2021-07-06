@@ -272,6 +272,10 @@
   outline: none !important;
 }
 
+.border-none-imp {
+  border: none !important;
+}
+
 .border-1 {
   border-width: 1px;
 }
@@ -353,4 +357,8 @@ label input[type="checkbox"] .section-credit-card {
 
 .overflow-ellipsis {
   text-overflow: ellipsis;
+}
+
+.max-h-0 {
+  max-height: 0;
 }

@@ -1,7 +1,7 @@
 <!-- Service -->
 
 <section class="mx-auto my-3 font-weight-lighter w-11/12">
-  <div class="d-flex mx-auto mt-12">
+  <div class="flex mx-auto mt-12">
     <div class="col-4 text-center">
       <i class="fas fa-dolly fa-3x"></i>
       <div class="h5 my-3">Priority Shipping</div>
@@ -23,7 +23,7 @@
 
   <!-- Service -->
 
-  <div class="d-flex text-white mbr mx-auto border-dark p-0 my-0">
+  <div class="flex text-white mbr mx-auto border-dark p-0 my-0">
     <div class="col-lg-5 col-sm-12 my-3 cursor-pointer">
       <div class="h-100 img-container ">
         <%= image_tag("Image-28.jpg", alt: "Hero 1", class: "img-banner h-100") %>
@@ -79,8 +79,8 @@
                 </div>
                 <p class="font-weight-bold hover:color-hover transform hover:scale-105 duration-200 font-fredoka f4 my-0"><%= product_view.regular_price_text %></p>
                 <form action="<%= quick_view_product_path(id: product_view.id, product_id: product_view.id) %>" data-remote="true" method="post">
-                  <div class="d-flex justify-center button-wishlist px-2 py-2 my-3">
-                    <button type="submit" formaction="<%= quick_view_product_path(id: product_view.id, product_id: product_view.id) %>" class="d-flex font-roboto outline-none-imp font-weight-bold align-items-center duration-500">
+                  <div class="flex justify-center button-wishlist px-2 py-2 my-3">
+                    <button type="submit" formaction="<%= quick_view_product_path(id: product_view.id, product_id: product_view.id) %>" class="flex font-roboto outline-none-imp font-weight-bold align-items-center duration-500">
                       <i class="fa fa-heart mr-2 duration-500"></i>Add to Cart
                     </button>
                   </div>
@@ -124,17 +124,17 @@
                 <span><i class="fas fa-star"></i></span>
                 <span><i class="fas fa-star"></i></span>
               </div>
-              <div class="d-flex justify-content-center">
+              <div class="flex justify-center">
                 <h6 class="font-baloo f2"><%= number_to_currency(product_view.product_meta.sale_price) %></h6>
-                <h6 class="font-baloo ml-3 f3 d-flex justify-content-center flex-column">
+                <h6 class="font-baloo ml-3 f3 flex justify-center flex-column">
                   <del><%= number_to_currency(product_view.product_meta.product_detail.regular_price) %></del>
                 </h6>
               </div>
               <!--              <p class="font-weight-bold hover:color-hover transform hover:scale-105 duration-200 font-fredoka f4 my-0"><%#= product.product_meta.product_detail.regular_price %> $</p>-->
               <!--              <div class="custom-btn mx-3 font-fredoka my-2">Add To Cart</div>-->
               <form action="<%= quick_view_product_path(id: product_view.id, product_id: product_view.id) %>" data-remote="true" method="post">
-                <div class="d-flex justify-center button-wishlist px-2 py-2 my-3">
-                  <button type="submit" formaction="<%= quick_view_product_path(id: product_view.id, product_id: product_view.id) %>" class="d-flex font-roboto outline-none-imp font-weight-bold align-items-center duration-500">
+                <div class="flex justify-center button-wishlist px-2 py-2 my-3">
+                  <button type="submit" formaction="<%= quick_view_product_path(id: product_view.id, product_id: product_view.id) %>" class="flex font-roboto outline-none-imp font-weight-bold align-items-center duration-500">
                     <i class="fa fa-heart mr-2 duration-500"></i>Add to Cart
                   </button>
                 </div>

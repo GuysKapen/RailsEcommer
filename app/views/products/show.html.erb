@@ -51,16 +51,28 @@
         <!--            <button type="submit" class="btn btn-warning form-control">Add to Cart</button>-->
         <!--          </div>-->
         <!--        </div>-->
+        <div class="flex mt-5 justify-between mx-5">
+          <div>
+            <%= image_tag(product_first_img(@product), alt: "Product", class: "object-contain w-32 h-32") %>
+          </div>
+          <div>
+            <%= image_tag("product-9-300x330.jpg", alt: "Product", class: "object-container w-32 h-32") %>
+          </div>
+          <div>
+            <%= image_tag("product_7.jpg", alt: "Product", class: "object-contain w-32 h-32") %>
+          </div>
+        </div>
+
       </div>
       <div class="col-sm-6 py-2">
         <!--        <span class="font-baloo f4 font-weight-normal">Category: <%#= @product.category.name %></span>-->
         <h5 class="font-baloo font-size-20 f1 fw8 mb-0"><%= @product.product_meta.product_detail.name %></h5>
-        <div class="d-flex" id="product-price-container">
+        <div class="flex" id="product-price-container">
           <%= render 'product_price', regular_price: @product.regular_price_text,
                      sale_price: @product.sale_price_text %>
         </div>
 
-        <div class="d-flex">
+        <div class="flex">
           <div class="rating text-warning font-size-14">
             <span><i class="fas fa-xs fa-star"></i></span>
             <span><i class="fas fa-xs fa-star"></i></span>
@@ -82,7 +94,7 @@
 
         <div class="tab-view">
           <!--        Tab Panel-->
-          <div class="d-flex justify-content-between mt-5 tabs-panel position-relative text-center">
+          <div class="flex justify-between mt-5 tabs-panel position-relative text-center">
             <div class="col active tab-panel py-2">
               <p class="m-0">What's Inside</p>
             </div>
@@ -101,7 +113,7 @@
               <div>
                 <h6 class="fw6">Customizable items</h6>
                 <div class="mt-5">
-                  <div class="d-flex">
+                  <div class="flex">
                     <%= image_tag(product_first_img(@product), width: '128px', height: '128px', class: 'fit-cover') %>
                     <div class="mt-3 ml-3">
                       <h6 class="fw6">One Yellow T-Shirt</h6>
@@ -116,7 +128,7 @@
               <div>
                 <h6 class="fw6">Customizable items</h6>
                 <div class="mt-5">
-                  <div class="d-flex">
+                  <div class="flex">
                     <%= image_tag('banner 2.jpg', width: '128px', height: '128px', class: 'fit-cover') %>
                     <div class="mt-3 ml-3">
                       <h6 class="fw6">One Yellow T-Shirt</h6>
@@ -131,7 +143,7 @@
               <div>
                 <h6 class="fw6">Customizable items</h6>
                 <div class="mt-5">
-                  <div class="d-flex">
+                  <div class="flex">
                     <%= image_tag('blog post 3.jpg', width: '128px', height: '128px', class: 'fit-cover') %>
                     <div class="mt-3 ml-3">
                       <h6 class="fw6">One Yellow T-Shirt</h6>
@@ -147,35 +159,6 @@
           <!--         !Tab Content-->
         </div>
 
-
-        <!--                <table class="my-3">-->
-        <!--          <tr class="font-rale font-size-14">-->
-        <!--            <td>M.R.P</td>-->
-        <!--            <td>$ 162.00</td>-->
-        <!--          </tr>-->
-        <!--          <tr class="font-rale font-size-14">-->
-        <!--            <td>Deal Price:</td>-->
-        <!--            <td class="font-size-20 text-danger">$ <%#= @product.price %><small-->
-        <!--              class="text-dark font-size-12 mx-2">inclusive of all taxes</small></span>-->
-        <!--            </td>-->
-        <!--          </tr>-->
-        <!--          <tr class="font-rale font-size-14">-->
-        <!--            <td>You save:</td>-->
-        <!--            <td>$ <span class="font-size-20 text-danger">$12.01</span></td>-->
-        <!--          </tr>-->
-        <!--        </table>-->
-        <!-- !product price  -->
-
-        <!-- policy  -->
-
-        <!-- size  -->
-        <!--        <div class="size my-3">-->
-        <!--          <h6 class="fw6">Quality</h6>-->
-        <!--          <div class="custom-btn-width col-3 rounded-extra-lg">4</div>-->
-        <!--          <div class="custom-btn-width col-3 rounded-extra-lg">Full</div>-->
-        <!--        </div>-->
-        <!-- !size  -->
-
       </div>
     </div>
 
@@ -185,7 +168,7 @@
     <div style="overflow: hidden;min-height: 50vh" class="mbr justify-around ml-5">
       <div class="tab-view">
         <!-- Tab Panel -->
-        <div class="d-flex justify-content-between mt-5 tabs-panel position-relative text-center">
+        <div class="flex justify-between mt-5 tabs-panel position-relative text-center">
           <div class="col active tab-panel py-2">
             <p class="m-0">Description</p>
           </div>
@@ -211,7 +194,7 @@
             <h5 class="fw5">Ratings</h5>
             <div class="text-center w-25">
               <h5 class="f1 m-0">4.5</h5>
-              <div class="d-flex justify-content-center justify-center flex-column">
+              <div class="flex justify-center justify-center flex-column">
                 <div class="rating text-warning font-size-14">
                   <span><i class="fas fa-xs fa-star"></i></span>
                   <span><i class="fas fa-xs fa-star"></i></span>
@@ -227,7 +210,7 @@
                 <% if current_user %>
                   <%= simple_form_for(@comment, url: add_comment_products_path, html: {class: "w-100", id: "new-comment-form"}, remote: true) do |f| %>
                     <div class="heading">
-                      <div class="d-flex mt-br">
+                      <div class="flex mt-br">
                         <%= image_tag("blog post 3.jpg", class: 'img-avatar') %>
                         <div class="ml-2 flex align-items-center w-100">
                           <%= f.input :message, label: "Description", required: false,
@@ -237,7 +220,7 @@
                         <%= f.input :product_id, :as => :hidden, input_html: {value: @product.id} %>
                       </div>
                     </div>
-                    <div class="d-flex text-center mt-2">
+                    <div class="flex text-center mt-2">
                       <%= f.submit 'Comment', class: "custom-btn-wide font-fredoka font-weight-lighter" %>
                       <div class="custom-btn-wide ml-3 font-fredoka font-weight-lighter">Answer</div>
                     </div>
@@ -246,7 +229,7 @@
                 <% end %>
                 </div>
             <div class="heading">
-              <div class="d-flex mt-br">
+              <div class="flex mt-br">
                 <%= image_tag("blog post 3.jpg", class: 'img-avatar') %>
                 <div class="ml-2">
                   <div class="fw5">Guys Customer</div>
@@ -267,14 +250,14 @@
                   debitis dolorum ea est fuga, harum id in qui sed ullam velit vero? Ducimus iusto sint
                   voluptatibus.</p>
               </div>
-              <div class="d-flex text-center mt-2">
+              <div class="flex text-center mt-2">
                 <div class="custom-btn-wide font-fredoka font-weight-lighter">Like</div>
                 <div class="custom-btn-wide ml-3 font-fredoka font-weight-lighter">Answer</div>
               </div>
             </div>
             <% @comments.each do |comment| %>
               <div class="heading" id="comment-<%= comment.id %>">
-                <div class="d-flex mt-br">
+                <div class="flex mt-br">
                   <%= image_tag("blog post 3.jpg", class: 'img-avatar') %>
                   <div class="ml-2">
                     <div class="fw5"><%= comment.user.username %></div>
@@ -294,7 +277,7 @@
                     <%= comment.message %>
                   </p>
                 </div>
-                <div class="d-flex text-center mt-2">
+                <div class="flex text-center mt-2">
                   <% if current_user.like_record?(comment) %>
                     <div class="btn-like custom-btn-wide liked font-fredoka font-weight-lighter" data-id="<%= comment.id %>" data-type="<%= comment.class %>">Liked</div>
                   <% else %>
@@ -320,7 +303,7 @@
             <div>
               <h6 class="fw6">FAQ</h6>
               <div class="mt-5">
-                <div class="d-flex">
+                <div class="flex">
                   <div class="col-2 text-center">
                     <p>1</p>
                     <p>Like</p>
@@ -333,7 +316,7 @@
                       elit. Accusantium, consequatur
                       corporis culpa dolor fugit illum ipsa libero mollitia nulla, numquam, perferendis quisquam quod
                       reprehenderit tempora temporibus ut veritatis voluptate voluptatibus!</p>
-                    <div class="d-flex text-center mt-2 mt-3">
+                    <div class="flex text-center mt-2 mt-3">
                       <div class="custom-btn-wide font-fredoka font-weight-lighter">Like</div>
                       <div class="custom-btn-wide ml-3 font-fredoka font-weight-lighter">Answer</div>
                     </div>
@@ -371,8 +354,8 @@
                 <p class="font-weight-bold hover:color-hover transform hover:scale-105 duration-200 font-fredoka f4 my-0"><%= product.price_text %></p>
                 <form action="<%= quick_view_product_path(id: product.id, product_id: product.id) %>" data-remote="true" method="post">
 
-                  <div class="d-flex justify-center button-wishlist px-2 py-2 my-3">
-                    <button type="submit" class="d-flex font-roboto outline-none-imp font-weight-bold align-items-center duration-500">
+                  <div class="flex justify-center button-wishlist px-2 py-2 my-3">
+                    <button type="submit" class="flex font-roboto outline-none-imp font-weight-bold align-items-center duration-500">
                       <i class="fa fa-heart mr-2 duration-500"></i>Add to Cart
                     </button>
                   </div>

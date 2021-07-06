@@ -217,6 +217,14 @@
   color: var(--colorHoverPrimary);
 }
 
+.product-card:hover .hover\:visible {
+  display: inherit;
+}
+
+.product-card:hover .hover\:height {
+  max-height: 500px;
+}
+
 
 .s-hidden {
   visibility: hidden;
@@ -225,11 +233,8 @@
 
 .select {
   cursor: pointer;
-  //display:inline-block;
   position: relative;
-  font: normal 11px/22px Arial, Sans-Serif;
-  padding: 4px;
-  //max-height: 32px;
+  height: max-content;
 }
 
 select[multiple]{
@@ -252,16 +257,15 @@ select[multiple]{
   justify-content: center;
   flex-direction: column;
   background-color: white;
-  //padding: 0 10px;
   font-weight: bold;
-
   padding: .25rem 1rem;
   border: 1px solid #b2b2b2;
   cursor: pointer;
   transition: .6s;
   border-radius: 8px;
-
   max-height: 64px;
+  height: max-content;
+  width: max-content;
 }
 
 .styled_select:after {
@@ -274,18 +278,16 @@ select[multiple]{
   display: flex;
   justify-content: center;
   flex-direction: column;
-  //top:9px;
-  right: 12px;
-
+  right: 0;
   top: 50%;
   text-align: center;
   align-self: center;
   align-items: center;
-  transform: translate(0, -40%);
+  transform: translate(0, -25%);
 }
 
 .styled_select:active, .styled_select.active {
-  background-color: #eee;
+  //background-color: #eee;
 }
 
 .options {

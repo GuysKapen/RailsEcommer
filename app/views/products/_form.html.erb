@@ -2,7 +2,7 @@
   <%= simple_form_for(@product) do |f| %>
     <%= f.simple_fields_for :product_meta do |meta| %>
 
-      <div class="d-flex background-white-grey">
+      <div class="flex background-white-grey">
         <div class="ml-3 col-9">
           <div class="text-center">
 
@@ -24,7 +24,7 @@
 
             <div class="field mt-5">
               <div class="control">
-                <div class="d-flex">
+                <div class="flex">
                 <span class="file-cta">
                 <span class="file-icon"><i class="fa fa-upload"></i></span>
                 <span class="file-label">Choose a file…</span>
@@ -70,7 +70,6 @@
                 </div>
 
                 <div class="col-8 flex ml-3 py-2 child-my-auto child-py-2">
-                  <!--                  <label for="" class="font-roboto mr-2">Product Type</label>-->
                   <%= select_tag "product_type", raw("<option value='normal'>Normal</option><option value='variation'>Variation</option>"), class: "mx-12", id: "select-product-type" %>
                   <div id="button-change-product-type" class="color-primary-dark-bg text-white rounded-extra-lg py-2 px-4 cursor-pointer duration-1000 ml-2 width-min">OK</div>
                 </div>
@@ -83,7 +82,7 @@
 
             </div>
 
-            <!--            <div class="field is-grouped d-flex mt-5">-->
+            <!--            <div class="field is-grouped flex mt-5">-->
             <!--              <div class="control">-->
             <!--              <div class="button is-warning custom-btn line-height-normal d-inline-block" type="submit">Create Product-->
             <!--              </div>-->
@@ -101,7 +100,7 @@
               <p class="ml-1 f4 m-0">Publish</p>
             </div>
             <hr style="margin: 0 !important;">
-            <div class="d-flex justify-content-between mt-3">
+            <div class="flex justify-between mt-3">
               <div class="custom-btn-wide rounded-extra-lg color-primary-dark-bg text-white">Save Draft</div>
               <div class="custom-btn-wide rounded-extra-lg color-primary-dark-bg text-white">Preview</div>
             </div>
@@ -124,7 +123,7 @@
               </div>
             </div>
 
-            <div class="mx-0 my-3 flex d-flex cursor-pointer d-block justify-content-between align-items-center">
+            <div class="mx-0 my-3 flex flex cursor-pointer d-block justify-between align-items-center">
               <div class="">
                 <p class="d-block custom-btn-wide rounded-extra-lg color-primary-dark-bg text-white" href="#">Copy</p>
               </div>
@@ -135,7 +134,7 @@
               <!--                <div class="custom-btn-wide rounded-extra-lg color-primary-dark-bg text-white">Publish</div>-->
               <!--              </div>-->
             </div>
-            <div class="flex justify-content-between">
+            <div class="flex justify-between">
               <div class="custom-btn-wide rounded-extra-lg my-3 d-inline-block color-primary-dark-bg text-white" href="#">
                 Move to Trash
               </div>
@@ -152,18 +151,18 @@
             <hr style="margin: 0 !important;">
 
             <div class="border mt-3 p-2">
-              <div class="d-flex">
+              <div class="flex">
                 <div>All categories</div>
                 <div class="ml-2">Most Used</div>
               </div>
-              <div class="d-flex mt-3">
+              <div class="flex mt-3">
                 <input type="checkbox">
                 <span class="f6 fw2 ml-1">Uncategorized</span>
               </div>
             </div>
 
             <div class="my-3" id="add_new_category">
-              <div id="add_new_category" class="f6 d-flex cursor-pointer">
+              <div id="add_new_category" class="f6 flex cursor-pointer">
                 <i class="fa fa-plus"><span class="ml-1">Add new category</span></i>
               </div>
               <div class="mt-2">

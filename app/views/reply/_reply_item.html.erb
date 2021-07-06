@@ -1,5 +1,5 @@
 <div class="heading">
-  <div class="d-flex mt-br">
+  <div class="flex mt-br">
     <%= image_tag("blog post 3.jpg", class: 'img-avatar') %>
     <div class="ml-2">
       <div class="fw5"><%= reply.user.username %></div>
@@ -16,7 +16,7 @@
   <div class="mt-2">
     <p class="font-roboto"><%= reply.message %></p>
   </div>
-  <div class="d-flex text-center mt-2">
+  <div class="flex text-center mt-2">
     <% if current_user.like_record?(reply) %>
       <div class="btn-like custom-btn-wide liked font-fredoka font-weight-lighter" data-id="<%= reply.id %>" data-type="<%= reply.class %>">Liked</div>
     <% else %>

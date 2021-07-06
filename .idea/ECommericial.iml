@@ -140,6 +140,7 @@
     <orderEntry type="library" scope="PROVIDED" name="xpath (v3.2.0, ruby-2.7.1-p83) [gem]" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="zeitwerk (v2.4.2, ruby-2.7.1-p83) [gem]" level="application" />
     <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" name="isotope-layout" level="application" />
   </component>
   <component name="RModuleSettingsStorage">
     <LOAD_PATH number="0" />

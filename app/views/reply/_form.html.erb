@@ -1,7 +1,7 @@
 <div id="reply-form-<%= comment.id %>" class="mt-6">
   <%= simple_form_for(reply, url: add_reply_products_path, html: {class: "w-100"}, remote: true) do |f| %>
     <div class="heading">
-      <div class="d-flex">
+      <div class="flex">
         <%= image_tag("blog post 3.jpg", class: 'img-avatar') %>
         <div class="ml-2 flex align-items-center w-100">
           <%= f.input :message, label: "Description", required: false,
@@ -11,7 +11,7 @@
         <%= f.input :comment_id, :as => :hidden, input_html: {value: comment.id} %>
       </div>
     </div>
-    <div class="d-flex text-center mt-2">
+    <div class="flex text-center mt-2">
       <%= f.submit 'Reply', class: "custom-btn-wide font-fredoka font-weight-lighter" %>
       <div class="custom-btn-wide ml-3 font-fredoka font-weight-lighter">Cancel
       </div>

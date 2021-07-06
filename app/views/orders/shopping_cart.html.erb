@@ -1,10 +1,10 @@
 <section class="w-75 mx-auto mt-5">
-  <div class="text-center d-flex justify-content-center">
+  <div class="text-center flex justify-center">
     <h3>SHOPPING CART <span class="text-gray-500">> CHECKOUT > BUY</span></h3>
   </div>
-  <div class="d-flex mt-4 border py-3">
+  <div class="flex mt-4 border py-3">
     <div class="col-8">
-      <div class="d-flex">
+      <div class="flex">
         <div class="col-6 font-weight-bold text-gray-800 f6">PRODUCT</div>
         <div class="col-2 font-weight-bold text-gray-800 f6">PRICE</div>
         <div class="col-2 font-weight-bold text-gray-800 f6 p-0">QUANTITY</div>
@@ -14,14 +14,14 @@
       <div id="product_carts_in_cart">
         <%= render 'orders/product_in_cart', order_view: @order_view %>
       </div>
-      <div class="d-flex mt-3">
+      <div class="flex mt-3">
         <div class="button-wishlist d-inline-block">
-          <button type="submit" class="d-flex font-roboto f6 outline-none-imp font-weight-bold align-items-center duration-500">
+          <button type="submit" class="flex font-roboto f6 outline-none-imp font-weight-bold align-items-center duration-500">
             <i class="fa fa-arrow-left mr-3 duration-500"></i>CONTINUE SHOPPING
           </button>
         </div>
         <div class="button-wishlist d-inline-block ml-5">
-          <button type="submit" class="d-flex font-roboto f6 outline-none-imp font-weight-bold align-items-center duration-500">
+          <button type="submit" class="flex font-roboto f6 outline-none-imp font-weight-bold align-items-center duration-500">
             <i class="fa fa-shopping-cart mr-3 duration-500"></i>UPDATE CART
           </button>
         </div>
@@ -31,18 +31,18 @@
     <div class="col-4">
       <div class="font-weight-bold text-gray-800 f6">CART TOTALS</div>
       <hr>
-      <div class="d-flex justify-content-between align-items-center">
+      <div class="flex justify-between align-items-center">
         <span class="text-gray-600 f6">Subtotal</span>
         <span id="cart-subtotal" class="font-weight-bold f5"><%= number_to_currency(@order_view.total) %></span>
       </div>
-      <div class="d-flex justify-content-between align-items-center mt-2">
+      <div class="flex justify-between align-items-center mt-2">
         <span class="text-gray-600 f6">Total</span>
         <span id="cart-total" class="font-weight-bold f5"><%= number_to_currency(@order_view.total) %></span>
       </div>
       <hr class="mt-2">
       <%= link_to new_order_path, class: "link-no-style" do %>
-        <div class="d-flex justify-content-center button-wishlist d-inline-block">
-          <button type="submit" class="d-flex font-roboto f6 outline-none-imp font-weight-bold align-items-center duration-500">
+        <div class="flex justify-center button-wishlist d-inline-block">
+          <button type="submit" class="flex font-roboto f6 outline-none-imp font-weight-bold align-items-center duration-500">
             <i class="fa fa-heart mr-3 duration-500"></i>PROCESS TO CHECKOUT
           </button>
         </div>
@@ -50,20 +50,20 @@
       <hr class="my-3">
 
       <div>
-        <div class="d-flex align-items-center mt-2">
+        <div class="flex align-items-center mt-2">
           <i class="fa fa-tags"></i>
           <span class="ml-2 font-weight-bold f5">Coupon</span>
         </div>
         <div class="field">
-          <div class="control d-flex mt-2 justify-content-start">
+          <div class="control flex mt-2 justify-content-start">
             <input placeholder="Coupon Code" type="text" class="input w-100 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800">
           </div>
         </div>
       </div>
 
       <hr class="my-2">
-      <div class="d-flex justify-content-center button-wishlist d-inline-block">
-        <button type="submit" class="d-flex font-roboto f6 outline-none-imp font-weight-bold align-items-center duration-500">
+      <div class="flex justify-center button-wishlist d-inline-block">
+        <button type="submit" class="flex font-roboto f6 outline-none-imp font-weight-bold align-items-center duration-500">
           <i class="fa fa-tag mr-3 duration-500"></i>Use Coupon
         </button>
       </div>

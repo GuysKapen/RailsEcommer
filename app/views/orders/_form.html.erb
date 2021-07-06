@@ -1,14 +1,14 @@
 <%= simple_form_for(@order) do |f| %>
-  <div class="d-flex justify-content-between px-5">
+  <div class="flex justify-between px-5">
     <%= f.simple_fields_for :order_user_info do |user_info| %>
       <!-- Form -->
       <section class="col-6 px-0">
 
         <!-- Billing Details -->
         <h3 class="font-weight-bold text-gray-800 f5">Billing Details</h3>
-        <div class="d-flex justify-content-between px-0">
+        <div class="flex justify-between px-0">
           <div class="field">
-            <div class="control d-flex flex-column mt-2 justify-content-start">
+            <div class="control flex flex-column mt-2 justify-content-start">
               <%= user_info.input :first_name, label: "First Name", required: true,
                                   placeholder: "First Name",
                                   input_html: {class: "input flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
@@ -17,7 +17,7 @@
           </div>
 
           <div class="field ml-2">
-            <div class="control d-flex mt-2 flex-column justify-content-start">
+            <div class="control flex mt-2 flex-column justify-content-start">
               <%= user_info.input :last_name, label: "Last Name", required: true,
                                   placeholder: "Last Name",
                                   input_html: {class: "input flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
@@ -31,7 +31,7 @@
         <hr class="my-3">
 
         <div class="field">
-          <div class="control d-flex flex-column mt-2 justify-content-start">
+          <div class="control flex flex-column mt-2 justify-content-start">
             <%= user_info.input :company, label: "Company Name (Optional)", required: false,
                                 placeholder: "Company Name",
                                 input_html: {class: "input flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
@@ -43,7 +43,7 @@
         <!-- Country -->
         <hr class="my-3">
         <div class="field">
-          <div class="control d-flex flex-column mt-2 justify-content-start">
+          <div class="control flex flex-column mt-2 justify-content-start">
             <%= user_info.input :country, label: "Country Region", selected: "Australia", required: true,
                                 placeholder: "Country",
                                 value: "Germany",
@@ -57,7 +57,7 @@
         <!-- Address -->
         <hr class="my-3">
         <div class="field">
-          <div class="control d-flex flex-column mt-2 justify-content-start">
+          <div class="control flex flex-column mt-2 justify-content-start">
             <%= user_info.input :address, label: "Street Address", required: true,
                                 placeholder: "32 Avalon",
                                 input_html: {class: "input flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
@@ -69,7 +69,7 @@
         <!-- State -->
         <hr class="my-3">
         <div class="field">
-          <div class="control d-flex flex-column mt-2 justify-content-start">
+          <div class="control flex flex-column mt-2 justify-content-start">
             <%= user_info.input :city, label: "State/City", required: true,
                                 placeholder: "California",
                                 input_html: {class: "input flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
@@ -81,7 +81,7 @@
         <!-- Zip code -->
         <hr class="my-3">
         <div class="field">
-          <div class="control d-flex flex-column mt-2 justify-content-start">
+          <div class="control flex flex-column mt-2 justify-content-start">
             <%= user_info.input :zip_code, label: "Zip", required: true,
                                 placeholder: "3231",
                                 input_html: {class: "input flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
@@ -93,7 +93,7 @@
         <!-- Phone -->
         <hr class="my-3">
         <div class="field">
-          <div class="control d-flex flex-column mt-2 justify-content-start">
+          <div class="control flex flex-column mt-2 justify-content-start">
             <%= user_info.input :phone, label: "Phone Number", required: true, type: "text",
                                 placeholder: "0923481234",
                                 input_html: {class: "input flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
@@ -105,7 +105,7 @@
         <!-- Email -->
         <!--      <hr class="my-3">-->
         <!--      <div class="field">-->
-        <!--        <div class="control d-flex flex-column mt-2 justify-content-start">-->
+        <!--        <div class="control flex flex-column mt-2 justify-content-start">-->
         <%#= f.input :email, label: "Email", required: true, type: "email",-->
 <!--                      placeholder: "example@gmail.com",-->
 <!--                      input_html: {class: "input flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},-->
@@ -117,7 +117,7 @@
         <!-- Addition Information -->
         <hr class="my-3">
         <div class="field">
-          <div class="control d-flex flex-column mt-2 justify-content-start">
+          <div class="control flex flex-column mt-2 justify-content-start">
             <%= f.input :note, label: "Note (Optional)", required: false, type: "text",
                                 placeholder: "Notes about your order",
                                 :as => :text,
@@ -134,7 +134,7 @@
         <h3 class="font-weight-bold text-gray-800 f5">Order Details</h3>
         <hr>
         <% @order_view.product_carts.each do |product_cart| %>
-          <div class="d-flex justify-content-between align-items-center">
+          <div class="flex justify-between align-items-center">
             <span class="text-gray-600 f6"><%= product_cart.product.product_meta.product_detail.name %></span>
             <span class="font-weight-bold f5"><%= product_cart.quantity %> x <%= number_to_currency(product_cart.product.price) %></span>
           </div>
@@ -142,11 +142,11 @@
         <hr class="mt-2">
 
         <!-- Subtotal -->
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="flex justify-between align-items-center">
           <span class="text-gray-800 font-weight-bold f6">Subtotal</span>
           <span class="font-weight-bold f5">$<%= @order_view.subtotal %></span>
         </div>
-        <div class="d-flex justify-content-between align-items-center mt-2">
+        <div class="flex justify-between align-items-center mt-2">
           <span class="text-gray-800 font-weight-bold f6">Total</span>
           <span class="font-weight-bold f5">$<%= @order_view.total %></span>
           <%= f.hidden_field :total, :name => "total", :value => @order_view.total %>
@@ -154,8 +154,8 @@
         <hr class="mt-2">
         <!-- !Subtotal -->
 
-        <div class="d-flex justify-content-start align-items-center">
-          <label class="d-flex justify-content-center align-items-center m-0">
+        <div class="flex justify-content-start align-items-center">
+          <label class="flex justify-center align-items-center m-0">
             <input type="checkbox" name="use_paypal">
             <span class="d-inline-block rounded-circle icon-size checkbox-size border-color-default border-1 checkbox-span mr-2"></span>
           </label>
@@ -163,8 +163,8 @@
         </div>
         <hr class="mt-2">
 
-        <div class="d-flex justify-content-start align-items-center">
-          <label class="d-flex justify-content-center align-items-center m-0">
+        <div class="flex justify-content-start align-items-center">
+          <label class="flex justify-center align-items-center m-0">
             <input type="checkbox" name="use_credit_card" class="checkbox-section" data-checkbox="section-credit-card">
             <span class="d-inline-block rounded-circle icon-size checkbox-size border-color-default border-1 checkbox-span mr-2"></span>
           </label>
@@ -176,7 +176,7 @@
           <%= user_info.simple_fields_for :order_card_info do |card_info| %>
             <!-- Card number -->
             <div class="field">
-              <div class="control d-flex flex-column justify-content-start">
+              <div class="control flex flex-column justify-content-start">
                 <%= card_info.input :card_number, label: "Card Number", required: false, type: "email",
                                     placeholder: "4242 4242 4242",
                                     input_html: {class: "input flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
@@ -187,7 +187,7 @@
 
             <!-- Expiry Date -->
             <div class="field">
-              <div class="control d-flex flex-column mt-2 justify-content-start">
+              <div class="control flex flex-column mt-2 justify-content-start">
                 <%= card_info.input :expired_date, label: "Expiry Date", required: false, type: "email",
                                     placeholder: "02/34",
                                     input_html: {class: "input flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
@@ -198,7 +198,7 @@
 
             <!-- Card code -->
             <div class="field">
-              <div class="control d-flex flex-column mt-2 justify-content-start">
+              <div class="control flex flex-column mt-2 justify-content-start">
                 <%= card_info.input :card_code, label: "Card Code", required: false, type: "email",
                                     placeholder: "323",
                                     input_html: {class: "input flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
@@ -207,8 +207,8 @@
             </div>
             <!-- !Card code -->
 
-            <div class="d-flex justify-content-start align-items-center mt-2">
-              <label class="d-flex justify-content-center align-items-center m-0">
+            <div class="flex justify-content-start align-items-center mt-2">
+              <label class="flex justify-center align-items-center m-0">
                 <input type="checkbox" name="agree">
                 <span class="d-inline-block rounded-circle icon-size checkbox-size border-color-default border-1 checkbox-span mr-2"></span>
               </label>
@@ -219,8 +219,8 @@
           <% end %>
         </section>
 
-        <div class="d-flex justify-content-start align-items-center">
-          <label class="d-flex justify-content-center align-items-center m-0">
+        <div class="flex justify-content-start align-items-center">
+          <label class="flex justify-center align-items-center m-0">
             <input type="checkbox" name="agree">
             <span class="d-inline-block rounded-circle icon-size checkbox-size border-color-default border-1 checkbox-span mr-2"></span>
           </label>
@@ -228,7 +228,7 @@
         </div>
         <hr class="mt-2">
 
-        <%= button_tag(type: 'submit', class: "justify-content-center button-wishlist d-inline-block w-100 d-flex font-roboto f6 outline-none-imp font-weight-bold align-items-center duration-500") do %>
+        <%= button_tag(type: 'submit', class: "justify-center button-wishlist d-inline-block w-100 flex font-roboto f6 outline-none-imp font-weight-bold align-items-center duration-500") do %>
           <i class="fa fa-heart mr-3 duration-500"></i>Place Order
         <% end %>
       </section>

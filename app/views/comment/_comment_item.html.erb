@@ -1,5 +1,5 @@
 <div id="comment-<%= comment.id %>" class="heading">
-  <div class="d-flex mt-br">
+  <div class="flex mt-br">
     <%= image_tag("blog post 3.jpg", class: 'img-avatar') %>
     <div class="ml-2">
       <div class="fw5">Guys Customer</div>
@@ -17,7 +17,7 @@
     <h6 class="font-baloo f2">Very Satisfy</h6>
     <p class="font-roboto"><%= comment.message %></p>
   </div>
-  <div class="d-flex text-center mt-2">
+  <div class="flex text-center mt-2">
     <div class="btn-like custom-btn-wide font-fredoka font-weight-lighter" data-id="<%= comment.id %>">Like</div>
     <div class="btn-add-reply custom-btn-wide ml-3 font-fredoka font-weight-lighter" data-id="<%= comment.id %>">Answer</div>
   </div>

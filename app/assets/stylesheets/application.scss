@@ -86,6 +86,10 @@ p {
   color: inherit;
 }
 
+.font-josesans {
+  font-family: 'JoseSans', serif;
+}
+
 .font-script {
   font-family: 'font-intro', Helvetica, Arial, sans-serif;
 }
@@ -108,22 +112,18 @@ p {
 
 .font-fredoka {
   font-family: 'Inconsolata', monospace;
-  //font-family: 'MuseoModerno', cursive;
 }
 
 .child-p-font-fredoka > p {
   font-family: 'Inconsolata', monospace;
-  //font-family: 'MuseoModerno', cursive;
 }
 
 .font-roboto {
   font-family: 'Roboto', serif;
-  //font-family: 'Sansita Swashed', cursive;
 }
 
 .child-p-font-vibes > p {
   font-family: 'Roboto', serif;
-  //font-family: 'Sansita Swashed', cursive;
 }
 
 .color-palate {
@@ -260,4 +260,8 @@ label.checkbox {
 
 .carousel .carousel-indicators .active {
   background-color: #292f2d;
+}
+
+hr {
+  height: inherit !important;
 }
