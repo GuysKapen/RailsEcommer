@@ -78,7 +78,7 @@
 }
 
 .mt-0-imp {
- margin-top: 0 !important;
+  margin-top: 0 !important;
 }
 
 .m-0-imp {
@@ -191,6 +191,19 @@
   margin-right: 2rem !important;
 }
 
+.child-px-2-not-first > * {
+  padding-left: .5rem !important;
+  padding-right: .5rem !important;
+}
+
+.child-px-2-not-first > *:first-child {
+  padding-left: 0 !important;
+}
+
+.child-px-2-not-first > *:last-child {
+  padding-right: 0 !important;
+}
+
 .child-my-2 > * {
   margin-top: .5rem !important;
   margin-bottom: .5rem !important;
@@ -220,6 +233,14 @@
   background-color: white;
 }
 
+.mix-blend-darken {
+  mix-blend-mode: darken;
+}
+
+.bg-product-img {
+  background: #ececec;
+}
+
 .sub-title {
   font-size: 14px;
   font-weight: 200;
@@ -240,6 +261,7 @@
   //color: #444141eb;
   color: #d0d1d0;
 }
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -361,4 +383,12 @@ label input[type="checkbox"] .section-credit-card {
 
 .max-h-0 {
   max-height: 0;
+}
+
+.flex-cols-4 > * {
+  flex: 0 0 25%;
+}
+
+.flex-cols-5 > * {
+  flex: 0 0 20%;
 }

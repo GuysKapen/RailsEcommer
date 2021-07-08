@@ -195,7 +195,7 @@
       <div class="mt-5 flex">
         <span class="material-icons-outlined material-icons">filter_list</span>
         <p class="f5 ml-1 color-fade">Sort by -
-<!--          <span class="text-gray-800 f6">Price High to Low</span>-->
+          <!--          <span class="text-gray-800 f6">Price High to Low</span>-->
         </p>
         <select name="" id="select-product-sort" class="border-none-imp f5 pl-0 ml-1">
           <option value="price-desc">Price High to Low</option>
@@ -204,7 +204,11 @@
       </div>
       <section class="mt-3">
         <div id="container-product-grid-items-product-index">
-          <%= render 'product_grid_items_simple', products: @products %>
+          <div class="grid grid-cols-3 grid-gap-3-2 grid-product-items">
+            <% @products.each do |product| %>
+              <%= render 'products/product_item', product: product, sort: true %>
+            <% end %>
+          </div>
         </div>
       </section>
     </div>

@@ -57,39 +57,9 @@
 
   <section class="mbr">
     <h1 class="text-center my-3 font-weight-bold text-uppercase">featured product</h1>
-    <div class="grid grid-cols-4 md:gap-8 xl:gap-16">
+    <div class="grid grid-cols-4 md:gap-4 xl:gap-8">
       <% @products_view.each do |product_view| %>
-        <div class="text-center mb-5">
-          <div class="text-center cursor-pointer product-card">
-            <div class="card opacity-anim overflow-hidden">
-              <%= link_to product_path(product_view.product) do %>
-                <%= image_tag(product_first_img(product_view), alt: "Product", class: "transform image-product-item-height hover:scale-105 w-full duration-500 object-contain") %>
-              <% end %>
-              <div class="px-3 mx-1 mt-2">
-                <% if product_view.category %>
-                  <p class="my-0 sub-title text-gray-300 opacity-50 hover:color-hover transform hover:scale-105 duration-200"><%= product_view.category.name %></p>
-                <% end %>
-                <p class="my-0 title hover:color-hover transform hover:scale-105 duration-200"><%= product_view.name %></p>
-                <div class="rating text-warning font-size-14">
-                  <span><i class="fas fa-star"></i></span>
-                  <span><i class="fas fa-star"></i></span>
-                  <span><i class="fas fa-star"></i></span>
-                  <span><i class="fas fa-star"></i></span>
-                  <span><i class="fas fa-star"></i></span>
-                </div>
-                <p class="font-weight-bold hover:color-hover transform hover:scale-105 duration-200 font-fredoka f4 my-0"><%= product_view.regular_price_text %></p>
-                <form action="<%= quick_view_product_path(id: product_view.id, product_id: product_view.id) %>" data-remote="true" method="post">
-                  <div class="flex justify-center button-wishlist px-2 py-2 my-3">
-                    <button type="submit" formaction="<%= quick_view_product_path(id: product_view.id, product_id: product_view.id) %>" class="flex font-roboto outline-none-imp font-weight-bold align-items-center duration-500">
-                      <i class="fa fa-heart mr-2 duration-500"></i>Add to Cart
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-
-        </div>
+        <%= render 'products/product_item', product: product_view %>
       <% end %>
     </div>
   </section>
@@ -101,49 +71,9 @@
 
 <section class="mbr mx-auto my-3 font-weight-lighter w-11/12">
   <h1 class="text-center my-3 font-weight-bold text-uppercase">On Sale</h1>
-  <div class="flex">
-
+  <div class="grid grid-cols-4 gap-8">
     <% @products_view_sale.each do |product_view| %>
-
-      <div class="col-lg-3 col-sm-12 col-md-6 text-center mb-5">
-        <div class="text-center cursor-pointer product-card">
-          <div class="card opacity-anim overflow-hidden">
-            <%= link_to product_path(product_view.product) do %>
-              <%= image_tag(product_first_img(product_view.product), alt: "Product", class: "transform w-full image-product-item-height hover:scale-105 duration-500 object-contain") %>
-            <% end %>
-            <div class="absolute left-1 top-1 width-min rounded-circle bg-gray-800 text-white py-3 px-2 f5 font-extrabold font-roboto">
-              <%= p product_view.sale_off %>
-            </div>
-            <div class="px-3 mx-1 mt-2">
-              <p class="my-0 sub-title text-gray-300 opacity-50 hover:color-hover transform hover:scale-105 duration-200"><%= product_view.category.name %></p>
-              <p class="my-0 title hover:color-hover transform hover:scale-105 duration-200"><%= product_view.name %></p>
-              <div class="rating text-warning font-size-14">
-                <span><i class="fas fa-star"></i></span>
-                <span><i class="fas fa-star"></i></span>
-                <span><i class="fas fa-star"></i></span>
-                <span><i class="fas fa-star"></i></span>
-                <span><i class="fas fa-star"></i></span>
-              </div>
-              <div class="flex justify-center">
-                <h6 class="font-baloo f2"><%= number_to_currency(product_view.product_meta.sale_price) %></h6>
-                <h6 class="font-baloo ml-3 f3 flex justify-center flex-column">
-                  <del><%= number_to_currency(product_view.product_meta.product_detail.regular_price) %></del>
-                </h6>
-              </div>
-              <!--              <p class="font-weight-bold hover:color-hover transform hover:scale-105 duration-200 font-fredoka f4 my-0"><%#= product.product_meta.product_detail.regular_price %> $</p>-->
-              <!--              <div class="custom-btn mx-3 font-fredoka my-2">Add To Cart</div>-->
-              <form action="<%= quick_view_product_path(id: product_view.id, product_id: product_view.id) %>" data-remote="true" method="post">
-                <div class="flex justify-center button-wishlist px-2 py-2 my-3">
-                  <button type="submit" formaction="<%= quick_view_product_path(id: product_view.id, product_id: product_view.id) %>" class="flex font-roboto outline-none-imp font-weight-bold align-items-center duration-500">
-                    <i class="fa fa-heart mr-2 duration-500"></i>Add to Cart
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-
-      </div>
+    <%= render 'products/product_item_sale', product_view: product_view %>
     <% end %>
   </div>
 

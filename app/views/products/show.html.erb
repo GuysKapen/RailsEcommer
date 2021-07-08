@@ -24,11 +24,9 @@
               <% end %>
             <% else %>
               <% @product.product_variations.each_with_index do |variation, index| %>
-                <%# variation.product_meta.images.each_with_index do |image, index| %>
                 <div class="carousel-item h-full w-full <%= index == 0 ? "active" : "" %>">
                   <%= image_tag(variation.product_meta.images[0].url, alt: "Product", class: "img-fluid center-inner w-100 h-100 object-contain") %>
                 </div>
-                <%# end %>
               <% end %>
             <% end %>
 
@@ -42,30 +40,23 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-        <!--        <div class="form-flex pt-4 font-size-16 font-baloo position-absolute" style="bottom: 10%;-->
-        <!--        width: 80%; left: 10%">-->
-        <!--          <div class="col">-->
-        <!--            <button type="submit" class="btn btn-danger form-control">Buy</button>-->
-        <!--          </div>-->
-        <!--          <div class="col">-->
-        <!--            <button type="submit" class="btn btn-warning form-control">Add to Cart</button>-->
-        <!--          </div>-->
-        <!--        </div>-->
-        <div class="flex mt-5 justify-between mx-5">
-          <div>
-            <%= image_tag(product_first_img(@product), alt: "Product", class: "object-contain w-32 h-32") %>
-          </div>
-          <div>
-            <%= image_tag("product-9-300x330.jpg", alt: "Product", class: "object-container w-32 h-32") %>
-          </div>
-          <div>
-            <%= image_tag("product_7.jpg", alt: "Product", class: "object-contain w-32 h-32") %>
-          </div>
+
+        <!-- Image showcase -->
+        <div class="flex justify-center mt-5 child-mx-3-not-first">
+          <% if @product.product_variations.blank? %>
+            <% @product.product_meta.images.each do |image| %>
+              <%= image_tag(image.url, alt: "Product", class: "object-contain w-32 h-32") %>
+            <% end %>
+          <% else %>
+            <% @product.product_variations.each_with_index do |variation, index| %>
+              <%= image_tag(variation.product_meta.images[0].url, alt: "Product", class: "object-contain w-32 h-32") %>
+            <% end %>
+          <% end %>
         </div>
+        <!-- !Image showcase -->
 
       </div>
       <div class="col-sm-6 py-2">
-        <!--        <span class="font-baloo f4 font-weight-normal">Category: <%#= @product.category.name %></span>-->
         <h5 class="font-baloo font-size-20 f1 fw8 mb-0"><%= @product.product_meta.product_detail.name %></h5>
         <div class="flex" id="product-price-container">
           <%= render 'product_price', regular_price: @product.regular_price_text,
@@ -85,8 +76,6 @@
           </div>
         </div>
         <hr class="m-0">
-
-        <!-- product price  -->
 
         <!-- Form Add to cart product -->
         <%= render('form_add_to_cart', product: @product) %>
@@ -295,7 +284,6 @@
 
               </div>
 
-
             <% end %>
 
           </div>
@@ -329,44 +317,16 @@
       </div>
       <!-- !Tab Content -->
     </div>
-
-    <section class="px-16">
-      <h3 class="my-3">Related Products</h3>
-      <div class="flex flex-auto">
-        <% @product_upsells.each do |product| %>
-          <div class="text-center cursor-pointer product-card col-4">
-            <div class="card opacity-anim overflow-hidden">
-              <%= link_to product_path(product) do %>
-                <%= image_tag(product_first_img(product), alt: "Product", class: "transform image-product-item-height hover:scale-105 w-full duration-500 object-contain") %>
-              <% end %>
-              <div class="px-2 mx-1 mt-2">
-                <% if product.category %>
-                  <p class="my-0 sub-title hover:color-hover transform hover:scale-105 duration-200 opacity-50"><%= product.category.name %></p>
-                <% end %>
-                <p class="my-0 title hover:color-hover transform hover:scale-105 duration-200"><%= product.product_meta.product_detail.name %></p>
-                <div class="rating text-warning font-size-14">
-                  <span><i class="fas fa-star"></i></span>
-                  <span><i class="fas fa-star"></i></span>
-                  <span><i class="fas fa-star"></i></span>
-                  <span><i class="fas fa-star"></i></span>
-                  <span><i class="fas fa-star"></i></span>
-                </div>
-                <p class="font-weight-bold hover:color-hover transform hover:scale-105 duration-200 font-fredoka f4 my-0"><%= product.price_text %></p>
-                <form action="<%= quick_view_product_path(id: product.id, product_id: product.id) %>" data-remote="true" method="post">
-
-                  <div class="flex justify-center button-wishlist px-2 py-2 my-3">
-                    <button type="submit" class="flex font-roboto outline-none-imp font-weight-bold align-items-center duration-500">
-                      <i class="fa fa-heart mr-2 duration-500"></i>Add to Cart
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </section>
   </div>
-  </div>
+
+  <section class="px-16">
+    <h3 class="my-3">Related Products</h3>
+    <div class="flex flex-auto flex-cols-5 child-px-2-not-first">
+      <% @product_upsells.each do |product| %>
+        <%= render 'products/product_item_simple', product: product %>
+      <% end %>
+    </div>
+  </section>
+
 </section>
 
