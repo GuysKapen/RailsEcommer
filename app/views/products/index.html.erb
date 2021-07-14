@@ -91,45 +91,17 @@
       <hr class="my-3">
       <section>
         <h5 class="text-gray-800 f5 p-0 m-0 font-weight-bold text-uppercase">Sales Products: </h5>
-        <div class="flex m-0 p-0 my-3">
-          <div>
-            <%= image_tag('product_4.jpg', width: 64, height: 64, class: "img-size-small object-contain") %>
+        <% @products_view_sale.each do |product| %>
+          <div class="flex m-0 p-0 my-3">
+            <div class="bg-product-img">
+              <%= image_tag(product_first_img(product), width: 64, height: 64, class: "mix-blend-darken img-size-small object-contain") %>
+            </div>
+            <div class="ml-3 flex flex-column justify-between">
+              <p class="my-0"><%= product.name %></p>
+              <p class="fw6 f6 font-weight-bold text-gray-800"><%= product.price_text %></p>
+            </div>
           </div>
-          <div class="ml-3 flex flex-column justify-center">
-            <p class="my-0">i-Phonez</p>
-            <p class="fw6 f6 font-weight-bold text-gray-800">$600.00</p>
-          </div>
-        </div>
-
-        <div class="flex m-0 p-0 my-3">
-          <div>
-            <%= image_tag('product-9-300x330.jpg', width: 64, height: 64, class: "img-size-small object-contain") %>
-          </div>
-          <div class="ml-3 flex flex-column justify-center">
-            <p class="my-0">Super Laptop</p>
-            <p class="fw6 f6 font-weight-bold text-gray-800">$1600.00</p>
-          </div>
-        </div>
-
-        <div class="flex m-0 p-0 my-3">
-          <div>
-            <%= image_tag('product-11-450x494.jpg', width: 64, height: 64, class: "img-size-small object-contain") %>
-          </div>
-          <div class="ml-3 flex flex-column justify-center">
-            <p class="my-0">Dell Laptop</p>
-            <p class="fw6 f6 font-weight-bold text-gray-800">$800.00</p>
-          </div>
-        </div>
-
-        <div class="flex m-0 p-0 my-3">
-          <div>
-            <%= image_tag('product-10-300x330.jpg', width: 64, height: 64, class: "img-size-small object-contain") %>
-          </div>
-          <div class="ml-3 flex flex-column justify-center">
-            <p class="my-0">E-Phones</p>
-            <p class="fw6 f6 font-weight-bold text-gray-800">$600.00</p>
-          </div>
-        </div>
+      <% end %>
       </section>
 
       <!-- Recently Viewed -->
@@ -137,40 +109,40 @@
       <section>
         <h5 class="text-gray-800 f5 p-0 m-0 font-weight-bold text-uppercase">Recently View Products</h5>
         <div class="flex m-0 p-0 my-3">
-          <div>
-            <%= image_tag('product-11-450x494.jpg', width: 64, height: 64, class: "img-size-small object-contain") %>
+          <div class="bg-product-img">
+            <%= image_tag('product-11-450x494.jpg', width: 64, height: 64, class: "mix-blend-darken img-size-small object-contain") %>
           </div>
-          <div class="ml-3 flex flex-column justify-center">
+          <div class="ml-3 flex flex-column justify-between">
             <p class="my-0">Gaming Laptop</p>
             <p class="fw6 f6 font-weight-bold text-gray-800">$900.00</p>
           </div>
         </div>
 
         <div class="flex m-0 p-0 my-3">
-          <div>
-            <%= image_tag('product-09-414x414.jpg', width: 64, height: 64, class: "img-size-small object-contain") %>
+          <div class="bg-product-img">
+            <%= image_tag('product-09-414x414.jpg', width: 64, height: 64, class: "mix-blend-darken img-size-small object-contain") %>
           </div>
-          <div class="ml-3 flex flex-column justify-center">
+          <div class="ml-3 flex flex-column justify-between">
             <p class="my-0">Samsung Phone</p>
             <p class="fw6 f6 font-weight-bold text-gray-800">$800.00</p>
           </div>
         </div>
 
         <div class="flex m-0 p-0 my-3">
-          <div>
-            <%= image_tag('product_4.jpg', width: 64, height: 64, class: "img-size-small object-contain") %>
+          <div class="bg-product-img">
+            <%= image_tag('product_4.jpg', width: 64, height: 64, class: "mix-blend-darken img-size-small object-contain") %>
           </div>
-          <div class="ml-3 flex flex-column justify-center">
+          <div class="ml-3 flex flex-column justify-between">
             <p class="my-0">Smart Phone</p>
             <p class="fw6 f6 font-weight-bold text-gray-800">$600.00</p>
           </div>
         </div>
 
         <div class="flex m-0 p-0 my-3">
-          <div>
-            <%= image_tag('pink watch.jpg', width: 64, height: 64, class: "img-size-small object-contain") %>
+          <div class="bg-product-img">
+            <%= image_tag('pink watch.jpg', width: 64, height: 64, class: "mix-blend-darken img-size-small object-contain") %>
           </div>
-          <div class="ml-3 flex flex-column justify-center">
+          <div class="ml-3 flex flex-column justify-between">
             <p class="my-0">Apple Watch</p>
             <p class="fw6 f6 font-weight-bold text-gray-800">$500.00</p>
           </div>

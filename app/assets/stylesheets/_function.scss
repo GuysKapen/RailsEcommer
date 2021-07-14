@@ -389,6 +389,30 @@ label input[type="checkbox"] .section-credit-card {
   flex: 0 0 25%;
 }
 
+.flex-cols-3 > * {
+  flex: 0 0 33.33%;
+}
+
 .flex-cols-5 > * {
   flex: 0 0 20%;
+}
+
+.right-4 {
+  right: 1rem;
+}
+
+.bottom-1\/4 {
+  bottom: 25%;
+}
+
+.bottom-1\/8 {
+  bottom: 12.5%;
+}
+
+.flip-x {
+  transform: scaleX(-1);
+}
+
+.flip-y {
+  transform: scaleY(-1);
 }

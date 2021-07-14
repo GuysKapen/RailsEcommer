@@ -66,18 +66,19 @@
 
 </section>
 
-<%= render 'shared/new_letter' %>
-
+<%= render 'products/showcase_product' %>
 
 <section class="mbr mx-auto my-3 font-weight-lighter w-11/12">
   <h1 class="text-center my-3 font-weight-bold text-uppercase">On Sale</h1>
   <div class="grid grid-cols-4 gap-8">
     <% @products_view_sale.each do |product_view| %>
-    <%= render 'products/product_item_sale', product_view: product_view %>
+      <%= render 'products/product_item_sale', product_view: product_view %>
     <% end %>
   </div>
 
 </section>
+
+<%= render 'shared/new_letter' %>
 
 <section class="my-24">
   <h1 class="text-center my-3 font-weight-bold text-uppercase">Get Fashion News</h1>

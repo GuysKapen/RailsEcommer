@@ -45,11 +45,15 @@
         <div class="flex justify-center mt-5 child-mx-3-not-first">
           <% if @product.product_variations.blank? %>
             <% @product.product_meta.images.each do |image| %>
-              <%= image_tag(image.url, alt: "Product", class: "object-contain w-32 h-32") %>
+              <div class="bg-product-img">
+                <%= image_tag(image.url, alt: "Product", class: "mix-blend-darken object-contain w-32 h-32") %>
+              </div>
             <% end %>
           <% else %>
             <% @product.product_variations.each_with_index do |variation, index| %>
-              <%= image_tag(variation.product_meta.images[0].url, alt: "Product", class: "object-contain w-32 h-32") %>
+              <div class="bg-product-img">
+                <%= image_tag(variation.product_meta.images[0].url, alt: "Product", class: "mix-blend-darken object-contain w-32 h-32") %>
+              </div>
             <% end %>
           <% end %>
         </div>

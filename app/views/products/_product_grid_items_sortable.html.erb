@@ -1,0 +1,5 @@
+<div class="grid grid-cols-3 grid-gap-3-2 grid-product-items">
+  <% products.each do |product| %>
+    <%= render 'products/product_item', product: product, sort: true %>
+  <% end %>
+</div>
