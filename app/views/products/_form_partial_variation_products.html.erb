@@ -8,7 +8,7 @@
             <!-- Description -->
             <%= variation_meta.simple_fields_for :product_detail do |detail| %>
               <div class="field">
-                <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
+                <div class="control flex mt-2 justify-start child-mx-2-not-first">
                   <div class="flex flex-col w-full">
                     <%= detail.input :description, label: "Description", required: false, :as => :text,
                                      placeholder: "Description",
@@ -27,7 +27,7 @@
               <!-- Weight And Dimens -->
               <div class="field mt-2 flex child-mx-2-not-first">
                 <!-- Weight -->
-                <div class="control flex flex-col mt-2 justify-content-start w-full">
+                <div class="control flex flex-col mt-2 justify-start w-full">
                   <%= shipping.input :weight, label: "Weight (kg)", required: false,
                                      placeholder: "1 kg",
                                      input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
@@ -36,43 +36,43 @@
                 <!-- !Weight -->
 
                 <!-- Dimensions -->
-                <div class="control flex flex-col mt-2 justify-content-start">
+                <div class="control flex flex-col mt-2 justify-start">
                   <label for="" class="text-left">Dimensions</label>
 
                   <div class="m-0 p-0 flex justify-between">
-                    <div class="field col-4 column is-4 pl-0">
+                    <div class="field w-4/12 column is-4 pl-0">
                       <div class="control">
                         <!--                      <label class="label">Brand</label>-->
                         <div class="control">
                           <%= shipping.input :width, placeholder: "Width",
                                              input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
-                                             wrapper: false, label_html: {class: "d-none"} %>
+                                             wrapper: false, label_html: {class: "hidden"} %>
                         </div>
                       </div>
                     </div>
-                    <div class="field col-4 column is-4">
+                    <div class="field w-4/12 column is-4">
                       <div class="control">
                         <!--                      <label class="label">Finish</label>-->
                         <div class="control">
                           <%= shipping.input :height, placeholder: "Height",
                                              input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
-                                             wrapper: false, label_html: {class: "d-none"} %>
+                                             wrapper: false, label_html: {class: "hidden"} %>
                         </div>
                       </div>
                     </div>
-                    <div class="field col-4 column is-4 pr-0">
+                    <div class="field w-4/12 column is-4 pr-0">
                       <div class="control">
                         <!--                      <label class="label">Condition</label>-->
                         <div class="control">
                           <%= shipping.input :length, placeholder: "Length",
                                              input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
-                                             wrapper: false, label_html: {class: "d-none"} %>
+                                             wrapper: false, label_html: {class: "hidden"} %>
                         </div>
                       </div>
                     </div>
                   </div>
 
-                  <%#= f.input :price, label: "Stock Status", required: false, input_html: {class: "input col-8 flex-grow-1"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+                  <%#= f.input :price, label: "Stock Status", required: false, input_html: {class: "input w-8/12 flex-grow"}, wrapper: false, label_html: {class: "label w-4/12 text-left"} %>
                 </div>
                 <!-- !Dimensions -->
 
@@ -80,7 +80,7 @@
               <!-- !Weight And Dimens -->
 
               <div class="field">
-                <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
+                <div class="control flex mt-2 justify-start child-mx-2-not-first">
                   <div class="flex flex-col w-full">
                     <%= shipping.input :shipping_class, label: "Shipping class", required: false,
                                        placeholder: "Shipping class",
@@ -94,7 +94,7 @@
 
             <!-- Stock Status -->
             <div class="field">
-              <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
+              <div class="control flex mt-2 justify-start child-mx-2-not-first">
                 <div class="flex flex-col w-full">
                   <%= variation_meta.simple_fields_for :product_inventory do |inventory| %>
                     <%= inventory.input :stock_status, label: "Stock Status", required: false,
@@ -110,7 +110,7 @@
 
             <!-- Price -->
             <div class="field">
-              <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
+              <div class="control flex mt-2 justify-start child-mx-2-not-first">
 
                 <div class="flex flex-col w-full">
                   <%= variation_meta.simple_fields_for :product_detail do |detail| %>
@@ -131,18 +131,18 @@
 
 
                     <div class="field mt-2">
-                      <div class="control flex mt-2 justify-content-start">
+                      <div class="control flex mt-2 justify-start">
                         <%= sale_price.input :sale_date_start, as: :date, html5: true, label: "Sale Price Date Start", required: false,
                                              placeholder: "Sale Price",
-                                             input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+                                             input_html: {class: "input w-8/12 flex-grow w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 text-left"} %>
                       </div>
                     </div>
 
                     <div class="field mt-2">
-                      <div class="control flex mt-2 justify-content-start">
+                      <div class="control flex mt-2 justify-start">
                         <%= sale_price.input :sale_date_end, as: :date, html5: true, label: "Sale Price Date End", required: false,
                                              placeholder: "Sale Price",
-                                             input_html: {class: "input col-8 flex-grow-1 w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+                                             input_html: {class: "input w-8/12 flex-grow w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 text-left"} %>
                       </div>
                     </div>
 
@@ -155,14 +155,14 @@
 
             <!-- Image and sku -->
             <div class="field">
-              <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
+              <div class="control flex mt-2 justify-start child-mx-2-not-first">
 
                 <div class="field mt-2 w-full">
                   <div class="control">
                     <div class="w-full cursor-pointer text-left button-file-upload-data-id" id="<%= "button-upload-file-variation-%s" % i %>" data-id="<%= i %>">
                       <i class="fa fa-3x fa-cloud-upload-alt text-blue-600"></i>
                     </div>
-                    <div class="flex position-absolute left-full w-0 h-0 d-none">
+                    <div class="flex position-absolute left-full w-0 h-0 hidden">
                       <span class="file-cta"><span class="file-icon"><i class="fa fa-upload"></i></span><span class="file-label">Choose a file…</span></span>
                       <%= variation_meta.file_field :images, required: true,
                                                     multiple: true,
@@ -170,8 +170,8 @@
                                                     label: "",
                                                     class: 'product-image-uploader',
                                                     id: "input-file-upload-%s" % i,
-                                                    input_html: {class: "input w-100 file-input product-image hidden"},
-                                                    wrapper: false, label_html: {class: "label text-left w-100"} %>
+                                                    input_html: {class: "input w-full file-input product-image hidden"},
+                                                    wrapper: false, label_html: {class: "label text-left w-full"} %>
                     </div>
 
 
@@ -195,7 +195,7 @@
           </div>
           <hr class="my-1">
           <div class="field mt-2">
-            <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
+            <div class="control flex mt-2 justify-start child-mx-2-not-first">
               <% attr_values.each_with_index do |attrs_value, index| %>
                 <div class="w-full">
                   <!-- Extract the ith value for options select (values has value for difference attrs)                    -->
@@ -204,7 +204,7 @@
                 </div>
               <% end %>
 
-              <div class="flex child-mx-2-not-first flex-grow-1">
+              <div class="flex child-mx-2-not-first flex-grow">
                 <i class="fa fa-bars m-auto"></i>
                 <span id="variation-100" class="triangle m-auto flex flex-col justify-center cursor-pointer toggle-collapse-variation"></span>
                 <%= link_to "Remove", new_order_path, class: "text-red-600 hover:text-red-800" %>

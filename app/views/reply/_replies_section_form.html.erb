@@ -1,4 +1,4 @@
-<div id="btn-show-replies-<%= comment.id %>" class="btn-show-replies cursor-pointer d-none" data-id="<%= comment.id %>">View <%= comment.replies.size %> replies</div>
+<div id="btn-show-replies-<%= comment.id %>" class="btn-show-replies cursor-pointer hidden" data-id="<%= comment.id %>">View <%= comment.replies.size %> replies</div>
 <div id="reply-container-<%= comment.id %>" class="ml-12 mt-6">
   <% comment.replies.each do |reply| %>
     <%= render 'reply/reply_item', reply: reply %>

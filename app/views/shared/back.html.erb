@@ -31,7 +31,7 @@
 
     <div class="container-product-variation">
       <div class="field mt-2">
-        <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
+        <div class="control flex mt-2 justify-start child-mx-2-not-first">
           <div class="w-full">
             <%= select_tag "variation", raw("<option>Small</option>") %>
           </div>
@@ -40,7 +40,7 @@
             <%= select_tag "variation", raw("<option>White</option>") %>
           </div>
 
-          <div class="flex child-mx-2-not-first flex-grow-1">
+          <div class="flex child-mx-2-not-first flex-grow">
             <i class="fa fa-bars m-auto"></i>
             <span id="variation-100" class="triangle m-auto flex flex-col justify-center cursor-pointer"></span>
             <%= link_to "Remove", new_order_path, class: "text-red-600 hover:text-red-800" %>
@@ -52,7 +52,7 @@
 
         <!-- Image and sku -->
         <div class="field">
-          <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
+          <div class="control flex mt-2 justify-start child-mx-2-not-first">
 
             <div class="flex flex-col w-full">
               <%= variation_meta.input :regular_price, label: "Regular Price ($)", required: false,
@@ -74,7 +74,7 @@
 
         <!-- Price -->
         <div class="field">
-          <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
+          <div class="control flex mt-2 justify-start child-mx-2-not-first">
 
             <div class="flex flex-col w-full">
               <%= variation_meta.input :regular_price, label: "Regular Price ($)", required: false,
@@ -96,7 +96,7 @@
 
         <!-- Stock Status -->
         <div class="field">
-          <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
+          <div class="control flex mt-2 justify-start child-mx-2-not-first">
             <div class="flex flex-col w-full">
               <%= variation_meta.input :regular_price, label: "Stock Status", required: false,
                                        placeholder: "Stock Status",
@@ -111,7 +111,7 @@
         <div class="field mt-2 flex child-mx-2-not-first">
 
           <!-- Weight -->
-          <div class="control flex flex-col mt-2 justify-content-start w-full">
+          <div class="control flex flex-col mt-2 justify-start w-full">
             <%= variation_meta.input :weight, label: "Weight (kg)", required: false,
                                      placeholder: "1 kg",
                                      input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
@@ -120,43 +120,43 @@
           <!-- !Weight -->
 
           <!-- Dimensions -->
-          <div class="control flex flex-col mt-2 justify-content-start">
+          <div class="control flex flex-col mt-2 justify-start">
             <label for="" class="text-left">Dimensions</label>
 
             <div class="m-0 p-0 flex justify-between">
-              <div class="field col-4 column is-4 pl-0">
+              <div class="field w-4/12 column is-4 pl-0">
                 <div class="control">
                   <!--                      <label class="label">Brand</label>-->
                   <div class="control">
                     <%= variation_meta.input :width, placeholder: "Width",
                                              input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
-                                             wrapper: false, label_html: {class: "d-none"} %>
+                                             wrapper: false, label_html: {class: "hidden"} %>
                   </div>
                 </div>
               </div>
-              <div class="field col-4 column is-4">
+              <div class="field w-4/12 column is-4">
                 <div class="control">
                   <!--                      <label class="label">Finish</label>-->
                   <div class="control">
                     <%= variation_meta.input :height, placeholder: "Height",
                                              input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
-                                             wrapper: false, label_html: {class: "d-none"} %>
+                                             wrapper: false, label_html: {class: "hidden"} %>
                   </div>
                 </div>
               </div>
-              <div class="field col-4 column is-4 pr-0">
+              <div class="field w-4/12 column is-4 pr-0">
                 <div class="control">
                   <!--                      <label class="label">Condition</label>-->
                   <div class="control">
                     <%= variation_meta.input :length, placeholder: "Length",
                                              input_html: {class: "input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
-                                             wrapper: false, label_html: {class: "d-none"} %>
+                                             wrapper: false, label_html: {class: "hidden"} %>
                   </div>
                 </div>
               </div>
             </div>
 
-            <%#= f.input :price, label: "Stock Status", required: false, input_html: {class: "input col-8 flex-grow-1"}, wrapper: false, label_html: {class: "label col-4 text-left"} %>
+            <%#= f.input :price, label: "Stock Status", required: false, input_html: {class: "input w-8/12 flex-grow"}, wrapper: false, label_html: {class: "label w-4/12 text-left"} %>
           </div>
           <!-- !Dimensions -->
 
@@ -164,7 +164,7 @@
         <!-- !Weight And Dimens -->
 
         <div class="field">
-          <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
+          <div class="control flex mt-2 justify-start child-mx-2-not-first">
             <div class="flex flex-col w-full">
               <%= variation_meta.input :shipping_class, label: "Shipping class", required: false,
                                        placeholder: "Shipping class",
@@ -175,7 +175,7 @@
         </div>
 
         <div class="field">
-          <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
+          <div class="control flex mt-2 justify-start child-mx-2-not-first">
             <div class="flex flex-col w-full">
               <%= variation_meta.input :description, label: "Description", required: false, :as => :text,
                                        placeholder: "Description",
@@ -195,7 +195,7 @@
 
 <div class="container-product-variation">
   <div class="field mt-2">
-    <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
+    <div class="control flex mt-2 justify-start child-mx-2-not-first">
       <div class="w-full">
         <div class="select" data-children-count="1">
           <select name="variation" id="variation" class="s-hidden">
@@ -220,7 +220,7 @@
         </div>
       </div>
 
-      <div class="flex child-mx-2-not-first flex-grow-1">
+      <div class="flex child-mx-2-not-first flex-grow">
         <i class="fa fa-bars m-auto"></i>
         <span id="variation-100" class="triangle m-auto flex flex-col justify-center cursor-pointer"></span>
         <a class="text-red-600 hover:text-red-800" href="/orders/new">Remove</a>
@@ -232,7 +232,7 @@
 
     <!-- Image and sku -->
     <div class="field">
-      <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
+      <div class="control flex mt-2 justify-start child-mx-2-not-first">
 
         <div class="flex flex-col w-full" data-children-count="1">
           <label class="float optional label text-left" for="product_product_meta_attributes_regular_price">Regular
@@ -250,7 +250,7 @@
 
     <!-- Price -->
     <div class="field">
-      <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
+      <div class="control flex mt-2 justify-start child-mx-2-not-first">
 
         <div class="flex flex-col w-full" data-children-count="1">
           <label class="float optional label text-left" for="product_product_meta_attributes_regular_price">Regular
@@ -270,7 +270,7 @@
 
     <!-- Stock Status -->
     <div class="field">
-      <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
+      <div class="control flex mt-2 justify-start child-mx-2-not-first">
         <div class="flex flex-col w-full" data-children-count="1">
           <label class="float optional label text-left" for="product_product_meta_attributes_regular_price">Stock
             Status</label><input class="numeric float optional input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" placeholder="Stock Status" type="number" step="any" name="product[product_meta_attributes][regular_price]" id="product_product_meta_attributes_regular_price">
@@ -283,38 +283,38 @@
     <div class="field mt-2 flex child-mx-2-not-first">
 
       <!-- Weight -->
-      <div class="control flex flex-col mt-2 justify-content-start w-full" data-children-count="1">
+      <div class="control flex flex-col mt-2 justify-start w-full" data-children-count="1">
         <label class="float optional label text-left" for="product_product_meta_attributes_weight">Weight
           (kg)</label><input class="numeric float optional input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" placeholder="1 kg" type="number" step="any" name="product[product_meta_attributes][weight]" id="product_product_meta_attributes_weight">
       </div>
       <!-- !Weight -->
 
       <!-- Dimensions -->
-      <div class="control flex flex-col mt-2 justify-content-start">
+      <div class="control flex flex-col mt-2 justify-start">
         <label for="" class="text-left">Dimensions</label>
 
         <div class="m-0 p-0 flex justify-between">
-          <div class="field col-4 column is-4 pl-0">
+          <div class="field w-4/12 column is-4 pl-0">
             <div class="control">
               <!--                      <label class="label">Brand</label>-->
               <div class="control" data-children-count="1">
-                <label class="float optional d-none" for="product_product_meta_attributes_width">Width</label><input class="numeric float optional input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" placeholder="Width" type="number" step="any" name="product[product_meta_attributes][width]" id="product_product_meta_attributes_width">
+                <label class="float optional hidden" for="product_product_meta_attributes_width">Width</label><input class="numeric float optional input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" placeholder="Width" type="number" step="any" name="product[product_meta_attributes][width]" id="product_product_meta_attributes_width">
               </div>
             </div>
           </div>
-          <div class="field col-4 column is-4">
+          <div class="field w-4/12 column is-4">
             <div class="control">
               <!--                      <label class="label">Finish</label>-->
               <div class="control" data-children-count="1">
-                <label class="float optional d-none" for="product_product_meta_attributes_height">Height</label><input class="numeric float optional input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" placeholder="Height" type="number" step="any" name="product[product_meta_attributes][height]" id="product_product_meta_attributes_height">
+                <label class="float optional hidden" for="product_product_meta_attributes_height">Height</label><input class="numeric float optional input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" placeholder="Height" type="number" step="any" name="product[product_meta_attributes][height]" id="product_product_meta_attributes_height">
               </div>
             </div>
           </div>
-          <div class="field col-4 column is-4 pr-0">
+          <div class="field w-4/12 column is-4 pr-0">
             <div class="control">
               <!--                      <label class="label">Condition</label>-->
               <div class="control" data-children-count="1">
-                <label class="float optional d-none" for="product_product_meta_attributes_length">Length</label><input class="numeric float optional input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" placeholder="Length" type="number" step="any" name="product[product_meta_attributes][length]" id="product_product_meta_attributes_length">
+                <label class="float optional hidden" for="product_product_meta_attributes_length">Length</label><input class="numeric float optional input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" placeholder="Length" type="number" step="any" name="product[product_meta_attributes][length]" id="product_product_meta_attributes_length">
               </div>
             </div>
           </div>
@@ -327,7 +327,7 @@
     <!-- !Weight And Dimens -->
 
     <div class="field">
-      <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
+      <div class="control flex mt-2 justify-start child-mx-2-not-first">
         <div class="flex flex-col w-full" data-children-count="1">
           <label class="string optional label text-left" for="product_product_meta_attributes_shipping_class">Shipping
             class</label><input class="string optional input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" placeholder="Shipping class" type="text" name="product[product_meta_attributes][shipping_class]" id="product_product_meta_attributes_shipping_class">
@@ -336,7 +336,7 @@
     </div>
 
     <div class="field">
-      <div class="control flex mt-2 justify-content-start child-mx-2-not-first">
+      <div class="control flex mt-2 justify-start child-mx-2-not-first">
         <div class="flex flex-col w-full" data-children-count="1">
           <label class="text optional label text-left" for="product_product_meta_attributes_description">Description</label><textarea class="text optional input w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800" placeholder="Description" name="product[product_meta_attributes][description]" id="product_product_meta_attributes_description"></textarea>
         </div>

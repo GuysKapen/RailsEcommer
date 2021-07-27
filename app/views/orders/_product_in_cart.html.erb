@@ -1,6 +1,6 @@
 <% order_view.product_carts.each do |product_cart| %>
-  <div class="flex justify-center align-items-center">
-    <div class="col-6 font-weight-bold f6 flex align-items-center">
+  <div class="flex justify-center items-center">
+    <div class="w-6/12 font-weight-bold f6 flex items-center">
       <%= link_to remove_product_cart_from_cart_orders_path(:product_id => product_cart.id), method: :post, remote: true, class: "link-no-style" do %>
         <i class="fa fa-times-circle fa-lg"></i>
       <% end %>
@@ -19,8 +19,8 @@
       </div>
 
     </div>
-    <div class="col-2 font-weight-bold f6 text-gray-800"><%= product_cart.product.price_text %></div>
-    <div class="col-2 font-weight-bold f6 p-0">
+    <div class="w-2/12 font-weight-bold f6 text-gray-800"><%= product_cart.product.price_text %></div>
+    <div class="w-2/12 font-weight-bold f6 p-0">
       <div class="flex text-center mt-2">
         <button type="button" class="qty-up px-2 border bg-light">
           <i class="fas fa-angle-up" data-id="prod1"></i>
@@ -33,7 +33,7 @@
         </button>
       </div>
     </div>
-    <div class="col-2 font-weight-bold f6 text-gray-800 text-right">$<%= product_cart.total %></div>
+    <div class="w-2/12 font-weight-bold f6 text-gray-800 text-right">$<%= product_cart.total %></div>
   </div>
   <hr>
 <% end %>

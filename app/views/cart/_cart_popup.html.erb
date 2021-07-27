@@ -6,7 +6,7 @@
   <section class="rounded-md cart-popup bg-white shadow-md mx-auto py-3">
     <div id="cart-popup-items">
       <% cart.product_carts.each do |product_cart| %>
-        <div class="flex mx-3 p-0 my-1 shadow-md flex-grow-1 rounded-md justify-between pr-3">
+        <div class="flex mx-3 p-0 my-1 shadow-md flex-grow rounded-md justify-between pr-3">
           <div class="flex">
             <div>
               <%= image_tag(product_first_img(product_cart.product), width: 64, height: 64) %>
@@ -18,7 +18,7 @@
               </p>
             </div>
           </div>
-          <div class="flex align-items-center">
+          <div class="flex items-center">
             <i class="fa fa-times-circle fa-lg"></i>
           </div>
         </div>
@@ -28,7 +28,7 @@
       <span id="cart-popup-subtotal" class="font-baloo font-bold f3"><%= cart.subtotal %></span></h6>
     <div class="button-wishlist text-center flex justify-center mx-6 my-3">
       <%= link_to shopping_cart_orders_path, class: "link-no-style" do %>
-        <button class="flex font-roboto f6 outline-none-imp font-weight-bold align-items-center duration-500">
+        <button class="flex font-roboto f6 outline-none-imp font-weight-bold items-center duration-500">
           <i class="fa fa-shopping-cart mr-3 duration-500"></i>VIEW CART
         </button>
       <% end %>
@@ -36,7 +36,7 @@
     </div>
     <div class="button-wishlist flex justify-center mx-6 my-3">
       <%= link_to new_order_path, class: "link-no-style" do %>
-        <button type="submit" class="flex font-roboto f6 outline-none-imp font-weight-bold align-items-center duration-500">
+        <button type="submit" class="flex font-roboto f6 outline-none-imp font-weight-bold items-center duration-500">
           <i class="fa fa-heart mr-3 duration-500"></i>CHECK OUT
         </button>
       <% end %>

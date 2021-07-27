@@ -1,12 +1,12 @@
 <div id="reply-form-<%= comment.id %>" class="mt-6">
-  <%= simple_form_for(reply, url: add_reply_products_path, html: {class: "w-100"}, remote: true) do |f| %>
+  <%= simple_form_for(reply, url: add_reply_products_path, html: {class: "w-full"}, remote: true) do |f| %>
     <div class="heading">
       <div class="flex">
         <%= image_tag("blog post 3.jpg", class: 'img-avatar') %>
-        <div class="ml-2 flex align-items-center w-100">
+        <div class="ml-2 flex items-center w-full">
           <%= f.input :message, label: "Description", required: false,
                       placeholder: "Replying to #{comment.user.username} publicly as #{current_user.username}",
-                      input_html: {class: "input w-100 border-b"}, wrapper: false, label_html: {class: "label text-left w-100 d-none"} %>
+                      input_html: {class: "input w-full border-b"}, wrapper: false, label_html: {class: "label text-left w-full hidden"} %>
         </div>
         <%= f.input :comment_id, :as => :hidden, input_html: {value: comment.id} %>
       </div>

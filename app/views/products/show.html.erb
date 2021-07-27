@@ -107,9 +107,9 @@
         <%= render('form_add_to_cart', product: @product) %>
         <!-- !Form Add to cart product -->
 
-        <div class="tab-view">
+        <div class="tab-view mt-12">
           <!--        Tab Panel-->
-          <div class="flex flex-cols-3 justify-between mt-5 tabs-panel relative text-center">
+          <div class="flex flex-cols-3 justify-between tabs-panel relative text-center">
             <div class="col w-4/12 active tab-panel py-2">
               <p class="m-0">What's Inside</p>
             </div>
@@ -180,7 +180,7 @@
   </div>
   <div class="w-8/12">
 
-    <div style="overflow: hidden;min-height: 50vh" class="mbr justify-around ml-5">
+    <div style="overflow: hidden;min-height: 50vh" class="mbr justify-around ml-8">
       <div class="tab-view">
         <!-- Tab Panel -->
         <div class="flex justify-between mt-5 tabs-panel relative text-center">
@@ -205,9 +205,9 @@
             </div>
           </div>
           <div class="tab-content">
-            <h4 class="fw6">Reviews From Customer</h4>
-            <h5 class="fw5">Ratings</h5>
-            <div class="text-center w-25">
+            <h4 class="fw6 f4">Reviews From Customer</h4>
+            <h5 class="fw5 f5">Ratings</h5>
+            <div class="text-center w-3/12">
               <h5 class="f1 m-0">4.5</h5>
               <div class="flex justify-center justify-center flex-column">
                 <div class="rating text-warning font-size-14">
@@ -230,7 +230,7 @@
                         <div class="ml-2 flex items-center w-full">
                           <%= f.input :message, label: "Description", required: false,
                                       placeholder: "Commenting publicly as #{current_user.username}",
-                                      input_html: {class: "input w-full border-b"}, wrapper: false, label_html: {class: "label text-left w-full d-none"} %>
+                                      input_html: {class: "input w-full border-b"}, wrapper: false, label_html: {class: "label text-left w-full hidden"} %>
                         </div>
                         <%= f.input :product_id, :as => :hidden, input_html: {value: @product.id} %>
                       </div>
@@ -318,7 +318,7 @@
               <h6 class="fw6">FAQ</h6>
               <div class="mt-5">
                 <div class="flex">
-                  <div class="col-2 w-2/12 text-center">
+                  <div class="w-2/12 w-2/12 text-center">
                     <p>1</p>
                     <p>Like</p>
                   </div>
@@ -345,14 +345,16 @@
     </div>
   </div>
 
-  <section class="px-16">
-    <h3 class="my-3">Related Products</h3>
-    <div class="flex flex-auto flex-cols-5 child-px-2-not-first">
-      <% @product_upsells.each do |product| %>
-        <%= render 'products/product_item_simple', product: product %>
-      <% end %>
-    </div>
-  </section>
+  <% unless @product_upsells.empty? %>
+    <section class="px-16">
+      <h3 class="my-3 f3">Related Products</h3>
+      <div class="flex flex-auto flex-cols-5 child-px-2-not-first">
+        <% @product_upsells.each do |product| %>
+          <%= render 'products/product_item_simple', product: product %>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
 
 </section>
 

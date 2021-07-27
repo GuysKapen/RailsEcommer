@@ -4,7 +4,7 @@
   <div class="grid-sizer lg:w-3"></div>
   <div class="card opacity-anim overflow-hidden">
     <div class="bg-product-img py-8">
-      <%= link_to product_path(product) do %>
+      <%= link_to product_path(product.id) do %>
         <%= image_tag(product_first_img(product), alt: "Product", class: "mix-blend-darken transform image-product-item-height hover:scale-105 w-full duration-500 object-contain") %>
       <% end %>
     </div>
@@ -24,7 +24,7 @@
       <form action="<%= quick_view_product_path(id: product.id, product_id: product.id) %>" data-remote="true" method="post">
 
         <div class="flex justify-center button-wishlist px-2 py-2 my-3">
-          <button type="submit" class="flex font-roboto outline-none-imp font-weight-bold align-items-center duration-500">
+          <button type="submit" class="flex font-roboto outline-none-imp font-weight-bold items-center duration-500">
             <i class="fa fa-heart mr-2 duration-500"></i>Add to Cart
           </button>
         </div>

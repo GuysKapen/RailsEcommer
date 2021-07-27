@@ -1,7 +1,7 @@
 document.setupCustomSelect = function () {
     // Iterate over each select element
     $('select').each(function () {
-
+        const oldName = String(this.className)
         const select = this;
         // select.parent()
         // Cache the number of options
@@ -19,7 +19,7 @@ document.setupCustomSelect = function () {
         $this.wrap('<div class="select"></div>');
 
         // Insert a styled div to sit over the top of the hidden select element
-        $this.after(`<div class="styled_select ${select.className} visible"></div>`);
+        $this.after(`<div class="styled_select ${oldName} visible"></div>`);
 
         // Cache the styled div
         let $styledSelect = $this.next('div.styled_select');

@@ -1,46 +1,45 @@
-<nav class="navbar w-100 navbar-expand-lg py-3 navbar-dark bg-dark">
+<nav class="navbar w-full navbar-expand-lg flex items-center relative py-3 navbar-dark bg-dark">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse md:flex" id="navbarSupportedContent">
-    <ul class="navbar-nav col-md-6 mt-2 mt-lg-0 mt-2 list-unstyled text-white">
-      <li class="nav-item">
+    <ul class="flex w-1/2 m-0 list-unstyled text-white">
+      <li>
         <div class="icon">
           <i class="fas fa-search"></i>
         </div>
       </li>
-      <li class="nav-item">
+      <li>
         <%= link_to "Home", root_path, class: "f5 font-weight-bold" %>
       </li>
-      <li class="nav-item">
+      <li>
         <% if current_user %>
           <%= link_to "Account", user_path(current_user), class: "f5 font-weight-bold" %>
         <% else %>
           <%= link_to "Signup", new_user_registration_path, class: "f5 font-weight-bold" %>
         <% end %>
       </li>
-      <li class="nav-item">
+      <li>
         <%= link_to "Shop", products_path, class: "f5 font-weight-bold" %>
       </li>
-      <li class="nav-item">
+      <li>
         <%= link_to "Product", new_product_path, class: "f5 font-weight-bold" %>
       </li>
-      <li class="nav-item">
+      <li>
         <%= link_to "About", class: "f5 font-weight-bold" %>
       </li>
-      <li class="nav-item">
+      <li>
         <%= link_to "Contact", class: "f5 font-weight-bold" %>
       </li>
     </ul>
   </div>
 
-
-  <div class="col-3 justify-center">
-    <h3 class="text-uppercase font-elia text-white font-weight-bold f3 m-0">My Shop</h3>
+  <div class="w-4/12 justify-center">
+    <h3 class="uppercase font-elia text-white text-center font-weight-bold f3 m-0">My Shop</h3>
   </div>
-  <div class="col-sm-5 col-md-4">
-    <div class="flex justify-content-end">
-      <div class="flex mr-4">
+  <div class="md:w-4/12 sm:w-5/12">
+    <div class="flex justify-end items-center">
+      <div class="flex items-center mr-4">
         <% if current_user %>
           <h6 class="text-white f6 font-josesans m-0 mr-3 flex justify-center flex-column"><%= current_user.username %></h6>
           <%= image_tag("portrait-3204843_640.jpg", class: "rounded-circle img-avatar-small") %>
@@ -51,18 +50,17 @@
         <% end %>
       </div>
       <div class="flex m-0">
-        <div class="flex font-roboto outline-none-imp font-weight-bold align-items-center duration-500">
+        <div class="flex font-roboto outline-none-imp font-weight-bold items-center duration-500">
           <i class="fa fa-lg fa-shopping-cart text-white mr-3 duration-500">&nbsp;/</i>
           <button type="submit" class="d-inline-block text-white cart-items" id="cart-items">
             <%= cart_items %>
           </button>
         </div>
       </div>
-
-      <!-- Cart Popup -->
+      <!--      Cart Popup-->
       <div id="cart-popup-container" class="position-absolute w-full shadow-2xl rounded-md z-40 mt-12">
       </div>
-      <!-- !Cart Popup -->
+      <!--       !Cart Popup-->
 
     </div>
 

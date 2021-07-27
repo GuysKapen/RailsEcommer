@@ -1,24 +1,24 @@
 <section class="mx-auto my-5 w-11/12">
   <hr class="color-fade">
   <div class="flex color-fade my-3">
-    <div class="flex col-2 pl-0">
-      <div class="col-4 pl-0">#</div>
+    <div class="flex w-2/12 pl-0">
+      <div class="w-4/12 pl-0">#</div>
       <div class="">Date</div>
     </div>
-    <div class="col-2">Status</div>
-    <div class="col-2">Items</div>
-    <div class="col-2">Customer</div>
-    <div class="col-1">Country</div>
-    <div class="col-1">Delivery</div>
-    <div class="col-1">Total</div>
-    <div class="col-1">Paid</div>
+    <div class="w-2/12">Status</div>
+    <div class="w-2/12">Items</div>
+    <div class="w-2/12">Customer</div>
+    <div class="w-1/12">Country</div>
+    <div class="w-1/12">Delivery</div>
+    <div class="w-1/12">Total</div>
+    <div class="w-1/12">Paid</div>
   </div>
   <hr class="color-fade my-2">
   <% @orders.each do |order| %>
     <div>
       <div class="flex mt-2 ml-0">
-        <div class="col-2 flex justify-content-start pl-0">
-          <div class="col-4 pl-0">
+        <div class="w-2/12 flex justify-start pl-0">
+          <div class="w-4/12 pl-0">
             #<%= order.id %>
           </div>
           <div class="">
@@ -26,15 +26,15 @@
           </div>
         </div>
 
-        <div class="col-2 font-bold">Ready to ship</div>
+        <div class="w-2/12 font-bold">Ready to ship</div>
         <% order.product_carts.each do |product_cart| %>
-          <div class="col-2"><%= product_cart.quantity %> x <%= product_cart.product.name %></div>
+          <div class="w-2/12"><%= product_cart.quantity %> x <%= product_cart.product.name %></div>
         <% end %>
-        <div class="col-2"><%= order.user.email %></div>
-        <div class="col-1"><%= order.country %></div>
-        <div class="col-1">Next Day</div>
-        <div class="col-1 font-bold"><%= order.total %></div>
-        <div class="col-1"><i class="fa fa-check-circle"></i></div>
+        <div class="w-2/12"><%= order.user.email %></div>
+        <div class="w-1/12"><%= order.country %></div>
+        <div class="w-1/12">Next Day</div>
+        <div class="w-1/12 font-bold"><%= order.total %></div>
+        <div class="w-1/12"><i class="fa fa-check-circle"></i></div>
       </div>
       <hr class="color-fade my-2">
     </div>

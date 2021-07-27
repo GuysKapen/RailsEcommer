@@ -15,14 +15,14 @@
     <% if product.product_variations.blank? %>
       <% product.product_meta.images.each_with_index do |image, index| %>
         <div class="carousel-item h-full w-full <%= index == 0 ? "active" : "" %>">
-          <%= image_tag(image.url, alt: "Product", class: "img-fluid center-inner w-100 h-100 object-contain") %>
+          <%= image_tag(image.url, alt: "Product", class: "img-fluid center-inner w-full h-100 object-contain") %>
         </div>
       <% end %>
     <% else %>
       <% product.product_variations.each_with_index do |variation, index| %>
         <%# variation.product_meta.images.each_with_index do |image, index| %>
         <div class="carousel-item h-full w-full <%= index == 0 ? "active" : "" %>">
-          <%= image_tag(variation.product_meta.images[0].url, alt: "Product", class: "img-fluid center-inner w-100 h-100 object-contain") %>
+          <%= image_tag(variation.product_meta.images[0].url, alt: "Product", class: "img-fluid center-inner w-full h-100 object-contain") %>
         </div>
         <%# end %>
       <% end %>

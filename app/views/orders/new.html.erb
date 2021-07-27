@@ -7,7 +7,7 @@
     <% @order_user_infos.each do |user_info| %>
       <%= button_to create_order_old_info_orders_path, params: {:user_info_id => user_info.id} do %>
         <div class="border-color-default border-solid border-1 rounded-md shadow-md p-3">
-          <div class="flex align-items-center">
+          <div class="flex items-center">
             <span class="ml-2 font-weight-bold f5"><%= country_name(user_info.country) %></span>
             <span class="ml-2 font-weight-bold f5"><%= user_info.city %></span>
             <span class="ml-2 font-weight-bold f5"><%= user_info.address %></span>
