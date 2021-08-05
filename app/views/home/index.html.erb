@@ -64,7 +64,7 @@
 </section>
 
 <section class="mbr mx-auto my-3 w-11/12">
-  <h1 class="text-center my-3 f1 font-weight-bold font-josesans">Featured Products</h1>
+  <h1 class="text-center my-3 f1 font-bold font-josesans">Featured Products</h1>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-4 xl:gap-8">
     <% @products_view.each do |product_view| %>
       <%= render 'products/product_item', product: product_view %>
@@ -94,7 +94,7 @@
       </div>
     </div>
     <div class="bg-product-img my-auto absolute right-0 bottom-0 transform -translate-y-1/8">
-      <%= image_tag("phone_sss20.jpeg", class: "mix-blend-darken w-75 h-75") %>
+      <%= image_tag("phone_sss20.jpeg", class: "mix-blend-darken w-9/12 h-75") %>
     </div>
   </div>
 
@@ -108,14 +108,14 @@
       </div>
     </div>
     <div class="bg-product-img my-auto absolute right-0 bottom-0 transform -translate-y-1/8">
-      <%= image_tag("phones.jpg", class: "mix-blend-darken w-75 h-75") %>
+      <%= image_tag("phones.jpg", class: "mix-blend-darken w-9/12 h-75") %>
     </div>
   </div>
 
 </section>
 
 <section class="mbr mx-auto my-3 font-weight-lighter w-11/12">
-  <h1 class="text-center my-3 font-weight-bold font-josesans f1">Recent View</h1>
+  <h1 class="text-center my-3 font-bold font-josesans f1">Recent View</h1>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-4 xl:gap-8">
     <% @products_view.take(6).each do |product_view| %>
       <%= render 'products/product_item', product: product_view %>
@@ -126,13 +126,13 @@
 <%= render 'products/showcase_product' %>
 
 <section class="my-24 mx-16">
-  <h1 class="text-center my-3 font-weight-bold uppercase f1">Get Fashion News</h1>
+  <h1 class="text-center my-3 font-bold uppercase f1">Get Fashion News</h1>
   <div class="flex flex-cols-3 container-xl mx-auto child-px-2-not-first">
     <div class="col-lg-4 flex-cols-3 col-sm-12 col-md-6 text-center relative">
       <div class="opacity-anim h-full">
         <%= image_tag("blog post 3.jpg", alt: "Product", class: "card-img-top relative") %>
         <div class="px-3 mx-1 pt-3 rounded card-fashion w-3/4">
-          <h4 class="my-0 title font-weight-bold f4">10 Best Laptops</h4>
+          <h4 class="my-0 title font-bold f4">10 Best Laptops</h4>
           <p class="sub-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias dicta, esse facere
             harum ipsum laboriosam</p>
         </div>
@@ -142,7 +142,7 @@
       <div class="opacity-anim h-full">
         <%= image_tag("blog post 2.jpg", alt: "Product", class: "card-img-top relative h-full") %>
         <div class="px-3 mx-1 pt-3 rounded card-fashion w-3/4">
-          <h4 class="my-0 title font-weight-bold f4">10 Best Laptops</h4>
+          <h4 class="my-0 title font-bold f4">10 Best Laptops</h4>
           <p class="sub-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias dicta, esse facere
             harum ipsum laboriosam</p>
         </div>
@@ -152,7 +152,7 @@
       <div class="opacity-anim h-full">
         <%= image_tag("blog_post_1.jpg", alt: "Product", class: "card-img-top relative h-full") %>
         <div class="px-3 mx-1 pt-3 rounded card-fashion w-3/4">
-          <h4 class="my-0 title font-weight-bold f4">10 Best Laptops</h4>
+          <h4 class="my-0 title font-bold f4">10 Best Laptops</h4>
           <p class="sub-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias dicta, esse facere
             harum ipsum laboriosam</p>
         </div>
@@ -173,7 +173,7 @@
       <label for="email">Your Email</label>
       <div class="mt-2 flex">
         <input class="w-full" name="email" type="email">
-        <button class="rounded-md background-black px-5 text-white py-2 font-weight-bold">Submit</button>
+        <button class="rounded-md background-black px-5 text-white py-2 font-bold">Submit</button>
       </div>
     </div>
   </div>

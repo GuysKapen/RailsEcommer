@@ -1,4 +1,4 @@
-<section class="w-75 mx-auto mt-5 border-color-default border-solid border-1 rounded-md shadow-md py-3 pt-5 px-2">
+<section class="w-9/12 mx-auto my-8 border-color-default border-solid border-1 rounded-md shadow-md py-3 pt-5 px-2">
   <div class="text-center flex justify-center mb-3">
     <h3><span class="text-gray-500"> SHOPPING CART ></span> CHECKOUT <span class="text-gray-500"> > BUY</span></h3>
   </div>
@@ -8,10 +8,10 @@
       <%= button_to create_order_old_info_orders_path, params: {:user_info_id => user_info.id} do %>
         <div class="border-color-default border-solid border-1 rounded-md shadow-md p-3">
           <div class="flex items-center">
-            <span class="ml-2 font-weight-bold f5"><%= country_name(user_info.country) %></span>
-            <span class="ml-2 font-weight-bold f5"><%= user_info.city %></span>
-            <span class="ml-2 font-weight-bold f5"><%= user_info.address %></span>
-            <span class="ml-2 font-weight-bold f5"><%= user_info.email %></span>
+            <span class="ml-2 font-bold f5"><%= country_name(user_info.country) %></span>
+            <span class="ml-2 font-bold f5"><%= user_info.city %></span>
+            <span class="ml-2 font-bold f5"><%= user_info.address %></span>
+            <span class="ml-2 font-bold f5"><%= user_info.email %></span>
           </div>
         </div>
       <% end %>
@@ -19,7 +19,9 @@
     <% end %>
   </section>
 
-  <%= render 'form', order: @order %>
+  <div class="mt-8">
+    <%= render 'form', order: @order %>
+  </div>
 
 <%#= link_to 'Back', orders_path %>
 </section>

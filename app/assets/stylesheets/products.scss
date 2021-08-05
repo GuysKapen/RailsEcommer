@@ -235,6 +235,7 @@
   cursor: pointer;
   position: relative;
   height: max-content;
+  padding: 8px;
 }
 
 select[multiple]{
@@ -265,7 +266,7 @@ select[multiple]{
   border-radius: 8px;
   max-height: 64px;
   height: max-content;
-  width: max-content;
+  width: 100%;
 }
 
 .styled_select:after {
@@ -278,7 +279,7 @@ select[multiple]{
   display: flex;
   justify-content: center;
   flex-direction: column;
-  right: 0;
+  right: 16px;
   top: 50%;
   text-align: center;
   align-self: center;
@@ -332,7 +333,7 @@ select[multiple]{
   background: #4a9fec;
   color: white;
   border: none;
-  padding: .6rem 2.4rem;
+  padding: .25rem 1rem;
   border-radius: 30px;
   font-weight: bold;
   transition: .5s;

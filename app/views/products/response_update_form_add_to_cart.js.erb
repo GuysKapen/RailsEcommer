@@ -3,12 +3,14 @@ $("#product_id").val(<%= product_id %>)
 $("#slider-product-cart-form-add-to-cart").text("<% if sale_price %> <%= number_to_currency(sale_price) %> <% else %> <%= number_to_currency(regular_price) %> <% end %>")
 //document.getElementById("product_id").value = <%#= product_id %>
 var indicators = $(".carousel-indicators")
-$(".carousel-item")?.each((i, element) => {
+$(".carousel-open")?.each((i, element) => {
     if (i === <%= index %>) {
-        $(element).addClass("active")
-        indicators.eq(i).addClass("active")
+        $(element).prop('checked', true)
+//        $(element).addClass("active")
+//        indicators.eq(i).addClass("active")
     } else {
-        $(element).removeClass("active")
-        indicators.eq(i).removeClass("active")
+        $(element).prop('checked', false)
+//        $(element).removeClass("active")
+//        indicators.eq(i).removeClass("active")
     }
 })

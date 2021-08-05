@@ -2,8 +2,8 @@
 
   <div class="flex">
     <div>
-      <h5 class="text-gray-800 font-weight-bold">SHOP</h5>
-      <h5 class="text-gray-800 font-weight-bold">
+      <h5 class="text-gray-800 font-bold">SHOP</h5>
+      <h5 class="text-gray-800 font-bold">
         <span class="font-weight-normal text-gray-600">HOME&nbsp;/&nbsp;</span>SHOP</h5>
     </div>
 
@@ -12,13 +12,13 @@
     <div class="w-3/12 p-0 mr-5">
       <div class="control flex justify-start">
         <input type="text" placeholder="Search" class="input flex-grow w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800 rounded-r-none-imp border-right-0">
-        <div class="w-2/12 border-solid rounded-r-md bg-gray-800 cursor-pointer border-1 border-color-default p-0 m-0 items-center flex flex-column justify-center">
+        <div class="w-2/12 border-solid rounded-r-md bg-gray-800 cursor-pointer border-1 border-color-default p-0 m-0 items-center flex flex-col justify-center">
           <i class="fa fa-search text-gray-200"></i>
         </div>
       </div>
 
       <hr class="my-3">
-      <h5 class="text-gray-800 p-0 f5 m-0 font-weight-bold uppercase">Filter By Prices</h5>
+      <h5 class="text-gray-800 p-0 f5 m-0 font-bold uppercase">Filter By Prices</h5>
       <div class="control flex justify-start mt-3 p-0 m-0">
         <div class="min-max-slider w-full text-right" data-legendnum="2">
           <label for="min">Minimum price</label>
@@ -28,14 +28,14 @@
         </div>
       </div>
       <div id="filter-btn" class="flex justify-center button-wishlist px-2 py-2 my-3">
-        <button class="flex font-roboto outline-none-imp font-weight-bold items-center duration-500">
+        <button class="flex font-roboto outline-none-imp font-bold items-center duration-500">
           <i class="fa fa-heart mr-2 duration-500"></i>Filter
         </button>
       </div>
 
       <hr class="my-3">
       <section>
-        <h5 class="text-gray-800 f5 p-0 m-0 font-weight-bold uppercase">Shopping Category : </h5>
+        <h5 class="text-gray-800 f5 p-0 m-0 font-bold uppercase">Shopping Category : </h5>
         <p class="mt-3 f5">Clothing <span class="color-fade f6">(1,872)</span></p>
         <p class="mt-1 f5">Shoes <span class="color-fade f6">(889)</span></p>
         <p class="mt-1 f5">Bags <span class="color-fade f6">(3922)</span></p>
@@ -50,39 +50,39 @@
 
       <hr class="my-3">
       <section>
-        <h5 class="text-gray-800 f5 p-0 m-0 font-weight-bold uppercase">Brands : </h5>
+        <h5 class="text-gray-800 f5 p-0 m-0 font-bold uppercase">Brands : </h5>
         <div class="flex mt-3 items-center">
           <label class="flex justify-center items-center m-0">
             <input type="checkbox" name="agree">
-            <span class="d-inline-block text-white fas w-4 h-4 border-color-default border-1 checkbox-span mr-2"></span>
+            <span class="inline-block text-white fas w-4 h-4 border-color-default border-1 checkbox-span mr-2"></span>
           </label>
           <p class="f5">Adidas <span class="color-fade f6">(32)</span></p>
         </div>
         <div class="flex mt-1 items-center">
           <label class="flex justify-center items-center m-0">
             <input type="checkbox" name="agree">
-            <span class="d-inline-block text-white fas w-4 h-4 border-color-default border-1 checkbox-span mr-2"></span>
+            <span class="inline-block text-white fas w-4 h-4 border-color-default border-1 checkbox-span mr-2"></span>
           </label>
           <p class="f5">Adidas Original <span class="color-fade f6">(122)</span></p>
         </div>
         <div class="flex mt-1 items-center">
           <label class="flex justify-center items-center m-0">
             <input type="checkbox" name="agree">
-            <span class="d-inline-block text-white fas w-4 h-4 border-color-default border-1 checkbox-span mr-2"></span>
+            <span class="inline-block text-white fas w-4 h-4 border-color-default border-1 checkbox-span mr-2"></span>
           </label>
           <p class="f5">Nike <span class="color-fade f6">(52)</span></p>
         </div>
         <div class="flex mt-1 items-center">
           <label class="flex justify-center items-center m-0">
             <input type="checkbox" name="agree">
-            <span class="d-inline-block text-white fas w-4 h-4 border-color-default border-1 checkbox-span mr-2"></span>
+            <span class="inline-block text-white fas w-4 h-4 border-color-default border-1 checkbox-span mr-2"></span>
           </label>
           <p class="f5">Mango Port <span class="color-fade f6">(82)</span></p>
         </div>
         <div class="flex mt-1 items-center">
           <label class="flex justify-center items-center m-0">
             <input type="checkbox" name="agree">
-            <span class="d-inline-block text-white fas w-4 h-4 border-color-default border-1 checkbox-span mr-2"></span>
+            <span class="inline-block text-white fas w-4 h-4 border-color-default border-1 checkbox-span mr-2"></span>
           </label>
           <p class="f5">Billabong <span class="color-fade f6">(12)</span></p>
         </div>
@@ -90,15 +90,15 @@
 
       <hr class="my-3">
       <section>
-        <h5 class="text-gray-800 f5 p-0 m-0 font-weight-bold uppercase">Sales Products: </h5>
+        <h5 class="text-gray-800 f5 p-0 m-0 font-bold uppercase">Sales Products: </h5>
         <% @products_view_sale.each do |product| %>
           <div class="flex m-0 p-0 my-3">
             <div class="bg-product-img">
               <%= image_tag(product_first_img(product), width: 64, height: 64, class: "mix-blend-darken img-size-small object-contain") %>
             </div>
-            <div class="ml-3 flex flex-column justify-between">
+            <div class="ml-3 flex flex-col justify-between">
               <p class="my-0"><%= product.name %></p>
-              <p class="fw6 f6 font-weight-bold text-gray-800"><%= product.price_text %></p>
+              <p class="fw6 f6 font-bold text-gray-800"><%= product.price_text %></p>
             </div>
           </div>
       <% end %>
@@ -107,14 +107,14 @@
       <!-- Recently Viewed -->
       <hr class="my-3">
       <section>
-        <h5 class="text-gray-800 f5 p-0 m-0 font-weight-bold uppercase">Recently View Products</h5>
+        <h5 class="text-gray-800 f5 p-0 m-0 font-bold uppercase">Recently View Products</h5>
         <div class="flex m-0 p-0 my-3">
           <div class="bg-product-img">
             <%= image_tag('product-11-450x494.jpg', width: 64, height: 64, class: "mix-blend-darken img-size-small object-contain") %>
           </div>
-          <div class="ml-3 flex flex-column justify-between">
+          <div class="ml-3 flex flex-col justify-between">
             <p class="my-0">Gaming Laptop</p>
-            <p class="fw6 f6 font-weight-bold text-gray-800">$900.00</p>
+            <p class="fw6 f6 font-bold text-gray-800">$900.00</p>
           </div>
         </div>
 
@@ -122,9 +122,9 @@
           <div class="bg-product-img">
             <%= image_tag('product-09-414x414.jpg', width: 64, height: 64, class: "mix-blend-darken img-size-small object-contain") %>
           </div>
-          <div class="ml-3 flex flex-column justify-between">
+          <div class="ml-3 flex flex-col justify-between">
             <p class="my-0">Samsung Phone</p>
-            <p class="fw6 f6 font-weight-bold text-gray-800">$800.00</p>
+            <p class="fw6 f6 font-bold text-gray-800">$800.00</p>
           </div>
         </div>
 
@@ -132,9 +132,9 @@
           <div class="bg-product-img">
             <%= image_tag('product_4.jpg', width: 64, height: 64, class: "mix-blend-darken img-size-small object-contain") %>
           </div>
-          <div class="ml-3 flex flex-column justify-between">
+          <div class="ml-3 flex flex-col justify-between">
             <p class="my-0">Smart Phone</p>
-            <p class="fw6 f6 font-weight-bold text-gray-800">$600.00</p>
+            <p class="fw6 f6 font-bold text-gray-800">$600.00</p>
           </div>
         </div>
 
@@ -142,9 +142,9 @@
           <div class="bg-product-img">
             <%= image_tag('pink watch.jpg', width: 64, height: 64, class: "mix-blend-darken img-size-small object-contain") %>
           </div>
-          <div class="ml-3 flex flex-column justify-between">
+          <div class="ml-3 flex flex-col justify-between">
             <p class="my-0">Apple Watch</p>
-            <p class="fw6 f6 font-weight-bold text-gray-800">$500.00</p>
+            <p class="fw6 f6 font-bold text-gray-800">$500.00</p>
           </div>
         </div>
       </section>
@@ -152,27 +152,25 @@
 
       <!-- Details -->
       <hr class="my-3">
-      <h5 class="text-gray-800 f5 p-0 m-0 font-weight-bold uppercase">See Our Products</h5>
+      <h5 class="text-gray-800 f5 p-0 m-0 font-bold uppercase">See Our Products</h5>
       <iframe class="mt-2" height="200" src="https://www.youtube.com/embed/yrV2WFXN8X4">
       </iframe>
       <!-- !Details -->
 
     </div>
     <div class="container mx-auto">
-      <div class="flex items-end">
-        <h5 class="text-gray-800 f2 p-0 m-0 font-weight-bold uppercase">Categories</h5>
+      <div class="flex items-baseline">
+        <p class="text-gray-800 f2 p-0 m-0 font-bold uppercase">Categories</p>
         <p class="f5 ml-8 color-fade">Found: <span class="text-gray-800 f6">17,823 products</span></p>
       </div>
 
-      <div class="mt-5 flex">
+      <div class="mt-5 flex items-center">
         <span class="material-icons-outlined material-icons">filter_list</span>
-        <p class="f5 ml-1 color-fade">Sort by -
-          <!--          <span class="text-gray-800 f6">Price High to Low</span>-->
-        </p>
-        <select name="" id="select-product-sort" class="border-none-imp f5 pl-0 ml-1">
-          <option value="price-desc">Price High to Low</option>
-          <option value="price-asc">Price Low to High</option>
-        </select>
+        <p class="f5 ml-1 color-fade">Sort by -</p>
+          <select name="" id="select-product-sort" class="border-none-imp f5 pl-0-imp ml-1">
+            <option value="price-desc">Price High to Low</option>
+            <option value="price-asc">Price Low to High</option>
+          </select>
       </div>
       <section class="mt-3">
         <div id="container-product-grid-items-product-index">

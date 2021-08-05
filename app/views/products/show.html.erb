@@ -4,55 +4,7 @@
       <div class="col-sm-6 w-6/12 py-2">
 
         <!-- Carousel -->
-        <div class="carousel relative rounded relative overflow-hidden pr-4">
-          <div class="carousel-inner relative overflow-hidden  w-full">
-
-            <% if @product.product_variations.blank? %>
-              <% size = @product.product_meta.images.size %>
-              <% @product.product_meta.images.each_with_index do |image, index| %>
-                <input class="carousel-open" type="radio" id="carousel-<%= index + 1 %>" name="carousel" aria-hidden="true" hidden="" <%= 'checked=checked' if index == 0 %>>
-                <div class="carousel-item absolute opacity-0" style="height: 500px;">
-                  <%= image_tag(image.url, alt: "Product", class: "img-fluid center-inner w-full h-100 max-h-100 object-contain") %>
-                </div>
-                <label for="carousel-<%= index + 1 - 1 < 1 ? size : index + 1 - 1 %>"
-                       class="control-<%= index + 1 %> w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto"><i
-                  class="fas fa-angle-left mt-3"></i></label>
-                <label for="carousel-<%= index + 1 + 1 > size ? 1 : index + 1 + 1 %>"
-                       class="next control-<%= index + 1 %> w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto"><i
-                  class="fas fa-angle-right mt-3"></i></label>
-
-              <% end %>
-            <% else %>
-              <% size = @product.product_variations.size %>
-              <% @product.product_variations.each_with_index do |variation, index| %>
-                <input class="carousel-open" type="radio" id="carousel-<%= index + 1 %>" name="carousel" aria-hidden="true" hidden="" <%= 'checked=checked' if index == 0 %>>
-                <div class="carousel-item absolute" style="height: 500px;">
-                  <div class="block h-full w-full">
-                    <%= image_tag(variation.product_meta.images[0].url, alt: "Product", class: "img-fluid center-inner w-full h-100 object-contain") %>
-                  </div>
-                </div>
-                <label for="carousel-<%= index + 1 - 1 < 1 ? size : index + 1 - 1 %>"
-                       class="control-<%= index + 1 %> w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto"><i
-                  class="fas fa-angle-left mt-3"></i></label>
-                <label for="carousel-<%= index + 1 + 1 > size ? 1 : index + 1 + 1 %>"
-                       class="next control-<%= index + 1 %> w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto"><i
-                  class="fas fa-angle-right mt-3"></i></label>
-              <% end %>
-            <% end %>
-
-
-            <!-- Add additional indicators for each slide-->
-            <ol class="carousel-indicators">
-              <% (size || 1).times do |i| %>
-                <li class="inline-block mr-3">
-                  <label for="carousel-<%= i + 1 %>"
-                         class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
-                </li>
-            <% end %>
-            </ol>
-
-          </div>
-        </div>
+        <%= render 'products/product_images_carousel', product: @product %>
         <!-- !Carousel -->
 
         <!-- Image showcase -->

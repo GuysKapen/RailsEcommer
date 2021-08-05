@@ -5,7 +5,7 @@
         <% if @product.images[0] != nil %>
           <%= image_tag(@product.images[0].url, alt: "Product", class: "img-fluid center-inner") %>
         <% end %>
-        <div class="form-flex pt-4 font-size-16 font-baloo position-absolute" style="bottom: 10%;
+        <div class="form-flex pt-4 font-size-16 font-baloo absolute" style="bottom: 10%;
             width: 80%; left: 10%">
           <div class="col">
             <button type="submit" class="btn btn-danger form-control">Buy</button>
@@ -76,7 +76,7 @@
         <!-- !policy  -->
 
         <!-- order details  -->
-        <div id="order-details" class="font-rale my-3 flex flex-column text-dark">
+        <div id="order-details" class="font-rale my-3 flex flex-col text-dark">
           <small>Delivery by: Mar 29 - Apr 1</small>
           <small>Sold by <a href="">Daily Election</a> (4.5 out of 5 | 12.862 ratings) </small>
           <small><i class="fas fa-map-marker-alt color-primary"></i>&nbsp;&nbsp;Delivery to Customer -
@@ -117,14 +117,14 @@
                 <button class="qty-up border bg-light">
                   <i class="fas fa-angle-up" data-id="prod1"></i>
                 </button>
-                <input type="text" name="" id="" class="qty-input text-center border px-2 w-25 bg-light"
+                <input type="text" name="" id="" class="qty-input text-center border px-2 w-1/4 bg-light"
                        disabled
                        value="1" placeholder="1" data-id="prod1">
                 <button class="qty-up border bg-light" data-id="prod1">
                   <i class="fas fa-angle-down"></i>
                 </button>
               </div>
-              <div class="text-white font-weight-bold btn-rounded background-black">Add To Cart</div>
+              <div class="text-white font-bold btn-rounded background-black">Add To Cart</div>
             </div>
           </div>
           <!-- !Qty  -->
@@ -132,16 +132,16 @@
 
         <!-- size  -->
         <div class="size my-3">
-          <div class="flex justify-between w-75 h-100">
+          <div class="flex justify-between w-9/12 h-100">
             <span class="font-baloo h-100 f3">Size:</span>
 
-            <div class="font-rubik border px-2 d-inline-block rounded-pill">
+            <div class="font-rubik border px-2 inline-block rounded-pill">
               <button class="btn text-center p-0 h-100 my-auto font-size-14">4GB RAM</button>
             </div>
-            <div class="font-rubik border px-2 d-inline-block rounded-pill">
+            <div class="font-rubik border px-2 inline-block rounded-pill">
               <button class="btn p-0 text-center h-100 my-auto font-size-14">6GB RAM</button>
             </div>
-            <div class="font-rubik border px-2 d-inline-block rounded-pill">
+            <div class="font-rubik border px-2 inline-block rounded-pill">
               <button class="btn p-0 text-center h-100 my-auto font-size-14">8GB RAM</button>
             </div>
           </div>

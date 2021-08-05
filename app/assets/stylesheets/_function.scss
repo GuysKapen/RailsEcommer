@@ -85,8 +85,17 @@
   margin: 0 !important;
 }
 
-.mb-3-img {
+.mb-3-imp {
   margin-bottom: 1rem !important;
+}
+
+.pl-0-imp {
+  padding-left: 0 !important;
+}
+
+.px-0-imp {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 .top-1 {
@@ -405,6 +414,10 @@ label input[type="checkbox"] .section-credit-card {
   max-height: 0;
 }
 
+.max-h-100 {
+  max-height: 100%;
+}
+
 .flex-cols-4 > * {
   flex: 0 0 25%;
 }
@@ -429,6 +442,10 @@ label input[type="checkbox"] .section-credit-card {
   bottom: 12.5%;
 }
 
+.bottom-full {
+  bottom: 100%;
+}
+
 .flip-x {
   transform: scaleX(-1);
 }
@@ -451,4 +468,8 @@ label input[type="checkbox"] .section-credit-card {
 
 .visible-imp {
   visibility: visible !important;
+}
+
+.fixed-imp {
+  position: fixed !important;
 }

@@ -114,7 +114,9 @@
               <div class="w-2/12 pr-2 font-bold flex-shrink-0">Ready to ship</div>
               <div class="w-2/12 pr-2">
                 <% order.product_carts.each do |product_cart| %>
-                  <%= product_cart.quantity %> x <%= product_cart.product.name %>
+                  <div>
+                    <%= product_cart.quantity %> x <%= product_cart.product.name %>
+                  </div>
                 <% end %>
               </div>
               <div class="w-2/12 pr-2 text-center overflow-hidden overflow-ellipsis flex-shrink-0"><%= order.user.email %></div>
@@ -136,10 +138,10 @@
           <% @order_user_infos.each do |user_info| %>
             <div class="border-color-default border-solid border-1 rounded-md shadow-md p-3">
               <div class="flex items-center">
-                <span class="ml-2 font-weight-bold f5"><%= country_name(user_info.country) %></span>
-                <span class="ml-2 font-weight-bold f5"><%= user_info.city %></span>
-                <span class="ml-2 font-weight-bold f5"><%= user_info.address %></span>
-                <span class="ml-2 font-weight-bold f5"><%= user_info.email %></span>
+                <span class="ml-2 font-bold f5"><%= country_name(user_info.country) %></span>
+                <span class="ml-2 font-bold f5"><%= user_info.city %></span>
+                <span class="ml-2 font-bold f5"><%= user_info.address %></span>
+                <span class="ml-2 font-bold f5"><%= user_info.email %></span>
               </div>
             </div>
           <% end %>

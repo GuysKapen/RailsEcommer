@@ -1,5 +1,5 @@
 class ProductLinked < ApplicationRecord
-  attr_accessor :product_upsell_ids_string, :product_cross_sell_ids_string
+  attr_accessor :product_upsell_ids_string, :product_cross_sell_ids_string, :upsells, :cross_sells
 
   belongs_to :product_meta
   has_and_belongs_to_many(:product_upsells, class_name: 'Product', join_table: 'product_upsells', foreign_key: 'product_linked_id',
