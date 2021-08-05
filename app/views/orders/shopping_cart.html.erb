@@ -1,58 +1,57 @@
-<section class="w-75 mx-auto mt-5">
+<section class="w-3/4 mx-auto my-5">
   <div class="text-center flex justify-center">
     <h3>SHOPPING CART <span class="text-gray-500">> CHECKOUT > BUY</span></h3>
   </div>
-  <div class="flex mt-4 border py-3">
-    <div class="w-8/12">
-      <div class="flex">
-        <div class="w-6/12 font-weight-bold text-gray-800 f6">PRODUCT</div>
-        <div class="w-2/12 font-weight-bold text-gray-800 f6">PRICE</div>
-        <div class="w-2/12 font-weight-bold text-gray-800 f6 p-0">QUANTITY</div>
-        <div class="w-2/12 font-weight-bold text-gray-800 f6 text-right">TOTAL</div>
+  <div class="flex mt-4">
+    <div class="w-8/12 border">
+      <div class="flex px-4 justify-center items-center py-4">
+        <div class="w-6/12 font-bold text-gray-800 f6">PRODUCT</div>
+        <div class="w-2/12 font-bold text-gray-800 f6">PRICE</div>
+        <div class="w-2/12 font-bold text-gray-800 f6 p-0">QUANTITY</div>
+        <div class="w-2/12 font-bold text-gray-800 f6 text-right">TOTAL</div>
       </div>
       <hr>
       <div id="product_carts_in_cart">
         <%= render 'orders/product_in_cart', order_view: @order_view %>
       </div>
-      <div class="flex mt-3">
-        <div class="button-wishlist d-inline-block">
-          <button type="submit" class="flex font-roboto f6 outline-none-imp font-weight-bold items-center duration-500">
+      <div class="flex m-4">
+        <div class="button-wishlist inline-block">
+          <button type="submit" class="flex font-roboto f6 outline-none-imp font-bold items-center duration-500">
             <i class="fa fa-arrow-left mr-3 duration-500"></i>CONTINUE SHOPPING
           </button>
         </div>
-        <div class="button-wishlist d-inline-block ml-5">
-          <button type="submit" class="flex font-roboto f6 outline-none-imp font-weight-bold items-center duration-500">
+        <div class="button-wishlist inline-block ml-5">
+          <button type="submit" class="flex font-roboto f6 outline-none-imp font-bold items-center duration-500">
             <i class="fa fa-shopping-cart mr-3 duration-500"></i>UPDATE CART
           </button>
         </div>
       </div>
 
     </div>
-    <div class="w-4/12">
-      <div class="font-weight-bold text-gray-800 f6">CART TOTALS</div>
+    <div class="w-4/12 border px-4 ml-4">
+      <div class="font-bold text-gray-800 f6 py-4">CART TOTALS</div>
       <hr>
       <div class="flex justify-between items-center">
         <span class="text-gray-600 f6">Subtotal</span>
-        <span id="cart-subtotal" class="font-weight-bold f5"><%= number_to_currency(@order_view.total) %></span>
+        <span id="cart-subtotal" class="font-bold f5"><%= number_to_currency(@order_view.total) %></span>
       </div>
       <div class="flex justify-between items-center mt-2">
         <span class="text-gray-600 f6">Total</span>
-        <span id="cart-total" class="font-weight-bold f5"><%= number_to_currency(@order_view.total) %></span>
+        <span id="cart-total" class="font-bold f5"><%= number_to_currency(@order_view.total) %></span>
       </div>
-      <hr class="mt-2">
+      <hr class="my-3">
       <%= link_to new_order_path, class: "link-no-style" do %>
-        <div class="flex justify-center button-wishlist d-inline-block">
-          <button type="submit" class="flex font-roboto f6 outline-none-imp font-weight-bold items-center duration-500">
+        <div class="flex justify-center button-wishlist inline-block">
+          <button type="submit" class="flex font-roboto f6 outline-none-imp font-bold items-center duration-500">
             <i class="fa fa-heart mr-3 duration-500"></i>PROCESS TO CHECKOUT
           </button>
         </div>
       <% end %>
       <hr class="my-3">
-
       <div>
         <div class="flex items-center mt-2">
           <i class="fa fa-tags"></i>
-          <span class="ml-2 font-weight-bold f5">Coupon</span>
+          <span class="ml-2 font-bold f5">Coupon</span>
         </div>
         <div class="field">
           <div class="control flex mt-2 justify-start">
@@ -62,8 +61,8 @@
       </div>
 
       <hr class="my-2">
-      <div class="flex justify-center button-wishlist d-inline-block">
-        <button type="submit" class="flex font-roboto f6 outline-none-imp font-weight-bold items-center duration-500">
+      <div class="flex justify-center button-wishlist inline-block">
+        <button type="submit" class="flex font-roboto f6 outline-none-imp font-bold items-center duration-500">
           <i class="fa fa-tag mr-3 duration-500"></i>Use Coupon
         </button>
       </div>

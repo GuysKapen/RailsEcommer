@@ -23,7 +23,7 @@
         <button type="button" class="qty-up px-2 border bg-light" data-id="<%= product.id %>">
           <i class="fas fa-angle-up"></i>
         </button>
-        <input type="number" name="quantity" id="quantity-input-<%= product.id %>" class="qty-input w-25 text-center border px-2 bg-light"
+        <input type="number" name="quantity" id="quantity-input-<%= product.id %>" class="qty-input w-1/4 text-center border px-2 bg-light"
                readonly="readonly"
                value="1" placeholder="1" data-id="prod1">
         <button type="button" class="qty-down px-2 border bg-light" data-id="<%= product.id %>">
@@ -35,7 +35,7 @@
     <div class="flex justify-between mt-8">
 
       <div class="button-cart flex px-3">
-        <button type="submit" class="flex font-roboto outline-none-imp font-weight-bold items-center duration-500">
+        <button type="submit" class="flex font-roboto outline-none-imp font-bold items-center duration-500">
           <i class="fa fa-shopping-cart mr-3 duration-500"></i>Add to Cart
         </button>
       </div>
@@ -43,7 +43,7 @@
       <div class="button-wishlist flex px-3">
         <button type="submit"
                 formaction="<%= add_to_wishlist_product_path(:product_id => product.id) %>"
-                class="flex font-roboto outline-none-imp font-weight-bold items-center duration-500">
+                class="flex font-roboto outline-none-imp font-bold items-center duration-500">
           <i class="fa fa-heart mr-3 duration-500"></i>Save to wishlist
         </button>
       </div>
@@ -63,12 +63,12 @@
         </div>
         <div class="button-wishlist flex px-3 py-1">
           <button type="submit"
-                  class="flex font-roboto outline-none-imp font-weight-bold items-center duration-500">
+                  class="flex font-roboto outline-none-imp font-bold items-center duration-500">
             <i class="fa fa-heart mr-3 duration-500"></i>Add to Cart
           </button>
         </div>
       </div>
-      <div class="mr-4 position-absolute right-0">
+      <div class="mr-4 absolute right-0">
         <i class="far fa-2x fa-arrow-alt-circle-up"></i>
       </div>
     </div>
