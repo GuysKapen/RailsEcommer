@@ -215,7 +215,6 @@ class ProductsController < ApplicationController
   end
 
   def quick_view
-    print(params)
     product_id = params[:product_id]
     @product = Product.find(product_id)
     respond_to do |format|

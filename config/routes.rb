@@ -37,12 +37,12 @@ Rails.application.routes.draw do
   end
   resources :comment
   resources :user, collection: {add_to_cart: :post}
-  post 'cart/view_cart', controller: 'cart', action: 'view_cart'
 
   resources :cart do
-    # member do
-    #   post :show_cart_popup
-    # end
+    collection do
+      post :modify_qty
+      post :view_cart
+    end
   end
   devise_for :users do
     get '/users/sign_out' => 'devise/session#destroy'

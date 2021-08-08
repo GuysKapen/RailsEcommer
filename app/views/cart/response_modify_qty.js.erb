@@ -1,0 +1,7 @@
+<% if success %>
+$("#product-total-<%= @product_cart.id %>").text("<%= number_to_currency(@product_cart.product.price * @product_cart.quantity) %>")
+$("#cart-total").text("<%= number_to_currency(@product_cart.product_cart_container.total) %>")
+$("#cart-subtotal").text("<%= number_to_currency(@product_cart.product_cart_container.total) %>")
+<% else %>
+toastr.error("Something went wrong!")
+<% end %>

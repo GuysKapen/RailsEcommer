@@ -22,18 +22,18 @@
     <div class="w-2/12 font-bold f6 text-gray-800"><%= product_cart.product.price_text %></div>
     <div class="w-2/12 font-bold f6 p-0">
       <div class="flex text-center mt-2">
-        <button type="button" class="qty-up px-2 border bg-light" data-id="<%= product_cart.id %>">
+        <button type="button" class="product-cart-qty-up px-2 border bg-light" data-id="<%= product_cart.id %>">
           <i class="fas fa-angle-up"></i>
         </button>
-        <input type="number" name="quantity" id="quantity-input-<%= product_cart.id %>" class="qty-input w-1/4 text-center border bg-light px-0-imp"
+        <input type="number" name="quantity" id="product-cart-quantity-input-<%= product_cart.id %>" class="qty-input w-1/4 text-center border bg-light px-0-imp"
                readonly="readonly"
                value="<%= product_cart.quantity %>" placeholder="<%= product_cart.quantity %>" data-id="<%= product_cart.id %>">
-        <button type="button" class="qty-down px-2 border bg-light" data-id="<%= product_cart.id %>">
+        <button type="button" class="product-cart-qty-down px-2 border bg-light" data-id="<%= product_cart.id %>">
           <i class="fas fa-angle-down"></i>
         </button>
       </div>
     </div>
-    <div class="w-2/12 font-bold f6 text-gray-800 text-right">$<%= product_cart.total %></div>
+    <div class="w-2/12 font-bold f6 text-gray-800 text-right" id="product-total-<%= product_cart.id %>" data-price="<%= product_cart.product.price %>">$<%= product_cart.total %></div>
   </div>
   <hr>
 <% end %>

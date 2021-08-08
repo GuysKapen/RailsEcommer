@@ -5,11 +5,13 @@ window.setupInputQty = function () {
 
     // let qtyInput = document.getElementsByClassName('qty-input')[0]
     let btnsQty = document.getElementsByClassName("qty-up")
+
     for (let i = 0; i < btnsQty.length; i++) {
         btnsQty[i].addEventListener('click', function () {
             const dataId = btnsQty[i].getAttribute('data-id')
             let qtyInput = document.getElementById(`quantity-input-${dataId}`)
-            qtyInput.value = Math.min(Number(qtyInput.value) + 1, 10)
+            const qty = Math.min(Number(qtyInput.value) + 1, 10)
+            qtyInput && (qtyInput.value = qty)
         })
     }
 
@@ -18,8 +20,8 @@ window.setupInputQty = function () {
         btnsQtyDown[i].addEventListener('click', function () {
             const dataId = btnsQty[i].getAttribute('data-id')
             let qtyInput = document.getElementById(`quantity-input-${dataId}`)
-            console.log("Data-id", dataId)
             qtyInput.value = Math.max(Number(qtyInput.value) - 1, 1)
+
         })
     }
 }
