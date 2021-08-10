@@ -1,63 +1,135 @@
-<%= render 'shared/nav' %>
+<section class="my-8">
+  <section>
+    <div>
+      <h1 class="f1 text-center font-bold font-josesans">About our company</h1>
+      <p class="w-1/2 mx-auto mt-4 text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aut
+        commodi, deserunt enim esse ex harum iure
+        nostrum porro soluta voluptate voluptatem. Culpa dolor fuga iusto quam repellendus similique velit?</p>
+    </div>
+    <div class="mx-16 my-16">
+      <img src="https://cdn.pixabay.com/photo/2015/05/15/14/22/conference-room-768441_1280.jpg" alt="" class="h-64 w-full object-cover rounded-extra-lg">
+    </div>
+  </section>
 
-<div class="container my-5">
-  <div class="relative">
-    <img src="https://pixabay.com/get/53e0d3434251aa14f6d1867dda293f7d123fdae4554c704f752f7ed4954fc25c_1920.jpg" alt="" class="w-full">
-  </div>
+  <section class="mx-16 my-16">
+    <div class="flex w-1/2 mx-auto">
+      <div>
+        <h6 class="f3 font-josesans text-center font-bold mt-8">Our features</h6>
+        <p class="f6">In the 21st century</p>
+      </div>
+      <div class="w-32 h-32 ml-8 rounded-extra-lg shadow-full relative">
+        <div class="center-inner">
+          <i class="fas fa-dolly"></i>
+          <p class="mt-2">Priority shipping</p>
+        </div>
+      </div>
+      <div class="w-32 h-32 ml-8 rounded-extra-lg shadow-full relative">
+        <div class="center-inner">
+          <i class="fas fa-balance-scale-left"></i>
+          <p class="mt-2">Free Returns</p>
+        </div>
+      </div>
 
-  <div class="about-banner w-full container mx-auto p-0 justify-start flex">
-    <div class="text-center my-auto text-white mx-auto w-50">
-      <h3 class="title fw6">WHO WE ARE</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio doloremque eaque eligendi ex laudantium nostrum perferendis sunt tenetur ullam velit. Corporis distinctio ipsa iure minus, modi nam quisquam ut velit.
-        Lorem ipsum dolor sit amet quidem quo sunt ut velit voluptas!</p>
-      <div class="flex justify-center mx-auto">
-        <i class="fab fa-facebook"></i>
-        <i class="fab fa-instagram"></i>
-        <i class="fab fa-twitter"></i>
-        <i class="far fa-envelope"></i>
-        <i class="fab fa-linkedin"></i>
+    </div>
+    <div class="flex w-1/2 mx-auto mt-4">
+      <div class="w-32 h-32 ml-4 rounded-extra-lg shadow-full relative">
+        <div class="center-inner">
+          <i class="fas fa-user-cog"></i>
+          <p class="mt-2">In Home Setup</p>
+        </div>
+      </div>
+      <div class="w-32 h-32 ml-8 rounded-extra-lg shadow-full relative">
+        <div class="center-inner">
+          <i class="fas fa-highlighter"></i>
+          <p class="mt-2">High quality</p>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  </section>
 
-<h3 class="title fw6 text-center text-dark f3 uppercase">our goals</h3>
-
-<div class="container my-5">
-  <div class="relative">
-    <img src="https://pixabay.com/get/55e4d6464957ac14f6da8c7dda293f7d123fdae4554c704f752f7ed4924cc65d_1280.jpg" alt="" class="w-full" style="height: 24rem">
-  </div>j
-
-  <div class="about-banner w-full container mx-auto p-0 justify-start flex my-3">
-    <div class="flex mx-5 my-3">
-      <div class="w-4/12 text-white text-center items-center">
-        <div class="icon-border-thick inline-block p-2 rounded-circle my-4 text-center">
-          <img src="https://demos.uxthemes.com/layouts/wp-content/uploads/sites/17/2017/03/diamond.png" class="my-auto"  alt="" width="32" height="32" style="color: #9e8b8b">
+  <section>
+    <div>
+      <h1 class="f1 text-center font-bold font-josesans">Endless possibilities products</h1>
+      <p class="w-1/2 mx-auto mt-4 text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aut
+        commodi, deserunt enim esse ex harum iure
+        nostrum porro soluta voluptate voluptatem. Culpa dolor fuga iusto quam repellendus similique velit?</p>
+    </div>
+    <div class="mx-16 bg-product-img rounded-md shadow-md">
+      <div class="flex flex-col lg:flex-row mt-16 justify-center items-center flex-cols-3 flex-wrap lg:flex-no-wrap">
+        <div class="pl-0 lg:pl-16 mt-8">
+          <h3 class="mx-auto text-center font-josesans font-bold">SAMSUNG PHONE</h3>
+          <div class="mx-auto lg:ml-4 rounded-circle w-24 h-24 bg-black mt-8 flex flex-col justify-center items-center">
+            <span class="material-icons text-white flip-x">north_east</span>
+            <p class="text-white h6 font-josesans mt-2">Shop now</p>
+          </div>
         </div>
-        <h4 class="uppercase text-white fw7">Concept</h4>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat….</p>
-        <div class="background-blue inline-block text-white fw7 button-rounded">Click me!</div>
-      </div>
-
-      <div class="w-4/12 text-white text-center items-center">
-        <div class="icon-border-thick inline-block p-2 rounded-circle my-4 text-center">
-          <img src="https://demos.uxthemes.com/layouts/wp-content/uploads/sites/17/2017/03/diamond.png" class="my-auto"  alt="" width="32" height="32" style="color: #9e8b8b">
+        <div class="bg-product-img mt-auto relative">
+          <div>
+            <%= image_tag("phone_sss20.jpeg", class: "mix-blend-darken w-9/12 h-75 m-auto") %>
+          </div>
+          <div class="bg-white absolute bottom-1/8 right-4 rounded-circle w-24 h-24 flex justify-center flex-col items-center">
+            <span class="material-icons">north_east</span>
+            <p class="text-right font-josesans h6 mt-2">Get now</p>
+          </div>
         </div>
-        <h4 class="uppercase text-white fw7">Concept</h4>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat….</p>
-        <div class="background-blue inline-block text-white fw7 button-rounded">Click me!</div>
-      </div>
-
-      <div class="w-4/12 text-white text-center items-center">
-        <div class="icon-border-thick inline-block p-2 rounded-circle my-4 text-center">
-          <img src="https://demos.uxthemes.com/layouts/wp-content/uploads/sites/17/2017/03/diamond.png" class="my-auto"  alt="" width="32" height="32" style="color: #9e8b8b">
+        <div class="my-4 lg:mt-16">
+          <p class="font-weight-light f6 w-full lg:w-9/12 text-center lg:text-right">Lorem ipsum dolor sit amet,
+            consectetur adipisicing elit. Aspernatur
+            assumenda atque consectetur, corporis cupiditate delectus eaque est ex excepturi facere, magnam</p>
         </div>
-        <h4 class="uppercase text-white fw7">Concept</h4>
-        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat….</p>
-        <div class="background-blue inline-block text-white fw7 button-rounded">Click me!</div>
       </div>
     </div>
+  </section>
 
-  </div>
-</div>
+  <section class="my-16">
+    <div>
+      <h1 class="f1 text-center font-bold font-josesans">Our members</h1>
+      <p class="w-1/2 mx-auto mt-4 text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aut
+        commodi, deserunt enim esse ex harum iure
+        nostrum porro soluta voluptate voluptatem. Culpa dolor fuga iusto quam repellendus similique velit?</p>
+    </div>
+    <div class="flex w-2/3 mx-auto my-16 justify-center">
 
+      <div class="mx-4 text-center w-24">
+        <div class="w-24 h-24 rounded-circle overflow-hidden">
+          <img src="https://cdn.pixabay.com/photo/2016/11/29/13/14/attractive-1869761__340.jpg" alt="" class="w-full h-full object-cover">
+        </div>
+        <h3 class="mt-4 font-bold font-josesans">Darrel Mary</h3>
+        <p class="mt-2 color-fade">Contact</p>
+      </div>
+
+      <div class="mx-4 text-center w-24">
+        <div class="w-24 h-24 rounded-circle overflow-hidden">
+          <img src="https://cdn.pixabay.com/photo/2017/09/25/13/12/man-2785071__480.jpg" alt="" class="w-full h-full object-cover">
+        </div>
+        <h3 class="mt-4 font-bold font-josesans">James Smith</h3>
+        <p class="mt-2 color-fade">Contact</p>
+      </div>
+
+      <div class="mx-4 text-center w-24">
+        <div class="w-24 h-24 rounded-circle overflow-hidden">
+          <img src="https://cdn.pixabay.com/photo/2016/02/19/10/56/man-1209494__480.jpg" alt="" class="w-full h-full object-cover">
+        </div>
+        <h3 class="mt-4 font-bold font-josesans">Patricia David</h3>
+        <p class="mt-2 color-fade">Contact</p>
+      </div>
+      <div class="mx-4 text-center w-24">
+        <div class="w-24 h-24 rounded-circle overflow-hidden">
+          <img src="https://cdn.pixabay.com/photo/2019/04/16/23/59/sad-4133121__480.jpg" alt="" class="w-full h-full object-cover">
+        </div>
+        <h3 class="mt-4 font-bold font-josesans">John Williams</h3>
+        <p class="mt-2 color-fade">Contact</p>
+      </div>
+      <div class="mx-4 text-center w-24">
+        <div class="w-24 h-24 rounded-circle overflow-hidden">
+          <img src="https://cdn.pixabay.com/photo/2020/03/20/18/52/fashion-4951644__480.jpg" alt="" class="w-full h-full object-cover">
+        </div>
+        <h3 class="mt-4 font-bold font-josesans">Robert Johnson</h3>
+        <p class="mt-2 color-fade">Contact</p>
+      </div>
+
+    </div>
+
+  </section>
+
+</section>
