@@ -34,12 +34,34 @@
   </section>
 
   <section class="m-16">
-    <div class="flex">
-      <div class="w-full">
-        <h1 class="f2 font-josesans">Get in touch with us to get the latest products</h1>
-        <p class="f6">Feel free subscribe to send us question and receive notifications</p>
+
+    <div class="flex my-8 justify-between">
+      <h1 class="f1 w-5/12 font-josesans font-bold">Shop Info</h1>
+      <div class="w-5/12">
+        <p>Ecommer - Online Shop</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        <p>31028 Vazzola</p>
+        <p>New York</p>
+        <p>New Zealand</p>
       </div>
-      <div class="w-full shadow-full bg-gray-200 rounded-md p-8">
+    </div>
+
+    <hr class="h-small">
+    <div class="flex my-8 justify-between">
+      <h1 class="f1 w-5/12 font-josesans font-bold">Call Us</h1>
+      <div class="w-5/12">
+        <p>+039 035 523 322</p>
+        <p>company@email.com</p>
+      </div>
+
+    </div>
+
+    <hr class="h-small">
+    <div class="flex my-8 justify-between">
+      <div class="w-5/12">
+        <h1 class="f1 font-josesans font-bold">Contact Us</h1>
+      </div>
+      <div class="w-5/12 shadow-full bg-gray-200 rounded-md p-8">
         <%= simple_form_for :form, class: "w-full my-2" do |f| %>
 
           <div class="flex justify-between">
@@ -47,7 +69,7 @@
               <%= f.input :email,
                           required: true,
                           autofocus: true,
-                          input_html: {autocomplete: "email", class: "w-full px-4 py-3 rounded-lg font-medium bg-gray-100 border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:shadow-md focus:border-gray-400 focus:bg-white my-2"},
+                          input_html: {autocomplete: "email", class: "w-full px-4 mr-2 py-3 rounded-lg font-medium bg-gray-100 border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:shadow-md focus:border-gray-400 focus:bg-white my-2"},
                           label_html: {class: "hidden"},
                           placeholder: "Email"
 
@@ -56,7 +78,7 @@
             <div class="max-w-xs relative">
               <%= f.input :name,
                           required: true,
-                          input_html: {autocomplete: "new-password", class: "w-full px-4 py-3 rounded-lg font-medium bg-gray-100 border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:shadow-md focus:border-gray-400 focus:bg-white my-2"},
+                          input_html: {autocomplete: "new-password", class: "w-full px-4 ml-2 py-3 rounded-lg font-medium bg-gray-100 border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:shadow-md focus:border-gray-400 focus:bg-white my-2"},
                           label_html: {class: "hidden"},
                           placeholder: "Name"
               %>
@@ -78,6 +100,12 @@
           </div>
         <% end %>
       </div>
+    </div>
+  </section>
+
+  <section class="m-16">
+    <div class="mx-auto w-full">
+      <img src="https://editing.vn/wp-content/themes/lms/framework/plugins/responsive-maps-plugin/responsive-maps-plugin/documentation/assets/images/3.png" alt="" class="w-full rounded-lg">
     </div>
   </section>
 
