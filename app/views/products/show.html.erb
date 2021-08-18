@@ -33,16 +33,12 @@
                      sale_price: @product.sale_price_text %>
         </div>
 
-        <div class="flex">
-          <div class="rating text-warning font-size-14">
-            <span><i class="fas fa-xs fa-star"></i></span>
-            <span><i class="fas fa-xs fa-star"></i></span>
-            <span><i class="fas fa-xs fa-star"></i></span>
-            <span><i class="fas fa-xs fa-star"></i></span>
-            <span><i class="far fa-xs fa-star"></i></span>
+        <div class="flex items-center">
+          <div>
+            <span class="rating-stars"><%= @product.rating %></span>
           </div>
           <div>
-            <span class="px-2 font-rale f6">4.4 / 5 &nbsp; (800 reviewers)</span>
+            <span class="px-2 font-rale f6"><%= @product.rating %> / 5 &nbsp; (<%= @product.comments.load.size %> reviewers)</span>
           </div>
         </div>
         <hr class="m-0">
@@ -122,7 +118,7 @@
     </div>
 
   </div>
-  <div class="w-8/12">
+  <div class="w-8/12 ml-8">
 
     <div style="overflow: hidden;min-height: 50vh" class="mbr justify-around ml-8">
       <div class="tab-view">
@@ -142,78 +138,55 @@
 
         <!-- Tab Content -->
         <div class="tabs-content tabs-content-vertical mbr">
-          <div class="tab-content active">
+          <div class="tab-content">
             <div>
               <h6 class="font-baloo f3 fw8">Product Description</h6>
               <div class="font-size-14 child-p-font-baloo fw4"><%= raw(@product.product_meta.product_detail.description) %></div>
             </div>
           </div>
-          <div class="tab-content">
+          <div class="tab-content active">
             <h4 class="fw6 f4">Reviews From Customer</h4>
             <h5 class="fw5 f5">Ratings</h5>
             <div class="text-center w-3/12">
-              <h5 class="f1 m-0">4.5</h5>
-              <div class="flex justify-center justify-center flex-col">
-                <div class="rating text-warning font-size-14">
-                  <span><i class="fas fa-xs fa-star"></i></span>
-                  <span><i class="fas fa-xs fa-star"></i></span>
-                  <span><i class="fas fa-xs fa-star"></i></span>
-                  <span><i class="fas fa-xs fa-star"></i></span>
-                  <span><i class="fas fa-xs fa-star"></i></span>
+              <h5 class="f1 m-0"><%= @product.rating %></h5>
+                <div class="width-max mx-auto">
+                  <span class="rating-stars"><%= @product.rating %></span>
                 </div>
-              </div>
               <p>450 Reviews</p>
             </div>
             <div id="comment-container">
               <div id="comment-form-container">
                 <% if current_user %>
-                  <%= simple_form_for(@comment, url: add_comment_products_path, html: {class: "w-full", id: "new-comment-form"}, remote: true) do |f| %>
-                    <div class="heading">
-                      <div class="flex mt-br">
-                        <%= image_tag("blog post 3.jpg", class: 'img-avatar') %>
-                        <div class="ml-2 flex items-center w-full">
-                          <%= f.input :message, label: "Description", required: false,
-                                      placeholder: "Commenting publicly as #{current_user.username}",
-                                      input_html: {class: "input w-full border-b"}, wrapper: false, label_html: {class: "label text-left w-full hidden"} %>
+                  <div class="border rounded-md p-8 my-8">
+                    <%= simple_form_for(@comment, url: add_comment_products_path, html: {class: "w-full", id: "new-comment-form"}, remote: true) do |f| %>
+                      <div>
+                        <h3>Your Rating</h3>
+                        <div class="w-full inline-block">
+                          <div class="rating-input width-max">
+                            <%= f.collection_radio_buttons :rating, [[5], [4], [3], [2], [1]], :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
+                              <span class=""><%= b.radio_button(class: "rating-input") + b.label { '' } %></span>
+                            <% end %>
+                          </div>
                         </div>
-                        <%= f.input :product_id, :as => :hidden, input_html: {value: @product.id} %>
+
                       </div>
-                    </div>
-                    <div class="flex text-center mt-2">
-                      <%= f.submit 'Comment', class: "custom-btn-wide font-fredoka font-weight-lighter" %>
-                      <div class="custom-btn-wide ml-3 font-fredoka font-weight-lighter">Answer</div>
-                    </div>
-                    </div>
-                  <% end %>
+
+                      <div class="my-4">
+                        <h3>Your Reviews</h3>
+                        <%= f.input :message, as: :text, label: "Description", required: false,
+                                    placeholder: "Commenting publicly as #{current_user.username}",
+                                    input_html: {class: "input my-2 w-full rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label text-left w-full hidden"} %>
+                      </div>
+                      <%= f.input :product_id, :as => :hidden, input_html: {value: @product.id} %>
+                      <%= f.submit 'Submit', class: "px-8 py-2 bg-white shadow-md rounded-full mx-auto text-center f5 font-josesans color-fade cursor-pointer" %>
+                    <% end %>
+                  </div>
+
+                  </div>
                 <% end %>
                 </div>
-            <div class="heading">
-              <div class="flex mt-br">
-                <%= image_tag("blog post 3.jpg", class: 'img-avatar') %>
-                <div class="ml-2">
-                  <div class="fw5">Guys Customer</div>
-                  <span class="font-baloo">21 October, 2020</span>
-                </div>
-              </div>
-              <div class="my-3 rating text-warning font-size-14">
-                <span><i class="fas fa-xs fa-star"></i></span>
-                <span><i class="fas fa-xs fa-star"></i></span>
-                <span><i class="fas fa-xs fa-star"></i></span>
-                <span><i class="fas fa-xs fa-star"></i></span>
-                <span><i class="fas fa-xs fa-star"></i></span>
-              </div>
-              <div class="mt-2">
-                <h6 class="font-baloo f2">Very Satisfy</h6>
-                <p class="font-roboto">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aperiam
-                  architecto atque blanditiis,
-                  debitis dolorum ea est fuga, harum id in qui sed ullam velit vero? Ducimus iusto sint
-                  voluptatibus.</p>
-              </div>
-              <div class="flex text-center mt-2">
-                <div class="custom-btn-wide font-fredoka font-weight-lighter">Like</div>
-                <div class="custom-btn-wide ml-3 font-fredoka font-weight-lighter">Answer</div>
-              </div>
-            </div>
+
+            <!-- Comments -->
             <% @comments.each do |comment| %>
               <div class="heading" id="comment-<%= comment.id %>">
                 <div class="flex mt-br">
@@ -223,12 +196,8 @@
                     <span class="font-baloo"><%= comment.created_at.to_formatted_s(:long_ordinal) %></span>
                   </div>
                 </div>
-                <div class="my-3 rating text-warning font-size-14">
-                  <span><i class="fas fa-xs fa-star"></i></span>
-                  <span><i class="fas fa-xs fa-star"></i></span>
-                  <span><i class="fas fa-xs fa-star"></i></span>
-                  <span><i class="fas fa-xs fa-star"></i></span>
-                  <span><i class="fas fa-xs fa-star"></i></span>
+                <div class="width-max mt-4">
+                  <span class="rating-stars"><%= comment.rating %></span>
                 </div>
                 <div class="mt-2">
                   <h6 class="font-baloo f2">Very Satisfy</h6>
@@ -255,6 +224,7 @@
               </div>
 
             <% end %>
+            <!-- !Comments -->
 
           </div>
           <div class="tab-content">
@@ -288,7 +258,6 @@
       <!-- !Tab Content -->
     </div>
   </div>
-
   <% unless @product_upsells.empty? %>
     <section class="px-16">
       <h3 class="my-3 f3">Related Products</h3>

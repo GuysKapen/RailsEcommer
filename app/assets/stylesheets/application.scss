@@ -339,3 +339,68 @@ hr {
 {
   color: #2b6cb0; /*Set to match the Tailwind colour you want the active one to be */
 }
+
+
+
+
+.rating-input {
+  float: left;
+}
+
+.rating-input span {
+  float: right;
+  position: relative;
+  cursor: pointer;
+}
+
+.rating-input span input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  width: max-content;
+}
+
+.rating-input span label {
+  display: inline-block;
+  text-align: center;
+  color: #111111;
+  margin-right: 4px;
+  line-height: 30px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  cursor: pointer;
+
+}
+
+.rating-input span label::before {
+  content: "\f005";
+  font-family: "Font Awesome 5 Free", serif;
+  font-size: .75em;
+}
+
+.rating-input span:hover ~ span label::before,
+.rating-input span:hover label::before,
+.rating-input span.checked label::before,
+.rating-input span.checked ~ span label::before {
+  color: #ff5000;
+  font-weight: 600;
+}
+
+
+span.rating-stars {
+  position: relative;
+}
+
+span.rating-stars, span.rating-stars span {
+  display: block;
+  background: url("../images/svg/star.svg") 0 0 repeat-x;
+  width: 90px; /* width of a star multiplied by 5 */
+  height: 18px; /* the height of the star */
+  background-size: 18px 18px;
+}
+
+span.rating-stars span {
+  background: url("../images/svg/star_fill_space.svg") 0 0 repeat-x;
+  background-size: 18px 18px;
+}

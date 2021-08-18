@@ -74,5 +74,10 @@ class Product < ApplicationRecord
     end.to_set.max
   end
 
+  def rating
+    ratings = comments.map(&:rating)
+    (ratings.sum.to_f / ratings.size).truncate(1)
+  end
+
   delegate :name, :regular_price, to: :product_meta
 end

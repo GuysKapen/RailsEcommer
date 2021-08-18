@@ -286,8 +286,8 @@
   color: #d0d1d0;
 }
 
-.color-gray {
-
+.color-gray-fade {
+  color: #818181;
 }
 
 .cursor-pointer {
@@ -340,6 +340,14 @@
 
 .height-min {
   height: min-content;
+}
+
+.h-extra-small {
+  height: 0.075rem;
+}
+
+.h-small {
+  height: 0.125rem;
 }
 
 .width-min {

@@ -6,6 +6,7 @@ require("./image_preview")
 require("./tabs")
 require("./checkbox_section")
 require("./min_max_slider")
+require("./rating")
 
 document.addEventListener("turbolinks:load", function () {
 

@@ -329,6 +329,8 @@ class ProductsController < ApplicationController
       if @comment.save
         format.js { render 'products/response_add_comment', locals: { success: true } }
       else
+        print "WTF"
+        print @comment.errors.messages
         format.js { render 'products/response_add_comment', locals: { success: false } }
       end
     end
@@ -543,7 +545,7 @@ class ProductsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:message, :product_id)
+    params.require(:comment).permit(:message, :rating, :product_id)
   end
 
   def reply_params
