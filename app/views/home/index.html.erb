@@ -2,8 +2,9 @@
 
 <section class="mx-auto my-3 font-weight-lighter w-11/12">
   <h1 class="font-josesans f1 text-center font-bold mt-8 f1">Our features</h1>
-  <p class="w-8/12 mx-auto text-center">Special product created just for you. We aim to provide memorable experience when you shop on our
-  online store by offering quality products with top rated customer service</p>
+  <p class="w-8/12 mx-auto text-center">Special product created just for you. We aim to provide memorable experience
+    when you shop on our
+    online store by offering quality products with top rated customer service</p>
   <div class="flex mx-auto mt-12">
     <div class="w-4/12 text-center">
       <i class="fas fa-dolly fa-3x"></i>
@@ -162,21 +163,46 @@
 
 </section>
 
-<section class="w-full px-5 bg-product-img py-16">
-  <div class="flex my-2 h-100">
-    <div class="w-6/12">
-      <h5>USER CONTACT</h5>
-      <h4>Contact us for more sale off</h4>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-    </div>
-    <div class="container w-1/2 py-3">
-      <label for="email">Your Email</label>
-      <div class="mt-2 flex">
-        <input class="w-full" name="email" type="email">
-        <button class="rounded-md background-black px-5 text-white py-2 font-bold">Submit</button>
+<section class="m-16 bg-product-img py-16 rounded-lg">
+  <div class="w-8/12 mx-auto">
+    <h5 class="text-center f5 color-gray-fade uppercase font-josesans">New letter</h5>
+    <h1 class="f1 font-bold text-center font-josesans">Contact us for more sale off</h1>
+    <h5 class="f5 text-center color-gray-fade">Subscribe your email and get started</h5>
+    <div class="flex items-stretch w-8/12 mx-auto my-8">
+      <input type="text" class="w-8/12 px-4 py-3 rounded-full font-medium bg-gray-100 border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:shadow-md focus:border-gray-400 focus:bg-white" placeholder="Enter your email here">
+      <div class="w-3/12 ml-auto px-8 py-2 bg-white shadow-full rounded-full text-center f5 font-josesans color-fade cursor-pointer relative">
+        <p class="center-inner color-fade">
+          Subscribe
+        </p>
       </div>
     </div>
   </div>
-</section>
 
+  <div class="flex justify-between w-10/12 mx-auto mt-16">
+    <div class="w-3/12 text-center">
+      <h3 class="f3">Find Us</h3>
+      <div class="mt-4">
+        <p>31028 Vazzola</p>
+        <p>New York</p>
+      </div>
+
+    </div>
+    <div class="w-3/12 text-center">
+      <h3 class="f3">Call Us</h3>
+      <p class="mt-4">+039 035 523 322</p>
+      <p>company@email.com</p>
+    </div>
+
+    <div class="w-3/12 text-center">
+      <h3 class="f3">About Us</h3>
+      <%= link_to about_path do %>
+        <div class="mx-8 mt-4">
+          <div class="ml-auto px-8 py-2 bg-white shadow-full rounded-full text-center f5 font-josesans color-fade cursor-pointer relative">
+            Learn More
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
 
