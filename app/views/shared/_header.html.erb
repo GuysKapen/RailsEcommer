@@ -1,14 +1,18 @@
 <%= render 'shared/nav' %>
-<div class="heading-banner justify-start flex">
-  <div class="text-left my-auto text-white ml-16 w-50">
-    <h5 class="f5 font-bold">SPACE JUST GOT PERSONAL</h5>
-    <h1 class="f1 font-josesans font-bold">The New iPhone Watch</h1>
-    <p>Lorem ipsum dolor sit amet quidem quo sunt ut velit voluptas!</p>
+<div class="heading-banner justify-between items-center flex">
+  <div class="text-left my-auto ml-16 w-50">
+    <h5 class="f5 font-bold text-gray-900">SPACE JUST GOT PERSONAL</h5>
+    <h1 class="f1 font-josesans font-bold text-gray-900">The New iPhone Watch</h1>
+    <p class="f6 text-gray-800">Lorem ipsum dolor sit amet quidem quo sunt ut velit voluptas!</p>
     <h3>$1238</h3>
 
     <div class="flex mx-0 mt-4">
-      <div class="btn btn-lg-outline opacity-anim translate-y-anim hover-bg-light background-dark text-white fw6">Buy now</div>
-      <div class="btn ml-4 btn-lg-outline text-dark bg-light fw6 px-5">More info</div>
+      <div class="btn btn-lg-outline opacity-anim translate-y-anim background-dark text-white cursor-pointer fw6">Buy now</div>
+      <div class="btn ml-4 btn-lg-outline text-dark bg-light fw6 px-5 cursor-pointer">More info</div>
     </div>
+  </div>
+
+  <div class="w-3/12 mr-32">
+    <%= image_tag("black-apple-watch.png") %>
   </div>
 </div>

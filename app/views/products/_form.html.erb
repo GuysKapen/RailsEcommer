@@ -17,18 +17,15 @@
               <div class="field mt-5">
                 <div class="control">
                   <%= detail.input :description, as: :ckeditor, label: "Description", required: false,
-                                   input_html: {class: "input w-full mt-2"}, wrapper: false, label_html: {class: "label text-left w-full block"} %>
+                                   input_html: {class: "input w-full mt-2 py-2"}, wrapper: false, label_html: {class: "label text-left w-full mb-2 block"} %>
                 </div>
               </div>
             <% end %>
 
             <div class="field mt-5">
               <div class="control">
-                <div class="flex">
-                <span class="file-cta">
-                <span class="file-icon"><i class="fa fa-upload"></i></span>
-                <span class="file-label">Choose a file…</span>
-                </span>
+                <div class="flex items-center">
+                  <div class="flex items-baseline mr-4"><i class="fa fa-upload mr-2"></i>Choose images ...</div>
                   <%= meta.file_field :images, required: true,
                                       multiple: true,
                                       as: :file,
@@ -44,7 +41,7 @@
 
 
             <!-- Carousel image preview -->
-            <div class="carousel relative rounded relative overflow-hidden pr-4">
+            <div class="carousel relative rounded-md overflow-hidden pr-4 my-4">
               <div class="carousel-inner relative overflow-hidden w-full">
 
                 <div id="product-image-upload-preview-carousel">

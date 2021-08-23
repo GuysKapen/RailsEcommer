@@ -1,6 +1,15 @@
-<!--<h1>New Product</h1>-->
-<div class="background-white-grey py-5">
-  <%= render 'form', product: @product %>
+<div class="background-white-grey py-8">
+  <section class="rounded-md background-white-grey border shadow-md m-4 pb-4 overflow-hidden">
+    <div class="font-josesans font-bold bg-white flex items-center relative border-b px-4 mb-4">
+      <%= link_to :back do %>
+        <div class="flex items-baseline py-3 pr-4 cursor-pointer border-r">
+          <i class="fas fa-arrow-left mr-2"></i>Back
+        </div>
+      <% end %>
+      <div class="mx-8">
+        New Product
+      </div>
+    </div>
+    <%= render 'form', product: @product %>
+  </section>
 </div>
-
-<%#= link_to 'Back', products_path %>

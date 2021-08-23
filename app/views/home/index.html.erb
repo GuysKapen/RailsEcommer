@@ -5,7 +5,7 @@
   <p class="w-8/12 mx-auto text-center">Special product created just for you. We aim to provide memorable experience
     when you shop on our
     online store by offering quality products with top rated customer service</p>
-  <div class="flex mx-auto mt-12">
+  <div class="flex mx-auto mt-12 child-mx-2-not-first">
     <div class="w-4/12 text-center">
       <i class="fas fa-dolly fa-3x"></i>
       <div class="h5 my-3 f3 font-josesans">Priority Shipping</div>
@@ -76,7 +76,7 @@
 <%= render 'products/showcase_product' %>
 
 <section class="mbr mx-auto my-3 w-11/12">
-  <h1 class="text-center my-3 font-josesans f1">On Sale</h1>
+  <h1 class="text-center my-3 font-josesans font-bold f1">On Sale</h1>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-4 xl:gap-8">
     <% @products_view_sale.each do |product_view| %>
       <%= render 'products/product_item_sale', product_view: product_view %>
@@ -85,7 +85,7 @@
 </section>
 
 <section class="mx-16 flex">
-  <div class="flex w-6/12 shadow-md mr-3 bg-product-img py-12 relative">
+  <div class="flex w-6/12 shadow-md mr-3 background-light py-12 relative">
     <div class="pl-16 mt-1 z-50">
       <h5 class="font-josesans font-bold">GET UP TO 30% OFF TODAY ONLY</h5>
       <H3>THE 4K HDR SCREEN PHONE</H3>
@@ -94,12 +94,12 @@
         <p class="text-white h6 font-josesans mt-2">Shop now</p>
       </div>
     </div>
-    <div class="bg-product-img my-auto absolute right-0 bottom-0 transform -translate-y-1/8">
+    <div class="background-light my-auto absolute right-0 bottom-0 transform -translate-y-1/8">
       <%= image_tag("phone_sss20.jpeg", class: "mix-blend-darken w-9/12 h-75") %>
     </div>
   </div>
 
-  <div class="flex w-6/12 shadow-md mr-3 bg-product-img py-12 relative">
+  <div class="flex w-6/12 shadow-md mr-3 background-light py-12 relative">
     <div class="pl-16 mt-1 z-50">
       <h5 class="font-josesans font-bold">GET UP TO 20% OFF TODAY ONLY</h5>
       <H3>THE 4K 128MPS CAMERA</H3>
@@ -108,7 +108,7 @@
         <p class="h6 font-josesans mt-2">Shop now</p>
       </div>
     </div>
-    <div class="bg-product-img my-auto absolute right-0 bottom-0 transform -translate-y-1/8">
+    <div class="background-light my-auto absolute right-0 bottom-0 transform -translate-y-1/8">
       <%= image_tag("phones.jpg", class: "mix-blend-darken w-9/12 h-75") %>
     </div>
   </div>
@@ -127,13 +127,13 @@
 <%= render 'products/showcase_product' %>
 
 <section class="my-24 mx-16">
-  <h1 class="text-center my-3 font-bold uppercase f1">Get Fashion News</h1>
+  <h1 class="text-center my-3 font-bold font-josesans f1">Get Fashion News</h1>
   <div class="flex flex-cols-3 container-xl mx-auto child-px-2-not-first">
     <div class="col-lg-4 flex-cols-3 col-sm-12 col-md-6 text-center relative">
       <div class="opacity-anim h-full">
         <%= image_tag("blog post 3.jpg", alt: "Product", class: "card-img-top relative") %>
-        <div class="px-3 mx-1 pt-3 rounded card-fashion w-3/4">
-          <h4 class="my-0 title font-bold f4">10 Best Laptops</h4>
+        <div class="p-4 rounded card-fashion w-3/4">
+          <h4 class="my-0 title font-bold f4 font-josesans">10 Best Laptops</h4>
           <p class="sub-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias dicta, esse facere
             harum ipsum laboriosam</p>
         </div>
@@ -142,8 +142,8 @@
     <div class="col-lg-4 flex-cols-3 col-sm-12 col-md-6 text-center relative">
       <div class="opacity-anim h-full">
         <%= image_tag("blog post 2.jpg", alt: "Product", class: "card-img-top relative h-full") %>
-        <div class="px-3 mx-1 pt-3 rounded card-fashion w-3/4">
-          <h4 class="my-0 title font-bold f4">10 Best Laptops</h4>
+        <div class="p-4 rounded card-fashion w-3/4">
+          <h4 class="my-0 title font-bold f4 font-josesans">5 Best Macbooks</h4>
           <p class="sub-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias dicta, esse facere
             harum ipsum laboriosam</p>
         </div>
@@ -152,8 +152,8 @@
     <div class="col-lg-4 flex-cols-3 col-sm-12 col-md-6 text-center relative">
       <div class="opacity-anim h-full">
         <%= image_tag("blog_post_1.jpg", alt: "Product", class: "card-img-top relative h-full") %>
-        <div class="px-3 mx-1 pt-3 rounded card-fashion w-3/4">
-          <h4 class="my-0 title font-bold f4">10 Best Laptops</h4>
+        <div class="p-4 rounded card-fashion w-3/4">
+          <h4 class="my-0 title font-bold font-josesans f4">10 Best PCs</h4>
           <p class="sub-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias dicta, esse facere
             harum ipsum laboriosam</p>
         </div>
@@ -163,7 +163,7 @@
 
 </section>
 
-<section class="m-16 bg-product-img py-16 rounded-lg">
+<section class="m-16 background-light py-16 rounded-lg shadow-md">
   <div class="w-8/12 mx-auto">
     <h5 class="text-center f5 color-gray-fade uppercase font-josesans">New letter</h5>
     <h1 class="f1 font-bold text-center font-josesans">Contact us for more sale off</h1>

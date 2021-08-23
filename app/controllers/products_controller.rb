@@ -46,6 +46,9 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @categories = Category.all
+    meta = @product.product_meta
+    meta.product_shipping = ProductShipping.new if meta.product_shipping.nil?
+    meta.product_linked = ProductLinked.new if meta.product_linked.nil?
   end
 
   # POST /products
@@ -329,7 +332,7 @@ class ProductsController < ApplicationController
       if @comment.save
         format.js { render 'products/response_add_comment', locals: { success: true } }
       else
-        print "WTF"
+        print 'WTF'
         print @comment.errors.messages
         format.js { render 'products/response_add_comment', locals: { success: false } }
       end

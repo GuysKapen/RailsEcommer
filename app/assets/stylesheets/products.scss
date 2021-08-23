@@ -43,6 +43,10 @@
   background-color: #1d1d1d;
 }
 
+.background-light {
+  background-color: #fafafa;
+}
+
 .background-hover-white {
   background: #e7ecea;
 }
@@ -193,10 +197,10 @@
 }
 
 .tab-panel.active {
-  border-bottom: 2px solid deepskyblue;
-  //color: deepskyblue;
+  //border-bottom: 2px solid deepskyblue;
   color: white;
-  background: #2cc185;
+  //background: #2cc185;
+  background: #4299e1;
 }
 
 .grid {

@@ -38,7 +38,8 @@
             <span class="rating-stars"><%= @product.rating %></span>
           </div>
           <div>
-            <span class="px-2 font-rale f6"><%= @product.rating %> / 5 &nbsp; (<%= @product.comments.load.size %> reviewers)</span>
+            <span class="px-2 font-rale f6"><%= @product.rating %> / 5 &nbsp; (<%= @product.comments.load.size %>
+              reviewers)</span>
           </div>
         </div>
         <hr class="m-0">
@@ -138,22 +139,25 @@
 
         <!-- Tab Content -->
         <div class="tabs-content tabs-content-vertical mbr">
-          <div class="tab-content">
+          <div class="tab-content active">
             <div>
               <h6 class="font-baloo f3 fw8">Product Description</h6>
               <div class="font-size-14 child-p-font-baloo fw4"><%= raw(@product.product_meta.product_detail.description) %></div>
             </div>
           </div>
-          <div class="tab-content active">
-            <h4 class="fw6 f4">Reviews From Customer</h4>
-            <h5 class="fw5 f5">Ratings</h5>
-            <div class="text-center w-3/12">
-              <h5 class="f1 m-0"><%= @product.rating %></h5>
+          <div class="tab-content">
+            <% unless @product.comments.load.blank? %>
+              <h4 class="fw6 f4">Reviews From Customer</h4>
+              <h5 class="fw5 f5">Ratings</h5>
+              <div class="text-center w-3/12">
+                <h5 class="f1 m-0"><%= @product.rating %></h5>
                 <div class="width-max mx-auto">
                   <span class="rating-stars"><%= @product.rating %></span>
                 </div>
-              <p>450 Reviews</p>
-            </div>
+                <p>450 Reviews</p>
+              </div>
+            <% end %>
+
             <div id="comment-container">
               <div id="comment-form-container">
                 <% if current_user %>

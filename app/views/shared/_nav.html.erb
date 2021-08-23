@@ -1,47 +1,45 @@
-<nav class="navbar w-full navbar-expand-lg flex items-center relative py-3 navbar-dark bg-dark">
+<nav class="navbar w-full navbar-expand-lg flex items-center relative py-2 px-4 border-b">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+  <div class="w-4/12 justify-start flex">
+    <div class="mr-4">
+      <%= image_tag("svg/logo.svg", class: "w-8 h-8") %>
+    </div>
+    <h3 class="uppercase font-elia text-blue-500 text-center font-bold f4 m-0">Ecommer</h3>
+  </div>
   <div class="collapse navbar-collapse md:flex" id="navbarSupportedContent">
-    <ul class="flex w-1/2 m-0 list-unstyled text-white">
+    <ul class="flex w-1/2 m-0 list-unstyled text-gray-900">
       <li>
-        <div class="icon">
-          <i class="fas fa-search"></i>
-        </div>
-      </li>
-      <li>
-        <%= link_to "Home", root_path, class: "f5 font-bold" %>
+        <%= link_to "Home", root_path, class: "f5 font-bold font-josesans text-gray-900" %>
       </li>
       <li>
         <% if current_user %>
-          <%= link_to "Account", user_path(current_user), class: "f5 font-bold" %>
+          <%= link_to "Account", user_path(current_user), class: "f5 font-bold font-josesans text-gray-900" %>
         <% else %>
-          <%= link_to "Signup", new_user_registration_path, class: "f5 font-bold" %>
+          <%= link_to "Signup", new_user_registration_path, class: "f5 font-bold font-josesans text-gray-900" %>
         <% end %>
       </li>
       <li>
-        <%= link_to "Shop", products_path, class: "f5 font-bold" %>
+        <%= link_to "Shop", products_path, class: "f5 font-bold font-josesans text-gray-900" %>
       </li>
       <li>
-        <%= link_to "Product", new_product_path, class: "f5 font-bold" %>
+        <%= link_to "Product", new_product_path, class: "f5 font-bold font-josesans text-gray-900" %>
       </li>
       <li>
-        <%= link_to "About", about_path, class: "f5 font-bold" %>
+        <%= link_to "About", about_path, class: "f5 font-bold font-josesans text-gray-900" %>
       </li>
       <li>
-        <%= link_to "Contact", contact_path, class: "f5 font-bold" %>
+        <%= link_to "Contact", contact_path, class: "f5 font-bold font-josesans text-gray-900" %>
       </li>
     </ul>
   </div>
 
-  <div class="w-4/12 justify-center">
-    <h3 class="uppercase font-elia text-white text-center font-bold f3 m-0">My Shop</h3>
-  </div>
   <div class="md:w-4/12 sm:w-5/12">
     <div class="flex justify-end items-center">
       <div class="flex items-center mr-4">
         <% if current_user %>
-          <h6 class="text-white f6 font-josesans m-0 mr-3 flex justify-center flex-col"><%= current_user.username %></h6>
+          <h6 class="text-gray-800 f6 font-josesans m-0 mr-3 flex justify-center flex-col"><%= current_user.username %></h6>
           <%= image_tag("portrait-3204843_640.jpg", class: "rounded-circle img-avatar-small") %>
         <% else %>
           <li class="nav-item">
@@ -51,8 +49,8 @@
       </div>
       <div class="flex m-0">
         <div class="flex font-roboto outline-none-imp font-bold items-center duration-500">
-          <i class="fa fa-lg fa-shopping-cart text-white mr-3 duration-500">&nbsp;/</i>
-          <button type="submit" class="inline-block text-white cart-items" id="cart-items">
+          <i class="fa fa-lg fa-shopping-cart text-gray-800 mr-3 duration-500">&nbsp;/</i>
+          <button type="submit" class="inline-block text-gray-800 cart-items" id="cart-items">
             <%= cart_items %>
           </button>
         </div>
