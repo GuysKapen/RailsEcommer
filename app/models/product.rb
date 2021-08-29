@@ -6,14 +6,14 @@ class Product < ApplicationRecord
   # serialize :up_sale, Array
   # serialize :cross_sale, Array
 
-  belongs_to :user, dependent: :destroy
-  belongs_to :category, required: false
-  has_many :product_variations
+  belongs_to :user
+  has_and_belongs_to_many :categories, required: false
+  has_many :product_variations, dependent: :destroy
   has_many :product_carts, as: :product
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_one :product_linked, through: :product_meta
   has_many :product_upsells, class_name: 'Product', through: :product_linked
-  has_one :product_meta, as: :product, required: false
+  has_one :product_meta, as: :product, required: false, dependent: :destroy
 
   accepts_nested_attributes_for :product_meta
   accepts_nested_attributes_for :product_variations
@@ -77,6 +77,10 @@ class Product < ApplicationRecord
   def rating
     ratings = comments.map(&:rating)
     (ratings.sum.to_f / ratings.size).truncate(1)
+  end
+
+  def category
+    categories[0]
   end
 
   delegate :name, :regular_price, to: :product_meta

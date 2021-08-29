@@ -2,7 +2,7 @@
 
 # Product variation that has many style for options
 class ProductVariation < ApplicationRecord
-  has_one :product_meta, as: :product
+  has_one :product_meta, as: :product, dependent: :destroy
   has_many :product_carts, as: :product
   belongs_to :product
   has_and_belongs_to_many :product_attributes_values

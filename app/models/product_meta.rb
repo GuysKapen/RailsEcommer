@@ -7,19 +7,17 @@ class ProductMeta < ApplicationRecord
 
   # has_one :product, polymorphic: true
   belongs_to :product, polymorphic: true
-  has_one :product_variation, required: false, foreign_key: 'product_meta_id'
+  belongs_to :product_variation, required: false, foreign_key: 'product_meta_id'
 
-  has_one :product_inventory, required: false
-  has_one :product_linked, required: false
-  has_one :product_shipping, required: false
-  has_one :product_advanced, required: false
-  has_one :product_extra, required: false
-  has_one :product_variation, required: false
-  has_one :product_sale_price, required: false
-  has_one :product_stock, required: false
-  has_one :product_review, required: false
-  has_one :product_detail, required: false
-  # has_one :product_attribute, required: false
+  has_one :product_inventory, required: false, dependent: :destroy
+  has_one :product_linked, required: false, dependent: :destroy
+  has_one :product_shipping, required: false, dependent: :destroy
+  has_one :product_advanced, required: false, dependent: :destroy
+  has_one :product_extra, required: false, dependent: :destroy
+  has_one :product_sale_price, required: false, dependent: :destroy
+  has_one :product_stock, required: false, dependent: :destroy
+  has_one :product_review, required: false, dependent: :destroy
+  has_one :product_detail, required: false, dependent: :destroy
 
   accepts_nested_attributes_for :product_inventory, reject_if: :all_blank
   accepts_nested_attributes_for :product_linked, reject_if: :all_blank, allow_destroy: true
