@@ -127,8 +127,26 @@ function setupProductVariation() {
     buttonAddVariation?.addEventListener("click", function () {
         console.log("Type Variation", selectProductType.value)
         const type = selectProductType.value.toString().toLowerCase()
-        if (type === "add variation") {
-
+        if (type === "add") {
+            console.log("Type Variation", "Fuskdjfksdf")
+            Rails.ajax({
+                url: "/products/create_variations_from_attrs",
+                type: "post",
+                data: {'type': selectProductType.value, 'num_form': 1},
+                success: function () {
+                    setupProductFileUpload()
+                    // console.log("Setup Tab....")
+                    // setupTap()
+                    // document.setupCustomSelect()
+                },
+                beforeSend(xhr, options) {
+                    xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8')
+                    // Workaround: add options.data late to avoid Content-Type header to already being set in stone
+                    // https://github.com/rails/rails/blob/master/actionview/app/assets/javascripts/rails-ujs/utils/ajax.coffee#L53
+                    options.data = JSON.stringify({'type': selectProductType.value, 'num_form': 1, 'num_start': $(".container-product-variation").length})
+                    return true
+                },
+            })
         } else {
             Rails.ajax({
                 url: "/products/create_variations_from_attrs",

@@ -4,14 +4,14 @@
 
       <div class="flex background-white-grey">
         <div class="ml-3 w-9/12">
-          <div class="text-center">
+          <div class="">
 
             <%= meta.simple_fields_for :product_detail do |detail| %>
               <div class="field">
                 <div class="control">
                   <%= detail.input :name, label: "Product Name", required: true,
                                    placeholder: "Name",
-                                   input_html: {class: "input w-full flex-grow w-full py-2 mt-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label text-left w-full block"} %>
+                                   input_html: {class: "input w-full flex-grow w-full py-2 mt-2  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label text-left w-full block"} %>
                 </div>
               </div>
               <div class="field mt-5">
@@ -60,36 +60,37 @@
             </div>
             <!-- !Carousel image preview -->
 
-            <div class="section mt-5 border bg-white p-3 rounded-md">
-              <div class="flex pr-2">
+            <div class="section mt-5 border bg-white rounded-md">
+
+              <div class="flex justify-start px-2 my-1 bg-white border-b">
                 <!-- Product Type -->
-                <div class="flex-grow mt-1 mx-0 flex cursor-pointer py-2 color-primary-dark-bg text-white my-2">
-                  <div class="w-2/12 px-4 text-left">
-                    <i class="fas mt-1 fa-shipping-fast text-center"></i>
-                  </div>
-                  <p class="ml-3 f4">Product Type</p>
+                <div class="mx-0 flex cursor-pointer py-2 font-josesans font-bold">
+                  <!--                  <div class="w-2/12 px-4 text-left">-->
+                  <!--                    <i class="fas mt-1 fa-shipping-fast text-center"></i>-->
+                  <!--                  </div>-->
+                  <p class="f4">Product Type --</p>
                 </div>
 
-                <div class="w-8/12 flex ml-3 py-2 child-my-auto child-py-2">
-                  <%= select_tag "product_type", raw("<option value='normal'>Normal</option><option value='variation'>Variation</option>"), class: "px-8 w-full", id: "select-product-type" %>
-                  <div id="button-change-product-type" class="color-primary-dark-bg text-white rounded-extra-lg py-2 px-4 cursor-pointer duration-1000 ml-2 width-min">OK</div>
+                <div class="flex ml-3 child-my-auto ">
+                  <%= select_tag "product_type", raw("<option value='normal'>Simple Product</option><option value='variation'>Variation</option>"), class: "px-12 w-full", id: "select-product-type" %>
+                  <div id="button-change-product-type" class="color-primary-dark-bg text-white rounded-extra-lg py-1 px-4 cursor-pointer duration-1000 ml-2 width-min">OK</div>
                 </div>
                 <!-- !Product Type -->
               </div>
-
-              <div id="form-meta">
-                <%= render 'products/form_product_normal', product: @product %>
+              <div class="p-2">
+                <div id="form-meta">
+                  <%= render 'products/form_product_normal', product: @product %>
+                </div>
               </div>
-
             </div>
 
           </div>
         </div>
         <section class="mx-3 child-bg-white">
           <!-- Public -->
-          <div class="border relative child-mx-2 rounded-md overflow-hidden">
-            <div class="p-1 py-2 m-0-imp color-primary-dark-bg text-white">
-              <p class="ml-1 f4 m-0">Publish</p>
+          <div class="border relative child-mx-2 overflow-hidden">
+            <div class="p-1 py-2 m-0-imp">
+              <p class="ml-1 f4 m-0 font-josesans font-bold">Publish</p>
             </div>
             <hr style="margin: 0 !important;">
             <div class="flex justify-between mt-3">
@@ -133,9 +134,9 @@
           <!-- !Public -->
 
           <!-- Product categories -->
-          <div class="border relative child-mx-2 mt-3 rounded-md">
-            <div class="p-1 py-2 m-0-imp color-primary-dark-bg text-white">
-              <p class="f4 m-0 ml-1">Product categories</p>
+          <div class="border relative child-mx-2 mt-3">
+            <div class="p-1 py-2 m-0-imp">
+              <p class="f4 m-0 ml-1 font-bold font-josesans">Product categories</p>
             </div>
             <hr style="margin: 0 !important;">
 
@@ -144,10 +145,32 @@
                 <div>All categories</div>
                 <div class="ml-2">Most Used</div>
               </div>
-              <div class="flex mt-3">
-                <input type="checkbox">
-                <span class="f6 fw2 ml-1">Uncategorized</span>
+              <div class="mt-2">
+                <%#= f.collection_radio_buttons :rating, [[5, 'Men'], [4, 'Woman'], [3, 'Phone'], [2, 'Laptop'], [1, 'Watch']], :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
+                <!--                  <div class="flex items-center">-->
+                <!--                    <span class="mr-2"><%#= b.radio_button(class: "rating-input") %></span>-->
+                <!--                    <span class="f6 font-normal fw2"><%#= b.label %></span>-->
+                <!--                  </div>-->
+                <%# end %>
+
+                <%#= f.input :category_ids, as: :check_boxes, collection: [['Men', 1], ['Woman', 2], ["Phone", 3], ['Laptop', 2], ['Watch', 1]] %>
+
+                <%= f.collection_check_boxes :category_ids, @categories.map { |it| [it.id, it.name] }, :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
+                  <div class="flex items-center">
+                    <label class="flex justify-center items-center m-0">
+                      <%= b.check_box(class: "opacity-0") %>
+                      <span class="inline-block rounded-circle icon-size checkbox-size border-color-default border-1 checkbox-span mr-2"></span>
+                    </label>
+
+                    <span class="f6 font-normal fw2"><%= b.label %></span>
+                  </div>
+                <% end %>
               </div>
+
+              <!--              <div class="flex mt-3 items-center">-->
+              <!--                <input type="checkbox">-->
+              <!--                <span class="f6 fw2 ml-1">Uncategorized</span>-->
+              <!--              </div>-->
             </div>
 
             <div class="my-3" id="add_new_category">
@@ -159,7 +182,7 @@
                   <%= f.select :category_id, options_for_select(@categories.map { |s| [s.name, s.id] }) %>
                 <% end %>
                 <input type="text" name="category_name" required id="input_new_category" placeholder="New Category"
-                       class="w-full px-2 py-2 rounded-lg font-medium border-gray-200 placeholder-gray-500 text-sm
+                       class="w-full px-2 py-2 font-medium border-gray-200 placeholder-gray-500 text-sm
                         focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800 my-2 <%= @categories.blank? ? "" : "hidden" %>">
                 <%#= f.input_field :category_name,
                                   display: true,
@@ -182,20 +205,14 @@
           <!-- !Product categories -->
 
           <!-- Product Tag -->
-          <div class="border relative mt-3 rounded-md overflow-hidden">
-            <!--          <div class="m-0 flex cursor-pointer tab-panel background-hover-white py-2">-->
-            <!--            <div class="w-2/12 text-left">-->
-            <!--              <i class="fas mt-1 fa-ethernet text-center"></i>-->
-            <!--            </div>-->
-            <!--            <p class="ml-3 f4">Product Tags</p>-->
-            <!--          </div>-->
-            <div class="color-primary-dark-bg text-white p-1 py-2 m-0-imp">
-              <p class="f4 ml-1 m-0">Product Tags</p>
+          <div class="border relative mt-3">
+            <div class="p-1 py-2 m-0-imp">
+              <p class="f4 ml-1 m-0 font-bold font-josesans">Product Tags</p>
             </div>
             <hr style="margin: 0 !important;">
-            <div class="pl-2">
+            <div class="px-2">
               <div class="my-2 flex">
-                <input placeholder="Tags" type="text" class="input w-8/12 flex-grow w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800">
+                <input placeholder="Tags" type="text" class="input w-8/12 flex-grow w-full py-2 font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800">
                 <div class="custom-btn-normal ml-2 f6">Add</div>
               </div>
               <div class="my-3 custom-btn-wide rounded-extra-lg width-max">Choose from the most used</div>
@@ -205,42 +222,19 @@
           <!-- !Product Tag -->
 
           <!-- Product image -->
-          <div class="border relative child-mx-2 mt-3 rounded-md overflow-hidden">
-            <div class="color-primary-dark-bg text-white p-1 py-2 m-0-imp">
-              <p class="f4 ml-1 m-0">Product Image</p>
+          <div class="border relative child-mx-2 mt-3">
+            <div class="border-b p-1 py-2 m-0-imp">
+              <p class="f4 ml-1 m-0 font-bold font-josesans">Product Image</p>
             </div>
-            <hr style="margin: 0 !important;">
-            <!--            <div class="field mt-2 w-full">-->
-            <!--              <div class="control">-->
-            <!--                <div class="w-full cursor-pointer text-left button-file-upload-data-id" data-id="product-image">-->
-            <!--                  <i class="fa fa-3x fa-cloud-upload-alt text-blue-600"></i>-->
-            <!--                </div>-->
-            <!--                <div class="flex absolute left-full w-0 h-0 hidden">-->
-            <!--                  <span class="file-cta"><span class="file-icon"><i class="fa fa-upload"></i></span><span class="file-label">Choose a file…</span></span>-->
-            <%#= meta.file_field :images, required: true,-->
-<!--                                      multiple: true,-->
-<!--                                      as: :file,-->
-<!--                                      label: "",-->
-<!--                                      class: 'product-image-uploader',-->
-<!--                                      id: "input-file-upload-product-image",-->
-<!--                                      input_html: {class: "input w-full file-input product-image hidden"},-->
-                                      wrapper: false, label_html: {class: "label text-left w-full"} %>
-            <!--                </div>-->
-
-
-            <!--              </div>-->
-            <!--            </div>-->
-
             <p class="custom-btn-wide rounded-extra-lg my-3 inline-block" href="#">Set product image</p>
           </div>
           <!-- !Product image -->
 
           <!-- Product gallery -->
-          <div class="border relative child-mx-2 mt-3 rounded-md overflow-hidden">
-            <div class="color-primary-dark-bg text-white p-1 py-2 m-0-imp">
-              <p class="f4 ml-1 m-0">Product Gallery</p>
+          <div class="border relative child-mx-2 mt-3">
+            <div class="border-b p-1 py-2 m-0-imp">
+              <p class="f4 ml-1 m-0 font-bold font-josesans">Product Gallery</p>
             </div>
-            <hr style="margin: 0 !important;">
             <p class="custom-btn-wide rounded-extra-lg my-3 inline-block" href="#">Set product gallery</p>
           </div>
           <!-- !Product gallery -->

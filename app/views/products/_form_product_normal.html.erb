@@ -2,58 +2,58 @@
   <%= f.simple_fields_for :product_meta do |meta| %>
     <div class="flex mb-3 mx-0 tab-view pr-2">
 
-      <div class="flex-grow mx-0 px-0 border-right child-my-2-not-first tabs-panel">
+      <div class="flex-grow mx-0 px-0 border-right background-white-grey tabs-panel">
 
-        <div class="flex mt-0-imp mx-0 flex cursor-pointer active tab-panel background-hover-white py-2">
+        <div class="flex mt-0-imp mx-0 flex cursor-pointer active tab-panel background-white-grey py-2">
           <div class="w-2/12 px-4 text-left">
             <i class="fas mt-1 fa-wrench text-center"></i>
           </div>
           <p class="ml-3 f4">General</p>
         </div>
 
-        <div class="flex mt-1 mx-0 flex cursor-pointer tab-panel background-hover-white py-2">
+        <div class="flex mt-1 mx-0 flex cursor-pointer tab-panel background-white-grey py-2">
           <div class="w-2/12 px-4 text-left">
             <i class="fas mt-1 fa-shipping-fast text-center"></i>
           </div>
           <p class="ml-3 f4">Inventory</p>
         </div>
 
-        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel background-hover-white py-2">
+        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel background-white-grey py-2">
           <div class="w-2/12 px-4 text-left">
             <i class="fas mt-1 fa-paperclip text-center"></i>
           </div>
           <p class="ml-3 f4">Shipping</p>
         </div>
 
-        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel background-hover-white py-2">
+        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel background-white-grey py-2">
           <div class="w-2/12 px-4 text-left">
             <i class="fas mt-1 fa-ethernet text-center"></i>
           </div>
           <p class="ml-3 f4">Linked Products</p>
         </div>
 
-        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel background-hover-white py-2">
+        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel background-white-grey py-2">
           <div class="w-2/12 px-4 text-left">
             <i class="fas mt-1 fa-ethernet text-center"></i>
           </div>
           <p class="ml-3 f4">Attributes</p>
         </div>
 
-        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel background-hover-white py-2">
+        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel background-white-grey py-2">
           <div class="w-2/12 px-4 text-left">
             <i class="fas mt-1 fa-ellipsis-v text-center"></i>
           </div>
           <p class="ml-3 f4">Advances</p>
         </div>
 
-        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel background-hover-white py-2">
+        <div class="flex mx-0 flex cursor-pointer tab-panel background-white-grey py-2">
           <div class="w-2/12 px-4 text-left">
             <i class="fas mt-1 fa-users-cog text-center"></i>
           </div>
           <p class="ml-3 f4">More Options</p>
         </div>
 
-        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel background-hover-white py-2">
+        <div class="flex mx-0 flex cursor-pointer tab-panel background-white-grey py-2">
           <div class="w-2/12 px-4 text-left">
             <i class="fas mt-1 fa-users-cog text-center"></i>
           </div>
@@ -71,7 +71,7 @@
               <div class="control flex mt-2 justify-start">
                 <%= detail.input :regular_price, label: "Regular Price ($)", required: false,
                                  placeholder: "Price",
-                                 input_html: {class: "input w-8/12 flex-grow w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 text-left"} %>
+                                 input_html: {class: "input w-8/12 flex-grow w-full py-2  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 text-left"} %>
               </div>
             </div>
           <% end %>
@@ -81,7 +81,7 @@
               <div class="control flex mt-2 justify-start">
                 <%= sale_price.input :sale_price, label: "Sale Price ($)", required: false,
                                      placeholder: "Sale Price",
-                                     input_html: {class: "input w-8/12 flex-grow w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 text-left"} %>
+                                     input_html: {class: "input w-8/12 flex-grow w-full py-2  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 text-left"} %>
               </div>
             </div>
 
@@ -89,10 +89,10 @@
               <div class="control flex mt-2 justify-start">
                 <%= sale_price.input :sale_date_start, as: :date, html5: true, label: "Sale Price Date Start", required: false,
                                      placeholder: "Sale Price",
-                                     input_html: {class: "input flex-grow w-full mr-2 py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 text-left"} %>
+                                     input_html: {class: "input flex-grow w-full mr-2 py-2  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 text-left"} %>
                 <%= sale_price.input :sale_date_start_time, as: :time, html5: true, required: false,
                                      placeholder: "Sale Price",
-                                     input_html: {class: "input flex-grow w-full ml-2 py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 text-left hidden"} %>
+                                     input_html: {class: "input flex-grow w-full ml-2 py-2  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 text-left hidden"} %>
 
               </div>
 
@@ -105,11 +105,11 @@
               <div class="control flex mt-2 justify-start">
                 <%= sale_price.input :sale_date_end, as: :date, html5: true, label: "Sale Price Date End", required: false,
                                      placeholder: "Sale Price",
-                                     input_html: {class: "input flex-grow w-full mr-2 py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 text-left"} %>
+                                     input_html: {class: "input flex-grow w-full mr-2 py-2  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 text-left"} %>
 
                 <%= sale_price.input :sale_date_end_time, as: :time, html5: true, required: false,
                                      placeholder: "Sale Price",
-                                     input_html: {class: "input flex-grow w-full ml-2 py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12  flex-shrink-0text-left, hidden"} %>
+                                     input_html: {class: "input flex-grow w-full ml-2 py-2  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12  flex-shrink-0text-left, hidden"} %>
               </div>
             </div>
 
@@ -127,7 +127,7 @@
               <div class="control flex mt-2 justify-start">
                 <%= inventory.input :sku, label: "SKU", required: false,
                                     placeholder: "SKU",
-                                    input_html: {class: "input w-8/12 flex-grow w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 text-left"} %>
+                                    input_html: {class: "input w-8/12 flex-grow w-full py-2  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 text-left"} %>
               </div>
             </div>
 
@@ -145,7 +145,7 @@
               <div class="control flex mt-2 justify-start">
                 <%= inventory.input :stock_status, label: "Stock Status", required: false,
                                     placeholder: "Status",
-                                    input_html: {class: "input w-8/12 flex-grow w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 text-left"} %>
+                                    input_html: {class: "input w-8/12 flex-grow w-full py-2  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 text-left"} %>
               </div>
             </div>
 
@@ -175,7 +175,7 @@
               <div class="control flex mt-2 justify-start">
                 <%= shipping.input :weight, label: "Weight (kg)", required: false,
                                    placeholder: "1 kg",
-                                   input_html: {class: "input w-8/12 flex-grow w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 flex-shrink-0 text-left"} %>
+                                   input_html: {class: "input w-8/12 flex-grow w-full py-2  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 flex-shrink-0 text-left"} %>
               </div>
             </div>
             <!-- !Weight -->
@@ -191,7 +191,7 @@
                       <!--                      <label class="label">Brand</label>-->
                       <div class="control">
                         <%= shipping.input :width, placeholder: "Width",
-                                           input_html: {class: "input w-full rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                           input_html: {class: "input w-full  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
                                            wrapper: false, label_html: {class: "hidden"} %>
                       </div>
                     </div>
@@ -201,7 +201,7 @@
                       <!--                      <label class="label">Finish</label>-->
                       <div class="control">
                         <%= shipping.input :height, placeholder: "Height",
-                                           input_html: {class: "input w-full rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                           input_html: {class: "input w-full  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
                                            wrapper: false, label_html: {class: "hidden"} %>
                       </div>
                     </div>
@@ -211,7 +211,7 @@
                       <!--                      <label class="label">Condition</label>-->
                       <div class="control">
                         <%= shipping.input :length, placeholder: "Length",
-                                           input_html: {class: "input w-full rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                           input_html: {class: "input w-full  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
                                            wrapper: false, label_html: {class: "hidden"} %>
                       </div>
                     </div>
@@ -228,7 +228,7 @@
               <div class="control flex items-center">
                 <%= shipping.input :shipping_class, placeholder: "Class", label: "Shipping class",
                                    as: :string,
-                                   input_html: {class: "input flex-grow w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
+                                   input_html: {class: "input flex-grow w-full py-2  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"},
                                    wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 flex-shrink-0 text-left"} %>
                 <div class="w-2/12 text-right align-self-center">
                   <span class="icon is-small is-right"><i class="fa fa-tag"></i></span>
@@ -246,12 +246,12 @@
         <div id="input-inventory" class="tab-content">
           <%= meta.simple_fields_for :product_linked do |linked| %>
             <%= linked.input :product_upsell_ids_string, label: "Products Upsells", required: false,
-                                 placeholder: "Upsells",
-                                 input_html: {class: "input tags upsell w-8/12 flex-grow w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label text-left block"} %>
+                             placeholder: "Upsells",
+                             input_html: {class: "input tags upsell w-8/12 flex-grow w-full py-2  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label text-left block"} %>
             <%= linked.input :product_cross_sell_ids_string, label: "Products Cross sells", required: false,
                              placeholder: "Cross sells",
-                             input_html: {class: "input tags cross-sell w-8/12 flex-grow w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label text-left block mt-3"} %>
-        <% end %>
+                             input_html: {class: "input tags cross-sell w-8/12 flex-grow w-full py-2  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label text-left block mt-3"} %>
+          <% end %>
         </div>
         <!-- !Linked Product -->
 
@@ -321,7 +321,7 @@
             <div class="field mt-2">
               <div class="control flex mt-2 justify-start">
                 <%= advanced.input :purchase_note, label: "Purchase note", required: false,
-                                   input_html: {class: "input w-8/12 flex-grow w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 flex-shrink-0 text-left"} %>
+                                   input_html: {class: "input w-8/12 flex-grow w-full py-2  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 flex-shrink-0 text-left"} %>
               </div>
             </div>
             <!-- !Purchase note -->
@@ -347,7 +347,7 @@
             <div class="field mt-2">
               <div class="control flex mt-2 justify-start">
                 <%= advanced.input :purchase_note, label: "Purchase note", required: false,
-                                   input_html: {class: "input w-8/12 flex-grow w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 flex-shrink-0 text-left"} %>
+                                   input_html: {class: "input w-8/12 flex-grow w-full py-2  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 flex-shrink-0 text-left"} %>
               </div>
             </div>
             <!-- !Purchase note -->
@@ -372,7 +372,7 @@
             <!-- Custom bubble -->
             <!--                    <div class="field mt-2">-->
             <!--                      <div class="control flex mt-2 justify-start">-->
-            <%#= meta.input :regular_price, label: "Custom bubble", required: false,       input_html: {class: "input w-8/12 flex-grow w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 flex-shrink-0 text-left"} %>
+            <%#= meta.input :regular_price, label: "Custom bubble", required: false,       input_html: {class: "input w-8/12 flex-grow w-full py-2  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 flex-shrink-0 text-left"} %>
             <!--                      </div>-->
             <!--                    </div>-->
             <!-- !Custom bubble -->
@@ -380,7 +380,7 @@
             <!-- Custom bubble title -->
             <!--                    <div class="field mt-2">-->
             <!--                      <div class="control flex mt-2 justify-start">-->
-            <%#= meta.input :price, label: "Custom Bubble Title", required: false,                                    input_html: {class: "input w-8/12 flex-grow w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 flex-shrink-0 text-left"} %>
+            <%#= meta.input :price, label: "Custom Bubble Title", required: false,                                    input_html: {class: "input w-8/12 flex-grow w-full py-2  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 flex-shrink-0 text-left"} %>
             <!--                      </div>-->
             <!--                    </div>-->
 
@@ -390,7 +390,7 @@
             <div class="field mt-2">
               <div class="control flex mt-2 justify-start">
                 <%= extra.input :product_video, label: "Product Video", required: false,
-                                input_html: {class: "input w-8/12 flex-grow w-full py-2 rounded-lg font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 flex-shrink-0 text-left"} %>
+                                input_html: {class: "input w-8/12 flex-grow w-full py-2  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 flex-shrink-0 text-left"} %>
               </div>
             </div>
 

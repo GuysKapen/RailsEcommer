@@ -15,9 +15,9 @@ class ProductsController < ApplicationController
     @products = Product.all
     @product = Product.new
     @products_view_sale = Product
-                          .joins(product_meta: [:product_sale_price])
-                          .where('sale_date_start < ?', 0.day.ago)
-                          .map { |product| ProductView.new(product) }
+                              .joins(product_meta: [:product_sale_price])
+                              .where('sale_date_start < ?', 0.day.ago)
+                              .map { |product| ProductView.new(product) }
   end
 
   # GET /products/1
@@ -54,6 +54,7 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
+    @categories = Category.all
     # Build New Category here
     category_attrs = params['category_name']
     @category = current_user.categories.build(name: category_attrs) unless category_attrs.nil? || category_attrs.empty?
@@ -70,21 +71,23 @@ class ProductsController < ApplicationController
     cross_sell_ids_string = params[:product][:product_meta_attributes][:product_linked_attributes][:product_cross_sell_ids_string]
 
     upsell_ids = []
-    upsell_ids_string.split(',').each do |upsell_id|
-      upsell_ids << upsell_id.to_i
-    end
+    upsell_ids_string&.split(',')&.each do |upsell_id|
+        upsell_ids << upsell_id.to_i
+      end
+
     params[:product][:product_meta_attributes][:product_linked_attributes][:product_upsell_ids] = upsell_ids
 
     cross_sell_ids = []
-    cross_sell_ids_string.split(',').each do |cross_sell_id|
-      cross_sell_ids << cross_sell_id.to_i
-    end
+    cross_sell_ids_string&.split(',')&.each do |cross_sell_id|
+        cross_sell_ids << cross_sell_id.to_i
+      end
+
     params[:product][:product_meta_attributes][:product_linked_attributes][:product_cross_sell_ids] = cross_sell_ids
 
     @product = current_user.products.build(product_params)
     # merge time and date into timestamp
     sale_price = @product.product_meta.product_sale_price
-    unless sale_price.nil? && sale_price.sale_date_start.nil? && sale_price.sale_date_start.nil?
+    if !sale_price.nil? && !sale_price.sale_date_start.nil? && !sale_price.sale_date_start.nil?
       time_start = Time.zone.parse(sale_price.sale_date_start_time)
       sale_price.sale_date_start = Time.zone.parse("#{sale_price.sale_date_start.strftime('%F')} #{time_start.strftime('%T')}")
 
@@ -95,12 +98,12 @@ class ProductsController < ApplicationController
     unless @product.product_variations.blank?
       @product.product_variations.each do |variation|
         sale_price = variation.product_meta.product_sale_price
-        next if sale_price.nil?
+        next if sale_price.nil? || sale_price.sale_date_start.nil? || sale_price.sale_date_end.nil?
 
-        time_start = Time.zone.parse(sale_price.sale_date_start_time)
+        time_start = Time.zone.parse(sale_price.sale_date_start_time.presence || '00:00')
         sale_price.sale_date_start = Time.zone.parse("#{sale_price.sale_date_start.strftime('%F')} #{time_start.strftime('%T')}")
 
-        time_end = Time.zone.parse(sale_price.sale_date_end_time)
+        time_end = Time.zone.parse(sale_price.sale_date_end_time.presence || '00:00')
         sale_price.sale_date_end = Time.zone.parse("#{sale_price.sale_date_end.strftime('%F')} #{time_end.strftime('%T')}")
       end
     end
@@ -113,6 +116,7 @@ class ProductsController < ApplicationController
       else
         format.html { render :new, notice: 'Error has been occured.' }
         format.json { render json: @product.errors, status: :unprocessable_entity }
+        print("ksjdfaksfksdafjsadfjsldakfjsldfjsdfksdf", product.errors.full_messages)
       end
     end
   end
@@ -171,7 +175,7 @@ class ProductsController < ApplicationController
       respond_to do |format|
         format.js do
           render 'products/response_show_message',
-                 locals: { message: 'Could not save product cart in cart', success: false }
+                 locals: {message: 'Could not save product cart in cart', success: false}
         end
       end
       return false
@@ -231,10 +235,11 @@ class ProductsController < ApplicationController
       product_attr_params.each do |_, attrs|
         attrs.each do |attr|
           attr_obj = JSON.parse(attr)
-          attr_name = { name: attr_obj['name'] }
-          @product_attrs_name = ProductAttributesName.new(attr_name)
+          attr_name = {name: attr_obj['name']}
+          @product_attrs_name = ProductAttributesName.find_by(name: attr_obj['name'])
+          @product_attrs_name ||= ProductAttributesName.new(attr_name)
           attr_obj['value'].split('|').each do |value|
-            attr_value = { value: value }
+            attr_value = {value: value}
             @product_attrs_name.product_attributes_values.build(attr_value)
           end
           @product_attrs_name.save
@@ -254,7 +259,7 @@ class ProductsController < ApplicationController
     merge = helpers.products_cartesian(@product_attrs)
     @attrs_list_values = merge[:value]
     @attrs_list_values = @attrs_list_values
-                         .map do |attrs_values|
+                             .map do |attrs_values|
       attrs_values.map do |value|
         ProductAttributesValue.where(value: value).first
       end
@@ -272,6 +277,9 @@ class ProductsController < ApplicationController
         variation.product_attributes_values.build
       end
     end
+
+    @num = params['num_form']
+    @num_start = params['num_start']
 
     respond_to do |format|
       format.js { render 'products/response_create_variation_product' }
@@ -297,10 +305,10 @@ class ProductsController < ApplicationController
         format.js do
           render 'products/response_update_form_add_to_cart',
                  locals: {
-                   regular_price: variation.product_meta.product_detail.regular_price,
-                   sale_price: variation.product_meta.product_sale_price&.sale_price,
-                   index: index,
-                   product_id: variation.id
+                     regular_price: variation.product_meta.product_detail.regular_price,
+                     sale_price: variation.product_meta.product_sale_price&.sale_price,
+                     index: index,
+                     product_id: variation.id
                  }
         end
       end
@@ -330,11 +338,11 @@ class ProductsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
     respond_to do |format|
       if @comment.save
-        format.js { render 'products/response_add_comment', locals: { success: true } }
+        format.js { render 'products/response_add_comment', locals: {success: true} }
       else
         print 'WTF'
         print @comment.errors.messages
-        format.js { render 'products/response_add_comment', locals: { success: false } }
+        format.js { render 'products/response_add_comment', locals: {success: false} }
       end
     end
   end
@@ -343,9 +351,9 @@ class ProductsController < ApplicationController
     @reply = current_user.replies.build(reply_params)
     respond_to do |format|
       if @reply.save
-        format.js { render 'products/response_add_reply', locals: { success: true } }
+        format.js { render 'products/response_add_reply', locals: {success: true} }
       else
-        format.js { render 'products/response_add_reply', locals: { success: false } }
+        format.js { render 'products/response_add_reply', locals: {success: false} }
       end
     end
   end
@@ -363,7 +371,7 @@ class ProductsController < ApplicationController
     unless current_user
       respond_to do |format|
         format.js do
-          render 'products/response_show_message', locals: { success: false, message: 'You need to login to reply' }
+          render 'products/response_show_message', locals: {success: false, message: 'You need to login to reply'}
         end
       end
       return
@@ -371,7 +379,7 @@ class ProductsController < ApplicationController
     @reply = current_user.replies.build
     @comment = Comment.find(params['comment_id'])
     respond_to do |format|
-      format.js { render 'products/response_add_reply_form', locals: { success: false } }
+      format.js { render 'products/response_add_reply_form', locals: {success: false} }
     end
   end
 
@@ -381,7 +389,7 @@ class ProductsController < ApplicationController
     unless current_user
       respond_to do |format|
         format.js do
-          render 'products/response_show_message', locals: { success: false, message: 'You need to login to reply' }
+          render 'products/response_show_message', locals: {success: false, message: 'You need to login to reply'}
         end
       end
       return
@@ -392,12 +400,12 @@ class ProductsController < ApplicationController
       respond_to do |format|
         like.destroy!
         format.js do
-          render 'products/response_toggle_like', locals: { success: true, like: like, message: 'Sucess remove like!' }
+          render 'products/response_toggle_like', locals: {success: true, like: like, message: 'Sucess remove like!'}
         end
       rescue ActiveRecord::RecordNotDestroyed => e
         format.js do
           render 'products/response_toggle_like',
-                 locals: { success: false, like: like, message: 'Fail to remove like!' }
+                 locals: {success: false, like: like, message: 'Fail to remove like!'}
         end
         puts "errors that prevented destruction: #{e.record.errors}"
       end
@@ -410,7 +418,7 @@ class ProductsController < ApplicationController
       respond_to do |format|
         format.js do
           render 'products/response_toggle_like',
-                 locals: { success: false, like: like, message: 'Something wrong has happened!' }
+                 locals: {success: false, like: like, message: 'Something wrong has happened!'}
         end
       end
       return
@@ -421,10 +429,10 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if like.save
         format.js do
-          render 'products/response_toggle_like', locals: { success: true, like: like, message: 'Sucess add like!' }
+          render 'products/response_toggle_like', locals: {success: true, like: like, message: 'Sucess add like!'}
         end
       else
-        format.js { render 'products/response_toggle_like', locals: { success: false, message: 'Failed to add like' } }
+        format.js { render 'products/response_toggle_like', locals: {success: false, message: 'Failed to add like'} }
       end
     end
   end
@@ -454,80 +462,80 @@ class ProductsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def product_params
     params.require(:product).permit(
-      :category_id,
-      product_meta_attributes: [
-        :tag,
-        { product_detail_attributes: %i[name description regular_price],
-          images: [],
-          product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
-          product_shipping_attributes: %i[weight length width height shipping_class],
-          product_linked_attributes: [:product_upsell_ids_string, :product_cross_sell_ids_string,
-                                      { product_upsell_ids: [], product_cross_sell_ids: [] }],
-          product_sale_price_attributes: %i[sale_price sale_date_start sale_date_start_time sale_date_end
-                                            sale_date_end_time],
-          product_advanced_attributes: %i[purchase_note enable_reviews],
-          product_extra_attributes: [:product_video] }
-      ],
-      product_variations_attributes: [
-        product_attributes_value_ids: [],
+        :category_id,
         product_meta_attributes: [
-          :tag,
-          { images: [],
-            product_detail_attributes: %i[name description regular_price],
-            product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
-            product_shipping_attributes: %i[weight length width height shipping_class],
-            product_linked_attributes: %i[upsells cross_sells],
-            product_sale_price_attributes: %i[sale_price sale_date_start sale_date_start_time sale_date_end
+            :tag,
+            {product_detail_attributes: %i[name description regular_price],
+             images: [],
+             product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
+             product_shipping_attributes: %i[weight length width height shipping_class],
+             product_linked_attributes: [:product_upsell_ids_string, :product_cross_sell_ids_string,
+                                         {product_upsell_ids: [], product_cross_sell_ids: []}],
+             product_sale_price_attributes: %i[sale_price sale_date_start sale_date_start_time sale_date_end
+                                            sale_date_end_time],
+             product_advanced_attributes: %i[purchase_note enable_reviews],
+             product_extra_attributes: [:product_video]}
+        ],
+        product_variations_attributes: [
+            product_attributes_value_ids: [],
+            product_meta_attributes: [
+                :tag,
+                {images: [],
+                 product_detail_attributes: %i[name description regular_price],
+                 product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
+                 product_shipping_attributes: %i[weight length width height shipping_class],
+                 product_linked_attributes: %i[upsells cross_sells],
+                 product_sale_price_attributes: %i[sale_price sale_date_start sale_date_start_time sale_date_end
                                               sale_date_end_time],
-            product_advanced_attributes: %i[purchase_note enable_reviews],
-            product_extra_attributes: [:product_video] }
-        ]
-      ],
-      category_attributes: [:name]
+                 product_advanced_attributes: %i[purchase_note enable_reviews],
+                 product_extra_attributes: [:product_video]}
+            ]
+        ],
+        category_attributes: [:name]
     )
   end
 
   def product_meta_params
     params.require(:product).require(:product_meta_attributes).permit(
-      :tag,
-      { images: [],
-        product_detail_attributes: %i[name description regular_price],
-        product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
-        product_shipping_attributes: %i[weight length width height shipping_class],
-        product_linked_attributes: %i[upsells cross_sells],
-        product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
-        product_advanced_attributes: %i[purchase_note enable_reviews],
-        product_extra_attributes: [:product_video] }
+        :tag,
+        {images: [],
+         product_detail_attributes: %i[name description regular_price],
+         product_inventory_attributes: %i[sku manage_stock stock_status sold_individually],
+         product_shipping_attributes: %i[weight length width height shipping_class],
+         product_linked_attributes: %i[upsells cross_sells],
+         product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
+         product_advanced_attributes: %i[purchase_note enable_reviews],
+         product_extra_attributes: [:product_video]}
     )
   end
 
   def product_inventory_params
     params.require(:product).require(:product_meta_attributes).require(:product_inventory_attributes).permit(
-      :sku, :stock_status, :manage_stock, :sold_individually
+        :sku, :stock_status, :manage_stock, :sold_individually
     )
   end
 
   def product_sale_price_params
     params.require(:product).require(:product_meta_attributes).require(:product_sale_price_attributes).permit(
-      :sale_price, :sale_date_start, :sale_date_end
+        :sale_price, :sale_date_start, :sale_date_end
     )
   end
 
   def product_shipping_params
     params.require(:product).require(:product_meta_attributes).require(:product_shipping_attributes).permit(
-      :weight, :length, :width, :shipping_class
+        :weight, :length, :width, :shipping_class
     )
   end
 
   def product_linked_params
     params.require(:product).require(:product_meta_attributes).require(:product_linked_attributes).permit(
-      :upsells, :cross_sells
+        :upsells, :cross_sells
     )
   end
 
   def product_extras_params
     params.require(:product).require(:product_meta_attributes).require(:product_extra_attributes).permit(
-      :product_video
+        :product_video
     )
   end
 
@@ -541,9 +549,9 @@ class ProductsController < ApplicationController
 
   def product_variation_meta_params
     params.require(:product).require(:product_variation_meta).permit(
-      :regular_price, { product_shipping_attributes: %i[width height length weight shipping_class],
-                        product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
-                        product_inventory_attributes: %i[sku stock_status manage_stock sold_individually] }
+        :regular_price, {product_shipping_attributes: %i[width height length weight shipping_class],
+                         product_sale_price_attributes: %i[sale_price sale_date_start sale_date_end],
+                         product_inventory_attributes: %i[sku stock_status manage_stock sold_individually]}
     )
   end
 
