@@ -33,15 +33,17 @@
                      sale_price: @product.sale_price_text %>
         </div>
 
-        <div class="flex items-center">
-          <div>
-            <span class="rating-stars"><%= @product.rating %></span>
-          </div>
-          <div>
+        <% unless @product.rating %>
+          <div class="flex items-center">
+            <div>
+              <span class="rating-stars"><%= @product.rating %></span>
+            </div>
+            <div>
             <span class="px-2 font-rale f6"><%= @product.rating %> / 5 &nbsp; (<%= @product.comments.load.size %>
               reviewers)</span>
+            </div>
           </div>
-        </div>
+        <% end %>
         <hr class="m-0">
 
         <!-- Form Add to cart product -->

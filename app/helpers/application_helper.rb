@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 module ApplicationHelper
   def product_first_img(product)
+    if product.product_meta.images.blank?
+      first_image = product.product_variations.map { |it| it.product_meta.images }.flatten[0]
+      return first_image.nil? ? 'shoes.jpg' : first_image.url
+    end
     product.product_meta.images[0].nil? ? 'shoes.jpg' : product.product_meta.images[0].url
   end
 

@@ -14,6 +14,6 @@ class ProductView
   end
 
 
-  delegate :description, :user_id, :categories, :category, :product_meta, :id, :regular_price_text, :price_text, to: :product
+  delegate :description, :user_id, :categories, :category, :product_meta, :product_variations, :id, :regular_price_text, :price_text, to: :product
   delegate :images, :name, to: :product_meta
 end
