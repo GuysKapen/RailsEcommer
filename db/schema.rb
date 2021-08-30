@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_24_002305) do
+ActiveRecord::Schema.define(version: 2021_08_28_231203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,13 @@ ActiveRecord::Schema.define(version: 2021_06_24_002305) do
     t.string "name"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_categories_on_user_id"
+  end
+
+  create_table "categories_products", id: false, force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "category_id", null: false
+    t.index ["category_id", "product_id"], name: "category_to_product_index"
+    t.index ["product_id", "category_id"], name: "product_to_category_index"
   end
 
   create_table "ckeditor_assets", force: :cascade do |t|
@@ -194,6 +201,8 @@ ActiveRecord::Schema.define(version: 2021_06_24_002305) do
     t.integer "ratings"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "product_meta_id", null: false
+    t.index ["product_meta_id"], name: "index_product_reviews_on_product_meta_id"
   end
 
   create_table "product_sale_prices", force: :cascade do |t|
@@ -291,6 +300,7 @@ ActiveRecord::Schema.define(version: 2021_06_24_002305) do
   add_foreign_key "product_extras", "product_meta", column: "product_meta_id"
   add_foreign_key "product_inventories", "product_meta", column: "product_meta_id"
   add_foreign_key "product_linkeds", "product_meta", column: "product_meta_id"
+  add_foreign_key "product_reviews", "product_meta", column: "product_meta_id"
   add_foreign_key "product_sale_prices", "product_meta", column: "product_meta_id"
   add_foreign_key "product_shippings", "product_meta", column: "product_meta_id"
   add_foreign_key "product_stocks", "product_meta", column: "product_meta_id"

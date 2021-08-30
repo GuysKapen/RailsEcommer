@@ -110,6 +110,10 @@ p {
   font-family: 'Markazi Text', serif;
 }
 
+.child-p-font-josesans > p {
+  font-family: 'JoseSans', serif;
+}
+
 .font-fredoka {
   font-family: 'Inconsolata', monospace;
 }
@@ -193,6 +197,7 @@ textarea {
   box-shadow: inset 0 0 10px 0 rgba(255, 255, 255, 0.56);
   border: 1.5px solid #cccccc;
   padding: 8px 8px;
+  border-radius: .125rem;
 }
 
 input[type="number"]:focus,

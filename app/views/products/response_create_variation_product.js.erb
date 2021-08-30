@@ -1,17 +1,47 @@
-var container = document.createElement("div")
-$("#input-variations").append(container)
-$(container).html("<%= escape_javascript render 'products/form_partial_variation_products', form: @form, attrs_list_values: @attrs_list_values %>")
+var container = document.getElementById('container-form-partial-variation-products')
+if (container == null) {
+    container = document.createElement("div")
+    container.id = "container-form-partial-variation-products"
+    $("#input-variations").append(container)
+    $(container).html("<%= escape_javascript render 'products/form_partial_variation_products', form: @form, attrs_list_values: @attrs_list_values, num: @num %>")
+} else {
+    const temp = document.createElement("div")
+    $(temp).html(`<%= escape_javascript render 'products/form_partial_variation_products', form: @form, attrs_list_values: @attrs_list_values, num: @num, num_start: @num_start %>`)
+    $(container).append($(".container-product-variation", temp))
+}
+
+
 function setupProductVariationIcons() {
     const variations = document.getElementsByClassName("container-product-variation")
     for (let i = 0; i < variations.length; i++) {
         const variation = variations[i]
         if (!(variation instanceof HTMLElement)) return
-        variation.getElementsByClassName("toggle-collapse-variation")[0].addEventListener("click", function (e) {
+
+        // Clone toggle collapse to remove all listeners
+        const toggleCollapse = variation.getElementsByClassName("toggle-collapse-variation")[0];
+        const newCollapse = toggleCollapse.cloneNode(true);
+        toggleCollapse.parentNode.replaceChild(newCollapse, toggleCollapse);
+
+        newCollapse.addEventListener("click", function (e) {
             // variation.classList.toggle("collapse-height")
             variation.getElementsByClassName("container-product-variation-body")[0].classList.toggle("collapse-height")
         })
     }
 }
 
+function setupRemoveBtnVariationForm() {
+    const btnsRemove = document.getElementsByClassName("btn-remove-variation-form")
+    for (let i = 0; i < btnsRemove.length; i++) {
+        const btn = btnsRemove[i]
+        if (!(btn instanceof HTMLElement)) return
+        btn.addEventListener("click", function () {
+            const index = btn.attributes['data-index'].value
+            console.log("idnex", index)
+            document.getElementById(`container-product-variation-${index}`).remove()
+        })
+    }
+}
+
 setupProductVariationIcons()
+setupRemoveBtnVariationForm()
 document.setupCustomSelect()

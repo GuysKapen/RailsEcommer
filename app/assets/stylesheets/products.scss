@@ -161,9 +161,11 @@
 
 .tab-panel {
   cursor: pointer;
-  background-color: #e7ecea;
-  border: 1px solid #b2b2b2;
-  margin: 1px;
+  border-bottom: 1px solid #dbdbdb;
+  margin: 0;
+  font-family: JoseSans, serif;
+  font-weight: bold;
+  background-color: #efefef;
 }
 
 .tabs-content * {
@@ -173,6 +175,7 @@
 
 .tabs-content > div {
   //position: absolute;
+
   //top: -200%;
   display: none;
 }
@@ -184,10 +187,7 @@
 }
 
 .tabs-content-vertical > div {
-  //position: absolute;
   display: none;
-  //bottom: -200%;
-  //top: inherit;
 }
 
 .tabs-content-vertical > div.active {
@@ -197,10 +197,7 @@
 }
 
 .tab-panel.active {
-  //border-bottom: 2px solid deepskyblue;
-  color: white;
-  //background: #2cc185;
-  background: #4299e1;
+  background: #dcdcdc;
 }
 
 .grid {
@@ -239,7 +236,7 @@
   cursor: pointer;
   position: relative;
   height: max-content;
-  padding: 8px;
+  padding: 4px;
 }
 
 select[multiple]{
@@ -262,12 +259,12 @@ select[multiple]{
   justify-content: center;
   flex-direction: column;
   background-color: white;
-  font-weight: bold;
   padding: .25rem 1rem;
-  border: 1px solid #b2b2b2;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  border-width: 2px;
   cursor: pointer;
   transition: .6s;
-  border-radius: 8px;
   max-height: 64px;
   height: max-content;
   width: 100%;
@@ -304,6 +301,7 @@ select[multiple]{
   z-index: 999;
   margin: 0 0;
   padding: 0 0;
+  font-size: 0.75rem;
   list-style: none;
   border: 1px solid #ccc;
   background-color: white;
@@ -318,7 +316,8 @@ select[multiple]{
 }
 
 .options li:hover {
-  background: #2cc185;
+  //background: #2cc185;
+  background: #4299e1;
   color: white;
 }
 
