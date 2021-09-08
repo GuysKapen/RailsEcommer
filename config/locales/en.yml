@@ -31,3 +31,16 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      user:
+        name: ""
+    errors:
+      models:
+        product_detail:
+          attributes:
+            name:
+              blank: "Product name is required. Please input the product name here"
+            regular_price:
+              blank: "Price is required. Please input the regular price of product"
+

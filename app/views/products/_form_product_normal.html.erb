@@ -68,10 +68,10 @@
 
           <%= meta.simple_fields_for :product_detail do |detail| %>
             <div class="field">
-              <div class="control flex mt-2 justify-start">
-                <%= detail.input :regular_price, label: "Regular Price ($)", required: false,
+              <div class="control flex flex-wrap mt-2 justify-start">
+                <%= detail.input :regular_price, label: "Regular Price ($)", required: true,
                                  placeholder: "Price",
-                                 input_html: {class: "input w-8/12 flex-grow w-full py-2  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 text-left"} %>
+                                 input_html: {class: "input w-1/2 flex-grow py-2  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 text-left"} %>
               </div>
             </div>
           <% end %>
@@ -218,7 +218,6 @@
                   </div>
                 </div>
 
-                <%#= f.input :price, label: "Stock Status", required: false, input_html: {class: "input w-8/12 flex-grow"}, wrapper: false, label_html: {class: "label w-4/12 flex-shrink-0 flex-shrink-0 text-left"} %>
               </div>
             </div>
             <!-- !Dimensions -->

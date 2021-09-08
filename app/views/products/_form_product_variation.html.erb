@@ -1,59 +1,62 @@
+<% num_form_variation ||= 0 %>
+<% active ||=0 %>
+<% expand ||= false %>
 <%= simple_form_for(@product) do |f| %>
   <%= f.simple_fields_for :product_meta do |meta| %>
     <div class="flex mb-3 mx-0 tab-view pr-2">
 
       <div class="flex-grow mx-0 px-0 border-right tabs-panel">
 
-        <div class="flex mt-1 mx-0 flex cursor-pointer active tab-panel py-2">
+        <div class="flex mt-1 mx-0 flex cursor-pointer tab-panel py-2 <%= "active" if active == 0 %>">
           <div class="w-2/12 px-4 text-left">
             <i class="fas mt-1 fa-shipping-fast text-center"></i>
           </div>
           <p class="ml-3 f4">Inventory</p>
         </div>
 
-        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel py-2">
+        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel py-2 <%= "active" if active == 1 %>">
           <div class="w-2/12 px-4 text-left">
             <i class="fas mt-1 fa-paperclip text-center"></i>
           </div>
           <p class="ml-3 f4">Shipping</p>
         </div>
 
-        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel py-2">
+        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel py-2 <%= "active" if active == 2 %>">
           <div class="w-2/12 px-4 text-left">
             <i class="fas mt-1 fa-ethernet text-center"></i>
           </div>
           <p class="ml-3 f4">Linked Products</p>
         </div>
 
-        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel py-2">
+        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel py-2 <%= "active" if active == 3 %>">
           <div class="w-2/12 px-4 text-left">
             <i class="fas mt-1 fa-ethernet text-center"></i>
           </div>
           <p class="ml-3 f4">Attributes</p>
         </div>
 
-        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel py-2">
+        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel py-2 <%= "active" if active == 4 %>">
           <div class="w-2/12 px-4 text-left">
             <i class="fas mt-1 fa-cog text-center"></i>
           </div>
           <p class="ml-3 f4">Variations</p>
         </div>
 
-        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel py-2">
+        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel py-2 <%= "active" if active == 5 %>">
           <div class="w-2/12 px-4 text-left">
             <i class="fas mt-1 fa-ellipsis-v text-center"></i>
           </div>
           <p class="ml-3 f4">Advances</p>
         </div>
 
-        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel py-2">
+        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel py-2 <%= "active" if active == 6 %>">
           <div class="w-2/12 px-4 text-left">
             <i class="fas mt-1 fa-users-cog text-center"></i>
           </div>
           <p class="ml-3 f4">More Options</p>
         </div>
 
-        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel py-2">
+        <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel py-2 <%= "active" if active == 7 %>">
           <div class="w-2/12 px-4 text-left">
             <i class="fas mt-1 fa-users-cog text-center"></i>
           </div>
@@ -64,7 +67,7 @@
 
       <div class="w-8/12 ml-3 mx-0 px-0 tabs-content">
         <!-- Inventory Input -->
-        <div id="input-inventory" class="active tab-content ">
+        <div id="input-inventory" class="<%= "active" if active == 0 %> tab-content ">
 
           <%= meta.simple_fields_for :product_inventory do |inventory| %>
 
@@ -111,7 +114,7 @@
         <!-- !Inventory Input -->
 
         <!-- Shipping Input -->
-        <div id="input-inventory" class="tab-content">
+        <div id="input-inventory" class="<%= "active" if active == 1 %> tab-content">
 
           <%= meta.simple_fields_for :product_shipping do |shipping| %>
 
@@ -188,7 +191,7 @@
         <!-- !Shipping Input -->
 
         <!-- Linked Product -->
-        <div id="input-linked-product" class="tab-content">
+        <div id="input-linked-product" class="<%= "active" if active == 2 %> tab-content">
           <%= meta.simple_fields_for :product_linked do |linked_product| %>
             <!-- Upsell -->
             <div class="field mt-2">
@@ -213,7 +216,7 @@
         <!-- !Linked Product -->
 
         <!-- Attributes -->
-        <div id="input-attributes" class="tab-content flex flex-col h-full">
+        <div id="input-attributes" class="<%= "active" if active == 3 %> tab-content flex flex-col h-full">
           <div class="flex flex-col h-full">
             <div class="field mt-2">
               <div class="control flex mt-2 justify-start">
@@ -261,17 +264,21 @@
         <!-- !Attributes -->
 
         <!-- Variations -->
-        <div id="input-variations" class="tab-content flex">
+        <div id="input-variations" class="<%= "active" if active == 4 %> tab-content flex">
           <div class="my-1 flex">
             <div class="">
               <%= select_tag "product_variation_type", raw("<option value='add'>Add variation</option><option value='all'>Create variation from all attributes</option>"), class: "", id: "select-product-variation-create" %>
             </div>
             <div id="button-add-variation" class="custom-btn-normal ml-2 f6 width-min">OK</div>
           </div>
+
+          <% if num_form_variation != 0 %>
+            <%= render "products/form_partial_variation_products", num_form_variation: num_form_variation, expand: expand %>
+          <% end %>
         </div>
 
         <!-- Advanced -->
-        <div id="input-advanced" class="tab-content">
+        <div id="input-advanced" class="<%= "active" if active == 5 %> tab-content">
           <%= meta.simple_fields_for :product_advanced do |advanced| %>
             <!-- Purchase note -->
             <div class="field mt-2">
@@ -297,7 +304,7 @@
         <!-- !Advanced -->
 
         <!-- More options -->
-        <div id="input-more-options" class="tab-content">
+        <div id="input-more-options" class="<%= "active" if active == 6 %> tab-content">
           <%= meta.simple_fields_for :product_advanced do |advanced| %>
             <!-- Purchase note -->
             <div class="field mt-2">
@@ -323,7 +330,7 @@
         <!-- !More options -->
 
         <!-- Extra -->
-        <div id="input-extra" class="tab-content">
+        <div id="input-extra" class="<%= "active" if active == 7 %> tab-content">
           <%= meta.simple_fields_for :product_extra do |extra| %>
 
             <!-- Product Video -->

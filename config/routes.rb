@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   get 'contact' => 'contact#index'
   get 'about' => 'about#index'
   root to: 'home#index'
+
+  post     'new_product' => 'products#create'
+  get      'new_product' => 'products#new'
   resources :products do
     member do
       post :add_to_cart

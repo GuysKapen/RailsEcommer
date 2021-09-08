@@ -39,4 +39,7 @@ class ProductVariation < ApplicationRecord
   end
 
   delegate :name, to: :product
+
+  # Validation
+  validates_associated :product_meta
 end

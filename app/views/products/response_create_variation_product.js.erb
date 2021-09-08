@@ -3,10 +3,10 @@ if (container == null) {
     container = document.createElement("div")
     container.id = "container-form-partial-variation-products"
     $("#input-variations").append(container)
-    $(container).html("<%= escape_javascript render 'products/form_partial_variation_products', form: @form, attrs_list_values: @attrs_list_values, num: @num %>")
+    $(container).html("<%= escape_javascript render 'products/form_partial_variation_products', form: @form, attrs_list_values: @attrs_list_values, num_form_variation: @num_form_variation %>")
 } else {
     const temp = document.createElement("div")
-    $(temp).html(`<%= escape_javascript render 'products/form_partial_variation_products', form: @form, attrs_list_values: @attrs_list_values, num: @num, num_start: @num_start %>`)
+    $(temp).html(`<%= escape_javascript render 'products/form_partial_variation_products', form: @form, attrs_list_values: @attrs_list_values, num_form_variation: @num_form_variation, num_start: @num_start %>`)
     $(container).append($(".container-product-variation", temp))
 }
 

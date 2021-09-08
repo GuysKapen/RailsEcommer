@@ -9,6 +9,7 @@
             <%= meta.simple_fields_for :product_detail do |detail| %>
               <div class="field">
                 <div class="control">
+
                   <%= detail.input :name, label: "Product Name", required: true,
                                    placeholder: "Name",
                                    input_html: {class: "input w-full flex-grow w-full py-2 mt-2  font-medium bg placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800"}, wrapper: false, label_html: {class: "label text-left w-full block"} %>
@@ -24,6 +25,14 @@
 
             <div class="field mt-5">
               <div class="control">
+                <% unless @product.product_meta.errors[:images].blank? %>
+                  <div class="py-2">
+                    <div class="py-2 items-center leading-none text-red-700 lg:rounded-full flex lg:inline-flex" role="alert">
+                      <span class="flex rounded-full bg-red-200 uppercase px-2 py-1 text-xs font-bold mr-3">Error</span>
+                      <span class="font-semibold mr-2 text-left flex-auto"><%= @product.product_meta.errors[:images].join(", ") %></span>
+                    </div>
+                  </div>
+                <% end %>
                 <div class="flex items-center">
                   <div class="flex items-baseline mr-4"><i class="fa fa-upload mr-2"></i>Choose images ...</div>
                   <%= meta.file_field :images, required: true,
@@ -65,21 +74,23 @@
               <div class="flex justify-start px-2 my-1 bg-white border-b">
                 <!-- Product Type -->
                 <div class="mx-0 flex cursor-pointer py-2 font-josesans font-bold">
-                  <!--                  <div class="w-2/12 px-4 text-left">-->
-                  <!--                    <i class="fas mt-1 fa-shipping-fast text-center"></i>-->
-                  <!--                  </div>-->
                   <p class="f4">Product Type --</p>
                 </div>
 
                 <div class="flex ml-3 child-my-auto ">
-                  <%= select_tag "product_type", raw("<option value='normal'>Simple Product</option><option value='variation'>Variation</option>"), class: "px-12 w-full", id: "select-product-type" %>
+                  <%= select_tag "product_type", raw("<option value='normal'>Simple Product</option><option value='variation'>Variation Product</option>"), class: "px-12 w-full", id: "select-product-type" %>
                   <div id="button-change-product-type" class="color-primary-dark-bg text-white rounded-extra-lg py-1 px-4 cursor-pointer duration-1000 ml-2 width-min">OK</div>
                 </div>
                 <!-- !Product Type -->
               </div>
               <div class="p-2">
+                <% @product_type ||= "normal" %>
                 <div id="form-meta">
-                  <%= render 'products/form_product_normal', product: @product %>
+                  <% if @product_type == 'variation' %>
+                    <%= render 'products/form_product_variation', product: @product, num_form_variation: @num_form_variation, active: @active, expand: @expand %>
+                  <% else %>
+                    <%= render 'products/form_product_normal', product: @product %>
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -89,7 +100,7 @@
         <section class="mx-3 child-bg-white">
           <!-- Public -->
           <div class="border relative child-mx-2 overflow-hidden">
-            <div class="p-1 py-2 m-0-imp">
+            <div class="p-1 py-2 m-0-imp"> Can't verify CSRF token authenticity.
               <p class="ml-1 f4 m-0 font-josesans font-bold">Publish</p>
             </div>
             <hr style="margin: 0 !important;">
@@ -146,15 +157,6 @@
                 <div class="ml-2">Most Used</div>
               </div>
               <div class="mt-2">
-                <%#= f.collection_radio_buttons :rating, [[5, 'Men'], [4, 'Woman'], [3, 'Phone'], [2, 'Laptop'], [1, 'Watch']], :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
-                <!--                  <div class="flex items-center">-->
-                <!--                    <span class="mr-2"><%#= b.radio_button(class: "rating-input") %></span>-->
-                <!--                    <span class="f6 font-normal fw2"><%#= b.label %></span>-->
-                <!--                  </div>-->
-                <%# end %>
-
-                <%#= f.input :category_ids, as: :check_boxes, collection: [['Men', 1], ['Woman', 2], ["Phone", 3], ['Laptop', 2], ['Watch', 1]] %>
-
                 <%= f.collection_check_boxes :category_ids, @categories.map { |it| [it.id, it.name] }, :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
                   <div class="flex items-center">
                     <label class="flex justify-center items-center m-0">

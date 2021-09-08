@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+#noinspection ALL
 class ProductMeta < ApplicationRecord
   mount_uploaders :images, ImageUploader
   serialize :images, JSON
@@ -25,8 +26,19 @@ class ProductMeta < ApplicationRecord
   accepts_nested_attributes_for :product_advanced, reject_if: :all_blank
   accepts_nested_attributes_for :product_extra, reject_if: :all_blank
   accepts_nested_attributes_for :product_sale_price, reject_if: :all_blank
-  accepts_nested_attributes_for :product_detail, reject_if: :all_blank
+  accepts_nested_attributes_for :product_detail
 
   delegate :name, :regular_price, to: :product_detail
   delegate :sale_price, to: :product_sale_price
+
+  # Validation
+  validates_associated :product_detail
+  validate :images_cant_be_blank_if_dont_have_variations
+
+  def images_cant_be_blank_if_dont_have_variations
+    if product.is_a?(Product) && product.product_variations.blank? && images.blank?
+      errors.add(:images, 'Images can not be blank if is simple product')
+    end
+  end
+
 end
