@@ -100,7 +100,7 @@
         <section class="mx-3 child-bg-white">
           <!-- Public -->
           <div class="border relative child-mx-2 overflow-hidden">
-            <div class="p-1 py-2 m-0-imp"> Can't verify CSRF token authenticity.
+            <div class="p-1 py-2 m-0-imp">
               <p class="ml-1 f4 m-0 font-josesans font-bold">Publish</p>
             </div>
             <hr style="margin: 0 !important;">
@@ -132,7 +132,7 @@
                 <p class="d-block custom-btn-wide rounded-extra-lg color-primary-dark-bg text-white" href="#">Copy</p>
               </div>
               <div>
-                <%= f.submit "Publish", class: 'custom-btn-wide rounded-extra-lg color-primary-dark-bg text-white' %>
+                <%= f.submit "Publish", class: 'custom-btn-wide rounded-extra-lg color-primary-dark-bg text-white shadow-none' %>
               </div>
             </div>
             <div class="flex justify-between">
@@ -156,7 +156,7 @@
                 <div>All categories</div>
                 <div class="ml-2">Most Used</div>
               </div>
-              <div class="mt-2">
+              <div id="container-product-form-categories" class="mt-2">
                 <%= f.collection_check_boxes :category_ids, @categories.map { |it| [it.id, it.name] }, :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
                   <div class="flex items-center">
                     <label class="flex justify-center items-center m-0">
@@ -168,11 +168,6 @@
                   </div>
                 <% end %>
               </div>
-
-              <!--              <div class="flex mt-3 items-center">-->
-              <!--                <input type="checkbox">-->
-              <!--                <span class="f6 fw2 ml-1">Uncategorized</span>-->
-              <!--              </div>-->
             </div>
 
             <div class="my-3" id="add_new_category">
@@ -183,23 +178,15 @@
                 <% unless @categories.blank? %>
                   <%= f.select :category_id, options_for_select(@categories.map { |s| [s.name, s.id] }) %>
                 <% end %>
-                <input type="text" name="category_name" required id="input_new_category" placeholder="New Category"
-                       class="w-full px-2 py-2 font-medium border-gray-200 placeholder-gray-500 text-sm
-                        focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800 my-2 <%= @categories.blank? ? "" : "hidden" %>">
-                <%#= f.input_field :category_name,
-                                  display: true,
-                                  # collection: @categories,
-                                  required: true,
-                                  prompt: "Select Category",
-                                  # input_html: {class: "hidden", id: "input_new_category"},
-                                  # class: "hidden mt-3",
-                                  id: "input_new_category",
-                                  placeholder: "New Category",
-                                  # autofocus: true,
-                                  # input_html: {autocomplete: "email", class: "w-full px-2 py-2 rounded-lg font-medium border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800 my-2", place_holder: "email"},
-                                  label_html: {class: "hidden"}
+                <div id="container-new-category" class=" <%= @categories.blank? ? "" : "hidden" %>">
+                  <input type="text" name="category_name" required id="input_new_category" placeholder="New Category"
+                         class="w-full px-2 py-1 font-medium border-gray-200 placeholder-gray-500 text-sm
+                        focus:outline-none focus:border-gray-400 focus:bg-white placeholder-gray-800 my-2">
+                  <div class="inline-block">
+                    <div id="btn-add-new-category" class="custom-btn-normal inline-block f6">Add new category</div>
+                  </div>
+                </div>
 
-                %>
               </div>
             </div>
 

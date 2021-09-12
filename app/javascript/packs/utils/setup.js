@@ -1,6 +1,21 @@
 window.setupInputQty = function () {
     document.getElementById("add_new_category")?.addEventListener("click", function () {
-        document.getElementById("input_new_category").style.display = "inherit"
+        document.getElementById("container-new-category").style.display = "inherit"
+    })
+
+    document.getElementById("btn-add-new-category").addEventListener("click", function () {
+        const category_name = document.getElementById("input_new_category").value
+        Rails.ajax({
+            url: "/products/add_category",
+            type: "post",
+            beforeSend(xhr, options) {
+                xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8')
+                // Workaround: add options.data late to avoid Content-Type header to already being set in stone
+                // https://github.com/rails/rails/blob/master/actionview/app/assets/javascripts/rails-ujs/utils/ajax.coffee#L53
+                options.data = JSON.stringify({'category_name': category_name})
+                return true
+            },
+        })
     })
 
     // let qtyInput = document.getElementsByClassName('qty-input')[0]

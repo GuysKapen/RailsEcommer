@@ -178,6 +178,22 @@ class ProductsController < ApplicationController
     end
   end
 
+  # post /products/add_category
+  # @param category_name
+  def add_category
+    category_name = params[:category_name]
+    @new_category = current_user.categories.build(name: category_name) unless category_name.nil? || category_name.blank?
+
+    respond_to do |format|
+      if @new_category.save
+        format.js { render 'products/response_add_category', locals: {success: true} }
+      else
+        format.js { render 'products/response_add_category', locals: {success: false} }
+      end
+    end
+
+  end
+
   # @return [FalseClass]
   def add_to_cart
     # Find cart if has any

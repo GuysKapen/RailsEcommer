@@ -13,8 +13,6 @@ Rails.application.routes.draw do
   get 'about' => 'about#index'
   root to: 'home#index'
 
-  post     'new_product' => 'products#create'
-  get      'new_product' => 'products#new'
   resources :products do
     member do
       post :add_to_cart
@@ -34,6 +32,7 @@ Rails.application.routes.draw do
       post :show_replies
       post :add_reply_form
       post :toggle_like
+      post :add_category
     end
   end
   resources :user do

@@ -1,0 +1,15 @@
+<% if success %>
+$("#container-product-form-categories").append(
+    "        <div class=\"flex items-center\">\n" +
+    "          <label class=\"flex justify-center items-center m-0\" data-children-count=\"1\">\n" +
+    "            <input class=\"opacity-0\" type=\"checkbox\" value=\"<%= @new_category.id %>\" name=\"product[category_ids][]\" id=\"product_category_ids_<%= @new_category.id %>\">\n" +
+    "            <span class=\"inline-block rounded-circle icon-size checkbox-size border-color-default border-1 checkbox-span mr-2\"></span>\n" +
+    "          </label>\n" +
+    "\n" +
+    "          <span class=\"f6 font-normal fw2\"><label for=\"product_category_ids_<%= @new_category.id %>\"><%= @new_category.name %></label></span>\n" +
+    "        </div>\n"
+)
+
+<% else %>
+toastr.error("Error when adding new category! Please try again.")
+<% end %>
