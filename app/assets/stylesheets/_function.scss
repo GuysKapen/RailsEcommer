@@ -369,16 +369,17 @@ label input[type="checkbox"] {
 
 label input[type="checkbox"]:checked ~ .checkbox-span {
   //border-color: var(--borderColorChecked);
-  background-color: #1c1c1c;
+  //background-color: #1c1c1c;
   border-width: 2px;
-  //background-color: #33c8c8;
+  background-color: #4299e1;
 }
 
 label input[type="checkbox"]:checked ~ .checkbox-span:after {
-  content: "\f00c";
-  font-size: 10px;
-  margin: 2px;
-  display: flex;
+  //content: "\f00c";
+  //font-size: 10px;
+  //margin: 3px;
+  //display: flex;
+  //color: white;
 }
 
 label input[type="checkbox"] .section-credit-card {

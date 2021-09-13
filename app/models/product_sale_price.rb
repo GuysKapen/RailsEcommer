@@ -24,6 +24,6 @@ class ProductSalePrice < ApplicationRecord
   end
 
   def sale_price_must_less_than_regular_price
-    errors.add(:sale_price, 'Sale price must less than regular price') if sale_price > product_detail.regular_price
+    errors.add(:sale_price, 'Sale price must less than regular price') if product_detail && sale_price > product_detail.regular_price
   end
 end
