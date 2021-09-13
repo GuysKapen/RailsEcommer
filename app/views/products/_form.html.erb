@@ -78,7 +78,7 @@
                 </div>
 
                 <div class="flex ml-3 child-my-auto ">
-                  <%= select_tag "product_type", raw("<option value='normal'>Simple Product</option><option value='variation'>Variation Product</option>"), class: "px-12 w-full", id: "select-product-type" %>
+                  <%= select_tag(:product_type, options_for_select([["Simple Product", 'normal'], ["Variation Product", 'variation']], @product_type), class: "px-12 w-full", id: "select-product-type") %>
                   <div id="button-change-product-type" class="color-primary-dark-bg text-white rounded-extra-lg py-1 px-4 cursor-pointer duration-1000 ml-2 width-min">OK</div>
                 </div>
                 <!-- !Product Type -->
