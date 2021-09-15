@@ -1,140 +1,201 @@
-<h3 class="text-center my-5">My account</h3>
-<section class="w-11/12 mx-auto">
-  <div class="flex mb-3 mx-0 tab-view pr-2">
-    <div class="w-3/12 mx-0 px-0 child-my-2-not-first tabs-panel">
-
-      <div class="flex mt-0-imp mx-0 flex cursor-pointer active tab-panel background-hover-white py-2">
-        <div class="w-2/12 px-4 text-left">
-          <i class="fas mt-1 fa-wrench text-center"></i>
+<section class="w-11/12 mx-auto rounded-lg shadow-full my-8 overflow-hidden">
+  <div class="flex mx-0 tab-view">
+    <div class="w-2/12 ml-8 mx-0 px-0 child-my-2-not-first tabs-panel my-32">
+      <div class="flex mt-0-imp mx-0 flex cursor-pointer active bg-white tab-panel py-2">
+        <div class="flex items-baseline w-full px-4 text-left f4">
+          <i class="w-3/12 block fas mt-1 fa-wrench text-center"></i>
+          <p class="ml-3">Dashboard</p>
         </div>
-        <p class="ml-3 f4">Dashboard</p>
       </div>
 
-      <div class="flex mt-1 mx-0 flex cursor-pointer tab-panel background-hover-white py-2">
-        <div class="w-2/12 px-4 text-left">
-          <i class="fas mt-1 fa-shipping-fast text-center"></i>
+      <div class="flex mt-1 mx-0 flex cursor-pointer tab-panel py-2">
+        <div class="flex items-baseline w-full px-4 text-left f4">
+          <i class="w-3/12 block fas mt-1 fa-shipping-fast text-center"></i>
+          <p class="ml-3 f4">Orders</p>
         </div>
-        <p class="ml-3 f4">Orders</p>
       </div>
 
-      <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel background-hover-white py-2">
-        <div class="w-2/12 px-4 text-left">
-          <i class="fas mt-1 fa-paperclip text-center"></i>
+      <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel py-2">
+        <div class="flex items-baseline w-full px-4 text-left f4">
+          <i class="w-3/12 block fas mt-1 fa-paperclip text-center"></i>
+          <p class="ml-3 f4">Address</p>
         </div>
-        <p class="ml-3 f4">Address</p>
       </div>
 
-      <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel background-hover-white py-2">
-        <div class="w-2/12 px-4 text-left">
-          <i class="fas mt-1 fa-ethernet text-center"></i>
+      <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel py-2">
+        <div class="flex items-baseline w-full px-4 text-left f4">
+          <i class="w-3/12 block fas mt-1 fa-ethernet text-center"></i>
+          <p class="ml-3 f4">Payment</p>
         </div>
-        <p class="ml-3 f4">Payment methods</p>
       </div>
 
-      <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel background-hover-white py-2">
-        <div class="w-2/12 px-4 text-left">
-          <i class="fas mt-1 fa-ellipsis-v text-center"></i>
+      <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel py-2">
+        <div class="flex items-baseline w-full px-4 text-left f4">
+          <i class="w-3/12 block fas mt-1 fa-ellipsis-v text-center"></i>
+          <p class="ml-3 f4">Account</p>
         </div>
-        <p class="ml-3 f4">Account detail</p>
       </div>
 
-      <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel background-hover-white py-2">
-        <div class="w-2/12 px-4 text-left">
-          <i class="fas mt-1 fa-users-cog text-center"></i>
+      <div class="flex mx-0 mt-1 flex cursor-pointer tab-panel py-2">
+        <div class="flex items-baseline w-full px-4 text-left f4">
+          <i class="w-3/12 block fas mt-1 fa-users-cog text-center"></i>
+          <p class="ml-3 f4">Wishlist</p>
         </div>
-        <p class="ml-3 f4">Wishlist</p>
       </div>
 
     </div>
-    <div class="w-9/12 ml-12 px-0 tabs-content">
+    <div class="w-10/12 px-8 ml-8 px-0 tabs-content background-white-grey">
       <!-- Dashboard -->
-      <div class="active tab-content ">
-        <div class="flex color-fade my-3">
-          <div class="w-1/12 pl-0">#</div>
-          <div class="w-3/12">Product Name</div>
-          <div class="w-2/12">Sale</div>
-          <div class="w-2/12">Price</div>
-          <div class="w-2/12">Earning</div>
-          <div class="w-2/12">Product Status</div>
-        </div>
-        <hr class="color-fade my-2">
-        <% @products.each do |product| %>
-          <div>
-            <div class="flex mt-2 ml-0 items-center">
-              <div class="w-1/12 flex justify-start pl-0">
-                #<%= product.id %>
-              </div>
-              <div class="w-3/12 flex items-center">
-                <div class="cursor-pointer text-left mix-blend-darken bg-product-img w-4/12">
-                  <%= image_tag(product_first_img(product), class: 'w-16 h-16 mix-blend-darken object-contain') %>
+      <div class="tab-content active py-8">
+
+        <section class="">
+          <div class="flex mx-auto mb-8">
+            <div class="w-1/4 h-24 rounded-lg bg-white relative py-4">
+              <div class="center-inner flex w-9/12">
+                <div class="w-16">
+                  <i class="fas fs-3 fa-dolly"></i>
                 </div>
-                <div class="pl-3 font-baloo font-bold f4 w-8/12">
-                  <%= product.name %>
+                <div class="w-full text-left ml-4">
+                  <p class="mt-2 font-josesans font-bold f3">1230</p>
+                  <p class="color-fade fs-sm-2">Total Sale</p>
                 </div>
               </div>
-              <div class="w-2/12 overflow-hidden overflow-ellipsis">200</div>
-              <div class="w-2/12"><%= product.price_text %></div>
-              <div class="w-2/12 font-bold">$1200</div>
-              <div class="w-2/12"><i class="fa fa-check-circle"></i></div>
             </div>
-            <hr class="color-fade my-2">
+            <div class="w-1/4 h-24 ml-4 rounded-lg bg-white relative py-4">
+              <div class="center-inner flex w-9/12">
+                <div class="w-16">
+                  <i class="fas fs-3 fa-balance-scale-left"></i>
+                </div>
+                <div class="w-full text-left ml-4">
+                  <p class="mt-2 font-josesans font-bold f3">$2980</p>
+                  <p class="color-fade fs-sm-2">Total Earning</p>
+                </div>
+              </div>
+            </div>
+            <div class="w-1/4 h-24 ml-4 rounded-lg bg-white relative py-4">
+              <div class="center-inner flex w-9/12">
+                <div class="w-16">
+                  <i class="fas fs-3 fa-user-cog"></i>
+                </div>
+                <div class="w-full text-left ml-4">
+                  <p class="mt-2 font-josesans font-bold f3">$1080</p>
+                  <p class="color-fade fs-sm-2">Total Profit</p>
+                </div>
+              </div>
+            </div>
+            <div class="w-1/4 h-24 ml-4 rounded-lg bg-white relative py-4">
+              <div class="center-inner flex w-10/12">
+                <div class="w-16">
+                  <i class="fas fs-3 fa-highlighter"></i>
+                </div>
+                <div class="w-full text-left ml-4">
+                  <p class="mt-2 font-josesans font-bold f3">$230</p>
+                  <p class="color-fade fs-sm-2">This Month Profit</p>
+                </div>
+              </div>
+            </div>
+
           </div>
-        <% end %>
+        </section>
+
+        <section class="my-8 p-4 rounded-md bg-white">
+          <h3 class="font-josesans f3 mb-4 font-bold">Earning Statistic</h3>
+          <div style="position: relative; height:26rem" class="w-full">
+            <canvas id="myChart"></canvas>
+          </div>
+
+        </section>
+
+        <section class="bg-white rounded-md p-8">
+          <div class="flex">
+            <div class="w-1/12 pl-0 font-bold font-josesans">No</div>
+            <div class="w-3/12 font-bold font-josesans">Product Name</div>
+            <div class="w-2/12 font-bold font-josesans">Sale</div>
+            <div class="w-2/12 font-bold font-josesans">Price</div>
+            <div class="w-2/12 font-bold font-josesans">Earning</div>
+            <div class="w-2/12 font-bold font-josesans">Product Status</div>
+          </div>
+          <hr class="color-fade my-2">
+          <% @products.slice(0, 3).each do |product| %>
+            <div>
+              <div class="flex mt-2 ml-0 items-center">
+                <div class="w-1/12 flex justify-start pl-0">
+                  #<%= product.id %>
+                </div>
+                <div class="w-3/12 flex items-center">
+                  <div class="cursor-pointer text-left mix-blend-darken bg-product-img w-4/12">
+                    <%= image_tag(product_first_img(product), class: 'w-16 h-16 mix-blend-darken object-contain') %>
+                  </div>
+                  <div class="pl-3 font-baloo font-bold f4 w-8/12">
+                    <%= product.name %>
+                  </div>
+                </div>
+                <div class="w-2/12 overflow-hidden overflow-ellipsis">200</div>
+                <div class="w-2/12"><%= product.price_text %></div>
+                <div class="w-2/12 font-bold">$1200</div>
+                <div class="w-2/12"><i class="fa fa-check-circle"></i></div>
+              </div>
+              <hr class="color-fade my-2">
+            </div>
+          <% end %>
+        </section>
 
       </div>
       <!-- !Dashboard -->
 
       <!-- Order -->
-      <div id="input-inventory" class="tab-content ">
-        <div class="flex color-fade my-3">
-          <div class="flex w-2/12 pl-0">
-            <div class="w-4/12 pl-0">#</div>
-            <div class="">Date</div>
-          </div>
-          <div class="w-2/12">Status</div>
-          <div class="w-2/12">Items</div>
-          <div class="w-2/12">Customer</div>
-          <div class="w-1/12">Country</div>
-          <div class="w-1/12">Delivery</div>
-          <div class="w-1/12">Total</div>
-          <div class="w-1/12">Paid</div>
-        </div>
-        <hr class="color-fade my-2">
-        <% @orders.each do |order| %>
-          <div>
-            <div class="flex mt-2 ml-0 justify-start">
-              <div class="w-2/12 pr-2 flex-shrink-0 flex justify-start pl-0">
-                <div class="w-4/12 pl-0">
-                  #<%= order.id %>
-                </div>
-                <div class="w-8/12">
-                  <span class="font-bold"><%= order.created_at.to_formatted_s(:long_ordinal) %></span>
-                </div>
-              </div>
-              <div class="w-2/12 pr-2 font-bold flex-shrink-0">Ready to ship</div>
-              <div class="w-2/12 pr-2">
-                <% order.product_carts.each do |product_cart| %>
-                  <div>
-                    <%= product_cart.quantity %> x <%= product_cart.product.name %>
-                  </div>
-                <% end %>
-              </div>
-              <div class="w-2/12 pr-2 text-center overflow-hidden overflow-ellipsis flex-shrink-0"><%= order.user.email %></div>
-              <div class="w-1/12 pr-2 text-center flex-shrink-0"><%= order.country %></div>
-              <div class="w-1/12 pr-2 text-center flex-shrink-0">Next Day</div>
-              <div class="w-1/12 pr-2 text-center font-bold flex-shrink-0"><%= order.total %></div>
-              <div class="w-1/12 pr-2 text-center flex-shrink-0"><i class="fa fa-check-circle"></i></div>
+      <div id="input-inventory" class="tab-content py-8">
+        <section class="bg-white rounded-md p-8 my-auto">
+          <div class="flex my-3">
+            <div class="font-bold font-josesans flex w-2/12 pl-0">
+              <div class="w-4/12 pl-0">No</div>
+              <div class="">Date</div>
             </div>
-            <hr class="color-fade my-2">
+            <div class="font-bold font-josesans w-2/12 pr-2">Status</div>
+            <div class="font-bold font-josesans w-2/12 pr-2">Items</div>
+            <div class="font-bold font-josesans w-2/12 pr-2">Customer</div>
+            <div class="font-bold font-josesans w-1/12 pr-2">Country</div>
+            <div class="font-bold font-josesans w-1/12 pr-2">Delivery</div>
+            <div class="font-bold font-josesans w-1/12 pr-2 text-center">Total</div>
+            <div class="font-bold font-josesans w-1/12 pr-2 text-center">Paid</div>
           </div>
-        <% end %>
+          <hr class="color-fade my-2">
+          <% @orders.each do |order| %>
+            <div>
+              <div class="flex mt-2 ml-0 justify-start">
+                <div class="w-2/12 pr-2 flex-shrink-0 flex justify-start pl-0">
+                  <div class="w-4/12 pl-0">
+                    #<%= order.id %>
+                  </div>
+                  <div class="w-8/12">
+                    <span class="font-bold"><%= order.created_at.to_formatted_s(:long_ordinal) %></span>
+                  </div>
+                </div>
+                <div class="w-2/12 pr-2 font-bold flex-shrink-0">Ready to ship</div>
+                <div class="w-2/12 pr-2">
+                  <% order.product_carts.each do |product_cart| %>
+                    <div>
+                      <%= product_cart.quantity %> x <%= product_cart.product.name %>
+                    </div>
+                  <% end %>
+                </div>
+                <div class="w-2/12 pr-2 text-center overflow-hidden overflow-ellipsis flex-shrink-0"><%= order.user.email %></div>
+                <div class="w-1/12 pr-2 text-center flex-shrink-0"><%= order.country %></div>
+                <div class="w-1/12 pr-2 text-center flex-shrink-0">Next Day</div>
+                <div class="w-1/12 pr-2 text-center font-bold flex-shrink-0"><%= order.total %></div>
+                <div class="w-1/12 pr-2 text-center flex-shrink-0"><i class="fa fa-check-circle"></i></div>
+              </div>
+              <hr class="color-fade my-2">
+            </div>
+          <% end %>
+        </section>
 
       </div>
       <!-- !Order -->
 
       <!-- Address -->
       <div class="tab-content">
-        <section class="m-5">
+        <section class="m-5 bg-white rounded-md">
           <% @order_user_infos.each do |user_info| %>
             <div class="border-color-default border-solid border-1 rounded-md shadow-md p-3">
               <div class="flex items-center">
@@ -182,8 +243,8 @@
       <!-- !Payment -->
 
       <!-- Account -->
-      <div id="input-inventory" class="tab-content">
-        <section class="m-5">
+      <div id="input-inventory" class="tab-content py-8">
+        <section class="bg-white rounded-md">
           <div class="border-color-default border-solid border-1 rounded-md shadow-md p-3">
             <div class="flex items-center mt-2">
               <div class="w-4/12 font-bold">Email:</div>
@@ -208,7 +269,7 @@
       <!-- !Account -->
 
       <!-- Wishlist -->
-      <div class="tab-content">
+      <div class="tab-content py-8">
         <% unless @wishlist.nil? %>
           <%= render 'products/product_grid_items', products: @wishlist.product_carts.map(&:product) %>
         <% end %>
