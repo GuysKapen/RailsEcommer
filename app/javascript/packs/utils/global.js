@@ -1,3 +1,4 @@
+require('./chart')
 require('./suggestags')
 require('./setup')
 require("./custom_select")

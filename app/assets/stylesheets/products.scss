@@ -161,22 +161,14 @@
 
 .tab-panel {
   cursor: pointer;
-  border-bottom: 1px solid #dbdbdb;
+  //border-bottom: 1px solid #dbdbdb;
   margin: 0;
   font-family: JoseSans, serif;
   font-weight: bold;
-  background-color: #efefef;
-}
-
-.tabs-content * {
-  //overflow: hidden;
-  //position: relative;
+  //background-color: #efefef;
 }
 
 .tabs-content > div {
-  //position: absolute;
-
-  //top: -200%;
   display: none;
 }
 
@@ -197,7 +189,7 @@
 }
 
 .tab-panel.active {
-  background: #dcdcdc;
+  //background: #dcdcdc;
 }
 
 .grid {
