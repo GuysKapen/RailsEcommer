@@ -33,10 +33,12 @@
       <div class="center-inner z-10 text-white w-full">
         <h5>Watches</h5>
         <h5 class="mt-4 font-bold font-josesans">50% OFF TODAY</h5>
-        <div class="absolute rounded-circle ml-auto mr-8 w-24 h-24 bg-black mt-4 flex flex-col justify-center items-center">
-          <span class="material-icons text-white">north_east</span>
-          <p class="text-white h6 font-josesans mt-2">Shop now</p>
-        </div>
+        <%= link_to products_url do %>
+          <div class="absolute rounded-circle ml-auto mr-8 w-24 h-24 bg-black mt-4 flex flex-col justify-center items-center">
+            <span class="material-icons text-white">north_east</span>
+            <p class="text-white h6 font-josesans mt-2">Shop now</p>
+          </div>
+        <% end %>
       </div>
     </div>
     <div class="lg:w-4/12 sm:w-full my-3 p-0 cursor-pointer relative">
@@ -55,10 +57,12 @@
       <div class="center-inner z-10 text-white ">
         <h5>Head Phones</h5>
         <h5 class="font-josesans font-bold mt-4">40% OFF TODAY ONLY</h5>
-        <div class="absolute rounded-circle ml-auto -right-1/2 w-24 h-24 bg-black mt-4 flex flex-col justify-center items-center">
-          <span class="material-icons text-white flip-x">north_east</span>
-          <p class="text-white h6 font-josesans mt-2">Shop now</p>
-        </div>
+        <%= link_to products_url do %>
+          <div class="absolute rounded-circle ml-auto -right-1/2 w-24 h-24 bg-black mt-4 flex flex-col justify-center items-center">
+            <span class="material-icons text-white flip-x">north_east</span>
+            <p class="text-white h6 font-josesans mt-2">Shop now</p>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -89,10 +93,12 @@
     <div class="pl-16 mt-1 z-50">
       <h5 class="font-josesans font-bold">GET UP TO 30% OFF TODAY ONLY</h5>
       <H3>THE 4K HDR SCREEN PHONE</H3>
-      <div class="rounded-circle w-24 h-24 bg-black mt-8 flex flex-col justify-center items-center">
-        <span class="material-icons text-white flip-x">north_east</span>
-        <p class="text-white h6 font-josesans mt-2">Shop now</p>
-      </div>
+      <%= link_to products_url do %>
+        <div class="rounded-circle w-24 h-24 bg-black mt-8 flex flex-col justify-center items-center">
+          <span class="material-icons text-white flip-x">north_east</span>
+          <p class="text-white h6 font-josesans mt-2">Shop now</p>
+        </div>
+      <% end %>
     </div>
     <div class="background-light my-auto absolute right-0 bottom-0 transform -translate-y-1/8">
       <%= image_tag("phone_sss20.jpeg", class: "mix-blend-darken w-9/12 h-75") %>
@@ -103,10 +109,12 @@
     <div class="pl-16 mt-1 z-50">
       <h5 class="font-josesans font-bold">GET UP TO 20% OFF TODAY ONLY</h5>
       <H3>THE 4K 128MPS CAMERA</H3>
-      <div class="rounded-circle w-24 h-24 bg-white mt-8 flex flex-col justify-center items-center">
-        <span class="material-icons">north_east</span>
-        <p class="h6 font-josesans mt-2">Shop now</p>
-      </div>
+      <%= link_to products_url do %>
+        <div class="rounded-circle w-24 h-24 bg-white mt-8 flex flex-col justify-center items-center">
+          <span class="material-icons">north_east</span>
+          <p class="h6 font-josesans mt-2">Shop now</p>
+        </div>
+      <% end %>
     </div>
     <div class="background-light my-auto absolute right-0 bottom-0 transform -translate-y-1/8">
       <%= image_tag("phones.jpg", class: "mix-blend-darken w-9/12 h-75") %>

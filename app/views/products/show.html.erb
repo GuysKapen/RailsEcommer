@@ -27,7 +27,15 @@
 
       </div>
       <div class="col-sm-6 w-6/12 py-2">
-        <h5 class="font-baloo font-size-20 f1 fw8 mb-0"><%= @product.name %></h5>
+        <div class="flex justify-between items-center">
+          <h5 class="font-baloo font-size-20 f1 fw8 mb-0"><%= @product.name %></h5>
+          <% if current_user.id == @product.user.id %>
+            <%= link_to edit_product_url(@product) do %>
+              <div class="btn ml-4 border-2 py-1 px-8 text-dark bg-light fw6 px-5 cursor-pointer">Edit</div>
+            <% end %>
+          <% end %>
+        </div>
+
         <div class="flex items-center" id="product-price-container">
           <%= render 'product_price', regular_price: @product.regular_price_text,
                      sale_price: @product.sale_price_text %>

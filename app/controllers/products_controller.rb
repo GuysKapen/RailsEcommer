@@ -18,6 +18,7 @@ class ProductsController < ApplicationController
                           .joins(product_meta: [:product_sale_price])
                           .where('sale_date_start < ?', 0.day.ago)
                           .map { |product| ProductView.new(product) }
+    @categories = Category.all
   end
 
   # GET /products/1

@@ -26,6 +26,10 @@
   background-color: #62ba91;
 }
 
+.bg-none-imp {
+  background: none !important;
+}
+
 .bg-image-item {
   background-color: #f5f5f5;
 }
@@ -165,7 +169,7 @@
   margin: 0;
   font-family: JoseSans, serif;
   font-weight: bold;
-  //background-color: #efefef;
+  background-color: #efefef;
 }
 
 .tabs-content > div {
@@ -189,7 +193,7 @@
 }
 
 .tab-panel.active {
-  //background: #dcdcdc;
+  background: #dcdcdc !important;
 }
 
 .grid {

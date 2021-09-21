@@ -35,8 +35,11 @@
 
       <hr class="my-3">
       <section>
-        <h5 class="text-gray-800 f5 p-0 m-0 font-bold uppercase">Shopping Category : </h5>
-        <p class="mt-3 f5">Clothing <span class="color-fade f6">(1,872)</span></p>
+        <h5 class="text-gray-800 f5 p-0 mb-3 font-bold uppercase">Shopping Category : </h5>
+        <% @categories.each do |category| %>
+          <p class="mt-1 f5"><%=p category.name %> <span class="color-fade f6">(<%= category.products.size %>)</span></p>
+        <% end %>
+        <p class="mt-1 f5">Clothing <span class="color-fade f6">(1,872)</span></p>
         <p class="mt-1 f5">Shoes <span class="color-fade f6">(889)</span></p>
         <p class="mt-1 f5">Bags <span class="color-fade f6">(3922)</span></p>
         <p class="mt-1 f5">Accessories <span class="color-fade f6">(892)</span></p>
@@ -101,7 +104,7 @@
               <p class="fw6 f6 font-bold text-gray-800"><%= product.price_text %></p>
             </div>
           </div>
-      <% end %>
+        <% end %>
       </section>
 
       <!-- Recently Viewed -->
@@ -167,10 +170,10 @@
       <div class="mt-5 flex items-center">
         <span class="material-icons-outlined material-icons">filter_list</span>
         <p class="f5 ml-1 color-fade">Sort by -</p>
-          <select name="" id="select-product-sort" class="border-none-imp f5 pl-0-imp ml-1">
-            <option value="price-desc">Price High to Low</option>
-            <option value="price-asc">Price Low to High</option>
-          </select>
+        <select name="" id="select-product-sort" class="border-none-imp f5 pl-0-imp ml-1">
+          <option value="price-desc">Price High to Low</option>
+          <option value="price-asc">Price Low to High</option>
+        </select>
       </div>
       <section class="mt-3">
         <div id="container-product-grid-items-product-index">
