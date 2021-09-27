@@ -213,28 +213,30 @@
 
       <!-- Payment -->
       <div id="input-inventory" class="tab-content flex flex-col h-full">
-        <div class="flex color-fade my-3">
-          <div class="w-4/12">Method</div>
-          <div class="w-4/12">Expire</div>
-        </div>
-        <hr class="color-fade my-2">
-        <div>
-          <div class="flex mt-2 ml-0">
-            <div class="w-4/12 font-bold">Visa ending in 4242</div>
-            <div class="w-4/12">12/34</div>
-            <div class="flex justify-end flex-grow">
-              <div class="custom-btn-wide">
-                Delete
-              </div>
-            </div>
+        <div class="my-8 p-8 bg-white rounded-md">
+          <div class="flex my-3 font-josesans font-bold f3">
+            <div class="w-4/12">Method</div>
+            <div class="w-4/12">Expire</div>
           </div>
           <hr class="color-fade my-2">
-          <div class="flex mt-2 ml-0">
-            <div class="w-4/12 font-bold">Paypal</div>
-            <div class="w-4/12">12/99</div>
-            <div class="flex-grow flex justify-end align-self-end">
-              <div class="custom-btn-wide">
-                Delete
+          <div>
+            <div class="flex mt-2 ml-0">
+              <div class="w-4/12 font-bold">Visa ending in 4242</div>
+              <div class="w-4/12">12/34</div>
+              <div class="flex justify-end flex-grow">
+                <div class="custom-btn-wide">
+                  Delete
+                </div>
+              </div>
+            </div>
+            <hr class="color-fade my-2">
+            <div class="flex mt-2 ml-0">
+              <div class="w-4/12 font-bold">Paypal</div>
+              <div class="w-4/12">12/99</div>
+              <div class="flex-grow flex justify-end align-self-end">
+                <div class="custom-btn-wide">
+                  Delete
+                </div>
               </div>
             </div>
           </div>
@@ -245,7 +247,7 @@
       <!-- Account -->
       <div id="input-inventory" class="tab-content py-8">
         <section class="bg-white rounded-md">
-          <div class="border-color-default border-solid border-1 rounded-md shadow-md p-3">
+          <div class="border-color-default border-solid border-1 rounded-md shadow-md p-8">
             <div class="flex items-center mt-2">
               <div class="w-4/12 font-bold">Email:</div>
               <div><%= current_user.email %></div>
