@@ -178,7 +178,11 @@
                 <div class="field mt-2 w-full">
                   <div class="control">
                     <div class="w-full cursor-pointer text-left button-file-upload-data-id" id="<%= "button-upload-file-variation-%s" % (num_start + i) %>" data-id="<%= num_start + i %>">
-                      <i class="fa fa-3x fa-cloud-upload-alt text-blue-600"></i>
+                      <% if @product.product_variations[num_start + i].product_meta.images.empty? %>
+                        <i class="fa fa-3x fa-cloud-upload-alt text-blue-600"></i>
+                      <% else %>
+                        <%= image_tag(@product.product_variations[num_start + i].product_meta.images[0].url, class: "w-24 cursor-pointer") %>
+                      <% end %>
                     </div>
                     <div class="flex absolute left-full w-0 h-0 hidden">
                       <span class="file-cta"><span class="file-icon"><i class="fa fa-upload"></i></span><span class="file-label">Choose a file…</span></span>
