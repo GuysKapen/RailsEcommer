@@ -380,8 +380,6 @@ label input[type="checkbox"] {
 }
 
 label input[type="checkbox"]:checked ~ .checkbox-span {
-  //border-color: var(--borderColorChecked);
-  //background-color: #1c1c1c;
   border-width: 2px;
   background-color: #4299e1;
 }

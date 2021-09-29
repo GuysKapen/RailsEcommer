@@ -52,17 +52,58 @@
             <!-- Carousel image preview -->
             <div class="carousel relative rounded-md overflow-hidden pr-4 my-4">
               <div class="carousel-inner relative overflow-hidden w-full">
+                <%= size = nil%>
 
                 <div id="product-image-upload-preview-carousel">
 
+                  <!-- render images of product when edits -->
+                  <% unless @product.nil? %>
+                    <% if product.product_variations.blank? %>
+                      <% size = product.product_meta.images.size %>
+                      <% product.product_meta.images.each_with_index do |image, index| %>
+                        <input class="carousel-open" type="radio" id="carousel-<%= index + 1 %>" name="carousel" aria-hidden="true" hidden="" <%= 'checked=checked' if index == 0 %>>
+                        <div class="carousel-item absolute opacity-0" style="height: 500px;">
+                          <%= image_tag(image.url, alt: "Product", class: "img-fluid center-inner w-full h-100 max-h-100 object-contain mix-blend-darken") %>
+                        </div>
+                        <label for="carousel-<%= index + 1 - 1 < 1 ? size : index + 1 - 1 %>"
+                               class="control-<%= index + 1 %> w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto"><i
+                          class="fas fa-angle-left mt-3"></i></label>
+                        <label for="carousel-<%= index + 1 + 1 > size ? 1 : index + 1 + 1 %>"
+                               class="next control-<%= index + 1 %> w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto"><i
+                          class="fas fa-angle-right mt-3"></i></label>
+
+                      <% end %>
+                    <% else %>
+                      <% size = product.product_variations.size %>
+                      <% product.product_variations.each_with_index do |variation, index| %>
+                        <input class="carousel-open" type="radio" id="carousel-<%= index + 1 %>" name="carousel" aria-hidden="true" hidden="" <%= 'checked=checked' if index == 0 %>>
+                        <div class="carousel-item absolute" style="height: 500px;">
+                          <div class="block h-full w-full">
+                            <%= image_tag(variation.product_meta.images[0].url, alt: "Product", class: "img-fluid center-inner w-full h-100 object-contain mix-blend-darken") %>
+                          </div>
+                        </div>
+                        <label for="carousel-<%= index + 1 - 1 < 1 ? size : index + 1 - 1 %>"
+                               class="control-<%= index + 1 %> w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto"><i
+                          class="fas fa-angle-left mt-3"></i></label>
+                        <label for="carousel-<%= index + 1 + 1 > size ? 1 : index + 1 + 1 %>"
+                               class="next control-<%= index + 1 %> w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto"><i
+                          class="fas fa-angle-right mt-3"></i></label>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                  <!-- !render images of product when edits -->
+
                 </div>
 
+
                 <!-- Add additional indicators for each slide-->
-                <ol class="carousel-indicators" id="product-image-upload-preview-carousel-indicators">
-                  <li class="inline-block mr-3">
-                    <label for="carousel-1"
-                           class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
-                  </li>
+                <ol class="carousel-indicators">
+                  <% (size || 1).times do |i| %>
+                    <li class="inline-block mr-3">
+                      <label for="carousel-<%= i + 1 %>"
+                             class="carousel-bullet cursor-pointer block text-4xl text-white hover:text-blue-700">•</label>
+                    </li>
+                  <% end %>
                 </ol>
 
               </div>
@@ -160,7 +201,7 @@
                 <%= f.collection_check_boxes :category_ids, @categories.map { |it| [it.id, it.name] }, :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
                   <div class="flex items-center">
                     <label class="flex justify-center items-center m-0">
-                      <%= b.check_box(class: "opacity-0") %>
+                      <%= b.check_box(class: "opacity-0", checked: @product.categories.include?(b.value)) %>
                       <span class="inline-block rounded-circle icon-size checkbox-size border-color-default border-1 checkbox-span mr-2"></span>
                     </label>
 
