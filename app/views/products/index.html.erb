@@ -37,7 +37,10 @@
       <section>
         <h5 class="text-gray-800 f5 p-0 mb-3 font-bold uppercase">Shopping Category : </h5>
         <% @categories.each do |category| %>
-          <p class="mt-1 f5"><%=p category.name %> <span class="color-fade f6">(<%= category.products.size %>)</span></p>
+          <%= link_to "/products?cat=#{category.name}" do %>
+            <p class="mt-1 f5"><%= p category.name %> <span class="color-fade f6">(<%= category.products.size %>)</span>
+            </p>
+          <% end %>
         <% end %>
         <p class="mt-1 f5">Clothing <span class="color-fade f6">(1,872)</span></p>
         <p class="mt-1 f5">Shoes <span class="color-fade f6">(889)</span></p>
