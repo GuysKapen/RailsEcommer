@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   # serialize :images, JSON
   # serialize :up_sale, Array
   # serialize :cross_sale, Array
+  paginates_per 9
 
   belongs_to :user
   has_and_belongs_to_many :categories, required: false

@@ -45,6 +45,8 @@ gem 'simple_form', '~> 5.0', '>= 5.0.2'
 gem 'toastr-rails'
 gem 'multi_json'
 gem 'gon'
+# Paging
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

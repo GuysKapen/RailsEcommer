@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = if params[:cat].nil?
-                  Product.all
+                  Product.order(:updated_at).page(params[:page])
                 else
                   Category.find_by('name ILIKE ?', params[:cat])&.products || []
                 end

@@ -185,6 +185,9 @@
               <%= render 'products/product_item', product: product, sort: true %>
             <% end %>
           </div>
+          <div class="align-self-end mt-8 mr-12">
+            <%= paginate @products, outer_window: 3 %>
+          </div>
         </div>
       </section>
     </div>
