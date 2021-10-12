@@ -111,49 +111,23 @@
       </section>
 
       <!-- Recently Viewed -->
-      <hr class="my-3">
-      <section>
-        <h5 class="text-gray-800 f5 p-0 m-0 font-bold uppercase">Recently View Products</h5>
-        <div class="flex m-0 p-0 my-3">
-          <div class="bg-product-img">
-            <%= image_tag('product-11-450x494.jpg', width: 64, height: 64, class: "mix-blend-darken img-size-small object-contain") %>
-          </div>
-          <div class="ml-3 flex flex-col justify-between">
-            <p class="my-0">Gaming Laptop</p>
-            <p class="fw6 f6 font-bold text-gray-800">$900.00</p>
-          </div>
-        </div>
-
-        <div class="flex m-0 p-0 my-3">
-          <div class="bg-product-img">
-            <%= image_tag('product-09-414x414.jpg', width: 64, height: 64, class: "mix-blend-darken img-size-small object-contain") %>
-          </div>
-          <div class="ml-3 flex flex-col justify-between">
-            <p class="my-0">Samsung Phone</p>
-            <p class="fw6 f6 font-bold text-gray-800">$800.00</p>
-          </div>
-        </div>
-
-        <div class="flex m-0 p-0 my-3">
-          <div class="bg-product-img">
-            <%= image_tag('product_4.jpg', width: 64, height: 64, class: "mix-blend-darken img-size-small object-contain") %>
-          </div>
-          <div class="ml-3 flex flex-col justify-between">
-            <p class="my-0">Smart Phone</p>
-            <p class="fw6 f6 font-bold text-gray-800">$600.00</p>
-          </div>
-        </div>
-
-        <div class="flex m-0 p-0 my-3">
-          <div class="bg-product-img">
-            <%= image_tag('pink watch.jpg', width: 64, height: 64, class: "mix-blend-darken img-size-small object-contain") %>
-          </div>
-          <div class="ml-3 flex flex-col justify-between">
-            <p class="my-0">Apple Watch</p>
-            <p class="fw6 f6 font-bold text-gray-800">$500.00</p>
-          </div>
-        </div>
-      </section>
+      <% unless @recent_products.empty? %>
+        <hr class="my-3">
+        <section>
+          <h5 class="text-gray-800 f5 p-0 m-0 font-bold uppercase">Recently View Products</h5>
+          <% @recent_products.each do |product| %>
+            <div class="flex m-0 p-0 my-3">
+              <div class="bg-product-img">
+                <%= image_tag(product_first_img(product), width: 64, height: 64, class: "mix-blend-darken img-size-small object-contain") %>
+              </div>
+              <div class="ml-3 flex flex-col justify-between">
+                <p class="my-0"><%= product.name %></p>
+                <p class="fw6 f6 font-bold text-gray-800"><%= product.price_text %></p>
+              </div>
+            </div>
+          <% end %>
+        </section>
+      <% end %>
       <!-- !Recently Viewed -->
 
       <!-- Details -->

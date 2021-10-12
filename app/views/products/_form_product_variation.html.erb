@@ -222,7 +222,7 @@
               <div class="control flex mt-2 justify-start">
                 <div class="w-50">
                   <% unless @categories.nil? %>
-                    <%= f.select :category_id, options_for_select(@categories.map { |s| [s.name, s.id] }), class: "w-50" %>
+                    <%= f.select :category_ids, options_for_select(@categories.map { |s| [s.name, s.id] }), class: "w-50" %>
                   <% end %>
                 </div>
                 <div>
