@@ -201,7 +201,7 @@
                 <%= f.collection_check_boxes :category_ids, @categories.map { |it| [it.id, it.name] }, :first, :last, item_wrapper_tag: false, boolean_style: :inline do |b| %>
                   <div class="flex items-center">
                     <label class="flex justify-center items-center m-0">
-                      <%= b.check_box(class: "opacity-0", checked: @product.categories.include?(b.value)) %>
+                      <%= b.check_box(class: "opacity-0", checked: @product.category_ids.include?(b.value)) %>
                       <span class="inline-block rounded-circle icon-size checkbox-size border-color-default border-1 checkbox-span mr-2"></span>
                     </label>
 

@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
     @products = if params[:cat].nil?
                   Product.order(:updated_at).page(params[:page])
                 else
-                  Category.find_by('name ILIKE ?', params[:cat])&.products || []
+                  Category.find_by('name ILIKE ?', params[:cat])&.products&.page(params[:page])
                 end
     @product = Product.new
     @recent_products = []
