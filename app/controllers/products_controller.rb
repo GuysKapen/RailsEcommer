@@ -13,10 +13,12 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = if params[:cat].nil?
-                  Product.order(:updated_at).page(params[:page])
+                  Product.order(:updated_at)
                 else
-                  Category.find_by('name ILIKE ?', params[:cat])&.products&.page(params[:page])
+                  Category.find_by('name ILIKE ?', params[:cat])&.products
                 end
+    @num_product_found = @products&.size || 0
+    @products = @products&.page(params[:page])
     @product = Product.new
     @recent_products = []
     (session[:product_recent_ids] || []).each do |id|
