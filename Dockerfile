@@ -81,5 +81,5 @@ RUN bundle install
 
 USER $APP_USER
 COPY --chown=$APP_USER:$APP_USER . $APP_HOME
-CMD RAILS_ENV=${RAILS_ENV} bundle exec rails db:create db:migrate db:seed && bundle exec rails s -p ${PORT} -b '0.0.0.0'
+CMD RAILS_ENV=${RAILS_ENV} bundle exec rails db:migrate db:seed && bundle exec rails s -p ${PORT} -b '0.0.0.0'
 
