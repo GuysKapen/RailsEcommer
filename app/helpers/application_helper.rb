@@ -19,7 +19,7 @@ module ApplicationHelper
 
   def cart_items
     if current_user
-      current_user.cart.product_carts.size
+      current_user.cart&.product_carts&.size || 0
     else
       0
     end

@@ -78,8 +78,10 @@ COPY --chown=$APP_USER:$APP_USER Gemfile $APP_HOME
 COPY --chown=$APP_USER:$APP_USER Gemfile.lock $APP_HOME
 
 RUN bundle install
-
 USER $APP_USER
 COPY --chown=$APP_USER:$APP_USER . $APP_HOME
+USER root
+RUN RAILS_ENV=production bundle exec rake assets:precompile
+USER $APP_USER
 CMD RAILS_ENV=${RAILS_ENV} bundle exec rails db:migrate db:seed && bundle exec rails s -p ${PORT} -b '0.0.0.0'
 

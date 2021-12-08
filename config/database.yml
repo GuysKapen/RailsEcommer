@@ -31,5 +31,5 @@ test:
 production:
   <<: *default
   #  database: db/production.sqlite3
-  database: db/d2u5u2i5agvj4i
+  database: db/ecommericial_production
 

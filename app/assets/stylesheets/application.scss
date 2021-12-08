@@ -3,6 +3,11 @@
 //@import "tailwindcss/base";
 //noinspection CssUnknownTarget
 //@import "tailwindcss/components";
+/*
+ *
+ *= require_tree .
+ *= require_self
+ */
 
 @import "fonts";
 @import "suggestags";
