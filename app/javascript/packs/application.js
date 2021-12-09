@@ -11,7 +11,7 @@
 // require("jquery3")
 // require("popper")
 // require("bootstrap-sprockets")
-// require("@rails/ujs").start()
+// require("@rails/ujs").start()z
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
@@ -19,7 +19,6 @@ require("./utils/global")
 require("./products/product_index")
 
 require("toastr")
-require("../../assets/stylesheets/application.scss") // ADD THIS LINE
 
 import toastr from 'toastr';
 import Rails from "@rails/ujs";

@@ -1,33 +1,33 @@
 @font-face {
   font-family: 'intro';
-  src: url('../fonts/IntroScriptDemo-Medium.otf');
+  src: font-url('IntroScriptDemo-Medium.otf');
 }
 
 @font-face {
   font-family: 'elia';
-  src: url("../fonts/SantEliaScript-BoldDEMO.otf");
+  src: font-url("SantEliaScript-BoldDEMO.otf");
 }
 
 @font-face {
   font-family: 'JoseSans';
-  src: url("../fonts/JosefinSans-VariableFont_wght.ttf") format("truetype");
+  src: font-url("JosefinSans-VariableFont_wght.ttf") format("truetype");
   font-display: block;
 }
 
 @font-face {
   font-family: 'Raleway';
-  src: url("../fonts/Raleway-VariableFont_wght.ttf") format("truetype");
+  src: font-url("Raleway-VariableFont_wght.ttf") format("truetype");
   font-display: block;
 }
 
 @font-face {
   font-family: 'Roboto';
-  src: url("../fonts/RobotoSlab-VariableFont_wght.ttf") format("truetype");
+  src: font-url("RobotoSlab-VariableFont_wght.ttf") format("truetype");
   font-display: block;
 }
 
 @font-face {
   font-family: 'Rubik';
-  src: url("../fonts/Rubik-VariableFont_wght.ttf") format("truetype");
+  src: font-url("Rubik-VariableFont_wght.ttf") format("truetype");
   font-display: block;
 }

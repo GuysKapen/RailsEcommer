@@ -113,7 +113,7 @@ class ProductsController < ApplicationController
     @category = current_user.categories.build(name: category_attrs) unless category_attrs.nil? || category_attrs.blank?
     # Save category to get id
     if !@category.nil? && !@category.save
-      errors.add(:base, 'Could not save category')
+      flash[:error] = 'Could not save category'
       return false
     end
 
