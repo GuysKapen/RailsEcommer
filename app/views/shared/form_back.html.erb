@@ -246,11 +246,6 @@
       <div class="flex flex-col h-full">
         <div class="field mt-2">
           <div class="control flex mt-2 justify-start">
-            <div class="w-50">
-              <% unless @categories.nil? %>
-                <%= f.select :category_ids, options_for_select(@categories.map { |s| [s.name, s.id] }), class: "w-50" %>
-              <% end %>
-            </div>
             <div>
               <div id="button-add-attribute" class="custom-btn-normal ml-2 f6 h-full">Add</div>
             </div>

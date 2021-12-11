@@ -216,9 +216,6 @@
                 <i class="fa fa-plus"><span class="ml-1">Add new category</span></i>
               </div>
               <div class="mt-2">
-                <% unless @categories.blank? %>
-                  <%= f.select :category_ids, options_for_select(@categories.map { |s| [s.name, s.id] }) %>
-                <% end %>
                 <div id="container-new-category" class=" <%= @categories.blank? ? "" : "hidden" %>">
                   <input type="text" name="category_name" id="input_new_category" placeholder="New Category"
                          class="w-full px-2 py-1 font-medium border-gray-200 placeholder-gray-500 text-sm

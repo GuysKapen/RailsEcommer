@@ -107,17 +107,9 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
+    puts params
     @categories = Category.all
     # Build New Category here
-    category_attrs = params['category_name']
-    @category = current_user.categories.build(name: category_attrs) unless category_attrs.nil? || category_attrs.blank?
-    # Save category to get id
-    if !@category.nil? && !@category.save
-      flash[:error] = 'Could not save category'
-      return false
-    end
-
-    params[:product][:category_id] = @category.id unless @category.nil?
 
     # Modify params before build product to have affect
     upsell_ids_string = params[:product][:product_meta_attributes][:product_linked_attributes][:product_upsell_ids_string]
