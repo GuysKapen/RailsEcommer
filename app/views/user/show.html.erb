@@ -254,15 +254,15 @@
             </div>
             <div class="flex items-center mt-2">
               <div class="w-4/12 font-bold">Address:</div>
-              <div><%= @orders.last.address %></div>
+              <div><%= @orders.last&.address %></div>
             </div>
             <div class="flex items-center mt-2">
               <div class="w-4/12 font-bold">Phone:</div>
-              <div><%= @orders.last.phone %></div>
+              <div><%= @orders.last&.phone %></div>
             </div>
             <div class="flex items-center mt-2">
               <div class="w-4/12 font-bold">Country:</div>
-              <div><%= country_name(@orders.last.country) %></div>
+              <div><%= country_name(@orders.last&.country) %></div>
             </div>
           </div>
         </section>
